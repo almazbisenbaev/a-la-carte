@@ -1,0 +1,12 @@
+# Files and directories that are part of the repository but must not ship in
+# the distributed plugin zip (used by `wp dist-archive`).
+.git
+.github
+.gitignore
+.distignore
+.DS_Store
+.wordpress-org
+ENHANCEMENTS.md
+README.md
+PUBLISHING.md
+node_modules

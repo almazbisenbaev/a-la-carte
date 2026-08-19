@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Build & Archives
+*.zip
+*.tar.gz
+
+# Logs & Environment
+*.log
+.env
+.env.*
+
+# OS Metadata
+.DS_Store
+Thumbs.db
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+# IDE & Editor Files
+.vscode/
+.idea/
+*.swp
+*~
+
+# Testing & Linter Caches
+.phpunit.result.cache
+.php-cs-fixer.cache
+.eslintcache
+.stylelintcache
