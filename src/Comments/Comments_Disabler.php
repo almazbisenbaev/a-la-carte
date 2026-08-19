@@ -183,7 +183,7 @@ class Comments_Disabler extends Simple_Toggle_Tool {
         if (is_admin() && function_exists('get_current_screen')) {
             $screen = get_current_screen();
             if ($screen && $screen->id === 'edit-comments' && !isset($_GET['action'])) {
-                wp_redirect(admin_url()); 
+                wp_safe_redirect(admin_url());
                 exit;
             }
         }

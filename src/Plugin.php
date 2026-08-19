@@ -65,7 +65,6 @@ final class Plugin {
         // same instances instead of creating throwaway objects per request.
         $this->tools->boot();
 
-        add_action('init', array($this, 'load_textdomain'));
         add_action('init', array($this, 'maybe_flush_rewrite_rules'), 100);
 
         if (is_admin()) {
@@ -81,13 +80,6 @@ final class Plugin {
      */
     public function tools() {
         return $this->tools;
-    }
-
-    /**
-     * Load plugin textdomain
-     */
-    public function load_textdomain() {
-        load_plugin_textdomain('powertools', false, dirname(POWERTOOLS_PLUGIN_BASENAME) . '/languages');
     }
 
     /**

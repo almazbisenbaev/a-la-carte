@@ -379,7 +379,7 @@ class Insert_Code {
                 //     (it ships off, see PHP_EXECUTION_OPTION),
                 //   - the snippet is published and its display rules match.
                 // A snippet that throws is caught below and auto-disabled.
-                // phpcs:ignore Squiz.PHP.Eval.Discouraged -- documented, admin-authored code execution; see above.
+                // phpcs:ignore Squiz.PHP.Eval.Discouraged, Generic.PHP.ForbiddenFunctions.Found -- documented, admin-authored code execution; see above.
                 eval('?>' . '<?php ' . $code);
             } catch (\Throwable $e) {
                 $this->handle_snippet_error($snippet['id'], $e);
