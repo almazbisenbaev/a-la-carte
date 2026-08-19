@@ -119,9 +119,9 @@ body[class*="page_powertools"] #wpcontent {
 
 /* Core/other-plugin notices are printed outside our wrap; give them the same
    horizontal rhythm so they don't sit flush against the viewport edge. */
-body[class*="page_powertools"] #wpbody-content > .notice,
-body[class*="page_powertools"] #wpbody-content > .updated,
-body[class*="page_powertools"] #wpbody-content > .error {
+body[class*="page_powertools"] #wpbody-content>.notice,
+body[class*="page_powertools"] #wpbody-content>.updated,
+body[class*="page_powertools"] #wpbody-content>.error {
     margin: var(--pt-space-5) var(--pt-space-7) 0;
 }
 
@@ -260,7 +260,6 @@ body[class*="page_powertools"] #wpbody-content > .error {
     background: var(--pt-surface);
     border: 1px solid var(--pt-border);
     border-radius: var(--pt-radius-lg);
-    box-shadow: var(--pt-shadow-md);
 }
 
 /* Solid brand tile — the single loudest element on any screen. */
@@ -271,17 +270,10 @@ body[class*="page_powertools"] #wpbody-content > .error {
     justify-content: center;
     width: 68px;
     height: 68px;
-    background: linear-gradient(140deg, var(--pt-brand), var(--pt-brand-deep));
-    border-radius: var(--pt-radius);
-    color: #fff;
-    box-shadow: var(--pt-shadow-brand);
-}
-
-/* The plugin logo is already brand-coloured, so it sits on a tint instead. */
-.pt-page-header__icon:has(img) {
-    background: var(--pt-brand-soft);
-    border: 1px solid var(--pt-brand-border);
-    box-shadow: var(--pt-shadow-sm);
+    /* background: linear-gradient(140deg, var(--pt-brand), var(--pt-brand-deep)); */
+    /* border-radius: var(--pt-radius); */
+    /* color: #fff; */
+    /* box-shadow: var(--pt-shadow-brand); */
 }
 
 .pt-page-header__icon .dashicons {
@@ -316,7 +308,7 @@ body[class*="page_powertools"] #wpbody-content > .error {
     overflow: hidden;
 }
 
-.pt-panel + .pt-panel {
+.pt-panel+.pt-panel {
     margin-top: var(--pt-space-5);
 }
 
@@ -355,13 +347,13 @@ body[class*="page_powertools"] #wpbody-content > .error {
  * by a rule, including the first one after a row of fields — using an adjacent
  * sibling selector instead would leave that first divider missing.
  */
-.pt-panel__body > .pt-panel__section {
+.pt-panel__body>.pt-panel__section {
     margin-top: var(--pt-space-5);
     padding-top: var(--pt-space-5);
     border-top: 1px solid var(--pt-border-soft);
 }
 
-.pt-panel__body > .pt-panel__section:first-child {
+.pt-panel__body>.pt-panel__section:first-child {
     margin-top: 0;
     padding-top: 0;
     border-top: none;
@@ -710,7 +702,7 @@ textarea.pt-form-control {
     cursor: pointer;
 }
 
-.pt-choice + .pt-choice {
+.pt-choice+.pt-choice {
     margin-top: var(--pt-space-3);
 }
 
@@ -852,7 +844,7 @@ textarea.pt-form-control {
     transition: border-color var(--pt-transition), background-color var(--pt-transition), box-shadow var(--pt-transition);
 }
 
-.pt-choice--card + .pt-choice--card {
+.pt-choice--card+.pt-choice--card {
     margin-top: var(--pt-space-3);
 }
 
@@ -923,24 +915,24 @@ textarea.pt-form-control {
     transition: transform var(--pt-transition);
 }
 
-.pt-switch input:hover ~ .pt-switch__track {
+.pt-switch input:hover~.pt-switch__track {
     background: var(--pt-text-subtle);
 }
 
-.pt-switch input:checked ~ .pt-switch__track {
+.pt-switch input:checked~.pt-switch__track {
     background: var(--pt-brand);
     box-shadow: var(--pt-shadow-brand);
 }
 
-.pt-switch input:checked:hover ~ .pt-switch__track {
+.pt-switch input:checked:hover~.pt-switch__track {
     background: var(--pt-brand-strong);
 }
 
-.pt-switch input:checked ~ .pt-switch__track::before {
+.pt-switch input:checked~.pt-switch__track::before {
     transform: translateX(20px);
 }
 
-.pt-switch input:focus-visible ~ .pt-switch__track {
+.pt-switch input:focus-visible~.pt-switch__track {
     box-shadow: var(--pt-focus-ring-strong);
 }
 
@@ -948,7 +940,7 @@ textarea.pt-form-control {
     cursor: default;
 }
 
-.pt-switch input:disabled ~ .pt-switch__track {
+.pt-switch input:disabled~.pt-switch__track {
     opacity: 0.5;
     box-shadow: none;
 }
@@ -1350,7 +1342,7 @@ a.pt-table__name:hover {
     animation: pt-fade-in 200ms ease;
 }
 
-.pt-modal__dialog > form {
+.pt-modal__dialog>form {
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
@@ -1446,7 +1438,7 @@ a.pt-table__name:hover {
     border-radius: var(--pt-radius-sm);
 }
 
-.pt-rule + .pt-rule {
+.pt-rule+.pt-rule {
     margin-top: var(--pt-space-3);
 }
 
@@ -1505,7 +1497,7 @@ a.pt-table__name:hover {
     align-items: start;
 }
 
-.pt-stack > * + * {
+.pt-stack>*+* {
     margin-top: var(--pt-space-5);
 }
 
@@ -1525,16 +1517,16 @@ a.pt-table__name:hover {
  * Declared last so it wins over the component margins above at equal
  * specificity.
  */
-.pt-panel__body > *,
-.pt-modal__body > *,
-.pt-cols-2 > *,
-.pt-split > *,
-.pt-stack > * {
+.pt-panel__body>*,
+.pt-modal__body>*,
+.pt-cols-2>*,
+.pt-split>*,
+.pt-stack>* {
     margin-bottom: 0;
 }
 
-.pt-panel__body > * + *,
-.pt-modal__body > * + * {
+.pt-panel__body>*+*,
+.pt-modal__body>*+* {
     margin-top: var(--pt-space-5);
 }
 
@@ -1545,9 +1537,9 @@ a.pt-table__name:hover {
  * `.pt-split` end up 24px out of line. These selectors have to name both
  * classes to outweigh the component rule they undo.
  */
-.pt-cols-2 > .pt-panel + .pt-panel,
-.pt-split > .pt-panel + .pt-panel,
-.pt-choice-grid > .pt-choice + .pt-choice {
+.pt-cols-2>.pt-panel+.pt-panel,
+.pt-split>.pt-panel+.pt-panel,
+.pt-choice-grid>.pt-choice+.pt-choice {
     margin-top: 0;
 }
 
@@ -1566,9 +1558,9 @@ a.pt-table__name:hover {
         padding: var(--pt-space-5);
     }
 
-    body[class*="page_powertools"] #wpbody-content > .notice,
-    body[class*="page_powertools"] #wpbody-content > .updated,
-    body[class*="page_powertools"] #wpbody-content > .error {
+    body[class*="page_powertools"] #wpbody-content>.notice,
+    body[class*="page_powertools"] #wpbody-content>.updated,
+    body[class*="page_powertools"] #wpbody-content>.error {
         margin: var(--pt-space-5) var(--pt-space-5) 0;
     }
 
@@ -1582,9 +1574,9 @@ a.pt-table__name:hover {
         padding: var(--pt-space-4);
     }
 
-    body[class*="page_powertools"] #wpbody-content > .notice,
-    body[class*="page_powertools"] #wpbody-content > .updated,
-    body[class*="page_powertools"] #wpbody-content > .error {
+    body[class*="page_powertools"] #wpbody-content>.notice,
+    body[class*="page_powertools"] #wpbody-content>.updated,
+    body[class*="page_powertools"] #wpbody-content>.error {
         margin: var(--pt-space-4) var(--pt-space-4) 0;
     }
 
@@ -1659,14 +1651,15 @@ a.pt-table__name:hover {
 
 /* Stacked, full-width actions once buttons stop fitting side by side. */
 @media (max-width: 480px) {
+
     .pt-panel__footer,
     .pt-modal__footer {
         flex-direction: column-reverse;
         align-items: stretch;
     }
 
-    .pt-panel__footer > *,
-    .pt-modal__footer > *,
+    .pt-panel__footer>*,
+    .pt-modal__footer>*,
     .pt-panel__footer .pt-btn,
     .pt-modal__footer .pt-btn {
         width: 100%;
@@ -1684,6 +1677,7 @@ a.pt-table__name:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .pt-wrap,
     .pt-modal__dialog {
         animation: none;

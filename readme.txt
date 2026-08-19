@@ -98,11 +98,11 @@ Yes. All strings are translatable and contributions are welcome through translat
 == Screenshots ==
 
 1. The PowerTools dashboard, where each tool is switched on or off.
-2. The Code Snippets editor with syntax highlighting and display rules.
-3. The Custom Post Types Manager.
-4. The Gutenberg Disabler, set to disable the block editor for selected post types.
-5. Junk Cleaner showing the drafts and revisions found.
-6. The System Information screen.
+2. Junk Cleaner showing the drafts and revisions found.
+3. The Gutenberg Disabler, set to disable the block editor for selected post types.
+4. The Custom Post Types Manager.
+5. The Code Snippets list, showing PHP, JS and HTML snippets and their locations.
+6. The Code Snippets editor with conditional display rules.
 
 == Changelog ==
 
