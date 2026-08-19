@@ -97,7 +97,7 @@ Tool_Manager::render_toggle_notice();
         printf(
             /* translators: %s: Github repository URL */
             esc_html__('View on %s', 'powertools'),
-            '<a target="_blank" rel="noopener" href="https://github.com/almazbisenbaev/wp-powertools">GitHub</a>'
+            '<a target="_blank" rel="noopener" href="https://github.com/almazbisenbaev/powertools">GitHub</a>'
         );
         ?>
     </p>

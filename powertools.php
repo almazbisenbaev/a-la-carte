@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: PowerTools
- * Plugin URI: https://github.com/almazbisenbaev/wp-powertools
+ * Plugin URI: https://github.com/almazbisenbaev/powertools
  * Description: Useful WordPress utilities to solve common WordPress problems and maximize your productivity
  * Author: Almaz Bissenbayev
  * Version: 1.0.0

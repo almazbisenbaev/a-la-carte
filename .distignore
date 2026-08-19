@@ -6,7 +6,6 @@
 .distignore
 .DS_Store
 .wordpress-org
-ENHANCEMENTS.md
 README.md
 PUBLISHING.md
 node_modules

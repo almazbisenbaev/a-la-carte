@@ -1,6 +1,5 @@
 === PowerTools ===
 Contributors: almazbisenbaev
-Donate link: https://helloalmaz.com/
 Tags: disable comments, disable gutenberg, custom post types, code snippets, admin bar
 Requires at least: 6.0
 Tested up to: 7.0
