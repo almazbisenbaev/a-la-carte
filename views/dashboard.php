@@ -24,24 +24,24 @@ UI::page_open(array(
 Tool_Manager::render_toggle_notice();
 ?>
 
-<div class="pt-tools">
+<div class="ptools-tools">
     <?php foreach ($available_tools as $tool_id => $tool) : ?>
         <?php
         $is_active = Tool_Manager::is_tool_active($tool_id);
         $page_url  = Tool_Manager::get_page_url($tool_id);
         ?>
-        <div class="pt-tool-card">
-            <div class="pt-tool-card__header">
-                <span class="pt-tool-card__icon">
+        <div class="ptools-tool-card">
+            <div class="ptools-tool-card__header">
+                <span class="ptools-tool-card__icon">
                     <?php UI::dashicon($tool['icon']); ?>
                 </span>
 
                 <?php if ($is_active) : ?>
-                    <a class="pt-tool-card__title" href="<?php echo esc_url($page_url); ?>">
+                    <a class="ptools-tool-card__title" href="<?php echo esc_url($page_url); ?>">
                         <?php echo esc_html($tool['name']); ?>
                     </a>
                 <?php else : ?>
-                    <span class="pt-tool-card__title"><?php echo esc_html($tool['name']); ?></span>
+                    <span class="ptools-tool-card__title"><?php echo esc_html($tool['name']); ?></span>
                 <?php endif; ?>
 
                 <?php
@@ -60,20 +60,20 @@ Tool_Manager::render_toggle_notice();
                 ?>
             </div>
 
-            <p class="pt-tool-card__desc">
+            <p class="ptools-tool-card__desc">
                 <?php echo esc_html($tool['description']); ?>
             </p>
 
-            <div class="pt-tool-card__footer">
+            <div class="ptools-tool-card__footer">
                 <?php if ($is_active) : ?>
-                    <span class="pt-pill pt-pill--success"><?php esc_html_e('Active', 'powertools'); ?></span>
-                    <a class="pt-btn pt-btn--secondary" href="<?php echo esc_url($page_url); ?>">
+                    <span class="ptools-pill ptools-pill--success"><?php esc_html_e('Active', 'powertools'); ?></span>
+                    <a class="ptools-btn ptools-btn--secondary" href="<?php echo esc_url($page_url); ?>">
                         <?php esc_html_e('Configure', 'powertools'); ?>
                         <?php UI::dashicon('dashicons-arrow-right-alt2'); ?>
                     </a>
                 <?php else : ?>
-                    <span class="pt-pill pt-pill--neutral"><?php esc_html_e('Inactive', 'powertools'); ?></span>
-                    <span class="pt-btn pt-btn--secondary is-disabled" aria-disabled="true">
+                    <span class="ptools-pill ptools-pill--neutral"><?php esc_html_e('Inactive', 'powertools'); ?></span>
+                    <span class="ptools-btn ptools-btn--secondary is-disabled" aria-disabled="true">
                         <?php esc_html_e('Configure', 'powertools'); ?>
                         <?php UI::dashicon('dashicons-arrow-right-alt2'); ?>
                     </span>
@@ -83,7 +83,7 @@ Tool_Manager::render_toggle_notice();
     <?php endforeach; ?>
 </div>
 
-<footer class="pt-footer">
+<footer class="ptools-footer">
     <p>
         <?php
         printf(

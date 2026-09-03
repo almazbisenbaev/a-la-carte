@@ -4,11 +4,11 @@
  * Replaces the inline `onchange` / `onclick` attributes the tool pages used to
  * carry. Templates opt in through data attributes:
  *
- *   .pt-js-autosubmit              submit the form when a control changes
- *   [data-pt-reveal="<id>"]        show that element when this radio is checked
- *   [data-pt-modal-open="<id>"]    open a modal
- *   [data-pt-modal-close]          close the closest modal
- *   [data-pt-confirm="message"]    confirm before submitting a form
+ *   .ptools-js-autosubmit              submit the form when a control changes
+ *   [data-ptools-reveal="<id>"]        show that element when this radio is checked
+ *   [data-ptools-modal-open="<id>"]    open a modal
+ *   [data-ptools-modal-close]          close the closest modal
+ *   [data-ptools-confirm="message"]    confirm before submitting a form
  */
 (function () {
     'use strict';
@@ -18,7 +18,7 @@
      */
     function initAutoSubmit() {
         document.addEventListener('change', function (event) {
-            var form = event.target.closest('.pt-js-autosubmit');
+            var form = event.target.closest('.ptools-js-autosubmit');
 
             if (form) {
                 form.submit();
@@ -31,7 +31,7 @@
      * only appear for the option they belong to.
      */
     function initReveal() {
-        var triggers = document.querySelectorAll('[data-pt-reveal]');
+        var triggers = document.querySelectorAll('[data-ptools-reveal]');
 
         if (!triggers.length) {
             return;
@@ -39,7 +39,7 @@
 
         function syncAll() {
             triggers.forEach(function (trigger) {
-                var target = document.getElementById(trigger.getAttribute('data-pt-reveal'));
+                var target = document.getElementById(trigger.getAttribute('data-ptools-reveal'));
 
                 if (target) {
                     target.hidden = !trigger.checked;
@@ -70,25 +70,25 @@
         }
 
         document.addEventListener('click', function (event) {
-            var opener = event.target.closest('[data-pt-modal-open]');
+            var opener = event.target.closest('[data-ptools-modal-open]');
             if (opener) {
                 event.preventDefault();
-                var modal = document.getElementById(opener.getAttribute('data-pt-modal-open'));
+                var modal = document.getElementById(opener.getAttribute('data-ptools-modal-open'));
                 if (modal) {
                     open(modal);
                 }
                 return;
             }
 
-            var closer = event.target.closest('[data-pt-modal-close]');
+            var closer = event.target.closest('[data-ptools-modal-close]');
             if (closer) {
                 event.preventDefault();
-                close(closer.closest('.pt-modal'));
+                close(closer.closest('.ptools-modal'));
                 return;
             }
 
             // A click on the backdrop itself (not the dialog) closes the modal.
-            if (event.target.classList.contains('pt-modal')) {
+            if (event.target.classList.contains('ptools-modal')) {
                 close(event.target);
             }
         });
@@ -98,7 +98,7 @@
                 return;
             }
 
-            document.querySelectorAll('.pt-modal.is-open').forEach(close);
+            document.querySelectorAll('.ptools-modal.is-open').forEach(close);
         });
     }
 
@@ -107,7 +107,7 @@
      */
     function initConfirm() {
         document.addEventListener('submit', function (event) {
-            var message = event.target.getAttribute('data-pt-confirm');
+            var message = event.target.getAttribute('data-ptools-confirm');
 
             if (message && !window.confirm(message)) {
                 event.preventDefault();

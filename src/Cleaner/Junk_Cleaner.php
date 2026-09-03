@@ -49,20 +49,20 @@ class Junk_Cleaner {
             'description' => __('Free up database space by removing unnecessary drafts and post revisions.', 'powertools'),
         ));
         ?>
-        <div class="pt-panel">
-            <div class="pt-panel__header">
-                <h2 class="pt-h2"><?php esc_html_e('Database Overview', 'powertools'); ?></h2>
+        <div class="ptools-panel">
+            <div class="ptools-panel__header">
+                <h2 class="ptools-h2"><?php esc_html_e('Database Overview', 'powertools'); ?></h2>
             </div>
 
-            <div class="pt-panel__body">
-                <div class="pt-stats">
-                    <div class="pt-stat">
-                        <div class="pt-stat__value"><?php echo esc_html($drafts_count); ?></div>
-                        <div class="pt-stat__label"><?php esc_html_e('Draft Posts', 'powertools'); ?></div>
+            <div class="ptools-panel__body">
+                <div class="ptools-stats">
+                    <div class="ptools-stat">
+                        <div class="ptools-stat__value"><?php echo esc_html($drafts_count); ?></div>
+                        <div class="ptools-stat__label"><?php esc_html_e('Draft Posts', 'powertools'); ?></div>
                     </div>
-                    <div class="pt-stat">
-                        <div class="pt-stat__value"><?php echo esc_html($revisions_count); ?></div>
-                        <div class="pt-stat__label"><?php esc_html_e('Post Revisions', 'powertools'); ?></div>
+                    <div class="ptools-stat">
+                        <div class="ptools-stat__value"><?php echo esc_html($revisions_count); ?></div>
+                        <div class="ptools-stat__label"><?php esc_html_e('Post Revisions', 'powertools'); ?></div>
                     </div>
                 </div>
 
@@ -83,11 +83,11 @@ class Junk_Cleaner {
                 <?php endif; ?>
             </div>
 
-            <div class="pt-panel__footer">
-                <form method="post" data-pt-confirm="<?php echo esc_attr($confirm_message); ?>">
+            <div class="ptools-panel__footer">
+                <form method="post" data-ptools-confirm="<?php echo esc_attr($confirm_message); ?>">
                     <?php wp_nonce_field('powertools_junk_cleaner'); ?>
                     <input type="hidden" name="delete_revisions_drafts" value="1" />
-                    <button type="submit" class="pt-btn pt-btn--danger" <?php disabled($is_clean); ?>>
+                    <button type="submit" class="ptools-btn ptools-btn--danger" <?php disabled($is_clean); ?>>
                         <?php UI::dashicon('dashicons-trash'); ?>
                         <?php esc_html_e('Clean Database Now', 'powertools'); ?>
                     </button>

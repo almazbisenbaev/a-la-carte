@@ -84,28 +84,28 @@ abstract class Simple_Toggle_Tool {
             'description' => $this->get_page_description(),
         ));
         ?>
-        <form class="pt-panel" method="post">
+        <form class="ptools-panel" method="post">
             <?php wp_nonce_field($this->get_nonce_action()); ?>
 
-            <div class="pt-panel__header">
-                <h2 class="pt-h2"><?php esc_html_e('Settings', 'powertools'); ?></h2>
+            <div class="ptools-panel__header">
+                <h2 class="ptools-h2"><?php esc_html_e('Settings', 'powertools'); ?></h2>
             </div>
 
-            <div class="pt-panel__body">
-                <label class="pt-choice pt-choice--card">
+            <div class="ptools-panel__body">
+                <label class="ptools-choice ptools-choice--card">
                     <input type="checkbox"
                            name="<?php echo esc_attr($this->get_field_name()); ?>"
                            value="1"
                            <?php checked($this->is_enabled()); ?> />
-                    <span class="pt-choice__text">
-                        <span class="pt-choice__title"><?php echo esc_html($this->get_field_title()); ?></span>
-                        <span class="pt-choice__desc"><?php echo esc_html($this->get_field_description()); ?></span>
+                    <span class="ptools-choice__text">
+                        <span class="ptools-choice__title"><?php echo esc_html($this->get_field_title()); ?></span>
+                        <span class="ptools-choice__desc"><?php echo esc_html($this->get_field_description()); ?></span>
                     </span>
                 </label>
             </div>
 
-            <div class="pt-panel__footer">
-                <button type="submit" name="save" value="1" class="pt-btn pt-btn--primary">
+            <div class="ptools-panel__footer">
+                <button type="submit" name="save" value="1" class="ptools-btn ptools-btn--primary">
                     <?php esc_html_e('Save Settings', 'powertools'); ?>
                 </button>
             </div>

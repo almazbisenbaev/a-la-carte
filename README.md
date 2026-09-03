@@ -1,5 +1,5 @@
 
-# WP PowerTools
+# PowerTools
 
 Simple tools that solve common problems during WordPress development and maximize your productivity
 

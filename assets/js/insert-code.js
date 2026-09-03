@@ -18,14 +18,14 @@
      * and below it in sync with the snippet type.
      */
     function initCodeEditor() {
-        var container = document.querySelector('.pt-code-editor');
-        var textarea = document.getElementById('pt-code-editor');
+        var container = document.querySelector('.ptools-code-editor');
+        var textarea = document.getElementById('ptools-code-editor');
 
         if (!container || !textarea) {
             return;
         }
 
-        var type = container.getAttribute('data-pt-code-type');
+        var type = container.getAttribute('data-ptools-code-type');
         var wrappers = {
             js: { top: '<script type="text/javascript">', bottom: '</' + 'script>', mode: 'javascript' },
             php: { top: '<' + '?php', bottom: '?' + '>', mode: 'application/x-httpd-php' }
@@ -33,7 +33,7 @@
         var wrapper = wrappers[type];
 
         ['top', 'bottom'].forEach(function (position) {
-            var tag = container.querySelector('[data-pt-code-tag="' + position + '"]');
+            var tag = container.querySelector('[data-ptools-code-tag="' + position + '"]');
 
             if (!tag) {
                 return;
@@ -73,11 +73,11 @@
      * disable the others so they are not submitted.
      */
     function syncRuleRow(row) {
-        var type = row.querySelector('[data-pt-rule-type]').value;
+        var type = row.querySelector('[data-ptools-rule-type]').value;
         var wanted = RULE_VALUE_FOR_TYPE[type] || 'text';
 
-        row.querySelectorAll('[data-pt-rule-value]').forEach(function (field) {
-            var isWanted = field.getAttribute('data-pt-rule-value') === wanted;
+        row.querySelectorAll('[data-ptools-rule-value]').forEach(function (field) {
+            var isWanted = field.getAttribute('data-ptools-rule-value') === wanted;
 
             field.hidden = !isWanted;
             field.disabled = !isWanted;
@@ -88,14 +88,14 @@
      * Conditional logic repeater: add, remove and keep the field names indexed.
      */
     function initRules() {
-        var container = document.getElementById('pt-rules');
+        var container = document.getElementById('ptools-rules');
 
         if (!container) {
             return;
         }
 
         function reindex() {
-            container.querySelectorAll('.pt-rule').forEach(function (row, index) {
+            container.querySelectorAll('.ptools-rule').forEach(function (row, index) {
                 row.querySelectorAll('[name^="rules["]').forEach(function (field) {
                     field.name = field.name.replace(/^rules\[\d+\]/, 'rules[' + index + ']');
                 });
@@ -103,14 +103,14 @@
         }
 
         document.addEventListener('change', function (event) {
-            if (event.target.matches('[data-pt-rule-type]')) {
-                syncRuleRow(event.target.closest('.pt-rule'));
+            if (event.target.matches('[data-ptools-rule-type]')) {
+                syncRuleRow(event.target.closest('.ptools-rule'));
             }
         });
 
         document.addEventListener('click', function (event) {
-            if (event.target.closest('[data-pt-rule-add]')) {
-                var template = container.querySelector('.pt-rule');
+            if (event.target.closest('[data-ptools-rule-add]')) {
+                var template = container.querySelector('.ptools-rule');
                 var row = template.cloneNode(true);
 
                 row.querySelectorAll('input, select').forEach(function (field) {
@@ -127,15 +127,15 @@
                 return;
             }
 
-            var remove = event.target.closest('[data-pt-rule-remove]');
+            var remove = event.target.closest('[data-ptools-rule-remove]');
             if (!remove) {
                 return;
             }
 
-            var row = remove.closest('.pt-rule');
+            var row = remove.closest('.ptools-rule');
 
             // Keep one row around so there is always something to clone.
-            if (container.querySelectorAll('.pt-rule').length > 1) {
+            if (container.querySelectorAll('.ptools-rule').length > 1) {
                 row.remove();
             } else {
                 row.querySelectorAll('input').forEach(function (field) {

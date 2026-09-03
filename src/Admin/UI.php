@@ -60,9 +60,9 @@ final class UI {
             $icon = Tool_Manager::get_icon($args['tool_id']);
         }
         ?>
-        <div class="pt-wrap">
-            <header class="pt-page-header">
-                <div class="pt-page-header__icon">
+        <div class="ptools-wrap">
+            <header class="ptools-page-header">
+                <div class="ptools-page-header__icon">
                     <?php if ($args['logo']) : ?>
                         <img src="<?php echo esc_url($args['logo']); ?>" alt="" />
                     <?php else : ?>
@@ -70,15 +70,15 @@ final class UI {
                     <?php endif; ?>
                 </div>
 
-                <div class="pt-page-header__content">
-                    <h1 class="pt-h1"><?php echo esc_html($args['title']); ?></h1>
+                <div class="ptools-page-header__content">
+                    <h1 class="ptools-h1"><?php echo esc_html($args['title']); ?></h1>
                     <?php if ($args['description']) : ?>
-                        <p class="pt-lead"><?php echo esc_html($args['description']); ?></p>
+                        <p class="ptools-lead"><?php echo esc_html($args['description']); ?></p>
                     <?php endif; ?>
                 </div>
 
                 <?php if (is_callable($args['actions'])) : ?>
-                    <div class="pt-page-header__actions">
+                    <div class="ptools-page-header__actions">
                         <?php call_user_func($args['actions']); ?>
                     </div>
                 <?php endif; ?>
@@ -104,7 +104,7 @@ final class UI {
     public static function notice($message, $type = 'success') {
         $type = isset(self::NOTICE_ICONS[$type]) ? $type : 'success';
         ?>
-        <div class="pt-notice pt-notice--<?php echo esc_attr($type); ?>">
+        <div class="ptools-notice ptools-notice--<?php echo esc_attr($type); ?>">
             <?php self::dashicon(self::NOTICE_ICONS[$type]); ?>
             <span><?php echo esc_html($message); ?></span>
         </div>
@@ -156,23 +156,23 @@ final class UI {
             'label'        => '',
         ), $args);
         ?>
-        <form class="pt-inline-form pt-js-autosubmit" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+        <form class="ptools-inline-form ptools-js-autosubmit" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
             <input type="hidden" name="action" value="<?php echo esc_attr($args['action']); ?>" />
             <?php wp_nonce_field($args['nonce_action'], $args['nonce_name']); ?>
             <?php foreach ($args['fields'] as $name => $value) : ?>
                 <input type="hidden" name="<?php echo esc_attr($name); ?>" value="<?php echo esc_attr($value); ?>" />
             <?php endforeach; ?>
 
-            <label class="pt-switch">
+            <label class="ptools-switch">
                 <input type="checkbox"
                        aria-label="<?php echo esc_attr($args['label']); ?>"
                        <?php checked($args['checked']); ?>
                        <?php disabled($args['disabled']); ?> />
-                <span class="pt-switch__track"></span>
+                <span class="ptools-switch__track"></span>
             </label>
 
             <noscript>
-                <button type="submit" class="pt-btn pt-btn--secondary"><?php esc_html_e('Apply', 'powertools'); ?></button>
+                <button type="submit" class="ptools-btn ptools-btn--secondary"><?php esc_html_e('Apply', 'powertools'); ?></button>
             </noscript>
         </form>
         <?php

@@ -118,41 +118,41 @@ class Gutenberg_Disabler {
             'description' => __('Switch back to the Classic Editor and disable Gutenberg block library assets.', 'powertools'),
         ));
         ?>
-        <form class="pt-panel" method="post">
+        <form class="ptools-panel" method="post">
             <?php wp_nonce_field('powertools_gutenberg_disabler'); ?>
 
-            <div class="pt-panel__header">
-                <h2 class="pt-h2"><?php esc_html_e('Settings', 'powertools'); ?></h2>
+            <div class="ptools-panel__header">
+                <h2 class="ptools-h2"><?php esc_html_e('Settings', 'powertools'); ?></h2>
             </div>
 
-            <div class="pt-panel__body">
-                <div class="pt-panel__section">
+            <div class="ptools-panel__body">
+                <div class="ptools-panel__section">
                     <?php foreach ($modes as $mode => $option) : ?>
-                        <label class="pt-choice pt-choice--card">
+                        <label class="ptools-choice ptools-choice--card">
                             <input type="radio"
                                    name="gutenberg_mode"
                                    value="<?php echo esc_attr($mode); ?>"
-                                   <?php echo 'selective' === $mode ? 'data-pt-reveal="pt-gutenberg-post-types"' : ''; ?>
+                                   <?php echo 'selective' === $mode ? 'data-ptools-reveal="ptools-gutenberg-post-types"' : ''; ?>
                                    <?php checked($option['checked']); ?> />
-                            <span class="pt-choice__text">
-                                <span class="pt-choice__title"><?php echo esc_html($option['title']); ?></span>
-                                <span class="pt-choice__desc"><?php echo esc_html($option['description']); ?></span>
+                            <span class="ptools-choice__text">
+                                <span class="ptools-choice__title"><?php echo esc_html($option['title']); ?></span>
+                                <span class="ptools-choice__desc"><?php echo esc_html($option['description']); ?></span>
                             </span>
                         </label>
                     <?php endforeach; ?>
                 </div>
 
-                <div class="pt-panel__section" id="pt-gutenberg-post-types" <?php echo $modes['selective']['checked'] ? '' : 'hidden'; ?>>
-                    <p class="pt-eyebrow"><?php esc_html_e('Post types using the Classic Editor', 'powertools'); ?></p>
-                    <div class="pt-choice-grid">
+                <div class="ptools-panel__section" id="ptools-gutenberg-post-types" <?php echo $modes['selective']['checked'] ? '' : 'hidden'; ?>>
+                    <p class="ptools-eyebrow"><?php esc_html_e('Post types using the Classic Editor', 'powertools'); ?></p>
+                    <div class="ptools-choice-grid">
                         <?php foreach ($post_types as $post_type) : ?>
-                            <label class="pt-choice pt-choice--boxed">
+                            <label class="ptools-choice ptools-choice--boxed">
                                 <input type="checkbox"
                                        name="post_types[]"
                                        value="<?php echo esc_attr($post_type->name); ?>"
                                        <?php checked(in_array($post_type->name, $settings['post_types'], true)); ?> />
-                                <span class="pt-choice__text">
-                                    <span class="pt-choice__title"><?php echo esc_html($post_type->label); ?></span>
+                                <span class="ptools-choice__text">
+                                    <span class="ptools-choice__title"><?php echo esc_html($post_type->label); ?></span>
                                 </span>
                             </label>
                         <?php endforeach; ?>
@@ -160,8 +160,8 @@ class Gutenberg_Disabler {
                 </div>
             </div>
 
-            <div class="pt-panel__footer">
-                <button type="submit" name="save" value="1" class="pt-btn pt-btn--primary">
+            <div class="ptools-panel__footer">
+                <button type="submit" name="save" value="1" class="ptools-btn ptools-btn--primary">
                     <?php esc_html_e('Save Settings', 'powertools'); ?>
                 </button>
             </div>

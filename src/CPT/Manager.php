@@ -94,8 +94,8 @@ class Manager {
 
         $this->render_message();
         ?>
-        <div class="pt-split">
-            <form class="pt-panel" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+        <div class="ptools-split">
+            <form class="ptools-panel" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
                 <input type="hidden" name="action" value="<?php echo $editing ? 'powertools_cptm_edit' : 'powertools_cptm_add'; ?>" />
                 <?php
                 wp_nonce_field(
@@ -104,35 +104,35 @@ class Manager {
                 );
                 ?>
 
-                <div class="pt-panel__header">
-                    <h2 class="pt-h2">
+                <div class="ptools-panel__header">
+                    <h2 class="ptools-h2">
                         <?php echo $editing ? esc_html__('Edit Post Type', 'powertools') : esc_html__('Add New Post Type', 'powertools'); ?>
                     </h2>
                 </div>
 
-                <div class="pt-panel__body">
-                    <div class="pt-cols-2">
-                        <div class="pt-field">
-                            <label class="pt-label" for="pt-cpt-slug">
+                <div class="ptools-panel__body">
+                    <div class="ptools-cols-2">
+                        <div class="ptools-field">
+                            <label class="ptools-label" for="ptools-cptools-slug">
                                 <?php esc_html_e('Post Type Slug', 'powertools'); ?>
-                                <span class="pt-required" aria-hidden="true">*</span>
+                                <span class="ptools-required" aria-hidden="true">*</span>
                             </label>
-                            <input class="pt-form-control pt-form-control--mono" id="pt-cpt-slug" type="text"
+                            <input class="ptools-form-control ptools-form-control--mono" id="ptools-cptools-slug" type="text"
                                    name="powertools_cptm_post_type_name"
                                    value="<?php echo esc_attr($values['name']); ?>"
                                    placeholder="portfolio"
                                    maxlength="20"
                                    <?php echo $editing ? 'readonly' : 'required'; ?> />
-                            <p class="pt-help"><?php esc_html_e('Lowercase and underscores only, 20 characters max.', 'powertools'); ?></p>
+                            <p class="ptools-help"><?php esc_html_e('Lowercase and underscores only, 20 characters max.', 'powertools'); ?></p>
                         </div>
 
-                        <div class="pt-field">
-                            <label class="pt-label" for="pt-cpt-icon"><?php esc_html_e('Menu Icon', 'powertools'); ?></label>
-                            <input class="pt-form-control pt-form-control--mono" id="pt-cpt-icon" type="text"
+                        <div class="ptools-field">
+                            <label class="ptools-label" for="ptools-cptools-icon"><?php esc_html_e('Menu Icon', 'powertools'); ?></label>
+                            <input class="ptools-form-control ptools-form-control--mono" id="ptools-cptools-icon" type="text"
                                    name="powertools_cptm_menu_icon"
                                    value="<?php echo esc_attr($values['menu_icon']); ?>"
                                    placeholder="dashicons-admin-post" />
-                            <p class="pt-help">
+                            <p class="ptools-help">
                                 <a href="https://developer.wordpress.org/resource/dashicons/" target="_blank" rel="noopener">
                                     <?php esc_html_e('Browse Dashicons', 'powertools'); ?>
                                 </a>
@@ -140,25 +140,25 @@ class Manager {
                         </div>
                     </div>
 
-                    <div class="pt-cols-2">
-                        <div class="pt-field">
-                            <label class="pt-label" for="pt-cpt-singular">
+                    <div class="ptools-cols-2">
+                        <div class="ptools-field">
+                            <label class="ptools-label" for="ptools-cptools-singular">
                                 <?php esc_html_e('Singular Label', 'powertools'); ?>
-                                <span class="pt-required" aria-hidden="true">*</span>
+                                <span class="ptools-required" aria-hidden="true">*</span>
                             </label>
-                            <input class="pt-form-control" id="pt-cpt-singular" type="text"
+                            <input class="ptools-form-control" id="ptools-cptools-singular" type="text"
                                    name="powertools_cptm_singular_label"
                                    value="<?php echo esc_attr($values['singular_label']); ?>"
                                    placeholder="<?php esc_attr_e('Project', 'powertools'); ?>"
                                    required />
                         </div>
 
-                        <div class="pt-field">
-                            <label class="pt-label" for="pt-cpt-plural">
+                        <div class="ptools-field">
+                            <label class="ptools-label" for="ptools-cptools-plural">
                                 <?php esc_html_e('Plural Label', 'powertools'); ?>
-                                <span class="pt-required" aria-hidden="true">*</span>
+                                <span class="ptools-required" aria-hidden="true">*</span>
                             </label>
-                            <input class="pt-form-control" id="pt-cpt-plural" type="text"
+                            <input class="ptools-form-control" id="ptools-cptools-plural" type="text"
                                    name="powertools_cptm_plural_label"
                                    value="<?php echo esc_attr($values['plural_label']); ?>"
                                    placeholder="<?php esc_attr_e('Projects', 'powertools'); ?>"
@@ -166,9 +166,9 @@ class Manager {
                         </div>
                     </div>
 
-                    <div class="pt-panel__section">
-                        <p class="pt-eyebrow"><?php esc_html_e('Behaviour', 'powertools'); ?></p>
-                        <div class="pt-choice-grid">
+                    <div class="ptools-panel__section">
+                        <p class="ptools-eyebrow"><?php esc_html_e('Behaviour', 'powertools'); ?></p>
+                        <div class="ptools-choice-grid">
                             <?php
                             $flags = array(
                                 'powertools_cptm_public'       => array(__('Public', 'powertools'), $values['public']),
@@ -177,26 +177,26 @@ class Manager {
                             );
                             foreach ($flags as $flag_name => $flag) :
                                 ?>
-                                <label class="pt-choice pt-choice--boxed">
+                                <label class="ptools-choice ptools-choice--boxed">
                                     <input type="checkbox" name="<?php echo esc_attr($flag_name); ?>" value="1" <?php checked($flag[1]); ?> />
-                                    <span class="pt-choice__text">
-                                        <span class="pt-choice__title"><?php echo esc_html($flag[0]); ?></span>
+                                    <span class="ptools-choice__text">
+                                        <span class="ptools-choice__title"><?php echo esc_html($flag[0]); ?></span>
                                     </span>
                                 </label>
                             <?php endforeach; ?>
                         </div>
                     </div>
 
-                    <div class="pt-panel__section">
-                        <p class="pt-eyebrow"><?php esc_html_e('Supports', 'powertools'); ?></p>
-                        <div class="pt-choice-grid">
+                    <div class="ptools-panel__section">
+                        <p class="ptools-eyebrow"><?php esc_html_e('Supports', 'powertools'); ?></p>
+                        <div class="ptools-choice-grid">
                             <?php foreach (self::SUPPORT_OPTIONS as $option) : ?>
-                                <label class="pt-choice pt-choice--boxed">
+                                <label class="ptools-choice ptools-choice--boxed">
                                     <input type="checkbox" name="powertools_cptm_supports[]"
                                            value="<?php echo esc_attr($option); ?>"
                                            <?php checked(in_array($option, (array) $values['supports'], true)); ?> />
-                                    <span class="pt-choice__text">
-                                        <span class="pt-choice__title"><?php echo esc_html(ucfirst(str_replace('-', ' ', $option))); ?></span>
+                                    <span class="ptools-choice__text">
+                                        <span class="ptools-choice__title"><?php echo esc_html(ucfirst(str_replace('-', ' ', $option))); ?></span>
                                     </span>
                                 </label>
                             <?php endforeach; ?>
@@ -204,50 +204,50 @@ class Manager {
                     </div>
                 </div>
 
-                <div class="pt-panel__footer">
+                <div class="ptools-panel__footer">
                     <?php if ($editing) : ?>
-                        <a href="<?php echo esc_url($page_url); ?>" class="pt-btn pt-btn--secondary">
+                        <a href="<?php echo esc_url($page_url); ?>" class="ptools-btn ptools-btn--secondary">
                             <?php esc_html_e('Cancel', 'powertools'); ?>
                         </a>
                     <?php endif; ?>
-                    <button type="submit" class="pt-btn pt-btn--primary">
+                    <button type="submit" class="ptools-btn ptools-btn--primary">
                         <?php echo $editing ? esc_html__('Update Post Type', 'powertools') : esc_html__('Create Post Type', 'powertools'); ?>
                     </button>
                 </div>
             </form>
 
-            <div class="pt-panel">
-                <div class="pt-panel__header">
-                    <h2 class="pt-h2"><?php esc_html_e('Post Types', 'powertools'); ?></h2>
-                    <span class="pt-pill pt-pill--brand"><?php echo esc_html(count($custom_post_types)); ?></span>
+            <div class="ptools-panel">
+                <div class="ptools-panel__header">
+                    <h2 class="ptools-h2"><?php esc_html_e('Post Types', 'powertools'); ?></h2>
+                    <span class="ptools-pill ptools-pill--brand"><?php echo esc_html(count($custom_post_types)); ?></span>
                 </div>
 
-                <div class="pt-panel__body pt-panel__body--flush">
+                <div class="ptools-panel__body ptools-panel__body--flush">
                     <?php if (empty($custom_post_types)) : ?>
-                        <div class="pt-empty">
-                            <span class="pt-empty__icon"><?php UI::dashicon('dashicons-category'); ?></span>
-                            <p class="pt-empty__text"><?php esc_html_e('No custom post types yet. Create your first one with the form.', 'powertools'); ?></p>
+                        <div class="ptools-empty">
+                            <span class="ptools-empty__icon"><?php UI::dashicon('dashicons-category'); ?></span>
+                            <p class="ptools-empty__text"><?php esc_html_e('No custom post types yet. Create your first one with the form.', 'powertools'); ?></p>
                         </div>
                     <?php else : ?>
-                        <table class="pt-table">
+                        <table class="ptools-table">
                             <thead>
                                 <tr>
                                     <th scope="col"><?php esc_html_e('Label', 'powertools'); ?></th>
-                                    <th scope="col" class="pt-table__actions"><?php esc_html_e('Actions', 'powertools'); ?></th>
+                                    <th scope="col" class="ptools-table__actions"><?php esc_html_e('Actions', 'powertools'); ?></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($custom_post_types as $post_type => $data) : ?>
                                     <tr class="<?php echo $edit_slug === $post_type ? 'is-current' : ''; ?>">
                                         <td>
-                                            <span class="pt-table__name"><?php echo esc_html($data['plural_label']); ?></span>
-                                            <span class="pt-table__meta"><?php echo esc_html($post_type); ?></span>
+                                            <span class="ptools-table__name"><?php echo esc_html($data['plural_label']); ?></span>
+                                            <span class="ptools-table__meta"><?php echo esc_html($post_type); ?></span>
                                         </td>
-                                        <td class="pt-table__actions">
-                                            <div class="pt-table__actions-inner">
-                                                <a class="pt-icon-btn" href="<?php echo esc_url(add_query_arg('edit', $post_type, $page_url)); ?>">
+                                        <td class="ptools-table__actions">
+                                            <div class="ptools-table__actions-inner">
+                                                <a class="ptools-icon-btn" href="<?php echo esc_url(add_query_arg('edit', $post_type, $page_url)); ?>">
                                                     <?php UI::dashicon('dashicons-edit'); ?>
-                                                    <span class="pt-sr-only">
+                                                    <span class="ptools-sr-only">
                                                         <?php
                                                         /* translators: %s: post type label */
                                                         printf(esc_html__('Edit %s', 'powertools'), esc_html($data['plural_label']));
@@ -255,9 +255,9 @@ class Manager {
                                                     </span>
                                                 </a>
 
-                                                <form class="pt-inline-form" method="post"
+                                                <form class="ptools-inline-form" method="post"
                                                       action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
-                                                      data-pt-confirm="<?php echo esc_attr(sprintf(
+                                                      data-ptools-confirm="<?php echo esc_attr(sprintf(
                                                           /* translators: %s: post type label */
                                                           __('Delete the “%s” post type? Its content stays in the database but becomes inaccessible.', 'powertools'),
                                                           $data['plural_label']
@@ -265,9 +265,9 @@ class Manager {
                                                     <input type="hidden" name="action" value="powertools_cptm_delete" />
                                                     <input type="hidden" name="powertools_cptm_post_type" value="<?php echo esc_attr($post_type); ?>" />
                                                     <?php wp_nonce_field('powertools_cptm_delete_nonce_action', 'powertools_cptm_delete_nonce'); ?>
-                                                    <button type="submit" class="pt-icon-btn pt-icon-btn--danger">
+                                                    <button type="submit" class="ptools-icon-btn ptools-icon-btn--danger">
                                                         <?php UI::dashicon('dashicons-trash'); ?>
-                                                        <span class="pt-sr-only">
+                                                        <span class="ptools-sr-only">
                                                             <?php
                                                             /* translators: %s: post type label */
                                                             printf(esc_html__('Delete %s', 'powertools'), esc_html($data['plural_label']));

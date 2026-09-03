@@ -5,7 +5,7 @@
  * should never carry inline `style=""` attributes: if a page needs something
  * that isn't here, add a component or a modifier instead.
  *
- * Naming: `.pt-block`, `.pt-block__element`, `.pt-block--modifier`, plus
+ * Naming: `.ptools-block`, `.ptools-block__element`, `.ptools-block--modifier`, plus
  * `.is-*` for stateful classes toggled by PHP or JS.
  *
  * Layout rule of thumb: containers own the spacing between their children
@@ -40,71 +40,71 @@
 
 :root {
     /* Brand */
-    --pt-brand: #6366f1;
-    --pt-brand-strong: #4f46e5;
-    --pt-brand-deep: #4338ca;
-    --pt-brand-soft: #eef2ff;
-    --pt-brand-border: #c7d2fe;
+    --ptools-brand: #6366f1;
+    --ptools-brand-strong: #4f46e5;
+    --ptools-brand-deep: #4338ca;
+    --ptools-brand-soft: #eef2ff;
+    --ptools-brand-border: #c7d2fe;
 
     /* Status */
-    --pt-success: #059669;
-    --pt-success-soft: #ecfdf5;
-    --pt-success-border: #a7f3d0;
-    --pt-warning: #b45309;
-    --pt-warning-soft: #fffbeb;
-    --pt-warning-border: #fde68a;
-    --pt-danger: #dc2626;
-    --pt-danger-strong: #b91c1c;
-    --pt-danger-soft: #fef2f2;
-    --pt-danger-border: #fecaca;
+    --ptools-success: #059669;
+    --ptools-success-soft: #ecfdf5;
+    --ptools-success-border: #a7f3d0;
+    --ptools-warning: #b45309;
+    --ptools-warning-soft: #fffbeb;
+    --ptools-warning-border: #fde68a;
+    --ptools-danger: #dc2626;
+    --ptools-danger-strong: #b91c1c;
+    --ptools-danger-soft: #fef2f2;
+    --ptools-danger-border: #fecaca;
 
     /* Text */
-    --pt-text: #111827;
-    --pt-text-muted: #6b7280;
-    --pt-text-subtle: #9ca3af;
+    --ptools-text: #111827;
+    --ptools-text-muted: #6b7280;
+    --ptools-text-subtle: #9ca3af;
 
     /* Surfaces */
-    --pt-page: #f3f4f7;
-    --pt-surface: #ffffff;
-    --pt-surface-sunken: #f7f8fa;
-    --pt-surface-hover: #f3f4f7;
-    --pt-border: #e2e5eb;
-    --pt-border-strong: #cbd1db;
-    --pt-border-soft: #edeff3;
+    --ptools-page: #f3f4f7;
+    --ptools-surface: #ffffff;
+    --ptools-surface-sunken: #f7f8fa;
+    --ptools-surface-hover: #f3f4f7;
+    --ptools-border: #e2e5eb;
+    --ptools-border-strong: #cbd1db;
+    --ptools-border-soft: #edeff3;
 
     /* Radii */
-    --pt-radius-sm: 8px;
-    --pt-radius: 12px;
-    --pt-radius-lg: 18px;
-    --pt-radius-full: 999px;
+    --ptools-radius-sm: 8px;
+    --ptools-radius: 12px;
+    --ptools-radius-lg: 18px;
+    --ptools-radius-full: 999px;
 
     /* Spacing scale */
-    --pt-space-1: 4px;
-    --pt-space-2: 8px;
-    --pt-space-3: 12px;
-    --pt-space-4: 16px;
-    --pt-space-5: 24px;
-    --pt-space-6: 32px;
-    --pt-space-7: 40px;
-    --pt-space-8: 56px;
+    --ptools-space-1: 4px;
+    --ptools-space-2: 8px;
+    --ptools-space-3: 12px;
+    --ptools-space-4: 16px;
+    --ptools-space-5: 24px;
+    --ptools-space-6: 32px;
+    --ptools-space-7: 40px;
+    --ptools-space-8: 56px;
 
     /* Type */
-    --pt-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    --pt-font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    --ptools-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    --ptools-font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 
     /* Motion */
-    --pt-transition: 160ms cubic-bezier(0.4, 0, 0.2, 1);
+    --ptools-transition: 160ms cubic-bezier(0.4, 0, 0.2, 1);
 
     /* Elevation — surfaces are separated by light, not just by hairlines. */
-    --pt-shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
-    --pt-shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 2px 6px -2px rgba(16, 24, 40, 0.08);
-    --pt-shadow-md: 0 4px 10px -2px rgba(16, 24, 40, 0.10), 0 10px 24px -8px rgba(16, 24, 40, 0.14);
-    --pt-shadow-lg: 0 24px 48px -12px rgba(15, 23, 42, 0.30);
-    --pt-shadow-brand: 0 1px 2px rgba(16, 24, 40, 0.10), 0 4px 12px -4px rgba(79, 70, 229, 0.55);
+    --ptools-shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
+    --ptools-shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 2px 6px -2px rgba(16, 24, 40, 0.08);
+    --ptools-shadow-md: 0 4px 10px -2px rgba(16, 24, 40, 0.10), 0 10px 24px -8px rgba(16, 24, 40, 0.14);
+    --ptools-shadow-lg: 0 24px 48px -12px rgba(15, 23, 42, 0.30);
+    --ptools-shadow-brand: 0 1px 2px rgba(16, 24, 40, 0.10), 0 4px 12px -4px rgba(79, 70, 229, 0.55);
 
     /* Focus — a soft glow inside fields, a hard ring around controls. */
-    --pt-focus-ring: 0 0 0 3px rgba(99, 102, 241, 0.35);
-    --pt-focus-ring-strong: 0 0 0 2px var(--pt-surface), 0 0 0 4px var(--pt-brand);
+    --ptools-focus-ring: 0 0 0 3px rgba(99, 102, 241, 0.35);
+    --ptools-focus-ring-strong: 0 0 0 2px var(--ptools-surface), 0 0 0 4px var(--ptools-brand);
 }
 
 /* ══ 2. Screen shell ══════════════════════════════════════════════════════ */
@@ -113,7 +113,7 @@
    submenu screen. Matching the exact class list breaks on submenus, which is
    why this uses a substring match. */
 body[class*="page_powertools"] #wpcontent {
-    background: var(--pt-page);
+    background: var(--ptools-page);
     padding: 0;
 }
 
@@ -122,32 +122,32 @@ body[class*="page_powertools"] #wpcontent {
 body[class*="page_powertools"] #wpbody-content>.notice,
 body[class*="page_powertools"] #wpbody-content>.updated,
 body[class*="page_powertools"] #wpbody-content>.error {
-    margin: var(--pt-space-5) var(--pt-space-7) 0;
+    margin: var(--ptools-space-5) var(--ptools-space-7) 0;
 }
 
-.pt-wrap {
+.ptools-wrap {
     max-width: 1280px;
     margin: 0 auto;
-    padding: var(--pt-space-6) var(--pt-space-7) var(--pt-space-7);
-    font-family: var(--pt-font);
+    padding: var(--ptools-space-6) var(--ptools-space-7) var(--ptools-space-7);
+    font-family: var(--ptools-font);
     font-size: 14px;
-    color: var(--pt-text);
-    animation: pt-fade-in 300ms ease;
+    color: var(--ptools-text);
+    animation: ptools-fade-in 300ms ease;
 }
 
-.pt-wrap *,
-.pt-wrap *::before,
-.pt-wrap *::after {
+.ptools-wrap *,
+.ptools-wrap *::before,
+.ptools-wrap *::after {
     box-sizing: border-box;
 }
 
 /* Sections toggled by JS use the `hidden` attribute; make sure it beats the
    `display` value any component class sets. */
-.pt-wrap [hidden] {
+.ptools-wrap [hidden] {
     display: none !important;
 }
 
-@keyframes pt-fade-in {
+@keyframes ptools-fade-in {
     from {
         opacity: 0;
         transform: translateY(8px);
@@ -155,7 +155,7 @@ body[class*="page_powertools"] #wpbody-content>.error {
 }
 
 /* Screen-reader-only text (icon-only buttons, hidden inputs with a label). */
-.pt-sr-only {
+.ptools-sr-only {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -169,177 +169,177 @@ body[class*="page_powertools"] #wpbody-content>.error {
 
 /* ══ 3. Typography ════════════════════════════════════════════════════════ */
 
-.pt-h1 {
-    margin: 0 0 var(--pt-space-2);
+.ptools-h1 {
+    margin: 0 0 var(--ptools-space-2);
     font-size: 28px;
     font-weight: 800;
     line-height: 1.15;
     letter-spacing: -0.025em;
-    color: var(--pt-text);
+    color: var(--ptools-text);
 }
 
-.pt-h2 {
+.ptools-h2 {
     margin: 0;
     font-size: 16px;
     font-weight: 700;
     line-height: 1.3;
     letter-spacing: -0.01em;
-    color: var(--pt-text);
+    color: var(--ptools-text);
 }
 
-.pt-h3 {
-    margin: 0 0 var(--pt-space-2);
+.ptools-h3 {
+    margin: 0 0 var(--ptools-space-2);
     font-size: 15px;
     font-weight: 700;
     line-height: 1.3;
     letter-spacing: -0.01em;
-    color: var(--pt-text);
+    color: var(--ptools-text);
 }
 
-.pt-lead {
+.ptools-lead {
     margin: 0;
     font-size: 15px;
     line-height: 1.6;
-    color: var(--pt-text-muted);
+    color: var(--ptools-text-muted);
 }
 
-.pt-text-muted {
-    color: var(--pt-text-muted);
+.ptools-text-muted {
+    color: var(--ptools-text-muted);
 }
 
-.pt-help {
-    margin: var(--pt-space-2) 0 0;
+.ptools-help {
+    margin: var(--ptools-space-2) 0 0;
     font-size: 12px;
     line-height: 1.5;
-    color: var(--pt-text-muted);
+    color: var(--ptools-text-muted);
 }
 
-.pt-help a {
-    color: var(--pt-brand-strong);
+.ptools-help a {
+    color: var(--ptools-brand-strong);
     font-weight: 600;
     text-decoration: none;
 }
 
-.pt-help a:hover {
+.ptools-help a:hover {
     text-decoration: underline;
 }
 
-.pt-mono {
-    font-family: var(--pt-font-mono);
+.ptools-mono {
+    font-family: var(--ptools-font-mono);
 }
 
-.pt-required {
-    color: var(--pt-danger);
+.ptools-required {
+    color: var(--ptools-danger);
 }
 
 /* Small capitalised label that opens a group of settings. */
-.pt-eyebrow {
-    margin: 0 0 var(--pt-space-4);
+.ptools-eyebrow {
+    margin: 0 0 var(--ptools-space-4);
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--pt-text);
+    color: var(--ptools-text);
 }
 
 /* Icons are decorative by default and should carry aria-hidden in markup. */
-.pt-wrap .dashicons,
-.pt-modal .dashicons {
+.ptools-wrap .dashicons,
+.ptools-modal .dashicons {
     line-height: 1;
     vertical-align: middle;
 }
 
 /* ══ 4. Page header ═══════════════════════════════════════════════════════ */
 
-.pt-page-header {
+.ptools-page-header {
     display: flex;
     align-items: center;
-    gap: var(--pt-space-5);
-    margin-bottom: var(--pt-space-6);
-    padding: var(--pt-space-6);
-    background: var(--pt-surface);
-    border: 1px solid var(--pt-border);
-    border-radius: var(--pt-radius-lg);
+    gap: var(--ptools-space-5);
+    margin-bottom: var(--ptools-space-6);
+    padding: var(--ptools-space-6);
+    background: var(--ptools-surface);
+    border: 1px solid var(--ptools-border);
+    border-radius: var(--ptools-radius-lg);
 }
 
 /* Solid brand tile — the single loudest element on any screen. */
-.pt-page-header__icon {
+.ptools-page-header__icon {
     display: flex;
     flex: 0 0 auto;
     align-items: center;
     justify-content: center;
     width: 68px;
     height: 68px;
-    /* background: linear-gradient(140deg, var(--pt-brand), var(--pt-brand-deep)); */
-    /* border-radius: var(--pt-radius); */
+    /* background: linear-gradient(140deg, var(--ptools-brand), var(--ptools-brand-deep)); */
+    /* border-radius: var(--ptools-radius); */
     /* color: #fff; */
-    /* box-shadow: var(--pt-shadow-brand); */
+    /* box-shadow: var(--ptools-shadow-brand); */
 }
 
-.pt-page-header__icon .dashicons {
+.ptools-page-header__icon .dashicons {
     width: 34px;
     height: 34px;
     font-size: 34px;
 }
 
-.pt-page-header__icon img {
+.ptools-page-header__icon img {
     width: 38px;
     height: auto;
 }
 
-.pt-page-header__content {
+.ptools-page-header__content {
     flex: 1 1 auto;
     min-width: 0;
 }
 
-.pt-page-header__actions {
+.ptools-page-header__actions {
     display: flex;
     flex: 0 0 auto;
-    gap: var(--pt-space-3);
+    gap: var(--ptools-space-3);
 }
 
 /* ══ 5. Panels ════════════════════════════════════════════════════════════ */
 
-.pt-panel {
-    background: var(--pt-surface);
-    border: 1px solid var(--pt-border);
-    border-radius: var(--pt-radius);
-    box-shadow: var(--pt-shadow);
+.ptools-panel {
+    background: var(--ptools-surface);
+    border: 1px solid var(--ptools-border);
+    border-radius: var(--ptools-radius);
+    box-shadow: var(--ptools-shadow);
     overflow: hidden;
 }
 
-.pt-panel+.pt-panel {
-    margin-top: var(--pt-space-5);
+.ptools-panel+.ptools-panel {
+    margin-top: var(--ptools-space-5);
 }
 
-.pt-panel__header {
+.ptools-panel__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--pt-space-4);
+    gap: var(--ptools-space-4);
     min-height: 58px;
-    padding: var(--pt-space-3) var(--pt-space-5);
-    background: var(--pt-surface-sunken);
-    border-bottom: 1px solid var(--pt-border);
+    padding: var(--ptools-space-3) var(--ptools-space-5);
+    background: var(--ptools-surface-sunken);
+    border-bottom: 1px solid var(--ptools-border);
 }
 
-.pt-panel__body {
-    padding: var(--pt-space-5);
+.ptools-panel__body {
+    padding: var(--ptools-space-5);
 }
 
 /* Tables and lists sit flush against the panel edges. */
-.pt-panel__body--flush {
+.ptools-panel__body--flush {
     padding: 0;
 }
 
-.pt-panel__footer {
+.ptools-panel__footer {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: var(--pt-space-3);
-    padding: var(--pt-space-4) var(--pt-space-5);
-    background: var(--pt-surface-sunken);
-    border-top: 1px solid var(--pt-border);
+    gap: var(--ptools-space-3);
+    padding: var(--ptools-space-4) var(--ptools-space-5);
+    background: var(--ptools-surface-sunken);
+    border-top: 1px solid var(--ptools-border);
 }
 
 /**
@@ -347,13 +347,13 @@ body[class*="page_powertools"] #wpbody-content>.error {
  * by a rule, including the first one after a row of fields — using an adjacent
  * sibling selector instead would leave that first divider missing.
  */
-.pt-panel__body>.pt-panel__section {
-    margin-top: var(--pt-space-5);
-    padding-top: var(--pt-space-5);
-    border-top: 1px solid var(--pt-border-soft);
+.ptools-panel__body>.ptools-panel__section {
+    margin-top: var(--ptools-space-5);
+    padding-top: var(--ptools-space-5);
+    border-top: 1px solid var(--ptools-border-soft);
 }
 
-.pt-panel__body>.pt-panel__section:first-child {
+.ptools-panel__body>.ptools-panel__section:first-child {
     margin-top: 0;
     padding-top: 0;
     border-top: none;
@@ -361,57 +361,57 @@ body[class*="page_powertools"] #wpbody-content>.error {
 
 /* ══ 6. Tool grid ═════════════════════════════════════════════════════════ */
 
-.pt-tools {
+.ptools-tools {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: var(--pt-space-5);
+    gap: var(--ptools-space-5);
 }
 
 /* The card is a plain container — the title link, the switch and the Configure
    button are the things you click, so only those react to the pointer. */
-.pt-tool-card {
+.ptools-tool-card {
     display: flex;
     flex-direction: column;
-    padding: var(--pt-space-5);
-    background: var(--pt-surface);
-    border: 1px solid var(--pt-border);
-    border-radius: var(--pt-radius);
-    box-shadow: var(--pt-shadow);
+    padding: var(--ptools-space-5);
+    background: var(--ptools-surface);
+    border: 1px solid var(--ptools-border);
+    border-radius: var(--ptools-radius);
+    box-shadow: var(--ptools-shadow);
 }
 
 /* An active tool is read at a glance from the icon, not just from the pill. */
-.pt-tool-card:has(.pt-switch input:checked) {
-    border-color: var(--pt-brand-border);
+.ptools-tool-card:has(.ptools-switch input:checked) {
+    border-color: var(--ptools-brand-border);
 }
 
-.pt-tool-card__header {
+.ptools-tool-card__header {
     display: flex;
     align-items: center;
-    gap: var(--pt-space-3);
-    margin-bottom: var(--pt-space-4);
+    gap: var(--ptools-space-3);
+    margin-bottom: var(--ptools-space-4);
 }
 
-.pt-tool-card__icon {
+.ptools-tool-card__icon {
     display: flex;
     flex: 0 0 auto;
     align-items: center;
     justify-content: center;
     width: 44px;
     height: 44px;
-    background: var(--pt-surface-sunken);
-    border: 1px solid var(--pt-border);
-    border-radius: var(--pt-radius-sm);
-    color: var(--pt-text-subtle);
+    background: var(--ptools-surface-sunken);
+    border: 1px solid var(--ptools-border);
+    border-radius: var(--ptools-radius-sm);
+    color: var(--ptools-text-subtle);
 }
 
-.pt-tool-card:has(.pt-switch input:checked) .pt-tool-card__icon {
-    background: linear-gradient(140deg, var(--pt-brand), var(--pt-brand-deep));
+.ptools-tool-card:has(.ptools-switch input:checked) .ptools-tool-card__icon {
+    background: linear-gradient(140deg, var(--ptools-brand), var(--ptools-brand-deep));
     border-color: transparent;
     color: #fff;
-    box-shadow: var(--pt-shadow-brand);
+    box-shadow: var(--ptools-shadow-brand);
 }
 
-.pt-tool-card__icon .dashicons {
+.ptools-tool-card__icon .dashicons {
     width: 22px;
     height: 22px;
     font-size: 22px;
@@ -419,7 +419,7 @@ body[class*="page_powertools"] #wpbody-content>.error {
 
 /* Centred against the icon — no padding nudge, so a title that wraps to two
    lines stays aligned with both the icon and the switch. */
-.pt-tool-card__title {
+.ptools-tool-card__title {
     flex: 1 1 auto;
     min-width: 0;
     margin: 0;
@@ -427,36 +427,36 @@ body[class*="page_powertools"] #wpbody-content>.error {
     font-weight: 700;
     line-height: 1.3;
     letter-spacing: -0.01em;
-    color: var(--pt-text);
+    color: var(--ptools-text);
     text-decoration: none;
 }
 
-a.pt-tool-card__title:hover {
-    color: var(--pt-brand-strong);
+a.ptools-tool-card__title:hover {
+    color: var(--ptools-brand-strong);
 }
 
-.pt-tool-card__desc {
+.ptools-tool-card__desc {
     flex: 1 1 auto;
-    margin: 0 0 var(--pt-space-5);
+    margin: 0 0 var(--ptools-space-5);
     font-size: 13px;
     line-height: 1.6;
-    color: var(--pt-text-muted);
+    color: var(--ptools-text-muted);
 }
 
-.pt-tool-card__footer {
+.ptools-tool-card__footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--pt-space-3);
+    gap: var(--ptools-space-3);
 }
 
 /* ══ 7. Buttons ═══════════════════════════════════════════════════════════ */
 
-.pt-btn {
+.ptools-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: var(--pt-space-2);
+    gap: var(--ptools-space-2);
     min-height: 38px;
     padding: 0 18px;
     font-family: inherit;
@@ -467,79 +467,79 @@ a.pt-tool-card__title:hover {
     text-decoration: none;
     white-space: nowrap;
     border: 1px solid transparent;
-    border-radius: var(--pt-radius-sm);
+    border-radius: var(--ptools-radius-sm);
     cursor: pointer;
-    transition: background-color var(--pt-transition), border-color var(--pt-transition), color var(--pt-transition), box-shadow var(--pt-transition), transform var(--pt-transition);
+    transition: background-color var(--ptools-transition), border-color var(--ptools-transition), color var(--ptools-transition), box-shadow var(--ptools-transition), transform var(--ptools-transition);
 }
 
-.pt-btn:focus {
+.ptools-btn:focus {
     outline: none;
 }
 
-.pt-btn:focus-visible {
-    box-shadow: var(--pt-focus-ring-strong);
+.ptools-btn:focus-visible {
+    box-shadow: var(--ptools-focus-ring-strong);
 }
 
-.pt-btn:active {
+.ptools-btn:active {
     transform: translateY(1px);
 }
 
-.pt-btn .dashicons {
+.ptools-btn .dashicons {
     width: 17px;
     height: 17px;
     font-size: 17px;
 }
 
-.pt-btn--primary,
-.pt-btn--primary:hover,
-.pt-btn--primary:focus {
+.ptools-btn--primary,
+.ptools-btn--primary:hover,
+.ptools-btn--primary:focus {
     color: #fff;
 }
 
-.pt-btn--primary {
-    background: var(--pt-brand);
-    box-shadow: var(--pt-shadow-brand);
+.ptools-btn--primary {
+    background: var(--ptools-brand);
+    box-shadow: var(--ptools-shadow-brand);
 }
 
-.pt-btn--primary:hover {
-    background: var(--pt-brand-strong);
+.ptools-btn--primary:hover {
+    background: var(--ptools-brand-strong);
 }
 
-.pt-btn--primary:active {
-    background: var(--pt-brand-deep);
+.ptools-btn--primary:active {
+    background: var(--ptools-brand-deep);
 }
 
-.pt-btn--secondary {
-    background: var(--pt-surface);
-    border-color: var(--pt-border-strong);
-    color: var(--pt-text);
-    box-shadow: var(--pt-shadow-sm);
+.ptools-btn--secondary {
+    background: var(--ptools-surface);
+    border-color: var(--ptools-border-strong);
+    color: var(--ptools-text);
+    box-shadow: var(--ptools-shadow-sm);
 }
 
-.pt-btn--secondary:hover,
-.pt-btn--secondary:focus {
-    background: var(--pt-surface-sunken);
-    border-color: var(--pt-text-subtle);
-    color: var(--pt-text);
+.ptools-btn--secondary:hover,
+.ptools-btn--secondary:focus {
+    background: var(--ptools-surface-sunken);
+    border-color: var(--ptools-text-subtle);
+    color: var(--ptools-text);
 }
 
-.pt-btn--danger {
-    background: var(--pt-danger);
+.ptools-btn--danger {
+    background: var(--ptools-danger);
     color: #fff;
-    box-shadow: var(--pt-shadow-sm);
+    box-shadow: var(--ptools-shadow-sm);
 }
 
-.pt-btn--danger:hover,
-.pt-btn--danger:focus {
-    background: var(--pt-danger-strong);
+.ptools-btn--danger:hover,
+.ptools-btn--danger:focus {
+    background: var(--ptools-danger-strong);
     color: #fff;
 }
 
-.pt-btn[disabled],
-.pt-btn.is-disabled {
-    background: var(--pt-surface-sunken);
-    border-color: var(--pt-border);
-    color: var(--pt-text-subtle);
+.ptools-btn[disabled],
+.ptools-btn.is-disabled {
+    background: var(--ptools-surface-sunken);
+    border-color: var(--ptools-border);
+    color: var(--ptools-text-subtle);
     box-shadow: none;
     cursor: default;
     pointer-events: none;
@@ -547,7 +547,7 @@ a.pt-tool-card__title:hover {
 }
 
 /* Icon-only actions in table rows. */
-.pt-icon-btn {
+.ptools-icon-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -556,33 +556,33 @@ a.pt-tool-card__title:hover {
     padding: 0;
     background: none;
     border: 1px solid transparent;
-    border-radius: var(--pt-radius-sm);
-    color: var(--pt-text-muted);
+    border-radius: var(--ptools-radius-sm);
+    color: var(--ptools-text-muted);
     text-decoration: none;
     cursor: pointer;
-    transition: background-color var(--pt-transition), border-color var(--pt-transition), color var(--pt-transition);
+    transition: background-color var(--ptools-transition), border-color var(--ptools-transition), color var(--ptools-transition);
 }
 
-.pt-icon-btn:hover,
-.pt-icon-btn:focus {
-    background: var(--pt-surface-hover);
-    border-color: var(--pt-border);
-    color: var(--pt-text);
+.ptools-icon-btn:hover,
+.ptools-icon-btn:focus {
+    background: var(--ptools-surface-hover);
+    border-color: var(--ptools-border);
+    color: var(--ptools-text);
 }
 
-.pt-icon-btn:focus-visible {
+.ptools-icon-btn:focus-visible {
     outline: none;
-    box-shadow: var(--pt-focus-ring-strong);
+    box-shadow: var(--ptools-focus-ring-strong);
 }
 
-.pt-icon-btn--danger:hover,
-.pt-icon-btn--danger:focus {
-    background: var(--pt-danger-soft);
-    border-color: var(--pt-danger-border);
-    color: var(--pt-danger);
+.ptools-icon-btn--danger:hover,
+.ptools-icon-btn--danger:focus {
+    background: var(--ptools-danger-soft);
+    border-color: var(--ptools-danger-border);
+    color: var(--ptools-danger);
 }
 
-.pt-icon-btn .dashicons {
+.ptools-icon-btn .dashicons {
     width: 18px;
     height: 18px;
     font-size: 18px;
@@ -590,31 +590,31 @@ a.pt-tool-card__title:hover {
 
 /* ══ 8. Forms ═════════════════════════════════════════════════════════════ */
 
-.pt-field {
-    margin: 0 0 var(--pt-space-5);
+.ptools-field {
+    margin: 0 0 var(--ptools-space-5);
 }
 
-.pt-field:last-child {
+.ptools-field:last-child {
     margin-bottom: 0;
 }
 
 /* A button that belongs to the field above it (e.g. "Add Rule"). */
-.pt-field__action {
-    margin-top: var(--pt-space-3);
+.ptools-field__action {
+    margin-top: var(--ptools-space-3);
 }
 
-.pt-label {
+.ptools-label {
     display: block;
-    margin-bottom: var(--pt-space-2);
+    margin-bottom: var(--ptools-space-2);
     font-size: 13px;
     font-weight: 700;
-    color: var(--pt-text);
+    color: var(--ptools-text);
 }
 
 /* Element-qualified so these win over wp-admin's `input`/`select` rules. */
-input.pt-form-control,
-select.pt-form-control,
-textarea.pt-form-control {
+input.ptools-form-control,
+select.ptools-form-control,
+textarea.ptools-form-control {
     display: block;
     width: 100%;
     max-width: 100%;
@@ -624,41 +624,41 @@ textarea.pt-form-control {
     font-family: inherit;
     font-size: 13px;
     line-height: 1.5;
-    color: var(--pt-text);
-    background-color: var(--pt-surface);
-    border: 1px solid var(--pt-border-strong);
-    border-radius: var(--pt-radius-sm);
-    box-shadow: var(--pt-shadow-sm);
-    transition: border-color var(--pt-transition), box-shadow var(--pt-transition);
+    color: var(--ptools-text);
+    background-color: var(--ptools-surface);
+    border: 1px solid var(--ptools-border-strong);
+    border-radius: var(--ptools-radius-sm);
+    box-shadow: var(--ptools-shadow-sm);
+    transition: border-color var(--ptools-transition), box-shadow var(--ptools-transition);
 }
 
-input.pt-form-control:hover,
-select.pt-form-control:hover,
-textarea.pt-form-control:hover {
-    border-color: var(--pt-text-subtle);
+input.ptools-form-control:hover,
+select.ptools-form-control:hover,
+textarea.ptools-form-control:hover {
+    border-color: var(--ptools-text-subtle);
 }
 
-input.pt-form-control:focus,
-select.pt-form-control:focus,
-textarea.pt-form-control:focus {
-    border-color: var(--pt-brand);
-    box-shadow: var(--pt-focus-ring);
+input.ptools-form-control:focus,
+select.ptools-form-control:focus,
+textarea.ptools-form-control:focus {
+    border-color: var(--ptools-brand);
+    box-shadow: var(--ptools-focus-ring);
     outline: none;
 }
 
-input.pt-form-control[readonly] {
-    background-color: var(--pt-surface-sunken);
-    color: var(--pt-text-muted);
+input.ptools-form-control[readonly] {
+    background-color: var(--ptools-surface-sunken);
+    color: var(--ptools-text-muted);
 }
 
-input.pt-form-control::placeholder,
-textarea.pt-form-control::placeholder {
-    color: var(--pt-text-subtle);
+input.ptools-form-control::placeholder,
+textarea.ptools-form-control::placeholder {
+    color: var(--ptools-text-subtle);
 }
 
 /* wp-admin paints its own arrow on `select`; replace it so it lines up with
    our padding instead of colliding with the text. */
-select.pt-form-control {
+select.ptools-form-control {
     padding-right: 34px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%236b7280' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 7.5 10 12.5 15 7.5'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
@@ -668,14 +668,14 @@ select.pt-form-control {
     appearance: none;
 }
 
-textarea.pt-form-control {
+textarea.ptools-form-control {
     min-height: 120px;
-    font-family: var(--pt-font-mono);
+    font-family: var(--ptools-font-mono);
     resize: vertical;
 }
 
-.pt-form-control--mono {
-    font-family: var(--pt-font-mono);
+.ptools-form-control--mono {
+    font-family: var(--ptools-font-mono);
 }
 
 /* ══ 9. Choice controls ═══════════════════════════════════════════════════ */
@@ -683,11 +683,11 @@ textarea.pt-form-control {
 /**
  * One pattern for every checkbox and radio in the plugin.
  *
- *   <label class="pt-choice">
+ *   <label class="ptools-choice">
  *     <input type="checkbox">
- *     <span class="pt-choice__text">
- *       <span class="pt-choice__title">…</span>
- *       <span class="pt-choice__desc">…</span>
+ *     <span class="ptools-choice__text">
+ *       <span class="ptools-choice__title">…</span>
+ *       <span class="ptools-choice__desc">…</span>
  *     </span>
  *   </label>
  *
@@ -695,63 +695,63 @@ textarea.pt-form-control {
  * checkmark and a negative top margin — so every property it sets has to be
  * reset here, or the native mark renders on top of ours.
  */
-.pt-choice {
+.ptools-choice {
     display: flex;
     align-items: flex-start;
-    gap: var(--pt-space-3);
+    gap: var(--ptools-space-3);
     cursor: pointer;
 }
 
-.pt-choice+.pt-choice {
-    margin-top: var(--pt-space-3);
+.ptools-choice+.ptools-choice {
+    margin-top: var(--ptools-space-3);
 }
 
-.pt-choice input[type="checkbox"],
-.pt-choice input[type="radio"] {
+.ptools-choice input[type="checkbox"],
+.ptools-choice input[type="radio"] {
     flex: 0 0 auto;
     width: 20px;
     min-width: 20px;
     height: 20px;
     margin: 0;
     padding: 0;
-    background: var(--pt-surface);
-    border: 1px solid var(--pt-border-strong);
-    box-shadow: var(--pt-shadow-sm);
+    background: var(--ptools-surface);
+    border: 1px solid var(--ptools-border-strong);
+    box-shadow: var(--ptools-shadow-sm);
     cursor: pointer;
-    transition: background-color var(--pt-transition), border-color var(--pt-transition), box-shadow var(--pt-transition);
+    transition: background-color var(--ptools-transition), border-color var(--ptools-transition), box-shadow var(--ptools-transition);
     -webkit-appearance: none;
     appearance: none;
 }
 
-.pt-choice input[type="checkbox"] {
+.ptools-choice input[type="checkbox"] {
     border-radius: 6px;
 }
 
-.pt-choice input[type="radio"] {
+.ptools-choice input[type="radio"] {
     border-radius: 50%;
 }
 
-.pt-choice input[type="checkbox"]:hover,
-.pt-choice input[type="radio"]:hover {
-    border-color: var(--pt-brand);
+.ptools-choice input[type="checkbox"]:hover,
+.ptools-choice input[type="radio"]:hover {
+    border-color: var(--ptools-brand);
 }
 
-.pt-choice input[type="checkbox"]:focus-visible,
-.pt-choice input[type="radio"]:focus-visible {
+.ptools-choice input[type="checkbox"]:focus-visible,
+.ptools-choice input[type="radio"]:focus-visible {
     outline: none;
-    border-color: var(--pt-brand);
-    box-shadow: var(--pt-focus-ring);
+    border-color: var(--ptools-brand);
+    box-shadow: var(--ptools-focus-ring);
 }
 
-.pt-choice input[type="checkbox"]:checked,
-.pt-choice input[type="radio"]:checked {
-    background: var(--pt-brand);
-    border-color: var(--pt-brand);
-    box-shadow: var(--pt-shadow-brand);
+.ptools-choice input[type="checkbox"]:checked,
+.ptools-choice input[type="radio"]:checked {
+    background: var(--ptools-brand);
+    border-color: var(--ptools-brand);
+    box-shadow: var(--ptools-shadow-brand);
 }
 
-.pt-choice input[type="checkbox"]:disabled,
-.pt-choice input[type="radio"]:disabled {
+.ptools-choice input[type="checkbox"]:disabled,
+.ptools-choice input[type="radio"]:disabled {
     opacity: 0.5;
     box-shadow: none;
     cursor: default;
@@ -759,10 +759,10 @@ textarea.pt-form-control {
 
 /* Draw the mark on ::before — the same pseudo-element wp-admin uses — so its
    own SVG checkmark can never render alongside ours. */
-.pt-choice input[type="checkbox"]::before,
-.pt-choice input[type="checkbox"]:checked::before,
-.pt-choice input[type="radio"]::before,
-.pt-choice input[type="radio"]:checked::before {
+.ptools-choice input[type="checkbox"]::before,
+.ptools-choice input[type="checkbox"]:checked::before,
+.ptools-choice input[type="radio"]::before,
+.ptools-choice input[type="radio"]:checked::before {
     content: "";
     display: block;
     width: auto;
@@ -774,7 +774,7 @@ textarea.pt-form-control {
     background: none;
 }
 
-.pt-choice input[type="checkbox"]:checked::before {
+.ptools-choice input[type="checkbox"]:checked::before {
     width: 100%;
     height: 100%;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23ffffff' stroke-width='2.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m3.5 8.5 3 3 6-6.5'/%3E%3C/svg%3E");
@@ -783,7 +783,7 @@ textarea.pt-form-control {
     background-size: 15px 15px;
 }
 
-.pt-choice input[type="radio"]:checked::before {
+.ptools-choice input[type="radio"]:checked::before {
     width: 7px;
     height: 7px;
     margin: 5.5px auto;
@@ -791,83 +791,83 @@ textarea.pt-form-control {
     border-radius: 50%;
 }
 
-.pt-choice__text {
+.ptools-choice__text {
     display: block;
     min-width: 0;
 }
 
-.pt-choice__title {
+.ptools-choice__title {
     display: block;
     font-size: 13px;
     font-weight: 700;
     line-height: 1.5;
-    color: var(--pt-text);
+    color: var(--ptools-text);
 }
 
-.pt-choice__desc {
+.ptools-choice__desc {
     display: block;
     margin-top: 2px;
     font-size: 12px;
     line-height: 1.5;
-    color: var(--pt-text-muted);
+    color: var(--ptools-text-muted);
 }
 
 /* Boxed variant — used for grids of short options. */
-.pt-choice--boxed {
+.ptools-choice--boxed {
     align-items: center;
     padding: 11px 14px;
-    background: var(--pt-surface);
-    border: 1px solid var(--pt-border);
-    border-radius: var(--pt-radius-sm);
-    transition: border-color var(--pt-transition), background-color var(--pt-transition), box-shadow var(--pt-transition);
+    background: var(--ptools-surface);
+    border: 1px solid var(--ptools-border);
+    border-radius: var(--ptools-radius-sm);
+    transition: border-color var(--ptools-transition), background-color var(--ptools-transition), box-shadow var(--ptools-transition);
 }
 
-.pt-choice--boxed:hover {
-    border-color: var(--pt-brand-border);
-    background: var(--pt-surface-sunken);
+.ptools-choice--boxed:hover {
+    border-color: var(--ptools-brand-border);
+    background: var(--ptools-surface-sunken);
 }
 
 /* Doubling the border with an inset ring reads as a 2px outline without
    shifting the box by a pixel when it becomes selected. */
-.pt-choice--boxed:has(input:checked) {
-    background: var(--pt-brand-soft);
-    border-color: var(--pt-brand);
-    box-shadow: inset 0 0 0 1px var(--pt-brand);
+.ptools-choice--boxed:has(input:checked) {
+    background: var(--ptools-brand-soft);
+    border-color: var(--ptools-brand);
+    box-shadow: inset 0 0 0 1px var(--ptools-brand);
 }
 
 /* Card variant — used when each option carries a description. */
-.pt-choice--card {
-    padding: var(--pt-space-4);
-    background: var(--pt-surface);
-    border: 1px solid var(--pt-border);
-    border-radius: var(--pt-radius-sm);
-    transition: border-color var(--pt-transition), background-color var(--pt-transition), box-shadow var(--pt-transition);
+.ptools-choice--card {
+    padding: var(--ptools-space-4);
+    background: var(--ptools-surface);
+    border: 1px solid var(--ptools-border);
+    border-radius: var(--ptools-radius-sm);
+    transition: border-color var(--ptools-transition), background-color var(--ptools-transition), box-shadow var(--ptools-transition);
 }
 
-.pt-choice--card+.pt-choice--card {
-    margin-top: var(--pt-space-3);
+.ptools-choice--card+.ptools-choice--card {
+    margin-top: var(--ptools-space-3);
 }
 
-.pt-choice--card:hover {
-    border-color: var(--pt-brand-border);
-    background: var(--pt-surface-sunken);
+.ptools-choice--card:hover {
+    border-color: var(--ptools-brand-border);
+    background: var(--ptools-surface-sunken);
 }
 
-.pt-choice--card:has(input:checked) {
-    background: var(--pt-brand-soft);
-    border-color: var(--pt-brand);
-    box-shadow: inset 0 0 0 1px var(--pt-brand);
+.ptools-choice--card:has(input:checked) {
+    background: var(--ptools-brand-soft);
+    border-color: var(--ptools-brand);
+    box-shadow: inset 0 0 0 1px var(--ptools-brand);
 }
 
-.pt-choice-grid {
+.ptools-choice-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-    gap: var(--pt-space-3);
+    gap: var(--ptools-space-3);
 }
 
 /* ══ 10. Switch ═══════════════════════════════════════════════════════════ */
 
-.pt-switch {
+.ptools-switch {
     position: relative;
     display: inline-flex;
     flex: 0 0 auto;
@@ -875,7 +875,7 @@ textarea.pt-form-control {
     height: 26px;
 }
 
-.pt-switch input {
+.ptools-switch input {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -889,20 +889,20 @@ textarea.pt-form-control {
     appearance: none;
 }
 
-.pt-switch input::before {
+.ptools-switch input::before {
     content: none;
 }
 
-.pt-switch__track {
+.ptools-switch__track {
     position: absolute;
     inset: 0;
-    background: var(--pt-border-strong);
-    border-radius: var(--pt-radius-full);
+    background: var(--ptools-border-strong);
+    border-radius: var(--ptools-radius-full);
     pointer-events: none;
-    transition: background-color var(--pt-transition), box-shadow var(--pt-transition);
+    transition: background-color var(--ptools-transition), box-shadow var(--ptools-transition);
 }
 
-.pt-switch__track::before {
+.ptools-switch__track::before {
     content: "";
     position: absolute;
     top: 3px;
@@ -912,35 +912,35 @@ textarea.pt-form-control {
     background: #fff;
     border-radius: 50%;
     box-shadow: 0 1px 3px rgba(16, 24, 40, 0.35);
-    transition: transform var(--pt-transition);
+    transition: transform var(--ptools-transition);
 }
 
-.pt-switch input:hover~.pt-switch__track {
-    background: var(--pt-text-subtle);
+.ptools-switch input:hover~.ptools-switch__track {
+    background: var(--ptools-text-subtle);
 }
 
-.pt-switch input:checked~.pt-switch__track {
-    background: var(--pt-brand);
-    box-shadow: var(--pt-shadow-brand);
+.ptools-switch input:checked~.ptools-switch__track {
+    background: var(--ptools-brand);
+    box-shadow: var(--ptools-shadow-brand);
 }
 
-.pt-switch input:checked:hover~.pt-switch__track {
-    background: var(--pt-brand-strong);
+.ptools-switch input:checked:hover~.ptools-switch__track {
+    background: var(--ptools-brand-strong);
 }
 
-.pt-switch input:checked~.pt-switch__track::before {
+.ptools-switch input:checked~.ptools-switch__track::before {
     transform: translateX(20px);
 }
 
-.pt-switch input:focus-visible~.pt-switch__track {
-    box-shadow: var(--pt-focus-ring-strong);
+.ptools-switch input:focus-visible~.ptools-switch__track {
+    box-shadow: var(--ptools-focus-ring-strong);
 }
 
-.pt-switch input:disabled {
+.ptools-switch input:disabled {
     cursor: default;
 }
 
-.pt-switch input:disabled~.pt-switch__track {
+.ptools-switch input:disabled~.ptools-switch__track {
     opacity: 0.5;
     box-shadow: none;
 }
@@ -950,31 +950,31 @@ textarea.pt-form-control {
 /* Radio group rendered as selectable tiles (snippet type picker). Auto-fitting
    keeps the tiles from being crushed when a fourth type is added or the modal
    is viewed on a narrow screen. */
-.pt-option-grid {
+.ptools-option-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: var(--pt-space-3);
+    gap: var(--ptools-space-3);
 }
 
-.pt-option-card {
+.ptools-option-card {
     display: block;
-    padding: var(--pt-space-4) var(--pt-space-3);
+    padding: var(--ptools-space-4) var(--ptools-space-3);
     text-align: center;
-    background: var(--pt-surface);
-    border: 1px solid var(--pt-border);
-    border-radius: var(--pt-radius);
+    background: var(--ptools-surface);
+    border: 1px solid var(--ptools-border);
+    border-radius: var(--ptools-radius);
     cursor: pointer;
-    transition: border-color var(--pt-transition), background-color var(--pt-transition), color var(--pt-transition), box-shadow var(--pt-transition);
+    transition: border-color var(--ptools-transition), background-color var(--ptools-transition), color var(--ptools-transition), box-shadow var(--ptools-transition);
 }
 
-.pt-option-card:hover {
-    border-color: var(--pt-brand-border);
-    background: var(--pt-surface-sunken);
+.ptools-option-card:hover {
+    border-color: var(--ptools-brand-border);
+    background: var(--ptools-surface-sunken);
 }
 
 /* The input stays in the accessibility tree and keeps keyboard focus — it is
    hidden visually only, never with `display: none`. */
-.pt-option-card input {
+.ptools-option-card input {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -983,243 +983,243 @@ textarea.pt-form-control {
     clip: rect(0, 0, 0, 0);
 }
 
-.pt-option-card:has(input:checked) {
-    background: var(--pt-brand-soft);
-    border-color: var(--pt-brand);
-    color: var(--pt-brand-deep);
-    box-shadow: inset 0 0 0 1px var(--pt-brand);
+.ptools-option-card:has(input:checked) {
+    background: var(--ptools-brand-soft);
+    border-color: var(--ptools-brand);
+    color: var(--ptools-brand-deep);
+    box-shadow: inset 0 0 0 1px var(--ptools-brand);
 }
 
-.pt-option-card:has(input:focus-visible) {
-    box-shadow: var(--pt-focus-ring-strong);
+.ptools-option-card:has(input:focus-visible) {
+    box-shadow: var(--ptools-focus-ring-strong);
 }
 
-.pt-option-card:has(input:disabled) {
+.ptools-option-card:has(input:disabled) {
     opacity: 0.5;
     cursor: not-allowed;
 }
 
-.pt-option-card__title {
+.ptools-option-card__title {
     display: block;
     font-size: 14px;
     font-weight: 800;
     letter-spacing: -0.01em;
 }
 
-.pt-option-card__desc {
+.ptools-option-card__desc {
     display: block;
     margin-top: 2px;
     font-size: 12px;
-    color: var(--pt-text-muted);
+    color: var(--ptools-text-muted);
 }
 
 /* ══ 12. Tables ═══════════════════════════════════════════════════════════ */
 
-.pt-table {
+.ptools-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 13px;
 }
 
-.pt-table th,
-.pt-table td {
-    padding: var(--pt-space-3) var(--pt-space-5);
+.ptools-table th,
+.ptools-table td {
+    padding: var(--ptools-space-3) var(--ptools-space-5);
     text-align: left;
     vertical-align: middle;
-    border-bottom: 1px solid var(--pt-border-soft);
+    border-bottom: 1px solid var(--ptools-border-soft);
 }
 
-.pt-table th {
+.ptools-table th {
     padding-top: 11px;
     padding-bottom: 11px;
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.07em;
-    color: var(--pt-text-muted);
-    background: var(--pt-surface-sunken);
-    border-bottom: 1px solid var(--pt-border);
+    color: var(--ptools-text-muted);
+    background: var(--ptools-surface-sunken);
+    border-bottom: 1px solid var(--ptools-border);
 }
 
-.pt-table td {
-    padding-top: var(--pt-space-4);
-    padding-bottom: var(--pt-space-4);
+.ptools-table td {
+    padding-top: var(--ptools-space-4);
+    padding-bottom: var(--ptools-space-4);
 }
 
 /* Row-level rules cover `th` as well as `td`: in a definition table the row
    label is a `th`, so a `td`-only selector highlights half the row and leaves
    a stray rule under the last one. */
-.pt-table tbody tr:last-child td,
-.pt-table tbody tr:last-child th {
+.ptools-table tbody tr:last-child td,
+.ptools-table tbody tr:last-child th {
     border-bottom: none;
 }
 
 /* No row hover: a `tr` is not a target here. The row's actions are icon
    buttons, and they light up on their own. */
-.pt-table tr.is-current td,
-.pt-table tr.is-current th {
-    background: var(--pt-brand-soft);
+.ptools-table tr.is-current td,
+.ptools-table tr.is-current th {
+    background: var(--ptools-brand-soft);
 }
 
-.pt-table__name {
+.ptools-table__name {
     font-weight: 700;
-    color: var(--pt-text);
+    color: var(--ptools-text);
     text-decoration: none;
 }
 
-a.pt-table__name:hover {
-    color: var(--pt-brand-strong);
+a.ptools-table__name:hover {
+    color: var(--ptools-brand-strong);
 }
 
-.pt-table__meta {
+.ptools-table__meta {
     display: block;
     margin-top: 3px;
-    font-family: var(--pt-font-mono);
+    font-family: var(--ptools-font-mono);
     font-size: 11px;
-    color: var(--pt-text-muted);
+    color: var(--ptools-text-muted);
 }
 
-/* Element-qualified: `.pt-table th` is more specific than a bare class, so an
+/* Element-qualified: `.ptools-table th` is more specific than a bare class, so an
    unqualified `text-align` here would lose to it and leave the header label
    left-aligned above right-aligned buttons. */
-.pt-table th.pt-table__actions,
-.pt-table td.pt-table__actions {
+.ptools-table th.ptools-table__actions,
+.ptools-table td.ptools-table__actions {
     width: 1%;
     white-space: nowrap;
     text-align: right;
 }
 
-.pt-table__actions-inner {
+.ptools-table__actions-inner {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: var(--pt-space-1);
+    gap: var(--ptools-space-1);
 }
 
 /* Two-column key/value table (System Info). The `th` is a row label here, not
    a column heading, so the uppercase column treatment is reset. */
-.pt-table--definition th,
-.pt-table--definition td {
+.ptools-table--definition th,
+.ptools-table--definition td {
     width: 50%;
 }
 
-.pt-table--definition th {
-    padding-top: var(--pt-space-4);
-    padding-bottom: var(--pt-space-4);
+.ptools-table--definition th {
+    padding-top: var(--ptools-space-4);
+    padding-bottom: var(--ptools-space-4);
     font-size: 13px;
     font-weight: 700;
     text-transform: none;
     letter-spacing: normal;
-    color: var(--pt-text);
+    color: var(--ptools-text);
     background: none;
-    border-bottom: 1px solid var(--pt-border-soft);
+    border-bottom: 1px solid var(--ptools-border-soft);
 }
 
-.pt-table--definition td {
-    color: var(--pt-text-muted);
+.ptools-table--definition td {
+    color: var(--ptools-text-muted);
 }
 
-.pt-table-scroll {
+.ptools-table-scroll {
     overflow-x: auto;
 }
 
 /* ══ 13. Pills & notices ══════════════════════════════════════════════════ */
 
-.pt-pill {
+.ptools-pill {
     display: inline-flex;
     align-items: center;
-    gap: var(--pt-space-1);
+    gap: var(--ptools-space-1);
     padding: 4px 11px;
     font-size: 11px;
     font-weight: 700;
     line-height: 1.5;
     letter-spacing: 0.02em;
     border: 1px solid transparent;
-    border-radius: var(--pt-radius-full);
+    border-radius: var(--ptools-radius-full);
     white-space: nowrap;
 }
 
-.pt-pill--brand {
-    background: var(--pt-brand-soft);
-    border-color: var(--pt-brand-border);
-    color: var(--pt-brand-deep);
+.ptools-pill--brand {
+    background: var(--ptools-brand-soft);
+    border-color: var(--ptools-brand-border);
+    color: var(--ptools-brand-deep);
 }
 
-.pt-pill--success {
-    background: var(--pt-success-soft);
-    border-color: var(--pt-success-border);
-    color: var(--pt-success);
+.ptools-pill--success {
+    background: var(--ptools-success-soft);
+    border-color: var(--ptools-success-border);
+    color: var(--ptools-success);
 }
 
-.pt-pill--neutral {
-    background: var(--pt-surface-sunken);
-    border-color: var(--pt-border-strong);
-    color: var(--pt-text-muted);
+.ptools-pill--neutral {
+    background: var(--ptools-surface-sunken);
+    border-color: var(--ptools-border-strong);
+    color: var(--ptools-text-muted);
 }
 
-.pt-pill--upper {
+.ptools-pill--upper {
     text-transform: uppercase;
     letter-spacing: 0.07em;
 }
 
-.pt-notice {
+.ptools-notice {
     display: flex;
     align-items: flex-start;
-    gap: var(--pt-space-3);
-    margin: 0 0 var(--pt-space-5);
-    padding: var(--pt-space-4);
+    gap: var(--ptools-space-3);
+    margin: 0 0 var(--ptools-space-5);
+    padding: var(--ptools-space-4);
     font-size: 13px;
     font-weight: 500;
     line-height: 1.5;
-    background: var(--pt-surface);
-    border: 1px solid var(--pt-border);
-    border-left: 4px solid var(--pt-text-subtle);
-    border-radius: var(--pt-radius-sm);
-    box-shadow: var(--pt-shadow-sm);
+    background: var(--ptools-surface);
+    border: 1px solid var(--ptools-border);
+    border-left: 4px solid var(--ptools-text-subtle);
+    border-radius: var(--ptools-radius-sm);
+    box-shadow: var(--ptools-shadow-sm);
 }
 
-.pt-notice .dashicons {
+.ptools-notice .dashicons {
     flex: 0 0 auto;
     width: 19px;
     height: 19px;
     font-size: 19px;
 }
 
-.pt-notice--success {
-    background: var(--pt-success-soft);
-    border-color: var(--pt-success-border);
-    border-left-color: var(--pt-success);
-    color: var(--pt-success);
+.ptools-notice--success {
+    background: var(--ptools-success-soft);
+    border-color: var(--ptools-success-border);
+    border-left-color: var(--ptools-success);
+    color: var(--ptools-success);
 }
 
-.pt-notice--warning {
-    background: var(--pt-warning-soft);
-    border-color: var(--pt-warning-border);
-    border-left-color: var(--pt-warning);
-    color: var(--pt-warning);
+.ptools-notice--warning {
+    background: var(--ptools-warning-soft);
+    border-color: var(--ptools-warning-border);
+    border-left-color: var(--ptools-warning);
+    color: var(--ptools-warning);
 }
 
-.pt-notice--error {
-    background: var(--pt-danger-soft);
-    border-color: var(--pt-danger-border);
-    border-left-color: var(--pt-danger);
-    color: var(--pt-danger);
+.ptools-notice--error {
+    background: var(--ptools-danger-soft);
+    border-color: var(--ptools-danger-border);
+    border-left-color: var(--ptools-danger);
+    color: var(--ptools-danger);
 }
 
 /* Core notices rendered inside our shell (settings_errors(), etc.). */
-.pt-wrap .notice,
-.pt-wrap .updated,
-.pt-wrap .error {
-    margin: 0 0 var(--pt-space-5);
-    padding: var(--pt-space-3) var(--pt-space-4);
-    background: var(--pt-surface);
-    border: 1px solid var(--pt-border);
+.ptools-wrap .notice,
+.ptools-wrap .updated,
+.ptools-wrap .error {
+    margin: 0 0 var(--ptools-space-5);
+    padding: var(--ptools-space-3) var(--ptools-space-4);
+    background: var(--ptools-surface);
+    border: 1px solid var(--ptools-border);
     border-left-width: 4px;
-    border-radius: var(--pt-radius-sm);
-    box-shadow: var(--pt-shadow-sm);
+    border-radius: var(--ptools-radius-sm);
+    box-shadow: var(--ptools-shadow-sm);
 }
 
-.pt-wrap .notice p {
+.ptools-wrap .notice p {
     margin: 0;
     font-size: 13px;
     font-weight: 500;
@@ -1227,99 +1227,99 @@ a.pt-table__name:hover {
 
 /* ══ 14. Stats ════════════════════════════════════════════════════════════ */
 
-.pt-stats {
+.ptools-stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--pt-space-4);
-    margin-bottom: var(--pt-space-5);
+    gap: var(--ptools-space-4);
+    margin-bottom: var(--ptools-space-5);
 }
 
-.pt-stat {
-    padding: var(--pt-space-5) var(--pt-space-4);
+.ptools-stat {
+    padding: var(--ptools-space-5) var(--ptools-space-4);
     text-align: center;
-    background: var(--pt-brand-soft);
-    border: 1px solid var(--pt-brand-border);
-    border-radius: var(--pt-radius);
+    background: var(--ptools-brand-soft);
+    border: 1px solid var(--ptools-brand-border);
+    border-radius: var(--ptools-radius);
 }
 
-.pt-stat__value {
+.ptools-stat__value {
     font-size: 36px;
     font-weight: 800;
     line-height: 1.05;
     letter-spacing: -0.03em;
-    color: var(--pt-brand-deep);
+    color: var(--ptools-brand-deep);
 }
 
-.pt-stat__label {
-    margin-top: var(--pt-space-2);
+.ptools-stat__label {
+    margin-top: var(--ptools-space-2);
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--pt-brand-strong);
+    color: var(--ptools-brand-strong);
 }
 
 /* ══ 15. Empty state ══════════════════════════════════════════════════════ */
 
-.pt-empty {
-    padding: var(--pt-space-8) var(--pt-space-5);
+.ptools-empty {
+    padding: var(--ptools-space-8) var(--ptools-space-5);
     text-align: center;
 }
 
-.pt-empty__icon {
+.ptools-empty__icon {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 64px;
     height: 64px;
-    margin: 0 auto var(--pt-space-4);
-    background: var(--pt-surface-sunken);
-    border: 1px solid var(--pt-border);
+    margin: 0 auto var(--ptools-space-4);
+    background: var(--ptools-surface-sunken);
+    border: 1px solid var(--ptools-border);
     border-radius: 50%;
-    color: var(--pt-text-subtle);
+    color: var(--ptools-text-subtle);
 }
 
-.pt-empty__icon .dashicons {
+.ptools-empty__icon .dashicons {
     width: 30px;
     height: 30px;
     font-size: 30px;
 }
 
-.pt-empty__text {
+.ptools-empty__text {
     max-width: 420px;
-    margin: 0 auto var(--pt-space-5);
+    margin: 0 auto var(--ptools-space-5);
     font-size: 13px;
     line-height: 1.6;
-    color: var(--pt-text-muted);
+    color: var(--ptools-text-muted);
 }
 
-.pt-empty__text:last-child {
+.ptools-empty__text:last-child {
     margin-bottom: 0;
 }
 
 /* ══ 16. Modal ════════════════════════════════════════════════════════════ */
 
-.pt-modal {
+.ptools-modal {
     position: fixed;
     inset: 0;
     z-index: 100000;
     display: none;
     align-items: center;
     justify-content: center;
-    padding: var(--pt-space-5);
-    font-family: var(--pt-font);
+    padding: var(--ptools-space-5);
+    font-family: var(--ptools-font);
     font-size: 14px;
-    color: var(--pt-text);
+    color: var(--ptools-text);
     background: rgba(15, 23, 42, 0.55);
 }
 
-.pt-modal.is-open {
+.ptools-modal.is-open {
     display: flex;
 }
 
-.pt-modal *,
-.pt-modal *::before,
-.pt-modal *::after {
+.ptools-modal *,
+.ptools-modal *::before,
+.ptools-modal *::after {
     box-sizing: border-box;
 }
 
@@ -1329,179 +1329,179 @@ a.pt-table__name:hover {
  * Markup is `__dialog > __header + form > (__body + __footer)`, so the form
  * has to pass the column through — hence the bare element selector.
  */
-.pt-modal__dialog {
+.ptools-modal__dialog {
     display: flex;
     flex-direction: column;
     width: 100%;
     max-width: 520px;
     max-height: min(90vh, 760px);
     overflow: hidden;
-    background: var(--pt-surface);
-    border-radius: var(--pt-radius-lg);
-    box-shadow: var(--pt-shadow-lg);
-    animation: pt-fade-in 200ms ease;
+    background: var(--ptools-surface);
+    border-radius: var(--ptools-radius-lg);
+    box-shadow: var(--ptools-shadow-lg);
+    animation: ptools-fade-in 200ms ease;
 }
 
-.pt-modal__dialog>form {
+.ptools-modal__dialog>form {
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
     min-height: 0;
 }
 
-.pt-modal__header {
+.ptools-modal__header {
     display: flex;
     flex: 0 0 auto;
     align-items: center;
     justify-content: space-between;
-    gap: var(--pt-space-4);
-    padding: var(--pt-space-4) var(--pt-space-5);
-    border-bottom: 1px solid var(--pt-border);
+    gap: var(--ptools-space-4);
+    padding: var(--ptools-space-4) var(--ptools-space-5);
+    border-bottom: 1px solid var(--ptools-border);
 }
 
-.pt-modal__body {
+.ptools-modal__body {
     flex: 1 1 auto;
     min-height: 0;
     overflow-y: auto;
-    padding: var(--pt-space-5);
+    padding: var(--ptools-space-5);
 }
 
-.pt-modal__footer {
+.ptools-modal__footer {
     display: flex;
     flex: 0 0 auto;
     justify-content: flex-end;
-    gap: var(--pt-space-3);
-    padding: var(--pt-space-4) var(--pt-space-5);
-    background: var(--pt-surface-sunken);
-    border-top: 1px solid var(--pt-border);
+    gap: var(--ptools-space-3);
+    padding: var(--ptools-space-4) var(--ptools-space-5);
+    background: var(--ptools-surface-sunken);
+    border-top: 1px solid var(--ptools-border);
 }
 
 /* ══ 17. Code editor & rule rows ══════════════════════════════════════════ */
 
-.pt-code-editor {
+.ptools-code-editor {
     overflow: hidden;
-    background: var(--pt-surface);
-    border: 1px solid var(--pt-border-strong);
-    border-radius: var(--pt-radius-sm);
-    box-shadow: var(--pt-shadow-sm);
+    background: var(--ptools-surface);
+    border: 1px solid var(--ptools-border-strong);
+    border-radius: var(--ptools-radius-sm);
+    box-shadow: var(--ptools-shadow-sm);
 }
 
-.pt-code-editor__tag {
+.ptools-code-editor__tag {
     display: none;
     padding: 8px 12px;
-    font-family: var(--pt-font-mono);
+    font-family: var(--ptools-font-mono);
     font-size: 12px;
     font-weight: 600;
-    color: var(--pt-text-subtle);
-    background: var(--pt-surface-sunken);
+    color: var(--ptools-text-subtle);
+    background: var(--ptools-surface-sunken);
 }
 
-.pt-code-editor__tag.is-visible {
+.ptools-code-editor__tag.is-visible {
     display: block;
 }
 
-.pt-code-editor__tag--top {
-    border-bottom: 1px solid var(--pt-border-soft);
+.ptools-code-editor__tag--top {
+    border-bottom: 1px solid var(--ptools-border-soft);
 }
 
-.pt-code-editor__tag--bottom {
-    border-top: 1px solid var(--pt-border-soft);
+.ptools-code-editor__tag--bottom {
+    border-top: 1px solid var(--ptools-border-soft);
 }
 
-.pt-code-editor textarea.pt-form-control {
+.ptools-code-editor textarea.ptools-form-control {
     height: 420px;
     border: none;
     border-radius: 0;
     box-shadow: none;
 }
 
-.pt-code-editor textarea.pt-form-control:focus {
+.ptools-code-editor textarea.ptools-form-control:focus {
     box-shadow: none;
 }
 
 /* Scoped to our editor so other plugins' CodeMirror instances are untouched. */
-.pt-code-editor .CodeMirror {
+.ptools-code-editor .CodeMirror {
     height: 420px;
-    font-family: var(--pt-font-mono);
+    font-family: var(--ptools-font-mono);
     font-size: 13px;
     line-height: 1.6;
     border: none;
 }
 
-.pt-rule {
+.ptools-rule {
     display: flex;
     align-items: center;
-    gap: var(--pt-space-3);
-    padding: var(--pt-space-3);
-    background: var(--pt-surface-sunken);
-    border: 1px solid var(--pt-border);
-    border-radius: var(--pt-radius-sm);
+    gap: var(--ptools-space-3);
+    padding: var(--ptools-space-3);
+    background: var(--ptools-surface-sunken);
+    border: 1px solid var(--ptools-border);
+    border-radius: var(--ptools-radius-sm);
 }
 
-.pt-rule+.pt-rule {
-    margin-top: var(--pt-space-3);
+.ptools-rule+.ptools-rule {
+    margin-top: var(--ptools-space-3);
 }
 
-.pt-rule__type {
+.ptools-rule__type {
     flex: 1 1 0;
     min-width: 0;
 }
 
-.pt-rule__value {
+.ptools-rule__value {
     flex: 2 1 0;
     min-width: 0;
 }
 
-.pt-rule__remove {
+.ptools-rule__remove {
     flex: 0 0 auto;
 }
 
 /* ══ 18. Page footer ══════════════════════════════════════════════════════ */
 
-.pt-footer {
-    margin-top: var(--pt-space-7);
-    padding-top: var(--pt-space-5);
+.ptools-footer {
+    margin-top: var(--ptools-space-7);
+    padding-top: var(--ptools-space-5);
     font-size: 13px;
     text-align: center;
-    color: var(--pt-text-muted);
-    border-top: 1px solid var(--pt-border);
+    color: var(--ptools-text-muted);
+    border-top: 1px solid var(--ptools-border);
 }
 
-.pt-footer p {
+.ptools-footer p {
     margin: 0;
 }
 
-.pt-footer a {
-    color: var(--pt-brand-strong);
+.ptools-footer a {
+    color: var(--ptools-brand-strong);
     font-weight: 700;
     text-decoration: none;
 }
 
-.pt-footer a:hover {
+.ptools-footer a:hover {
     text-decoration: underline;
 }
 
 /* ══ 19. Layout utilities & vertical rhythm ═══════════════════════════════ */
 
-.pt-cols-2 {
+.ptools-cols-2 {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--pt-space-5);
+    gap: var(--ptools-space-5);
 }
 
 /* Wide main column + narrower companion column. */
-.pt-split {
+.ptools-split {
     display: grid;
     grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-    gap: var(--pt-space-5);
+    gap: var(--ptools-space-5);
     align-items: start;
 }
 
-.pt-stack>*+* {
-    margin-top: var(--pt-space-5);
+.ptools-stack>*+* {
+    margin-top: var(--ptools-space-5);
 }
 
-.pt-inline-form {
+.ptools-inline-form {
     display: inline-flex;
 }
 
@@ -1509,37 +1509,37 @@ a.pt-table__name:hover {
  * Vertical rhythm.
  *
  * Panel and modal bodies own the spacing between their own children, and grid
- * cells are spaced by `gap` alone. Without this, a `.pt-field` in the left
- * column of a `.pt-cols-2` row keeps its bottom margin while the one on the
+ * cells are spaced by `gap` alone. Without this, a `.ptools-field` in the left
+ * column of a `.ptools-cols-2` row keeps its bottom margin while the one on the
  * right (a `:last-child`) drops it — the two rows end up unevenly spaced — and
  * the final block in a body leaves a gap above the panel footer.
  *
  * Declared last so it wins over the component margins above at equal
  * specificity.
  */
-.pt-panel__body>*,
-.pt-modal__body>*,
-.pt-cols-2>*,
-.pt-split>*,
-.pt-stack>* {
+.ptools-panel__body>*,
+.ptools-modal__body>*,
+.ptools-cols-2>*,
+.ptools-split>*,
+.ptools-stack>* {
     margin-bottom: 0;
 }
 
-.pt-panel__body>*+*,
-.pt-modal__body>*+* {
-    margin-top: var(--pt-space-5);
+.ptools-panel__body>*+*,
+.ptools-modal__body>*+* {
+    margin-top: var(--ptools-space-5);
 }
 
 /**
  * A grid cell is positioned by `gap` alone. Components that stack themselves
  * in normal flow carry an adjacent-sibling margin, and inside a grid that
  * margin drops the second cell below the first — two panels side by side in a
- * `.pt-split` end up 24px out of line. These selectors have to name both
+ * `.ptools-split` end up 24px out of line. These selectors have to name both
  * classes to outweigh the component rule they undo.
  */
-.pt-cols-2>.pt-panel+.pt-panel,
-.pt-split>.pt-panel+.pt-panel,
-.pt-choice-grid>.pt-choice+.pt-choice {
+.ptools-cols-2>.ptools-panel+.ptools-panel,
+.ptools-split>.ptools-panel+.ptools-panel,
+.ptools-choice-grid>.ptools-choice+.ptools-choice {
     margin-top: 0;
 }
 
@@ -1548,103 +1548,103 @@ a.pt-table__name:hover {
 /* wp-admin keeps its 160px menu open down to 960px, so the usable width runs
    out well before the viewport does — collapse paired columns early. */
 @media (max-width: 1180px) {
-    .pt-split {
+    .ptools-split {
         grid-template-columns: minmax(0, 1fr);
     }
 }
 
 @media (max-width: 960px) {
-    .pt-wrap {
-        padding: var(--pt-space-5);
+    .ptools-wrap {
+        padding: var(--ptools-space-5);
     }
 
     body[class*="page_powertools"] #wpbody-content>.notice,
     body[class*="page_powertools"] #wpbody-content>.updated,
     body[class*="page_powertools"] #wpbody-content>.error {
-        margin: var(--pt-space-5) var(--pt-space-5) 0;
+        margin: var(--ptools-space-5) var(--ptools-space-5) 0;
     }
 
-    .pt-cols-2 {
+    .ptools-cols-2 {
         grid-template-columns: minmax(0, 1fr);
     }
 }
 
 @media (max-width: 782px) {
-    .pt-wrap {
-        padding: var(--pt-space-4);
+    .ptools-wrap {
+        padding: var(--ptools-space-4);
     }
 
     body[class*="page_powertools"] #wpbody-content>.notice,
     body[class*="page_powertools"] #wpbody-content>.updated,
     body[class*="page_powertools"] #wpbody-content>.error {
-        margin: var(--pt-space-4) var(--pt-space-4) 0;
+        margin: var(--ptools-space-4) var(--ptools-space-4) 0;
     }
 
     /* Icon and title stay on one line; the actions take a full-width row of
        their own underneath rather than sitting beside the icon. */
-    .pt-page-header {
+    .ptools-page-header {
         flex-wrap: wrap;
-        gap: var(--pt-space-4);
-        padding: var(--pt-space-5);
+        gap: var(--ptools-space-4);
+        padding: var(--ptools-space-5);
     }
 
-    .pt-page-header__icon {
+    .ptools-page-header__icon {
         width: 52px;
         height: 52px;
     }
 
-    .pt-page-header__icon .dashicons {
+    .ptools-page-header__icon .dashicons {
         width: 26px;
         height: 26px;
         font-size: 26px;
     }
 
-    .pt-page-header__icon img {
+    .ptools-page-header__icon img {
         width: 30px;
     }
 
-    .pt-page-header__content {
+    .ptools-page-header__content {
         flex: 1 1 0;
     }
 
-    .pt-page-header__actions {
+    .ptools-page-header__actions {
         flex: 1 0 100%;
     }
 
-    .pt-page-header__actions .pt-btn {
+    .ptools-page-header__actions .ptools-btn {
         flex: 1 1 auto;
     }
 
-    .pt-h1 {
+    .ptools-h1 {
         font-size: 24px;
     }
 
-    .pt-tools {
+    .ptools-tools {
         grid-template-columns: minmax(0, 1fr);
     }
 
-    .pt-panel__header,
-    .pt-panel__body,
-    .pt-panel__footer,
-    .pt-modal__header,
-    .pt-modal__body,
-    .pt-modal__footer {
-        padding-left: var(--pt-space-4);
-        padding-right: var(--pt-space-4);
+    .ptools-panel__header,
+    .ptools-panel__body,
+    .ptools-panel__footer,
+    .ptools-modal__header,
+    .ptools-modal__body,
+    .ptools-modal__footer {
+        padding-left: var(--ptools-space-4);
+        padding-right: var(--ptools-space-4);
     }
 
-    .pt-table th,
-    .pt-table td {
-        padding-left: var(--pt-space-4);
-        padding-right: var(--pt-space-4);
+    .ptools-table th,
+    .ptools-table td {
+        padding-left: var(--ptools-space-4);
+        padding-right: var(--ptools-space-4);
     }
 
-    .pt-rule {
+    .ptools-rule {
         flex-wrap: wrap;
     }
 
-    .pt-rule__type,
-    .pt-rule__value {
+    .ptools-rule__type,
+    .ptools-rule__value {
         flex-basis: 100%;
     }
 }
@@ -1652,43 +1652,43 @@ a.pt-table__name:hover {
 /* Stacked, full-width actions once buttons stop fitting side by side. */
 @media (max-width: 480px) {
 
-    .pt-panel__footer,
-    .pt-modal__footer {
+    .ptools-panel__footer,
+    .ptools-modal__footer {
         flex-direction: column-reverse;
         align-items: stretch;
     }
 
-    .pt-panel__footer>*,
-    .pt-modal__footer>*,
-    .pt-panel__footer .pt-btn,
-    .pt-modal__footer .pt-btn {
+    .ptools-panel__footer>*,
+    .ptools-modal__footer>*,
+    .ptools-panel__footer .ptools-btn,
+    .ptools-modal__footer .ptools-btn {
         width: 100%;
     }
 
-    .pt-tool-card__footer {
+    .ptools-tool-card__footer {
         flex-direction: column;
         align-items: stretch;
-        gap: var(--pt-space-3);
+        gap: var(--ptools-space-3);
     }
 
-    .pt-tool-card__footer .pt-pill {
+    .ptools-tool-card__footer .ptools-pill {
         align-self: flex-start;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
 
-    .pt-wrap,
-    .pt-modal__dialog {
+    .ptools-wrap,
+    .ptools-modal__dialog {
         animation: none;
     }
 
-    .pt-wrap *,
-    .pt-modal * {
+    .ptools-wrap *,
+    .ptools-modal * {
         transition-duration: 1ms !important;
     }
 
-    .pt-btn:active {
+    .ptools-btn:active {
         transform: none;
     }
 }

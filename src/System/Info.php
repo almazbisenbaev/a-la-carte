@@ -32,41 +32,41 @@ class Info {
             'description' => __('Detailed overview of your WordPress environment, server configuration, and active plugins.', 'powertools'),
         ));
         ?>
-        <div class="pt-stack">
-            <div class="pt-panel">
-                <div class="pt-panel__header">
-                    <h2 class="pt-h2"><?php esc_html_e('Environment Overview', 'powertools'); ?></h2>
+        <div class="ptools-stack">
+            <div class="ptools-panel">
+                <div class="ptools-panel__header">
+                    <h2 class="ptools-h2"><?php esc_html_e('Environment Overview', 'powertools'); ?></h2>
                 </div>
-                <div class="pt-panel__body pt-panel__body--flush">
+                <div class="ptools-panel__body ptools-panel__body--flush">
                     <?php $this->render_definition_table($this->get_environment_rows()); ?>
                 </div>
             </div>
 
-            <div class="pt-cols-2">
-                <div class="pt-panel">
-                    <div class="pt-panel__header">
-                        <h2 class="pt-h2"><?php esc_html_e('PHP Configuration', 'powertools'); ?></h2>
+            <div class="ptools-cols-2">
+                <div class="ptools-panel">
+                    <div class="ptools-panel__header">
+                        <h2 class="ptools-h2"><?php esc_html_e('PHP Configuration', 'powertools'); ?></h2>
                     </div>
-                    <div class="pt-panel__body pt-panel__body--flush">
+                    <div class="ptools-panel__body ptools-panel__body--flush">
                         <?php $this->render_definition_table($this->get_php_rows()); ?>
                     </div>
                 </div>
 
-                <div class="pt-panel">
-                    <div class="pt-panel__header">
-                        <h2 class="pt-h2"><?php esc_html_e('Server Resources', 'powertools'); ?></h2>
+                <div class="ptools-panel">
+                    <div class="ptools-panel__header">
+                        <h2 class="ptools-h2"><?php esc_html_e('Server Resources', 'powertools'); ?></h2>
                     </div>
-                    <div class="pt-panel__body pt-panel__body--flush">
+                    <div class="ptools-panel__body ptools-panel__body--flush">
                         <?php $this->render_definition_table($this->get_disk_rows()); ?>
                     </div>
                 </div>
             </div>
 
-            <div class="pt-panel">
-                <div class="pt-panel__header">
-                    <h2 class="pt-h2"><?php esc_html_e('Installed Plugins', 'powertools'); ?></h2>
+            <div class="ptools-panel">
+                <div class="ptools-panel__header">
+                    <h2 class="ptools-h2"><?php esc_html_e('Installed Plugins', 'powertools'); ?></h2>
                 </div>
-                <div class="pt-panel__body pt-panel__body--flush">
+                <div class="ptools-panel__body ptools-panel__body--flush">
                     <?php $this->render_plugins_table(); ?>
                 </div>
             </div>
@@ -142,7 +142,7 @@ class Info {
      */
     private function render_definition_table(array $rows) {
         ?>
-        <table class="pt-table pt-table--definition">
+        <table class="ptools-table ptools-table--definition">
             <tbody>
                 <?php foreach ($rows as $label => $value) : ?>
                     <tr>
@@ -165,8 +165,8 @@ class Info {
 
         $all_plugins = get_plugins();
         ?>
-        <div class="pt-table-scroll">
-            <table class="pt-table">
+        <div class="ptools-table-scroll">
+            <table class="ptools-table">
                 <thead>
                     <tr>
                         <th scope="col"><?php esc_html_e('Plugin Name', 'powertools'); ?></th>
@@ -178,13 +178,13 @@ class Info {
                     <?php foreach ($all_plugins as $path => $plugin) : ?>
                         <?php $is_active = is_plugin_active($path); ?>
                         <tr>
-                            <td><span class="pt-table__name"><?php echo esc_html($plugin['Name']); ?></span></td>
+                            <td><span class="ptools-table__name"><?php echo esc_html($plugin['Name']); ?></span></td>
                             <td>
-                                <span class="pt-pill pt-pill--upper <?php echo $is_active ? 'pt-pill--success' : 'pt-pill--neutral'; ?>">
+                                <span class="ptools-pill ptools-pill--upper <?php echo $is_active ? 'ptools-pill--success' : 'ptools-pill--neutral'; ?>">
                                     <?php echo $is_active ? esc_html__('Active', 'powertools') : esc_html__('Inactive', 'powertools'); ?>
                                 </span>
                             </td>
-                            <td><span class="pt-mono pt-text-muted"><?php echo esc_html($plugin['Version']); ?></span></td>
+                            <td><span class="ptools-mono ptools-text-muted"><?php echo esc_html($plugin['Version']); ?></span></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
