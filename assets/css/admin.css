@@ -9,7 +9,7 @@
  * `.is-*` for stateful classes toggled by PHP or JS.
  *
  * Layout rule of thumb: containers own the spacing between their children
- * (grid `gap`, or the rhythm rules in section 19). Components never carry a
+ * (grid `gap`, or the rhythm rules in section 16). Components never carry a
  * trailing margin of their own, so nothing can leave a stray gap when it
  * happens to land last in a panel.
  *
@@ -24,16 +24,13 @@
  *   8.  Forms
  *   9.  Choice controls (checkbox / radio)
  *   10. Switch
- *   11. Option cards
- *   12. Tables
- *   13. Pills & notices
- *   14. Stats
- *   15. Empty state
- *   16. Modal
- *   17. Code editor & rule rows
- *   18. Page footer
- *   19. Layout utilities & vertical rhythm
- *   20. Responsive & motion
+ *   11. Tables
+ *   12. Pills & notices
+ *   13. Stats
+ *   14. Empty state
+ *   15. Page footer
+ *   16. Layout utilities & vertical rhythm
+ *   17. Responsive & motion
  */
 
 /* ══ 1. Design tokens ═════════════════════════════════════════════════════ */
@@ -243,8 +240,7 @@ body[class*="page_powertools"] #wpbody-content>.error {
 }
 
 /* Icons are decorative by default and should carry aria-hidden in markup. */
-.ptools-wrap .dashicons,
-.ptools-modal .dashicons {
+.ptools-wrap .dashicons {
     line-height: 1;
     vertical-align: middle;
 }
@@ -945,75 +941,7 @@ textarea.ptools-form-control {
     box-shadow: none;
 }
 
-/* ══ 11. Option cards ═════════════════════════════════════════════════════ */
-
-/* Radio group rendered as selectable tiles (snippet type picker). Auto-fitting
-   keeps the tiles from being crushed when a fourth type is added or the modal
-   is viewed on a narrow screen. */
-.ptools-option-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: var(--ptools-space-3);
-}
-
-.ptools-option-card {
-    display: block;
-    padding: var(--ptools-space-4) var(--ptools-space-3);
-    text-align: center;
-    background: var(--ptools-surface);
-    border: 1px solid var(--ptools-border);
-    border-radius: var(--ptools-radius);
-    cursor: pointer;
-    transition: border-color var(--ptools-transition), background-color var(--ptools-transition), color var(--ptools-transition), box-shadow var(--ptools-transition);
-}
-
-.ptools-option-card:hover {
-    border-color: var(--ptools-brand-border);
-    background: var(--ptools-surface-sunken);
-}
-
-/* The input stays in the accessibility tree and keeps keyboard focus — it is
-   hidden visually only, never with `display: none`. */
-.ptools-option-card input {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-}
-
-.ptools-option-card:has(input:checked) {
-    background: var(--ptools-brand-soft);
-    border-color: var(--ptools-brand);
-    color: var(--ptools-brand-deep);
-    box-shadow: inset 0 0 0 1px var(--ptools-brand);
-}
-
-.ptools-option-card:has(input:focus-visible) {
-    box-shadow: var(--ptools-focus-ring-strong);
-}
-
-.ptools-option-card:has(input:disabled) {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.ptools-option-card__title {
-    display: block;
-    font-size: 14px;
-    font-weight: 800;
-    letter-spacing: -0.01em;
-}
-
-.ptools-option-card__desc {
-    display: block;
-    margin-top: 2px;
-    font-size: 12px;
-    color: var(--ptools-text-muted);
-}
-
-/* ══ 12. Tables ═══════════════════════════════════════════════════════════ */
+/* ══ 11. Tables ═══════════════════════════════════════════════════════════ */
 
 .ptools-table {
     width: 100%;
@@ -1123,7 +1051,7 @@ a.ptools-table__name:hover {
     overflow-x: auto;
 }
 
-/* ══ 13. Pills & notices ══════════════════════════════════════════════════ */
+/* ══ 12. Pills & notices ══════════════════════════════════════════════════ */
 
 .ptools-pill {
     display: inline-flex;
@@ -1225,7 +1153,7 @@ a.ptools-table__name:hover {
     font-weight: 500;
 }
 
-/* ══ 14. Stats ════════════════════════════════════════════════════════════ */
+/* ══ 13. Stats ════════════════════════════════════════════════════════════ */
 
 .ptools-stats {
     display: grid;
@@ -1259,7 +1187,7 @@ a.ptools-table__name:hover {
     color: var(--ptools-brand-strong);
 }
 
-/* ══ 15. Empty state ══════════════════════════════════════════════════════ */
+/* ══ 14. Empty state ══════════════════════════════════════════════════════ */
 
 .ptools-empty {
     padding: var(--ptools-space-8) var(--ptools-space-5);
@@ -1297,166 +1225,7 @@ a.ptools-table__name:hover {
     margin-bottom: 0;
 }
 
-/* ══ 16. Modal ════════════════════════════════════════════════════════════ */
-
-.ptools-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 100000;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: var(--ptools-space-5);
-    font-family: var(--ptools-font);
-    font-size: 14px;
-    color: var(--ptools-text);
-    background: rgba(15, 23, 42, 0.55);
-}
-
-.ptools-modal.is-open {
-    display: flex;
-}
-
-.ptools-modal *,
-.ptools-modal *::before,
-.ptools-modal *::after {
-    box-sizing: border-box;
-}
-
-/**
- * The dialog is a flex column so only the body scrolls: the title stays put
- * and the actions stay reachable no matter how tall the content grows.
- * Markup is `__dialog > __header + form > (__body + __footer)`, so the form
- * has to pass the column through — hence the bare element selector.
- */
-.ptools-modal__dialog {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 520px;
-    max-height: min(90vh, 760px);
-    overflow: hidden;
-    background: var(--ptools-surface);
-    border-radius: var(--ptools-radius-lg);
-    box-shadow: var(--ptools-shadow-lg);
-    animation: ptools-fade-in 200ms ease;
-}
-
-.ptools-modal__dialog>form {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
-    min-height: 0;
-}
-
-.ptools-modal__header {
-    display: flex;
-    flex: 0 0 auto;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--ptools-space-4);
-    padding: var(--ptools-space-4) var(--ptools-space-5);
-    border-bottom: 1px solid var(--ptools-border);
-}
-
-.ptools-modal__body {
-    flex: 1 1 auto;
-    min-height: 0;
-    overflow-y: auto;
-    padding: var(--ptools-space-5);
-}
-
-.ptools-modal__footer {
-    display: flex;
-    flex: 0 0 auto;
-    justify-content: flex-end;
-    gap: var(--ptools-space-3);
-    padding: var(--ptools-space-4) var(--ptools-space-5);
-    background: var(--ptools-surface-sunken);
-    border-top: 1px solid var(--ptools-border);
-}
-
-/* ══ 17. Code editor & rule rows ══════════════════════════════════════════ */
-
-.ptools-code-editor {
-    overflow: hidden;
-    background: var(--ptools-surface);
-    border: 1px solid var(--ptools-border-strong);
-    border-radius: var(--ptools-radius-sm);
-    box-shadow: var(--ptools-shadow-sm);
-}
-
-.ptools-code-editor__tag {
-    display: none;
-    padding: 8px 12px;
-    font-family: var(--ptools-font-mono);
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--ptools-text-subtle);
-    background: var(--ptools-surface-sunken);
-}
-
-.ptools-code-editor__tag.is-visible {
-    display: block;
-}
-
-.ptools-code-editor__tag--top {
-    border-bottom: 1px solid var(--ptools-border-soft);
-}
-
-.ptools-code-editor__tag--bottom {
-    border-top: 1px solid var(--ptools-border-soft);
-}
-
-.ptools-code-editor textarea.ptools-form-control {
-    height: 420px;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-}
-
-.ptools-code-editor textarea.ptools-form-control:focus {
-    box-shadow: none;
-}
-
-/* Scoped to our editor so other plugins' CodeMirror instances are untouched. */
-.ptools-code-editor .CodeMirror {
-    height: 420px;
-    font-family: var(--ptools-font-mono);
-    font-size: 13px;
-    line-height: 1.6;
-    border: none;
-}
-
-.ptools-rule {
-    display: flex;
-    align-items: center;
-    gap: var(--ptools-space-3);
-    padding: var(--ptools-space-3);
-    background: var(--ptools-surface-sunken);
-    border: 1px solid var(--ptools-border);
-    border-radius: var(--ptools-radius-sm);
-}
-
-.ptools-rule+.ptools-rule {
-    margin-top: var(--ptools-space-3);
-}
-
-.ptools-rule__type {
-    flex: 1 1 0;
-    min-width: 0;
-}
-
-.ptools-rule__value {
-    flex: 2 1 0;
-    min-width: 0;
-}
-
-.ptools-rule__remove {
-    flex: 0 0 auto;
-}
-
-/* ══ 18. Page footer ══════════════════════════════════════════════════════ */
+/* ══ 15. Page footer ══════════════════════════════════════════════════════ */
 
 .ptools-footer {
     margin-top: var(--ptools-space-7);
@@ -1481,7 +1250,7 @@ a.ptools-table__name:hover {
     text-decoration: underline;
 }
 
-/* ══ 19. Layout utilities & vertical rhythm ═══════════════════════════════ */
+/* ══ 16. Layout utilities & vertical rhythm ═══════════════════════════════ */
 
 .ptools-cols-2 {
     display: grid;
@@ -1508,7 +1277,7 @@ a.ptools-table__name:hover {
 /**
  * Vertical rhythm.
  *
- * Panel and modal bodies own the spacing between their own children, and grid
+ * A panel body owns the spacing between its own children, and grid
  * cells are spaced by `gap` alone. Without this, a `.ptools-field` in the left
  * column of a `.ptools-cols-2` row keeps its bottom margin while the one on the
  * right (a `:last-child`) drops it — the two rows end up unevenly spaced — and
@@ -1518,15 +1287,13 @@ a.ptools-table__name:hover {
  * specificity.
  */
 .ptools-panel__body>*,
-.ptools-modal__body>*,
 .ptools-cols-2>*,
 .ptools-split>*,
 .ptools-stack>* {
     margin-bottom: 0;
 }
 
-.ptools-panel__body>*+*,
-.ptools-modal__body>*+* {
+.ptools-panel__body>*+* {
     margin-top: var(--ptools-space-5);
 }
 
@@ -1543,7 +1310,7 @@ a.ptools-table__name:hover {
     margin-top: 0;
 }
 
-/* ══ 20. Responsive & motion ══════════════════════════════════════════════ */
+/* ══ 17. Responsive & motion ══════════════════════════════════════════════ */
 
 /* wp-admin keeps its 160px menu open down to 960px, so the usable width runs
    out well before the viewport does — collapse paired columns early. */
@@ -1625,10 +1392,7 @@ a.ptools-table__name:hover {
 
     .ptools-panel__header,
     .ptools-panel__body,
-    .ptools-panel__footer,
-    .ptools-modal__header,
-    .ptools-modal__body,
-    .ptools-modal__footer {
+    .ptools-panel__footer {
         padding-left: var(--ptools-space-4);
         padding-right: var(--ptools-space-4);
     }
@@ -1638,30 +1402,18 @@ a.ptools-table__name:hover {
         padding-left: var(--ptools-space-4);
         padding-right: var(--ptools-space-4);
     }
-
-    .ptools-rule {
-        flex-wrap: wrap;
-    }
-
-    .ptools-rule__type,
-    .ptools-rule__value {
-        flex-basis: 100%;
-    }
 }
 
 /* Stacked, full-width actions once buttons stop fitting side by side. */
 @media (max-width: 480px) {
 
-    .ptools-panel__footer,
-    .ptools-modal__footer {
+    .ptools-panel__footer {
         flex-direction: column-reverse;
         align-items: stretch;
     }
 
     .ptools-panel__footer>*,
-    .ptools-modal__footer>*,
-    .ptools-panel__footer .ptools-btn,
-    .ptools-modal__footer .ptools-btn {
+    .ptools-panel__footer .ptools-btn {
         width: 100%;
     }
 
@@ -1678,13 +1430,11 @@ a.ptools-table__name:hover {
 
 @media (prefers-reduced-motion: reduce) {
 
-    .ptools-wrap,
-    .ptools-modal__dialog {
+    .ptools-wrap {
         animation: none;
     }
 
-    .ptools-wrap *,
-    .ptools-modal * {
+    .ptools-wrap * {
         transition-duration: 1ms !important;
     }
 

@@ -11,7 +11,6 @@ Simple tools that solve common problems during WordPress development and maximiz
 - Custom Post Types Manager: Easily create and manage custom post types
 - HTML Junk Remover: Removes unnecessary code from the HTML such as generator version, WordPress emojis etc.
 - Junk Cleaner: This tool lets you delete the drafts and revisions that are taking up your disc space
-- Code Snippets: Easily insert and manage custom code snippets (CSS, JS, HTML) in the header, body, or footer
 - Comments Disabler: Completely disable WordPress comments globally and clean up your admin area, prevent spam comments via REST API
 - System Information: View a detailed overview of your WordPress environment and server configuration
 
@@ -21,7 +20,7 @@ Simple tools that solve common problems during WordPress development and maximiz
 
 ```
 powertools.php          Plugin header, constants, autoloader, bootstrap
-uninstall.php           Removes every option and snippet on uninstall
+uninstall.php           Removes every option PowerTools creates on uninstall
 includes/autoloader.php Maps PowerTools\ onto src/
 src/                    Classes only (PSR-4 under the PowerTools namespace)
   Plugin.php            Boots the tool registry and the admin side

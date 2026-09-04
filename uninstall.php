@@ -2,9 +2,9 @@
 /**
  * Fired when the plugin is uninstalled.
  *
- * Removes every option PowerTools creates and the code snippets it stores as
- * posts. Content created through the CPT Manager is deliberately left alone:
- * those are the user's own posts, only the post type registration goes away.
+ * Removes every option PowerTools creates. Content created through the CPT
+ * Manager is deliberately left alone: those are the user's own posts, only the
+ * post type registration goes away.
  *
  * @package PowerTools
  */
@@ -19,15 +19,12 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
  */
 const POWERTOOLS_UNINSTALL_OPTIONS = [
     'powertools_active_tools',
-    'powertools_allow_php_snippets',
     'powertools_cptm_custom_post_types',
     'powertools_disable_comments',
     'powertools_disable_gutenberg',
     'powertools_flush_rewrite_rules',
     'powertools_gutenberg_settings',
-    'powertools_insert_code_snippets',
     'powertools_remove_html_junk',
-    'powertools_snippet_has_errors',
     'powertools_toolbar_toggler_enabled',
 ];
 
@@ -37,19 +34,6 @@ const POWERTOOLS_UNINSTALL_OPTIONS = [
 function powertools_uninstall_site() {
     foreach (POWERTOOLS_UNINSTALL_OPTIONS as $option) {
         delete_option($option);
-    }
-
-    // The snippet post type is not registered during uninstall, so query the
-    // posts directly instead of relying on get_posts()' post type checks.
-    global $wpdb;
-
-    $snippet_ids = $wpdb->get_col($wpdb->prepare(
-        "SELECT ID FROM {$wpdb->posts} WHERE post_type = %s",
-        'powertools_snippet'
-    ));
-
-    foreach ($snippet_ids as $snippet_id) {
-        wp_delete_post((int) $snippet_id, true);
     }
 }
 

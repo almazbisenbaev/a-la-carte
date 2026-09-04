@@ -6,8 +6,6 @@
  *
  *   .ptools-js-autosubmit              submit the form when a control changes
  *   [data-ptools-reveal="<id>"]        show that element when this radio is checked
- *   [data-ptools-modal-open="<id>"]    open a modal
- *   [data-ptools-modal-close]          close the closest modal
  *   [data-ptools-confirm="message"]    confirm before submitting a form
  */
 (function () {
@@ -52,57 +50,6 @@
     }
 
     /**
-     * Modals: open, close on button / backdrop / Escape, and move focus into
-     * the dialog so keyboard users land in the right place.
-     */
-    function initModals() {
-        function open(modal) {
-            modal.classList.add('is-open');
-
-            var focusable = modal.querySelector('input:not([type="hidden"]):not([disabled]), button, select, textarea, a[href]');
-            if (focusable) {
-                focusable.focus();
-            }
-        }
-
-        function close(modal) {
-            modal.classList.remove('is-open');
-        }
-
-        document.addEventListener('click', function (event) {
-            var opener = event.target.closest('[data-ptools-modal-open]');
-            if (opener) {
-                event.preventDefault();
-                var modal = document.getElementById(opener.getAttribute('data-ptools-modal-open'));
-                if (modal) {
-                    open(modal);
-                }
-                return;
-            }
-
-            var closer = event.target.closest('[data-ptools-modal-close]');
-            if (closer) {
-                event.preventDefault();
-                close(closer.closest('.ptools-modal'));
-                return;
-            }
-
-            // A click on the backdrop itself (not the dialog) closes the modal.
-            if (event.target.classList.contains('ptools-modal')) {
-                close(event.target);
-            }
-        });
-
-        document.addEventListener('keydown', function (event) {
-            if (event.key !== 'Escape') {
-                return;
-            }
-
-            document.querySelectorAll('.ptools-modal.is-open').forEach(close);
-        });
-    }
-
-    /**
      * Confirm destructive submissions.
      */
     function initConfirm() {
@@ -118,7 +65,6 @@
     function init() {
         initAutoSubmit();
         initReveal();
-        initModals();
         initConfirm();
     }
 
