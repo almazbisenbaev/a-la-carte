@@ -38,12 +38,15 @@ function powertools_uninstall_site() {
 }
 
 if (is_multisite()) {
-    global $wpdb;
+    $powertools_site_ids = get_sites(
+        array(
+            'fields' => 'ids',
+            'number' => 0,
+        )
+    );
 
-    $blog_ids = $wpdb->get_col("SELECT blog_id FROM {$wpdb->blogs}");
-
-    foreach ($blog_ids as $blog_id) {
-        switch_to_blog((int) $blog_id);
+    foreach ($powertools_site_ids as $powertools_site_id) {
+        switch_to_blog((int) $powertools_site_id);
         powertools_uninstall_site();
         restore_current_blog();
     }

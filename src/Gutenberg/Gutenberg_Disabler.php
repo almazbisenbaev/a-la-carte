@@ -174,13 +174,15 @@ class Gutenberg_Disabler {
      * Save the Gutenberg disabler settings
      */
     private function save_settings() {
+        check_admin_referer('powertools_gutenberg_disabler');
+
         $mode = isset($_POST['gutenberg_mode']) ? sanitize_key(wp_unslash($_POST['gutenberg_mode'])) : 'none';
         if (!in_array($mode, array('all', 'selective', 'none'), true)) {
             $mode = 'none';
         }
 
-        $post_types = isset($_POST['post_types']) ? (array) wp_unslash($_POST['post_types']) : array();
-        $post_types = array_values(array_filter(array_map('sanitize_key', $post_types), 'post_type_exists'));
+        $post_types = isset($_POST['post_types']) ? array_map('sanitize_key', (array) wp_unslash($_POST['post_types'])) : array();
+        $post_types = array_values(array_filter($post_types, 'post_type_exists'));
 
         update_option(self::OPTION_NAME, array(
             'enabled'    => ($mode !== 'none'),

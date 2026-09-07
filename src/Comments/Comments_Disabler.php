@@ -182,6 +182,7 @@ class Comments_Disabler extends Simple_Toggle_Tool {
     public function disable_comments_page() {
         if (is_admin() && function_exists('get_current_screen')) {
             $screen = get_current_screen();
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request state used for display only; no data is changed.
             if ($screen && $screen->id === 'edit-comments' && !isset($_GET['action'])) {
                 wp_safe_redirect(admin_url());
                 exit;

@@ -118,6 +118,8 @@ abstract class Simple_Toggle_Tool {
      * Save the tool settings
      */
     protected function save_settings() {
+        check_admin_referer($this->get_nonce_action());
+
         update_option($this->get_option_name(), isset($_POST[$this->get_field_name()]) ? '1' : '0');
 
         add_settings_error(

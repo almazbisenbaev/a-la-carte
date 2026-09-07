@@ -13,7 +13,7 @@ if (!defined('WPINC')) {
     die;
 }
 
-$available_tools = Tool_Manager::get_available_tools();
+$powertools_available_tools = Tool_Manager::get_available_tools();
 
 UI::page_open(array(
     'title'       => __('PowerTools', 'powertools'),
@@ -25,23 +25,23 @@ Tool_Manager::render_toggle_notice();
 ?>
 
 <div class="ptools-tools">
-    <?php foreach ($available_tools as $tool_id => $tool) : ?>
+    <?php foreach ($powertools_available_tools as $powertools_tool_id => $powertools_tool) : ?>
         <?php
-        $is_active = Tool_Manager::is_tool_active($tool_id);
-        $page_url  = Tool_Manager::get_page_url($tool_id);
+        $powertools_is_active = Tool_Manager::is_tool_active($powertools_tool_id);
+        $powertools_page_url  = Tool_Manager::get_page_url($powertools_tool_id);
         ?>
         <div class="ptools-tool-card">
             <div class="ptools-tool-card__header">
                 <span class="ptools-tool-card__icon">
-                    <?php UI::dashicon($tool['icon']); ?>
+                    <?php UI::dashicon($powertools_tool['icon']); ?>
                 </span>
 
-                <?php if ($is_active) : ?>
-                    <a class="ptools-tool-card__title" href="<?php echo esc_url($page_url); ?>">
-                        <?php echo esc_html($tool['name']); ?>
+                <?php if ($powertools_is_active) : ?>
+                    <a class="ptools-tool-card__title" href="<?php echo esc_url($powertools_page_url); ?>">
+                        <?php echo esc_html($powertools_tool['name']); ?>
                     </a>
                 <?php else : ?>
-                    <span class="ptools-tool-card__title"><?php echo esc_html($tool['name']); ?></span>
+                    <span class="ptools-tool-card__title"><?php echo esc_html($powertools_tool['name']); ?></span>
                 <?php endif; ?>
 
                 <?php
@@ -50,24 +50,24 @@ Tool_Manager::render_toggle_notice();
                     'nonce_action' => 'powertools_toggle_tool',
                     'nonce_name'   => 'powertools_toggle_nonce',
                     'fields'       => array(
-                        'tool_id'   => $tool_id,
-                        'is_active' => $is_active ? '0' : '1',
+                        'tool_id'   => $powertools_tool_id,
+                        'is_active' => $powertools_is_active ? '0' : '1',
                     ),
-                    'checked'      => $is_active,
+                    'checked'      => $powertools_is_active,
                     /* translators: %s: tool name */
-                    'label'        => sprintf(__('Activate %s', 'powertools'), $tool['name']),
+                    'label'        => sprintf(__('Activate %s', 'powertools'), $powertools_tool['name']),
                 ));
                 ?>
             </div>
 
             <p class="ptools-tool-card__desc">
-                <?php echo esc_html($tool['description']); ?>
+                <?php echo esc_html($powertools_tool['description']); ?>
             </p>
 
             <div class="ptools-tool-card__footer">
-                <?php if ($is_active) : ?>
+                <?php if ($powertools_is_active) : ?>
                     <span class="ptools-pill ptools-pill--success"><?php esc_html_e('Active', 'powertools'); ?></span>
-                    <a class="ptools-btn ptools-btn--secondary" href="<?php echo esc_url($page_url); ?>">
+                    <a class="ptools-btn ptools-btn--secondary" href="<?php echo esc_url($powertools_page_url); ?>">
                         <?php esc_html_e('Configure', 'powertools'); ?>
                         <?php UI::dashicon('dashicons-arrow-right-alt2'); ?>
                     </a>

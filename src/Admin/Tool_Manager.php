@@ -243,7 +243,7 @@ class Tool_Manager {
             wp_die(esc_html__('Invalid tool.', 'powertools'));
         }
 
-        $is_active = isset($_POST['is_active']) ? (bool) wp_unslash($_POST['is_active']) : false;
+        $is_active = !empty($_POST['is_active']);
 
         $active_tools = self::get_active_tools();
         $active_tools[$tool_id] = $is_active;
@@ -263,12 +263,14 @@ class Tool_Manager {
      * Render the feedback notice for the tool that was just toggled, if any
      */
     public static function render_toggle_notice() {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request state used for display only; no data is changed.
         $code = isset($_GET['pt_message']) ? sanitize_key(wp_unslash($_GET['pt_message'])) : '';
 
         if (!isset(self::MESSAGES[$code])) {
             return;
         }
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request state used for display only; no data is changed.
         $tool = self::get_tool(isset($_GET['pt_tool']) ? sanitize_key(wp_unslash($_GET['pt_tool'])) : '');
 
         if (!$tool) {

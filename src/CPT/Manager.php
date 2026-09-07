@@ -70,6 +70,7 @@ class Manager {
 
         $custom_post_types = $this->get_post_types();
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request state used for display only; no data is changed.
         $edit_slug = isset($_GET['edit']) ? sanitize_key(wp_unslash($_GET['edit'])) : '';
         $editing   = isset($custom_post_types[$edit_slug]) ? $custom_post_types[$edit_slug] : null;
         $page_url  = Tool_Manager::get_page_url('cpt_manager');
@@ -303,6 +304,7 @@ class Manager {
      * Render the feedback message for the current request, if any
      */
     private function render_message() {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request state used for display only; no data is changed.
         $code = isset($_GET['pt_message']) ? sanitize_key(wp_unslash($_GET['pt_message'])) : '';
 
         if (!isset(self::MESSAGES[$code])) {
@@ -377,8 +379,8 @@ class Manager {
             $this->redirect_with_message('slug_taken');
         }
 
-        $supports = isset($_POST['powertools_cptm_supports']) ? (array) wp_unslash($_POST['powertools_cptm_supports']) : array();
-        $supports = array_values(array_intersect(self::SUPPORT_OPTIONS, array_map('sanitize_key', $supports)));
+        $supports = isset($_POST['powertools_cptm_supports']) ? array_map('sanitize_key', (array) wp_unslash($_POST['powertools_cptm_supports'])) : array();
+        $supports = array_values(array_intersect(self::SUPPORT_OPTIONS, $supports));
 
         $custom_post_types[$slug] = array(
             'name'           => $slug,
