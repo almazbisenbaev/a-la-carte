@@ -1,12 +1,11 @@
 <?php
 /**
- * Plugin Name: PowerTools
+ * Plugin Name: PowerTools – Site Admin Utilities
  * Plugin URI: https://github.com/almazbisenbaev/powertools
  * Description: Useful WordPress utilities to solve common WordPress problems and maximize your productivity
  * Author: Almaz Bissenbayev
  * Version: 1.0.0
  * Requires at least: 6.0
- * Tested up to: 7.1
  * Requires PHP: 7.4
  * Text Domain: powertools
  * Domain Path: /languages

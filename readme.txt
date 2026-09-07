@@ -1,4 +1,4 @@
-=== PowerTools ===
+=== PowerTools – Site Admin Utilities ===
 Contributors: almazbisenbaev
 Tags: disable comments, disable gutenberg, custom post types, admin bar, cleanup
 Requires at least: 6.0
