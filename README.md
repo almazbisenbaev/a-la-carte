@@ -1,5 +1,5 @@
 
-# PowerTools
+# Toolwright
 
 Simple tools that solve common problems during WordPress development and maximize your productivity
 
@@ -19,10 +19,10 @@ Simple tools that solve common problems during WordPress development and maximiz
 ## Project structure
 
 ```
-powertools.php          Plugin header, constants, autoloader, bootstrap
-uninstall.php           Removes every option PowerTools creates on uninstall
-includes/autoloader.php Maps PowerTools\ onto src/
-src/                    Classes only (PSR-4 under the PowerTools namespace)
+toolwright.php          Plugin header, constants, autoloader, bootstrap
+uninstall.php           Removes every option Toolwright creates on uninstall
+includes/autoloader.php Maps Toolwright\ onto src/
+src/                    Classes only (PSR-4 under the Toolwright namespace)
   Plugin.php            Boots the tool registry and the admin side
   Admin/                Tool registry, menu, asset loading, shared UI helpers
   <Feature>/            One directory per tool

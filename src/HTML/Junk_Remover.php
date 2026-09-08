@@ -2,12 +2,12 @@
 /**
  * HTML Junk Remover functionality
  *
- * @package PowerTools
+ * @package Toolwright
  */
 
-namespace PowerTools\HTML;
+namespace Toolwright\HTML;
 
-use PowerTools\Admin\Simple_Toggle_Tool;
+use Toolwright\Admin\Simple_Toggle_Tool;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -23,7 +23,7 @@ class Junk_Remover extends Simple_Toggle_Tool {
      *
      * @var string
      */
-    private const OPTION_NAME = 'powertools_remove_html_junk';
+    private const OPTION_NAME = 'toolwright_remove_html_junk';
 
     /**
      * Initialize the class
@@ -41,15 +41,15 @@ class Junk_Remover extends Simple_Toggle_Tool {
     }
 
     protected function get_nonce_action(): string {
-        return 'powertools_html_junk_remover';
+        return 'toolwright_html_junk_remover';
     }
 
     protected function get_page_title(): string {
-        return __('HTML Junk Remover', 'powertools');
+        return __('HTML Junk Remover', 'toolwright');
     }
 
     protected function get_page_description(): string {
-        return __('Clean up your website source code by removing unnecessary tags, scripts, and links from the HEAD section.', 'powertools');
+        return __('Clean up your website source code by removing unnecessary tags, scripts, and links from the HEAD section.', 'toolwright');
     }
 
     protected function get_field_name(): string {
@@ -57,11 +57,11 @@ class Junk_Remover extends Simple_Toggle_Tool {
     }
 
     protected function get_field_title(): string {
-        return __('Remove HTML Junk', 'powertools');
+        return __('Remove HTML Junk', 'toolwright');
     }
 
     protected function get_field_description(): string {
-        return __('This will remove WordPress version tags, emojis, REST API links, and other discovery links from your site\'s head.', 'powertools');
+        return __('This will remove WordPress version tags, emojis, REST API links, and other discovery links from your site\'s head.', 'toolwright');
     }
 
     /**

@@ -2,13 +2,13 @@
 /**
  * System Info functionality
  *
- * @package PowerTools
+ * @package Toolwright
  */
 
-namespace PowerTools\System;
+namespace Toolwright\System;
 
-use PowerTools\Admin\Tool_Manager;
-use PowerTools\Admin\UI;
+use Toolwright\Admin\Tool_Manager;
+use Toolwright\Admin\UI;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -28,14 +28,14 @@ class Info {
 
         UI::page_open(array(
             'tool_id'     => 'system_info',
-            'title'       => __('System Information', 'powertools'),
-            'description' => __('Detailed overview of your WordPress environment, server configuration, and active plugins.', 'powertools'),
+            'title'       => __('System Information', 'toolwright'),
+            'description' => __('Detailed overview of your WordPress environment, server configuration, and active plugins.', 'toolwright'),
         ));
         ?>
         <div class="ptools-stack">
             <div class="ptools-panel">
                 <div class="ptools-panel__header">
-                    <h2 class="ptools-h2"><?php esc_html_e('Environment Overview', 'powertools'); ?></h2>
+                    <h2 class="ptools-h2"><?php esc_html_e('Environment Overview', 'toolwright'); ?></h2>
                 </div>
                 <div class="ptools-panel__body ptools-panel__body--flush">
                     <?php $this->render_definition_table($this->get_environment_rows()); ?>
@@ -45,7 +45,7 @@ class Info {
             <div class="ptools-cols-2">
                 <div class="ptools-panel">
                     <div class="ptools-panel__header">
-                        <h2 class="ptools-h2"><?php esc_html_e('PHP Configuration', 'powertools'); ?></h2>
+                        <h2 class="ptools-h2"><?php esc_html_e('PHP Configuration', 'toolwright'); ?></h2>
                     </div>
                     <div class="ptools-panel__body ptools-panel__body--flush">
                         <?php $this->render_definition_table($this->get_php_rows()); ?>
@@ -54,7 +54,7 @@ class Info {
 
                 <div class="ptools-panel">
                     <div class="ptools-panel__header">
-                        <h2 class="ptools-h2"><?php esc_html_e('Server Resources', 'powertools'); ?></h2>
+                        <h2 class="ptools-h2"><?php esc_html_e('Server Resources', 'toolwright'); ?></h2>
                     </div>
                     <div class="ptools-panel__body ptools-panel__body--flush">
                         <?php $this->render_definition_table($this->get_disk_rows()); ?>
@@ -64,7 +64,7 @@ class Info {
 
             <div class="ptools-panel">
                 <div class="ptools-panel__header">
-                    <h2 class="ptools-h2"><?php esc_html_e('Installed Plugins', 'powertools'); ?></h2>
+                    <h2 class="ptools-h2"><?php esc_html_e('Installed Plugins', 'toolwright'); ?></h2>
                 </div>
                 <div class="ptools-panel__body ptools-panel__body--flush">
                     <?php $this->render_plugins_table(); ?>
@@ -84,11 +84,11 @@ class Info {
         global $wpdb;
 
         return array(
-            __('Site URL', 'powertools')           => get_bloginfo('url'),
-            __('WordPress Version', 'powertools')  => get_bloginfo('version'),
-            __('PHP Version', 'powertools')        => phpversion(),
-            __('MySQL Version', 'powertools')      => $wpdb->db_version(),
-            __('Server Software', 'powertools')    => isset($_SERVER['SERVER_SOFTWARE']) ? sanitize_text_field(wp_unslash($_SERVER['SERVER_SOFTWARE'])) : __('Unknown', 'powertools'),
+            __('Site URL', 'toolwright')           => get_bloginfo('url'),
+            __('WordPress Version', 'toolwright')  => get_bloginfo('version'),
+            __('PHP Version', 'toolwright')        => phpversion(),
+            __('MySQL Version', 'toolwright')      => $wpdb->db_version(),
+            __('Server Software', 'toolwright')    => isset($_SERVER['SERVER_SOFTWARE']) ? sanitize_text_field(wp_unslash($_SERVER['SERVER_SOFTWARE'])) : __('Unknown', 'toolwright'),
         );
     }
 
@@ -99,9 +99,9 @@ class Info {
      */
     private function get_php_rows() {
         return array(
-            __('Max Execution Time', 'powertools')  => ini_get('max_execution_time') . 's',
-            __('Memory Limit', 'powertools')        => ini_get('memory_limit'),
-            __('Upload Max Filesize', 'powertools') => ini_get('upload_max_filesize'),
+            __('Max Execution Time', 'toolwright')  => ini_get('max_execution_time') . 's',
+            __('Memory Limit', 'toolwright')        => ini_get('memory_limit'),
+            __('Upload Max Filesize', 'toolwright') => ini_get('upload_max_filesize'),
         );
     }
 
@@ -112,8 +112,8 @@ class Info {
      */
     private function get_disk_rows() {
         return array(
-            __('Available Disk Space', 'powertools') => $this->format_bytes($this->disk_space('disk_free_space')),
-            __('Total Disk Space', 'powertools')     => $this->format_bytes($this->disk_space('disk_total_space')),
+            __('Available Disk Space', 'toolwright') => $this->format_bytes($this->disk_space('disk_free_space')),
+            __('Total Disk Space', 'toolwright')     => $this->format_bytes($this->disk_space('disk_total_space')),
         );
     }
 
@@ -169,9 +169,9 @@ class Info {
             <table class="ptools-table">
                 <thead>
                     <tr>
-                        <th scope="col"><?php esc_html_e('Plugin Name', 'powertools'); ?></th>
-                        <th scope="col"><?php esc_html_e('Status', 'powertools'); ?></th>
-                        <th scope="col"><?php esc_html_e('Version', 'powertools'); ?></th>
+                        <th scope="col"><?php esc_html_e('Plugin Name', 'toolwright'); ?></th>
+                        <th scope="col"><?php esc_html_e('Status', 'toolwright'); ?></th>
+                        <th scope="col"><?php esc_html_e('Version', 'toolwright'); ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -181,7 +181,7 @@ class Info {
                             <td><span class="ptools-table__name"><?php echo esc_html($plugin['Name']); ?></span></td>
                             <td>
                                 <span class="ptools-pill ptools-pill--upper <?php echo $is_active ? 'ptools-pill--success' : 'ptools-pill--neutral'; ?>">
-                                    <?php echo $is_active ? esc_html__('Active', 'powertools') : esc_html__('Inactive', 'powertools'); ?>
+                                    <?php echo $is_active ? esc_html__('Active', 'toolwright') : esc_html__('Inactive', 'toolwright'); ?>
                                 </span>
                             </td>
                             <td><span class="ptools-mono ptools-text-muted"><?php echo esc_html($plugin['Version']); ?></span></td>
@@ -201,7 +201,7 @@ class Info {
      */
     private function format_bytes($bytes) {
         if (!$bytes) {
-            return __('Unknown', 'powertools');
+            return __('Unknown', 'toolwright');
         }
 
         return size_format($bytes, 2);

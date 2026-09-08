@@ -6,10 +6,10 @@
  * Subclasses describe themselves; the settings screen is rendered here so
  * every one of them looks and behaves the same.
  *
- * @package PowerTools
+ * @package Toolwright
  */
 
-namespace PowerTools\Admin;
+namespace Toolwright\Admin;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -88,7 +88,7 @@ abstract class Simple_Toggle_Tool {
             <?php wp_nonce_field($this->get_nonce_action()); ?>
 
             <div class="ptools-panel__header">
-                <h2 class="ptools-h2"><?php esc_html_e('Settings', 'powertools'); ?></h2>
+                <h2 class="ptools-h2"><?php esc_html_e('Settings', 'toolwright'); ?></h2>
             </div>
 
             <div class="ptools-panel__body">
@@ -106,7 +106,7 @@ abstract class Simple_Toggle_Tool {
 
             <div class="ptools-panel__footer">
                 <button type="submit" name="save" value="1" class="ptools-btn ptools-btn--primary">
-                    <?php esc_html_e('Save Settings', 'powertools'); ?>
+                    <?php esc_html_e('Save Settings', 'toolwright'); ?>
                 </button>
             </div>
         </form>
@@ -123,9 +123,9 @@ abstract class Simple_Toggle_Tool {
         update_option($this->get_option_name(), isset($_POST[$this->get_field_name()]) ? '1' : '0');
 
         add_settings_error(
-            'powertools_messages',
-            'powertools_message',
-            __('Settings saved.', 'powertools'),
+            'toolwright_messages',
+            'toolwright_message',
+            __('Settings saved.', 'toolwright'),
             'updated'
         );
     }

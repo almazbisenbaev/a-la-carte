@@ -2,12 +2,12 @@
 /**
  * Comments Disabler functionality
  *
- * @package PowerTools
+ * @package Toolwright
  */
 
-namespace PowerTools\Comments;
+namespace Toolwright\Comments;
 
-use PowerTools\Admin\Simple_Toggle_Tool;
+use Toolwright\Admin\Simple_Toggle_Tool;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -23,7 +23,7 @@ class Comments_Disabler extends Simple_Toggle_Tool {
      *
      * @var string
      */
-    private const OPTION_NAME = 'powertools_disable_comments';
+    private const OPTION_NAME = 'toolwright_disable_comments';
 
     /**
      * Initialize the class
@@ -41,15 +41,15 @@ class Comments_Disabler extends Simple_Toggle_Tool {
     }
 
     protected function get_nonce_action(): string {
-        return 'powertools_comments_disabler';
+        return 'toolwright_comments_disabler';
     }
 
     protected function get_page_title(): string {
-        return __('Disable Comments', 'powertools');
+        return __('Disable Comments', 'toolwright');
     }
 
     protected function get_page_description(): string {
-        return __('Completely disable the WordPress comments feature and clean up your admin.', 'powertools');
+        return __('Completely disable the WordPress comments feature and clean up your admin.', 'toolwright');
     }
 
     protected function get_field_name(): string {
@@ -57,11 +57,11 @@ class Comments_Disabler extends Simple_Toggle_Tool {
     }
 
     protected function get_field_title(): string {
-        return __('Disable Comments Globally', 'powertools');
+        return __('Disable Comments Globally', 'toolwright');
     }
 
     protected function get_field_description(): string {
-        return __('This will disable comments on all post types, remove comment links from the admin bar, and hide the comments menu.', 'powertools');
+        return __('This will disable comments on all post types, remove comment links from the admin bar, and hide the comments menu.', 'toolwright');
     }
 
     /**

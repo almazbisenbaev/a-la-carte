@@ -6,10 +6,10 @@
  * icon represents them and where their settings page lives. Anything that
  * needs to describe a tool should read it from here rather than repeating it.
  *
- * @package PowerTools
+ * @package Toolwright
  */
 
-namespace PowerTools\Admin;
+namespace Toolwright\Admin;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -21,7 +21,7 @@ if (!defined('WPINC')) {
  */
 class Tool_Manager {
     /**
-     * Capability required to use any PowerTools screen
+     * Capability required to use any Toolwright screen
      *
      * @var string
      */
@@ -32,7 +32,7 @@ class Tool_Manager {
      *
      * @var string
      */
-    private const OPTION_NAME = 'powertools_active_tools';
+    private const OPTION_NAME = 'toolwright_active_tools';
 
     /**
      * List of available tools
@@ -44,43 +44,43 @@ class Tool_Manager {
             'name' => 'CPT Manager',
             'description' => 'Easily create and manage custom post types',
             'icon' => 'dashicons-category',
-            'class' => 'PowerTools\\CPT\\Manager'
+            'class' => 'Toolwright\\CPT\\Manager'
         ],
         'toolbar_toggler' => [
             'name' => 'Admin Toolbar Toggler',
             'description' => 'Replaces the admin toolbar with a nice toggler button',
             'icon' => 'dashicons-admin-generic',
-            'class' => 'PowerTools\\Toolbar\\Toolbar_Toggler'
+            'class' => 'Toolwright\\Toolbar\\Toolbar_Toggler'
         ],
         'gutenberg_disabler' => [
             'name' => 'Gutenberg Disabler',
             'description' => 'Return the legacy editor for specific post types',
             'icon' => 'dashicons-edit',
-            'class' => 'PowerTools\\Gutenberg\\Gutenberg_Disabler'
+            'class' => 'Toolwright\\Gutenberg\\Gutenberg_Disabler'
         ],
         'comments_disabler' => [
             'name' => 'Comments Disabler',
             'description' => 'This tool allows you to disable comments globally across your site',
             'icon' => 'dashicons-admin-comments',
-            'class' => 'PowerTools\\Comments\\Comments_Disabler'
+            'class' => 'Toolwright\\Comments\\Comments_Disabler'
         ],
         'html_junk_remover' => [
             'name' => 'HTML Junk Remover',
             'description' => 'This tool removes the useless lines of code from HTML (such as WordPress version, emojis, etc.)',
             'icon' => 'dashicons-html',
-            'class' => 'PowerTools\\HTML\\Junk_Remover'
+            'class' => 'Toolwright\\HTML\\Junk_Remover'
         ],
         'junk_cleaner' => [
             'name' => 'Junk Cleaner',
             'description' => 'This tool lets you delete the drafts and revisions that are taking up your disc space',
             'icon' => 'dashicons-trash',
-            'class' => 'PowerTools\\Cleaner\\Junk_Cleaner'
+            'class' => 'Toolwright\\Cleaner\\Junk_Cleaner'
         ],
         'system_info' => [
             'name' => 'System Info',
             'description' => 'View and export system info that can be useful for your IT guy or a tech support agent',
             'icon' => 'dashicons-info',
-            'class' => 'PowerTools\\System\\Info'
+            'class' => 'Toolwright\\System\\Info'
         ]
     ];
 
@@ -108,7 +108,7 @@ class Tool_Manager {
      * Initialize the class
      */
     public function __construct() {
-        add_action('admin_post_powertools_toggle_tool', array($this, 'handle_tool_toggle'));
+        add_action('admin_post_toolwright_toggle_tool', array($this, 'handle_tool_toggle'));
     }
 
     /**
@@ -142,12 +142,12 @@ class Tool_Manager {
      */
     public static function get_available_tools() {
         /**
-         * Filter the tools PowerTools makes available.
+         * Filter the tools Toolwright makes available.
          *
          * @param array $tools Tool definitions keyed by tool id. Each one needs
          *                     a name, description, icon and class.
          */
-        $tools = apply_filters('powertools_tools', self::AVAILABLE_TOOLS);
+        $tools = apply_filters('toolwright_tools', self::AVAILABLE_TOOLS);
 
         return is_array($tools) ? $tools : self::AVAILABLE_TOOLS;
     }
@@ -182,7 +182,7 @@ class Tool_Manager {
      * @return string
      */
     public static function get_page_slug($tool_id) {
-        return 'powertools-' . str_replace('_', '-', $tool_id);
+        return 'toolwright-' . str_replace('_', '-', $tool_id);
     }
 
     /**
@@ -220,11 +220,11 @@ class Tool_Manager {
     }
 
     /**
-     * Stop the current request unless the user may manage PowerTools
+     * Stop the current request unless the user may manage Toolwright
      */
     public static function require_capability() {
         if (!current_user_can(self::CAPABILITY)) {
-            wp_die(esc_html__('You do not have sufficient permissions to access this page.', 'powertools'));
+            wp_die(esc_html__('You do not have sufficient permissions to access this page.', 'toolwright'));
         }
     }
 
@@ -234,13 +234,13 @@ class Tool_Manager {
     public function handle_tool_toggle() {
         self::require_capability();
 
-        if (!isset($_POST['powertools_toggle_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['powertools_toggle_nonce'])), 'powertools_toggle_tool')) {
-            wp_die(esc_html__('Security check failed.', 'powertools'));
+        if (!isset($_POST['toolwright_toggle_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['toolwright_toggle_nonce'])), 'toolwright_toggle_tool')) {
+            wp_die(esc_html__('Security check failed.', 'toolwright'));
         }
 
         $tool_id = isset($_POST['tool_id']) ? sanitize_key(wp_unslash($_POST['tool_id'])) : '';
         if (!self::get_tool($tool_id)) {
-            wp_die(esc_html__('Invalid tool.', 'powertools'));
+            wp_die(esc_html__('Invalid tool.', 'toolwright'));
         }
 
         $is_active = !empty($_POST['is_active']);
@@ -251,10 +251,10 @@ class Tool_Manager {
 
         wp_safe_redirect(add_query_arg(
             array(
-                'pt_message' => $is_active ? 'activated' : 'deactivated',
-                'pt_tool'    => $tool_id,
+                'tw_message' => $is_active ? 'activated' : 'deactivated',
+                'tw_tool'    => $tool_id,
             ),
-            admin_url('admin.php?page=powertools')
+            admin_url('admin.php?page=toolwright')
         ));
         exit;
     }
@@ -264,14 +264,14 @@ class Tool_Manager {
      */
     public static function render_toggle_notice() {
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request state used for display only; no data is changed.
-        $code = isset($_GET['pt_message']) ? sanitize_key(wp_unslash($_GET['pt_message'])) : '';
+        $code = isset($_GET['tw_message']) ? sanitize_key(wp_unslash($_GET['tw_message'])) : '';
 
         if (!isset(self::MESSAGES[$code])) {
             return;
         }
 
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request state used for display only; no data is changed.
-        $tool = self::get_tool(isset($_GET['pt_tool']) ? sanitize_key(wp_unslash($_GET['pt_tool'])) : '');
+        $tool = self::get_tool(isset($_GET['tw_tool']) ? sanitize_key(wp_unslash($_GET['tw_tool'])) : '');
 
         if (!$tool) {
             return;
@@ -279,9 +279,9 @@ class Tool_Manager {
 
         $message = 'activated' === $code
             /* translators: %s: tool name */
-            ? sprintf(__('%s has been activated and now has its own settings page.', 'powertools'), $tool['name'])
+            ? sprintf(__('%s has been activated and now has its own settings page.', 'toolwright'), $tool['name'])
             /* translators: %s: tool name */
-            : sprintf(__('%s has been deactivated.', 'powertools'), $tool['name']);
+            : sprintf(__('%s has been deactivated.', 'toolwright'), $tool['name']);
 
         UI::notice($message, self::MESSAGES[$code]);
     }

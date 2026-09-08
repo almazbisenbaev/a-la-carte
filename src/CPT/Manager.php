@@ -2,13 +2,13 @@
 /**
  * CPT Manager functionality
  *
- * @package PowerTools
+ * @package Toolwright
  */
 
-namespace PowerTools\CPT;
+namespace Toolwright\CPT;
 
-use PowerTools\Admin\Tool_Manager;
-use PowerTools\Admin\UI;
+use Toolwright\Admin\Tool_Manager;
+use Toolwright\Admin\UI;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -24,7 +24,7 @@ class Manager {
      *
      * @var string
      */
-    private const OPTION_NAME = 'powertools_cptm_custom_post_types';
+    private const OPTION_NAME = 'toolwright_cptm_custom_post_types';
 
     /**
      * Feedback messages, keyed by the code passed through the redirect.
@@ -57,9 +57,9 @@ class Manager {
      */
     public function __construct() {
         add_action('init', array($this, 'register_custom_post_types'));
-        add_action('admin_post_powertools_cptm_add', array($this, 'handle_add_post_type'));
-        add_action('admin_post_powertools_cptm_edit', array($this, 'handle_edit_post_type'));
-        add_action('admin_post_powertools_cptm_delete', array($this, 'handle_delete_post_type'));
+        add_action('admin_post_toolwright_cptm_add', array($this, 'handle_add_post_type'));
+        add_action('admin_post_toolwright_cptm_edit', array($this, 'handle_edit_post_type'));
+        add_action('admin_post_toolwright_cptm_delete', array($this, 'handle_delete_post_type'));
     }
 
     /**
@@ -89,25 +89,25 @@ class Manager {
 
         UI::page_open(array(
             'tool_id'     => 'cpt_manager',
-            'title'       => __('CPT Manager', 'powertools'),
-            'description' => __('Create and manage custom post types for your WordPress site with ease.', 'powertools'),
+            'title'       => __('CPT Manager', 'toolwright'),
+            'description' => __('Create and manage custom post types for your WordPress site with ease.', 'toolwright'),
         ));
 
         $this->render_message();
         ?>
         <div class="ptools-split">
             <form class="ptools-panel" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
-                <input type="hidden" name="action" value="<?php echo $editing ? 'powertools_cptm_edit' : 'powertools_cptm_add'; ?>" />
+                <input type="hidden" name="action" value="<?php echo $editing ? 'toolwright_cptm_edit' : 'toolwright_cptm_add'; ?>" />
                 <?php
                 wp_nonce_field(
-                    $editing ? 'powertools_cptm_edit_nonce_action' : 'powertools_cptm_add_nonce_action',
-                    $editing ? 'powertools_cptm_edit_nonce' : 'powertools_cptm_add_nonce'
+                    $editing ? 'toolwright_cptm_edit_nonce_action' : 'toolwright_cptm_add_nonce_action',
+                    $editing ? 'toolwright_cptm_edit_nonce' : 'toolwright_cptm_add_nonce'
                 );
                 ?>
 
                 <div class="ptools-panel__header">
                     <h2 class="ptools-h2">
-                        <?php echo $editing ? esc_html__('Edit Post Type', 'powertools') : esc_html__('Add New Post Type', 'powertools'); ?>
+                        <?php echo $editing ? esc_html__('Edit Post Type', 'toolwright') : esc_html__('Add New Post Type', 'toolwright'); ?>
                     </h2>
                 </div>
 
@@ -115,27 +115,27 @@ class Manager {
                     <div class="ptools-cols-2">
                         <div class="ptools-field">
                             <label class="ptools-label" for="ptools-cptools-slug">
-                                <?php esc_html_e('Post Type Slug', 'powertools'); ?>
+                                <?php esc_html_e('Post Type Slug', 'toolwright'); ?>
                                 <span class="ptools-required" aria-hidden="true">*</span>
                             </label>
                             <input class="ptools-form-control ptools-form-control--mono" id="ptools-cptools-slug" type="text"
-                                   name="powertools_cptm_post_type_name"
+                                   name="toolwright_cptm_post_type_name"
                                    value="<?php echo esc_attr($values['name']); ?>"
                                    placeholder="portfolio"
                                    maxlength="20"
                                    <?php echo $editing ? 'readonly' : 'required'; ?> />
-                            <p class="ptools-help"><?php esc_html_e('Lowercase and underscores only, 20 characters max.', 'powertools'); ?></p>
+                            <p class="ptools-help"><?php esc_html_e('Lowercase and underscores only, 20 characters max.', 'toolwright'); ?></p>
                         </div>
 
                         <div class="ptools-field">
-                            <label class="ptools-label" for="ptools-cptools-icon"><?php esc_html_e('Menu Icon', 'powertools'); ?></label>
+                            <label class="ptools-label" for="ptools-cptools-icon"><?php esc_html_e('Menu Icon', 'toolwright'); ?></label>
                             <input class="ptools-form-control ptools-form-control--mono" id="ptools-cptools-icon" type="text"
-                                   name="powertools_cptm_menu_icon"
+                                   name="toolwright_cptm_menu_icon"
                                    value="<?php echo esc_attr($values['menu_icon']); ?>"
                                    placeholder="dashicons-admin-post" />
                             <p class="ptools-help">
                                 <a href="https://developer.wordpress.org/resource/dashicons/" target="_blank" rel="noopener">
-                                    <?php esc_html_e('Browse Dashicons', 'powertools'); ?>
+                                    <?php esc_html_e('Browse Dashicons', 'toolwright'); ?>
                                 </a>
                             </p>
                         </div>
@@ -144,37 +144,37 @@ class Manager {
                     <div class="ptools-cols-2">
                         <div class="ptools-field">
                             <label class="ptools-label" for="ptools-cptools-singular">
-                                <?php esc_html_e('Singular Label', 'powertools'); ?>
+                                <?php esc_html_e('Singular Label', 'toolwright'); ?>
                                 <span class="ptools-required" aria-hidden="true">*</span>
                             </label>
                             <input class="ptools-form-control" id="ptools-cptools-singular" type="text"
-                                   name="powertools_cptm_singular_label"
+                                   name="toolwright_cptm_singular_label"
                                    value="<?php echo esc_attr($values['singular_label']); ?>"
-                                   placeholder="<?php esc_attr_e('Project', 'powertools'); ?>"
+                                   placeholder="<?php esc_attr_e('Project', 'toolwright'); ?>"
                                    required />
                         </div>
 
                         <div class="ptools-field">
                             <label class="ptools-label" for="ptools-cptools-plural">
-                                <?php esc_html_e('Plural Label', 'powertools'); ?>
+                                <?php esc_html_e('Plural Label', 'toolwright'); ?>
                                 <span class="ptools-required" aria-hidden="true">*</span>
                             </label>
                             <input class="ptools-form-control" id="ptools-cptools-plural" type="text"
-                                   name="powertools_cptm_plural_label"
+                                   name="toolwright_cptm_plural_label"
                                    value="<?php echo esc_attr($values['plural_label']); ?>"
-                                   placeholder="<?php esc_attr_e('Projects', 'powertools'); ?>"
+                                   placeholder="<?php esc_attr_e('Projects', 'toolwright'); ?>"
                                    required />
                         </div>
                     </div>
 
                     <div class="ptools-panel__section">
-                        <p class="ptools-eyebrow"><?php esc_html_e('Behaviour', 'powertools'); ?></p>
+                        <p class="ptools-eyebrow"><?php esc_html_e('Behaviour', 'toolwright'); ?></p>
                         <div class="ptools-choice-grid">
                             <?php
                             $flags = array(
-                                'powertools_cptm_public'       => array(__('Public', 'powertools'), $values['public']),
-                                'powertools_cptm_has_archive'  => array(__('Has Archive', 'powertools'), $values['has_archive']),
-                                'powertools_cptm_hierarchical' => array(__('Hierarchical', 'powertools'), $values['hierarchical']),
+                                'toolwright_cptm_public'       => array(__('Public', 'toolwright'), $values['public']),
+                                'toolwright_cptm_has_archive'  => array(__('Has Archive', 'toolwright'), $values['has_archive']),
+                                'toolwright_cptm_hierarchical' => array(__('Hierarchical', 'toolwright'), $values['hierarchical']),
                             );
                             foreach ($flags as $flag_name => $flag) :
                                 ?>
@@ -189,11 +189,11 @@ class Manager {
                     </div>
 
                     <div class="ptools-panel__section">
-                        <p class="ptools-eyebrow"><?php esc_html_e('Supports', 'powertools'); ?></p>
+                        <p class="ptools-eyebrow"><?php esc_html_e('Supports', 'toolwright'); ?></p>
                         <div class="ptools-choice-grid">
                             <?php foreach (self::SUPPORT_OPTIONS as $option) : ?>
                                 <label class="ptools-choice ptools-choice--boxed">
-                                    <input type="checkbox" name="powertools_cptm_supports[]"
+                                    <input type="checkbox" name="toolwright_cptm_supports[]"
                                            value="<?php echo esc_attr($option); ?>"
                                            <?php checked(in_array($option, (array) $values['supports'], true)); ?> />
                                     <span class="ptools-choice__text">
@@ -208,18 +208,18 @@ class Manager {
                 <div class="ptools-panel__footer">
                     <?php if ($editing) : ?>
                         <a href="<?php echo esc_url($page_url); ?>" class="ptools-btn ptools-btn--secondary">
-                            <?php esc_html_e('Cancel', 'powertools'); ?>
+                            <?php esc_html_e('Cancel', 'toolwright'); ?>
                         </a>
                     <?php endif; ?>
                     <button type="submit" class="ptools-btn ptools-btn--primary">
-                        <?php echo $editing ? esc_html__('Update Post Type', 'powertools') : esc_html__('Create Post Type', 'powertools'); ?>
+                        <?php echo $editing ? esc_html__('Update Post Type', 'toolwright') : esc_html__('Create Post Type', 'toolwright'); ?>
                     </button>
                 </div>
             </form>
 
             <div class="ptools-panel">
                 <div class="ptools-panel__header">
-                    <h2 class="ptools-h2"><?php esc_html_e('Post Types', 'powertools'); ?></h2>
+                    <h2 class="ptools-h2"><?php esc_html_e('Post Types', 'toolwright'); ?></h2>
                     <span class="ptools-pill ptools-pill--brand"><?php echo esc_html(count($custom_post_types)); ?></span>
                 </div>
 
@@ -227,14 +227,14 @@ class Manager {
                     <?php if (empty($custom_post_types)) : ?>
                         <div class="ptools-empty">
                             <span class="ptools-empty__icon"><?php UI::dashicon('dashicons-category'); ?></span>
-                            <p class="ptools-empty__text"><?php esc_html_e('No custom post types yet. Create your first one with the form.', 'powertools'); ?></p>
+                            <p class="ptools-empty__text"><?php esc_html_e('No custom post types yet. Create your first one with the form.', 'toolwright'); ?></p>
                         </div>
                     <?php else : ?>
                         <table class="ptools-table">
                             <thead>
                                 <tr>
-                                    <th scope="col"><?php esc_html_e('Label', 'powertools'); ?></th>
-                                    <th scope="col" class="ptools-table__actions"><?php esc_html_e('Actions', 'powertools'); ?></th>
+                                    <th scope="col"><?php esc_html_e('Label', 'toolwright'); ?></th>
+                                    <th scope="col" class="ptools-table__actions"><?php esc_html_e('Actions', 'toolwright'); ?></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -251,7 +251,7 @@ class Manager {
                                                     <span class="ptools-sr-only">
                                                         <?php
                                                         /* translators: %s: post type label */
-                                                        printf(esc_html__('Edit %s', 'powertools'), esc_html($data['plural_label']));
+                                                        printf(esc_html__('Edit %s', 'toolwright'), esc_html($data['plural_label']));
                                                         ?>
                                                     </span>
                                                 </a>
@@ -260,18 +260,18 @@ class Manager {
                                                       action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
                                                       data-ptools-confirm="<?php echo esc_attr(sprintf(
                                                           /* translators: %s: post type label */
-                                                          __('Delete the “%s” post type? Its content stays in the database but becomes inaccessible.', 'powertools'),
+                                                          __('Delete the “%s” post type? Its content stays in the database but becomes inaccessible.', 'toolwright'),
                                                           $data['plural_label']
                                                       )); ?>">
-                                                    <input type="hidden" name="action" value="powertools_cptm_delete" />
-                                                    <input type="hidden" name="powertools_cptm_post_type" value="<?php echo esc_attr($post_type); ?>" />
-                                                    <?php wp_nonce_field('powertools_cptm_delete_nonce_action', 'powertools_cptm_delete_nonce'); ?>
+                                                    <input type="hidden" name="action" value="toolwright_cptm_delete" />
+                                                    <input type="hidden" name="toolwright_cptm_post_type" value="<?php echo esc_attr($post_type); ?>" />
+                                                    <?php wp_nonce_field('toolwright_cptm_delete_nonce_action', 'toolwright_cptm_delete_nonce'); ?>
                                                     <button type="submit" class="ptools-icon-btn ptools-icon-btn--danger">
                                                         <?php UI::dashicon('dashicons-trash'); ?>
                                                         <span class="ptools-sr-only">
                                                             <?php
                                                             /* translators: %s: post type label */
-                                                            printf(esc_html__('Delete %s', 'powertools'), esc_html($data['plural_label']));
+                                                            printf(esc_html__('Delete %s', 'toolwright'), esc_html($data['plural_label']));
                                                             ?>
                                                         </span>
                                                     </button>
@@ -305,21 +305,21 @@ class Manager {
      */
     private function render_message() {
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request state used for display only; no data is changed.
-        $code = isset($_GET['pt_message']) ? sanitize_key(wp_unslash($_GET['pt_message'])) : '';
+        $code = isset($_GET['tw_message']) ? sanitize_key(wp_unslash($_GET['tw_message'])) : '';
 
         if (!isset(self::MESSAGES[$code])) {
             return;
         }
 
         $messages = array(
-            'added'       => __('Custom post type created.', 'powertools'),
-            'updated'     => __('Custom post type updated.', 'powertools'),
-            'deleted'     => __('Custom post type deleted.', 'powertools'),
-            'security'    => __('Security check failed. Please try again.', 'powertools'),
-            'required'    => __('All required fields must be filled.', 'powertools'),
-            'slug_length' => __('Post type slug must be 20 characters or fewer.', 'powertools'),
-            'slug_taken'  => __('A post type with this slug already exists.', 'powertools'),
-            'not_found'   => __('That post type could not be found.', 'powertools'),
+            'added'       => __('Custom post type created.', 'toolwright'),
+            'updated'     => __('Custom post type updated.', 'toolwright'),
+            'deleted'     => __('Custom post type deleted.', 'toolwright'),
+            'security'    => __('Security check failed. Please try again.', 'toolwright'),
+            'required'    => __('All required fields must be filled.', 'toolwright'),
+            'slug_length' => __('Post type slug must be 20 characters or fewer.', 'toolwright'),
+            'slug_taken'  => __('A post type with this slug already exists.', 'toolwright'),
+            'not_found'   => __('That post type could not be found.', 'toolwright'),
         );
 
         UI::notice($messages[$code], self::MESSAGES[$code]);
@@ -350,16 +350,16 @@ class Manager {
     private function handle_save_post_type($is_edit) {
         Tool_Manager::require_capability();
 
-        $nonce_field  = $is_edit ? 'powertools_cptm_edit_nonce' : 'powertools_cptm_add_nonce';
-        $nonce_action = $is_edit ? 'powertools_cptm_edit_nonce_action' : 'powertools_cptm_add_nonce_action';
+        $nonce_field  = $is_edit ? 'toolwright_cptm_edit_nonce' : 'toolwright_cptm_add_nonce';
+        $nonce_action = $is_edit ? 'toolwright_cptm_edit_nonce_action' : 'toolwright_cptm_add_nonce_action';
 
         if (!isset($_POST[$nonce_field]) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST[$nonce_field])), $nonce_action)) {
             $this->redirect_with_message('security');
         }
 
-        $slug           = isset($_POST['powertools_cptm_post_type_name']) ? sanitize_key(wp_unslash($_POST['powertools_cptm_post_type_name'])) : '';
-        $singular_label = isset($_POST['powertools_cptm_singular_label']) ? sanitize_text_field(wp_unslash($_POST['powertools_cptm_singular_label'])) : '';
-        $plural_label   = isset($_POST['powertools_cptm_plural_label']) ? sanitize_text_field(wp_unslash($_POST['powertools_cptm_plural_label'])) : '';
+        $slug           = isset($_POST['toolwright_cptm_post_type_name']) ? sanitize_key(wp_unslash($_POST['toolwright_cptm_post_type_name'])) : '';
+        $singular_label = isset($_POST['toolwright_cptm_singular_label']) ? sanitize_text_field(wp_unslash($_POST['toolwright_cptm_singular_label'])) : '';
+        $plural_label   = isset($_POST['toolwright_cptm_plural_label']) ? sanitize_text_field(wp_unslash($_POST['toolwright_cptm_plural_label'])) : '';
 
         if (empty($slug) || empty($singular_label) || empty($plural_label)) {
             $this->redirect_with_message('required');
@@ -379,18 +379,18 @@ class Manager {
             $this->redirect_with_message('slug_taken');
         }
 
-        $supports = isset($_POST['powertools_cptm_supports']) ? array_map('sanitize_key', (array) wp_unslash($_POST['powertools_cptm_supports'])) : array();
+        $supports = isset($_POST['toolwright_cptm_supports']) ? array_map('sanitize_key', (array) wp_unslash($_POST['toolwright_cptm_supports'])) : array();
         $supports = array_values(array_intersect(self::SUPPORT_OPTIONS, $supports));
 
         $custom_post_types[$slug] = array(
             'name'           => $slug,
             'singular_label' => $singular_label,
             'plural_label'   => $plural_label,
-            'public'         => isset($_POST['powertools_cptm_public']),
-            'has_archive'    => isset($_POST['powertools_cptm_has_archive']),
-            'hierarchical'   => isset($_POST['powertools_cptm_hierarchical']),
-            'menu_position'  => isset($_POST['powertools_cptm_menu_position']) ? intval(wp_unslash($_POST['powertools_cptm_menu_position'])) : null,
-            'menu_icon'      => isset($_POST['powertools_cptm_menu_icon']) ? sanitize_text_field(wp_unslash($_POST['powertools_cptm_menu_icon'])) : '',
+            'public'         => isset($_POST['toolwright_cptm_public']),
+            'has_archive'    => isset($_POST['toolwright_cptm_has_archive']),
+            'hierarchical'   => isset($_POST['toolwright_cptm_hierarchical']),
+            'menu_position'  => isset($_POST['toolwright_cptm_menu_position']) ? intval(wp_unslash($_POST['toolwright_cptm_menu_position'])) : null,
+            'menu_icon'      => isset($_POST['toolwright_cptm_menu_icon']) ? sanitize_text_field(wp_unslash($_POST['toolwright_cptm_menu_icon'])) : '',
             'supports'       => $supports ? $supports : array('title', 'editor'),
         );
 
@@ -409,11 +409,11 @@ class Manager {
     public function handle_delete_post_type() {
         Tool_Manager::require_capability();
 
-        if (!isset($_POST['powertools_cptm_delete_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['powertools_cptm_delete_nonce'])), 'powertools_cptm_delete_nonce_action')) {
+        if (!isset($_POST['toolwright_cptm_delete_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['toolwright_cptm_delete_nonce'])), 'toolwright_cptm_delete_nonce_action')) {
             $this->redirect_with_message('security');
         }
 
-        $post_type = isset($_POST['powertools_cptm_post_type']) ? sanitize_key(wp_unslash($_POST['powertools_cptm_post_type'])) : '';
+        $post_type = isset($_POST['toolwright_cptm_post_type']) ? sanitize_key(wp_unslash($_POST['toolwright_cptm_post_type'])) : '';
         $custom_post_types = $this->get_post_types();
 
         if (!isset($custom_post_types[$post_type])) {
@@ -433,7 +433,7 @@ class Manager {
      * @param string $code One of the keys in self::MESSAGES.
      */
     private function redirect_with_message($code) {
-        wp_safe_redirect(add_query_arg('pt_message', $code, Tool_Manager::get_page_url('cpt_manager')));
+        wp_safe_redirect(add_query_arg('tw_message', $code, Tool_Manager::get_page_url('cpt_manager')));
         exit;
     }
 
@@ -460,21 +460,21 @@ class Manager {
                 'name'               => $data['plural_label'],
                 'singular_name'      => $data['singular_label'],
                 'menu_name'          => $data['plural_label'],
-                'add_new'            => __('Add New', 'powertools'),
+                'add_new'            => __('Add New', 'toolwright'),
                 /* translators: %s: singular post type label */
-                'add_new_item'       => sprintf(__('Add New %s', 'powertools'), $data['singular_label']),
+                'add_new_item'       => sprintf(__('Add New %s', 'toolwright'), $data['singular_label']),
                 /* translators: %s: singular post type label */
-                'edit_item'          => sprintf(__('Edit %s', 'powertools'), $data['singular_label']),
+                'edit_item'          => sprintf(__('Edit %s', 'toolwright'), $data['singular_label']),
                 /* translators: %s: singular post type label */
-                'new_item'           => sprintf(__('New %s', 'powertools'), $data['singular_label']),
+                'new_item'           => sprintf(__('New %s', 'toolwright'), $data['singular_label']),
                 /* translators: %s: singular post type label */
-                'view_item'          => sprintf(__('View %s', 'powertools'), $data['singular_label']),
+                'view_item'          => sprintf(__('View %s', 'toolwright'), $data['singular_label']),
                 /* translators: %s: plural post type label */
-                'search_items'       => sprintf(__('Search %s', 'powertools'), $data['plural_label']),
+                'search_items'       => sprintf(__('Search %s', 'toolwright'), $data['plural_label']),
                 /* translators: %s: plural post type label */
-                'not_found'          => sprintf(__('No %s found', 'powertools'), $data['plural_label']),
+                'not_found'          => sprintf(__('No %s found', 'toolwright'), $data['plural_label']),
                 /* translators: %s: plural post type label */
-                'not_found_in_trash' => sprintf(__('No %s found in Trash', 'powertools'), $data['plural_label']),
+                'not_found_in_trash' => sprintf(__('No %s found in Trash', 'toolwright'), $data['plural_label']),
             );
 
             $args = array(

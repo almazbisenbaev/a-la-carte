@@ -2,15 +2,15 @@
 /**
  * Shared admin markup helpers
  *
- * Every PowerTools screen renders its shell through this class so the page
+ * Every Toolwright screen renders its shell through this class so the page
  * header, notices and toggle switches stay identical across tools. Anything
  * visual belongs in assets/css/admin.css — templates should not
  * carry inline style attributes.
  *
- * @package PowerTools
+ * @package Toolwright
  */
 
-namespace PowerTools\Admin;
+namespace Toolwright\Admin;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -34,7 +34,7 @@ final class UI {
     );
 
     /**
-     * Open a PowerTools screen: wrapper, page header and queued notices.
+     * Open a Toolwright screen: wrapper, page header and queued notices.
      *
      * @param array $args {
      *     @type string   $title       Page title.
@@ -84,12 +84,12 @@ final class UI {
                 <?php endif; ?>
             </header>
 
-            <?php settings_errors('powertools_messages'); ?>
+            <?php settings_errors('toolwright_messages'); ?>
         <?php
     }
 
     /**
-     * Close a PowerTools screen.
+     * Close a Toolwright screen.
      */
     public static function page_close() {
         echo '</div>';
@@ -172,7 +172,7 @@ final class UI {
             </label>
 
             <noscript>
-                <button type="submit" class="ptools-btn ptools-btn--secondary"><?php esc_html_e('Apply', 'powertools'); ?></button>
+                <button type="submit" class="ptools-btn ptools-btn--secondary"><?php esc_html_e('Apply', 'toolwright'); ?></button>
             </noscript>
         </form>
         <?php

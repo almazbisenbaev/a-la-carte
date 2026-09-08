@@ -1,11 +1,11 @@
 <?php
 /**
- * PSR-4 style autoloader for PowerTools classes
+ * PSR-4 style autoloader for Toolwright classes
  *
- * Maps the `PowerTools\` namespace onto the `src/` directory, e.g.
- * `PowerTools\Admin\Tool_Manager` => `src/Admin/Tool_Manager.php`.
+ * Maps the `Toolwright\` namespace onto the `src/` directory, e.g.
+ * `Toolwright\Admin\Tool_Manager` => `src/Admin/Tool_Manager.php`.
  *
- * @package PowerTools
+ * @package Toolwright
  */
 
 // If this file is called directly, abort.
@@ -14,8 +14,8 @@ if (!defined('WPINC')) {
 }
 
 spl_autoload_register(function ($class) {
-    $prefix   = 'PowerTools\\';
-    $base_dir = POWERTOOLS_PLUGIN_DIR . 'src/';
+    $prefix   = 'Toolwright\\';
+    $base_dir = TOOLWRIGHT_PLUGIN_DIR . 'src/';
 
     if (strncmp($prefix, $class, strlen($prefix)) !== 0) {
         return;

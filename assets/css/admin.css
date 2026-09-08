@@ -1,7 +1,7 @@
 /**
- * PowerTools — Admin design system
+ * Toolwright — Admin design system
  *
- * Every PowerTools screen is built from the components in this file. Templates
+ * Every Toolwright screen is built from the components in this file. Templates
  * should never carry inline `style=""` attributes: if a page needs something
  * that isn't here, add a component or a modifier instead.
  *
@@ -106,19 +106,19 @@
 
 /* ══ 2. Screen shell ══════════════════════════════════════════════════════ */
 
-/* Matches `toplevel_page_powertools` and every `powertools_page_powertools-*`
+/* Matches `toplevel_page_toolwright` and every `toolwright_page_toolwright-*`
    submenu screen. Matching the exact class list breaks on submenus, which is
    why this uses a substring match. */
-body[class*="page_powertools"] #wpcontent {
+body[class*="page_toolwright"] #wpcontent {
     background: var(--ptools-page);
     padding: 0;
 }
 
 /* Core/other-plugin notices are printed outside our wrap; give them the same
    horizontal rhythm so they don't sit flush against the viewport edge. */
-body[class*="page_powertools"] #wpbody-content>.notice,
-body[class*="page_powertools"] #wpbody-content>.updated,
-body[class*="page_powertools"] #wpbody-content>.error {
+body[class*="page_toolwright"] #wpbody-content>.notice,
+body[class*="page_toolwright"] #wpbody-content>.updated,
+body[class*="page_toolwright"] #wpbody-content>.error {
     margin: var(--ptools-space-5) var(--ptools-space-7) 0;
 }
 
@@ -1325,9 +1325,9 @@ a.ptools-table__name:hover {
         padding: var(--ptools-space-5);
     }
 
-    body[class*="page_powertools"] #wpbody-content>.notice,
-    body[class*="page_powertools"] #wpbody-content>.updated,
-    body[class*="page_powertools"] #wpbody-content>.error {
+    body[class*="page_toolwright"] #wpbody-content>.notice,
+    body[class*="page_toolwright"] #wpbody-content>.updated,
+    body[class*="page_toolwright"] #wpbody-content>.error {
         margin: var(--ptools-space-5) var(--ptools-space-5) 0;
     }
 
@@ -1341,9 +1341,9 @@ a.ptools-table__name:hover {
         padding: var(--ptools-space-4);
     }
 
-    body[class*="page_powertools"] #wpbody-content>.notice,
-    body[class*="page_powertools"] #wpbody-content>.updated,
-    body[class*="page_powertools"] #wpbody-content>.error {
+    body[class*="page_toolwright"] #wpbody-content>.notice,
+    body[class*="page_toolwright"] #wpbody-content>.updated,
+    body[class*="page_toolwright"] #wpbody-content>.error {
         margin: var(--ptools-space-4) var(--ptools-space-4) 0;
     }
 

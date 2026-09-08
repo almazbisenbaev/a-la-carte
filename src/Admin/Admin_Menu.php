@@ -1,11 +1,11 @@
 <?php
 /**
- * Menu setup for PowerTools plugin
+ * Menu setup for Toolwright plugin
  *
- * @package PowerTools
+ * @package Toolwright
  */
 
-namespace PowerTools\Admin;
+namespace Toolwright\Admin;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -32,7 +32,7 @@ class Admin_Menu {
         $this->tools = $tools;
 
         add_action('admin_menu', array($this, 'setup_menu'));
-        add_filter('plugin_action_links_' . POWERTOOLS_PLUGIN_BASENAME, array($this, 'add_action_links'));
+        add_filter('plugin_action_links_' . TOOLWRIGHT_PLUGIN_BASENAME, array($this, 'add_action_links'));
     }
 
     /**
@@ -40,10 +40,10 @@ class Admin_Menu {
      */
     public function setup_menu() {
         add_menu_page(
-            __('PowerTools', 'powertools'),
-            __('PowerTools', 'powertools'),
+            __('Toolwright', 'toolwright'),
+            __('Toolwright', 'toolwright'),
             Tool_Manager::CAPABILITY,
-            'powertools',
+            'toolwright',
             array($this, 'render_dashboard'),
             'dashicons-hammer',
             100
@@ -62,7 +62,7 @@ class Admin_Menu {
             }
 
             add_submenu_page(
-                'powertools',
+                'toolwright',
                 $tool['name'],
                 $tool['name'],
                 Tool_Manager::CAPABILITY,
@@ -83,8 +83,8 @@ class Admin_Menu {
     public function add_action_links($links) {
         array_unshift($links, sprintf(
             '<a href="%s">%s</a>',
-            esc_url(admin_url('admin.php?page=powertools')),
-            esc_html__('Settings', 'powertools')
+            esc_url(admin_url('admin.php?page=toolwright')),
+            esc_html__('Settings', 'toolwright')
         ));
 
         return $links;
@@ -96,7 +96,7 @@ class Admin_Menu {
     public function render_dashboard() {
         Tool_Manager::require_capability();
 
-        require POWERTOOLS_PLUGIN_DIR . 'views/dashboard.php';
+        require TOOLWRIGHT_PLUGIN_DIR . 'views/dashboard.php';
     }
 
     /**
@@ -112,8 +112,8 @@ class Admin_Menu {
         if (!$tool || !method_exists($tool, 'render_settings_page')) {
             UI::page_open(array(
                 'tool_id'     => $tool_id,
-                'title'       => __('Tool unavailable', 'powertools'),
-                'description' => __('This tool could not be loaded. Try deactivating and reactivating it from the PowerTools dashboard.', 'powertools'),
+                'title'       => __('Tool unavailable', 'toolwright'),
+                'description' => __('This tool could not be loaded. Try deactivating and reactivating it from the Toolwright dashboard.', 'toolwright'),
             ));
             UI::page_close();
             return;

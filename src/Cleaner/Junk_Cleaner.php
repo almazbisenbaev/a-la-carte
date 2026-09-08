@@ -2,13 +2,13 @@
 /**
  * Junk Cleaner functionality
  *
- * @package PowerTools
+ * @package Toolwright
  */
 
-namespace PowerTools\Cleaner;
+namespace Toolwright\Cleaner;
 
-use PowerTools\Admin\Tool_Manager;
-use PowerTools\Admin\UI;
+use Toolwright\Admin\Tool_Manager;
+use Toolwright\Admin\UI;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -27,7 +27,7 @@ class Junk_Cleaner {
         Tool_Manager::require_capability();
 
         // Handle deletion
-        if (isset($_POST['delete_revisions_drafts']) && check_admin_referer('powertools_junk_cleaner')) {
+        if (isset($_POST['delete_revisions_drafts']) && check_admin_referer('toolwright_junk_cleaner')) {
             $this->delete_junk();
         }
 
@@ -38,42 +38,42 @@ class Junk_Cleaner {
 
         $confirm_message = sprintf(
             /* translators: 1: number of drafts, 2: number of revisions */
-            __('This will permanently delete %1$d draft(s) and %2$d revision(s). This cannot be undone.', 'powertools'),
+            __('This will permanently delete %1$d draft(s) and %2$d revision(s). This cannot be undone.', 'toolwright'),
             $drafts_count,
             $revisions_count
         );
 
         UI::page_open(array(
             'tool_id'     => 'junk_cleaner',
-            'title'       => __('Junk Cleaner', 'powertools'),
-            'description' => __('Free up database space by removing unnecessary drafts and post revisions.', 'powertools'),
+            'title'       => __('Junk Cleaner', 'toolwright'),
+            'description' => __('Free up database space by removing unnecessary drafts and post revisions.', 'toolwright'),
         ));
         ?>
         <div class="ptools-panel">
             <div class="ptools-panel__header">
-                <h2 class="ptools-h2"><?php esc_html_e('Database Overview', 'powertools'); ?></h2>
+                <h2 class="ptools-h2"><?php esc_html_e('Database Overview', 'toolwright'); ?></h2>
             </div>
 
             <div class="ptools-panel__body">
                 <div class="ptools-stats">
                     <div class="ptools-stat">
                         <div class="ptools-stat__value"><?php echo esc_html($drafts_count); ?></div>
-                        <div class="ptools-stat__label"><?php esc_html_e('Draft Posts', 'powertools'); ?></div>
+                        <div class="ptools-stat__label"><?php esc_html_e('Draft Posts', 'toolwright'); ?></div>
                     </div>
                     <div class="ptools-stat">
                         <div class="ptools-stat__value"><?php echo esc_html($revisions_count); ?></div>
-                        <div class="ptools-stat__label"><?php esc_html_e('Post Revisions', 'powertools'); ?></div>
+                        <div class="ptools-stat__label"><?php esc_html_e('Post Revisions', 'toolwright'); ?></div>
                     </div>
                 </div>
 
                 <?php if ($is_clean) : ?>
-                    <?php UI::notice(__('Your database is clean. No drafts or revisions found.', 'powertools'), 'success'); ?>
+                    <?php UI::notice(__('Your database is clean. No drafts or revisions found.', 'toolwright'), 'success'); ?>
                 <?php else : ?>
                     <?php
                     UI::notice(
                         sprintf(
                             /* translators: 1: number of drafts, 2: number of revisions */
-                            __('You have %1$d draft(s) and %2$d revision(s) that can be removed to free up database space.', 'powertools'),
+                            __('You have %1$d draft(s) and %2$d revision(s) that can be removed to free up database space.', 'toolwright'),
                             $drafts_count,
                             $revisions_count
                         ),
@@ -85,11 +85,11 @@ class Junk_Cleaner {
 
             <div class="ptools-panel__footer">
                 <form method="post" data-ptools-confirm="<?php echo esc_attr($confirm_message); ?>">
-                    <?php wp_nonce_field('powertools_junk_cleaner'); ?>
+                    <?php wp_nonce_field('toolwright_junk_cleaner'); ?>
                     <input type="hidden" name="delete_revisions_drafts" value="1" />
                     <button type="submit" class="ptools-btn ptools-btn--danger" <?php disabled($is_clean); ?>>
                         <?php UI::dashicon('dashicons-trash'); ?>
-                        <?php esc_html_e('Clean Database Now', 'powertools'); ?>
+                        <?php esc_html_e('Clean Database Now', 'toolwright'); ?>
                     </button>
                 </form>
             </div>
@@ -145,11 +145,11 @@ class Junk_Cleaner {
 
         // Show success message
         add_settings_error(
-            'powertools_messages',
-            'powertools_message',
+            'toolwright_messages',
+            'toolwright_message',
             sprintf(
                 /* translators: %d: number of items permanently deleted */
-                __('%d draft(s) and revision(s) have been permanently deleted.', 'powertools'),
+                __('%d draft(s) and revision(s) have been permanently deleted.', 'toolwright'),
                 $deleted_count
             ),
             'updated'

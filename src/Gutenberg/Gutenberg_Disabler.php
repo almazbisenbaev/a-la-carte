@@ -2,13 +2,13 @@
 /**
  * Gutenberg Disabler functionality
  *
- * @package PowerTools
+ * @package Toolwright
  */
 
-namespace PowerTools\Gutenberg;
+namespace Toolwright\Gutenberg;
 
-use PowerTools\Admin\Tool_Manager;
-use PowerTools\Admin\UI;
+use Toolwright\Admin\Tool_Manager;
+use Toolwright\Admin\UI;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -24,14 +24,14 @@ class Gutenberg_Disabler {
      *
      * @var string
      */
-    private const OPTION_NAME = 'powertools_gutenberg_settings';
+    private const OPTION_NAME = 'toolwright_gutenberg_settings';
 
     /**
      * Legacy option name
      *
      * @var string
      */
-    private const LEGACY_OPTION_NAME = 'powertools_disable_gutenberg';
+    private const LEGACY_OPTION_NAME = 'toolwright_disable_gutenberg';
 
     /**
      * Initialize the class
@@ -87,7 +87,7 @@ class Gutenberg_Disabler {
         Tool_Manager::require_capability();
 
         // Handle form submission
-        if (isset($_POST['save']) && check_admin_referer('powertools_gutenberg_disabler')) {
+        if (isset($_POST['save']) && check_admin_referer('toolwright_gutenberg_disabler')) {
             $this->save_settings();
         }
 
@@ -96,33 +96,33 @@ class Gutenberg_Disabler {
 
         $modes = array(
             'all' => array(
-                'title'       => __('Disable Globally', 'powertools'),
-                'description' => __('Completely disable the block editor for all post types and widgets.', 'powertools'),
+                'title'       => __('Disable Globally', 'toolwright'),
+                'description' => __('Completely disable the block editor for all post types and widgets.', 'toolwright'),
                 'checked'     => $settings['enabled'] && $settings['mode'] === 'all',
             ),
             'selective' => array(
-                'title'       => __('Disable Selectively', 'powertools'),
-                'description' => __('Choose specific post types where you want to use the Classic Editor.', 'powertools'),
+                'title'       => __('Disable Selectively', 'toolwright'),
+                'description' => __('Choose specific post types where you want to use the Classic Editor.', 'toolwright'),
                 'checked'     => $settings['enabled'] && $settings['mode'] === 'selective',
             ),
             'none' => array(
-                'title'       => __('Keep Gutenberg Enabled', 'powertools'),
-                'description' => __('Do not disable the block editor.', 'powertools'),
+                'title'       => __('Keep Gutenberg Enabled', 'toolwright'),
+                'description' => __('Do not disable the block editor.', 'toolwright'),
                 'checked'     => !$settings['enabled'],
             ),
         );
 
         UI::page_open(array(
             'tool_id'     => 'gutenberg_disabler',
-            'title'       => __('Gutenberg Disabler', 'powertools'),
-            'description' => __('Switch back to the Classic Editor and disable Gutenberg block library assets.', 'powertools'),
+            'title'       => __('Gutenberg Disabler', 'toolwright'),
+            'description' => __('Switch back to the Classic Editor and disable Gutenberg block library assets.', 'toolwright'),
         ));
         ?>
         <form class="ptools-panel" method="post">
-            <?php wp_nonce_field('powertools_gutenberg_disabler'); ?>
+            <?php wp_nonce_field('toolwright_gutenberg_disabler'); ?>
 
             <div class="ptools-panel__header">
-                <h2 class="ptools-h2"><?php esc_html_e('Settings', 'powertools'); ?></h2>
+                <h2 class="ptools-h2"><?php esc_html_e('Settings', 'toolwright'); ?></h2>
             </div>
 
             <div class="ptools-panel__body">
@@ -143,7 +143,7 @@ class Gutenberg_Disabler {
                 </div>
 
                 <div class="ptools-panel__section" id="ptools-gutenberg-post-types" <?php echo $modes['selective']['checked'] ? '' : 'hidden'; ?>>
-                    <p class="ptools-eyebrow"><?php esc_html_e('Post types using the Classic Editor', 'powertools'); ?></p>
+                    <p class="ptools-eyebrow"><?php esc_html_e('Post types using the Classic Editor', 'toolwright'); ?></p>
                     <div class="ptools-choice-grid">
                         <?php foreach ($post_types as $post_type) : ?>
                             <label class="ptools-choice ptools-choice--boxed">
@@ -162,7 +162,7 @@ class Gutenberg_Disabler {
 
             <div class="ptools-panel__footer">
                 <button type="submit" name="save" value="1" class="ptools-btn ptools-btn--primary">
-                    <?php esc_html_e('Save Settings', 'powertools'); ?>
+                    <?php esc_html_e('Save Settings', 'toolwright'); ?>
                 </button>
             </div>
         </form>
@@ -174,7 +174,7 @@ class Gutenberg_Disabler {
      * Save the Gutenberg disabler settings
      */
     private function save_settings() {
-        check_admin_referer('powertools_gutenberg_disabler');
+        check_admin_referer('toolwright_gutenberg_disabler');
 
         $mode = isset($_POST['gutenberg_mode']) ? sanitize_key(wp_unslash($_POST['gutenberg_mode'])) : 'none';
         if (!in_array($mode, array('all', 'selective', 'none'), true)) {
@@ -191,9 +191,9 @@ class Gutenberg_Disabler {
         ));
 
         add_settings_error(
-            'powertools_messages',
-            'powertools_message',
-            __('Settings saved.', 'powertools'),
+            'toolwright_messages',
+            'toolwright_message',
+            __('Settings saved.', 'toolwright'),
             'updated'
         );
     }

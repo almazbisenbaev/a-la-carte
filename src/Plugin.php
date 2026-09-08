@@ -2,14 +2,14 @@
 /**
  * Main Plugin Class
  *
- * @package PowerTools
+ * @package Toolwright
  */
 
-namespace PowerTools;
+namespace Toolwright;
 
-use PowerTools\Admin\Admin_Menu;
-use PowerTools\Admin\Assets;
-use PowerTools\Admin\Tool_Manager;
+use Toolwright\Admin\Admin_Menu;
+use Toolwright\Admin\Assets;
+use Toolwright\Admin\Tool_Manager;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -26,7 +26,7 @@ final class Plugin {
      *
      * @var string
      */
-    private const FLUSH_OPTION = 'powertools_flush_rewrite_rules';
+    private const FLUSH_OPTION = 'toolwright_flush_rewrite_rules';
 
     /**
      * Single plugin instance
@@ -109,7 +109,7 @@ final class Plugin {
     public static function deactivate() {
         delete_option(self::FLUSH_OPTION);
 
-        // Post types registered by PowerTools are gone from here on, so drop
+        // Post types registered by Toolwright are gone from here on, so drop
         // the rules that pointed at them.
         flush_rewrite_rules();
     }

@@ -2,11 +2,11 @@
 /**
  * Fired when the plugin is uninstalled.
  *
- * Removes every option PowerTools creates. Content created through the CPT
+ * Removes every option Toolwright creates. Content created through the CPT
  * Manager is deliberately left alone: those are the user's own posts, only the
  * post type registration goes away.
  *
- * @package PowerTools
+ * @package Toolwright
  */
 
 // If uninstall not called from WordPress, die.
@@ -15,41 +15,41 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
 }
 
 /**
- * Options used by PowerTools, including legacy names kept for older installs.
+ * Options used by Toolwright, including legacy names kept for older installs.
  */
-const POWERTOOLS_UNINSTALL_OPTIONS = [
-    'powertools_active_tools',
-    'powertools_cptm_custom_post_types',
-    'powertools_disable_comments',
-    'powertools_disable_gutenberg',
-    'powertools_flush_rewrite_rules',
-    'powertools_gutenberg_settings',
-    'powertools_remove_html_junk',
-    'powertools_toolbar_toggler_enabled',
+const TOOLWRIGHT_UNINSTALL_OPTIONS = [
+    'toolwright_active_tools',
+    'toolwright_cptm_custom_post_types',
+    'toolwright_disable_comments',
+    'toolwright_disable_gutenberg',
+    'toolwright_flush_rewrite_rules',
+    'toolwright_gutenberg_settings',
+    'toolwright_remove_html_junk',
+    'toolwright_toolbar_toggler_enabled',
 ];
 
 /**
- * Delete PowerTools data for the current site.
+ * Delete Toolwright data for the current site.
  */
-function powertools_uninstall_site() {
-    foreach (POWERTOOLS_UNINSTALL_OPTIONS as $option) {
+function toolwright_uninstall_site() {
+    foreach (TOOLWRIGHT_UNINSTALL_OPTIONS as $option) {
         delete_option($option);
     }
 }
 
 if (is_multisite()) {
-    $powertools_site_ids = get_sites(
+    $toolwright_site_ids = get_sites(
         array(
             'fields' => 'ids',
             'number' => 0,
         )
     );
 
-    foreach ($powertools_site_ids as $powertools_site_id) {
-        switch_to_blog((int) $powertools_site_id);
-        powertools_uninstall_site();
+    foreach ($toolwright_site_ids as $toolwright_site_id) {
+        switch_to_blog((int) $toolwright_site_id);
+        toolwright_uninstall_site();
         restore_current_blog();
     }
 } else {
-    powertools_uninstall_site();
+    toolwright_uninstall_site();
 }

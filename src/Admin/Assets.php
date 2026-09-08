@@ -2,14 +2,14 @@
 /**
  * Admin asset loading
  *
- * The shared admin stylesheet and script are only ever loaded on PowerTools
+ * The shared admin stylesheet and script are only ever loaded on Toolwright
  * screens: they carry wp-admin overrides that would otherwise leak into other
  * plugins' pages. Tool specific assets are enqueued by the tool itself.
  *
- * @package PowerTools
+ * @package Toolwright
  */
 
-namespace PowerTools\Admin;
+namespace Toolwright\Admin;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -34,35 +34,35 @@ class Assets {
      * @param string $hook Current admin page hook suffix.
      */
     public function enqueue($hook) {
-        if (!self::is_powertools_screen($hook)) {
+        if (!self::is_toolwright_screen($hook)) {
             return;
         }
 
         wp_enqueue_style(
-            'powertools-admin',
-            POWERTOOLS_PLUGIN_URL . 'assets/css/admin.css',
+            'toolwright-admin',
+            TOOLWRIGHT_PLUGIN_URL . 'assets/css/admin.css',
             array('dashicons'),
-            POWERTOOLS_VERSION
+            TOOLWRIGHT_VERSION
         );
 
         wp_enqueue_script(
-            'powertools-admin',
-            POWERTOOLS_PLUGIN_URL . 'assets/js/admin.js',
+            'toolwright-admin',
+            TOOLWRIGHT_PLUGIN_URL . 'assets/js/admin.js',
             array(),
-            POWERTOOLS_VERSION,
+            TOOLWRIGHT_VERSION,
             true
         );
     }
 
     /**
-     * Whether the given admin hook belongs to a PowerTools screen
+     * Whether the given admin hook belongs to a Toolwright screen
      *
      * @param string $hook Current admin page hook suffix.
      * @return bool
      */
-    public static function is_powertools_screen($hook) {
-        return $hook === 'toplevel_page_powertools'
-            || strpos($hook, 'powertools_page_powertools-') === 0;
+    public static function is_toolwright_screen($hook) {
+        return $hook === 'toplevel_page_toolwright'
+            || strpos($hook, 'toolwright_page_toolwright-') === 0;
     }
 
     /**
@@ -73,6 +73,6 @@ class Assets {
      * @return bool
      */
     public static function is_tool_screen($hook, $tool_id) {
-        return $hook === 'powertools_page_' . Tool_Manager::get_page_slug($tool_id);
+        return $hook === 'toolwright_page_' . Tool_Manager::get_page_slug($tool_id);
     }
 }

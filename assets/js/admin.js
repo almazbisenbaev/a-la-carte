@@ -1,5 +1,5 @@
 /**
- * PowerTools — shared admin behaviour
+ * Toolwright — shared admin behaviour
  *
  * Replaces the inline `onchange` / `onclick` attributes the tool pages used to
  * carry. Templates opt in through data attributes:

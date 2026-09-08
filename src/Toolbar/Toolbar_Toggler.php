@@ -2,12 +2,12 @@
 /**
  * Toolbar Toggler functionality
  *
- * @package PowerTools
+ * @package Toolwright
  */
 
-namespace PowerTools\Toolbar;
+namespace Toolwright\Toolbar;
 
-use PowerTools\Admin\Simple_Toggle_Tool;
+use Toolwright\Admin\Simple_Toggle_Tool;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -23,7 +23,7 @@ class Toolbar_Toggler extends Simple_Toggle_Tool {
      *
      * @var string
      */
-    private const OPTION_NAME = 'powertools_toolbar_toggler_enabled';
+    private const OPTION_NAME = 'toolwright_toolbar_toggler_enabled';
 
     /**
      * Initialize the class
@@ -42,15 +42,15 @@ class Toolbar_Toggler extends Simple_Toggle_Tool {
     }
 
     protected function get_nonce_action(): string {
-        return 'powertools_toolbar_toggler';
+        return 'toolwright_toolbar_toggler';
     }
 
     protected function get_page_title(): string {
-        return __('Toolbar Toggler', 'powertools');
+        return __('Toolbar Toggler', 'toolwright');
     }
 
     protected function get_page_description(): string {
-        return __('Minimize distractions by hiding the admin toolbar behind a sleek toggle button.', 'powertools');
+        return __('Minimize distractions by hiding the admin toolbar behind a sleek toggle button.', 'toolwright');
     }
 
     protected function get_field_name(): string {
@@ -58,11 +58,11 @@ class Toolbar_Toggler extends Simple_Toggle_Tool {
     }
 
     protected function get_field_title(): string {
-        return __('Enable Toolbar Toggler', 'powertools');
+        return __('Enable Toolbar Toggler', 'toolwright');
     }
 
     protected function get_field_description(): string {
-        return __('This will hide the default WordPress toolbar and show a small toggle button in the top-left corner instead.', 'powertools');
+        return __('This will hide the default WordPress toolbar and show a small toggle button in the top-left corner instead.', 'toolwright');
     }
 
     /**
@@ -81,17 +81,17 @@ class Toolbar_Toggler extends Simple_Toggle_Tool {
         }
 
         wp_enqueue_style(
-            'powertools-toolbar-toggler',
-            POWERTOOLS_PLUGIN_URL . 'assets/css/toolbar-toggler.css',
+            'toolwright-toolbar-toggler',
+            TOOLWRIGHT_PLUGIN_URL . 'assets/css/toolbar-toggler.css',
             array('dashicons'),
-            POWERTOOLS_VERSION
+            TOOLWRIGHT_VERSION
         );
 
         wp_enqueue_script(
-            'powertools-toolbar-toggler',
-            POWERTOOLS_PLUGIN_URL . 'assets/js/toolbar-toggler.js',
+            'toolwright-toolbar-toggler',
+            TOOLWRIGHT_PLUGIN_URL . 'assets/js/toolbar-toggler.js',
             array(),
-            POWERTOOLS_VERSION,
+            TOOLWRIGHT_VERSION,
             true
         );
     }
