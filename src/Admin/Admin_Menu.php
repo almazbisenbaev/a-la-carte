@@ -1,11 +1,11 @@
 <?php
 /**
- * Menu setup for Toolwright plugin
+ * Menu setup for A La Carte plugin
  *
- * @package Toolwright
+ * @package ALaCarte
  */
 
-namespace Toolwright\Admin;
+namespace ALaCarte\Admin;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -32,7 +32,7 @@ class Admin_Menu {
         $this->tools = $tools;
 
         add_action('admin_menu', array($this, 'setup_menu'));
-        add_filter('plugin_action_links_' . TOOLWRIGHT_PLUGIN_BASENAME, array($this, 'add_action_links'));
+        add_filter('plugin_action_links_' . ALACARTE_PLUGIN_BASENAME, array($this, 'add_action_links'));
     }
 
     /**
@@ -40,10 +40,10 @@ class Admin_Menu {
      */
     public function setup_menu() {
         add_menu_page(
-            __('Toolwright', 'toolwright'),
-            __('Toolwright', 'toolwright'),
+            __('A La Carte', 'a-la-carte'),
+            __('A La Carte', 'a-la-carte'),
             Tool_Manager::CAPABILITY,
-            'toolwright',
+            'a-la-carte',
             array($this, 'render_dashboard'),
             'dashicons-hammer',
             100
@@ -62,7 +62,7 @@ class Admin_Menu {
             }
 
             add_submenu_page(
-                'toolwright',
+                'a-la-carte',
                 $tool['name'],
                 $tool['name'],
                 Tool_Manager::CAPABILITY,
@@ -83,8 +83,8 @@ class Admin_Menu {
     public function add_action_links($links) {
         array_unshift($links, sprintf(
             '<a href="%s">%s</a>',
-            esc_url(admin_url('admin.php?page=toolwright')),
-            esc_html__('Settings', 'toolwright')
+            esc_url(admin_url('admin.php?page=a-la-carte')),
+            esc_html__('Settings', 'a-la-carte')
         ));
 
         return $links;
@@ -96,7 +96,7 @@ class Admin_Menu {
     public function render_dashboard() {
         Tool_Manager::require_capability();
 
-        require TOOLWRIGHT_PLUGIN_DIR . 'views/dashboard.php';
+        require ALACARTE_PLUGIN_DIR . 'views/dashboard.php';
     }
 
     /**
@@ -112,8 +112,8 @@ class Admin_Menu {
         if (!$tool || !method_exists($tool, 'render_settings_page')) {
             UI::page_open(array(
                 'tool_id'     => $tool_id,
-                'title'       => __('Tool unavailable', 'toolwright'),
-                'description' => __('This tool could not be loaded. Try deactivating and reactivating it from the Toolwright dashboard.', 'toolwright'),
+                'title'       => __('Tool unavailable', 'a-la-carte'),
+                'description' => __('This tool could not be loaded. Try deactivating and reactivating it from the A La Carte dashboard.', 'a-la-carte'),
             ));
             UI::page_close();
             return;

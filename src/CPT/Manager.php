@@ -2,13 +2,13 @@
 /**
  * CPT Manager functionality
  *
- * @package Toolwright
+ * @package ALaCarte
  */
 
-namespace Toolwright\CPT;
+namespace ALaCarte\CPT;
 
-use Toolwright\Admin\Tool_Manager;
-use Toolwright\Admin\UI;
+use ALaCarte\Admin\Tool_Manager;
+use ALaCarte\Admin\UI;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -24,7 +24,7 @@ class Manager {
      *
      * @var string
      */
-    private const OPTION_NAME = 'toolwright_cptm_custom_post_types';
+    private const OPTION_NAME = 'alacarte_cptm_custom_post_types';
 
     /**
      * Feedback messages, keyed by the code passed through the redirect.
@@ -57,9 +57,9 @@ class Manager {
      */
     public function __construct() {
         add_action('init', array($this, 'register_custom_post_types'));
-        add_action('admin_post_toolwright_cptm_add', array($this, 'handle_add_post_type'));
-        add_action('admin_post_toolwright_cptm_edit', array($this, 'handle_edit_post_type'));
-        add_action('admin_post_toolwright_cptm_delete', array($this, 'handle_delete_post_type'));
+        add_action('admin_post_alacarte_cptm_add', array($this, 'handle_add_post_type'));
+        add_action('admin_post_alacarte_cptm_edit', array($this, 'handle_edit_post_type'));
+        add_action('admin_post_alacarte_cptm_delete', array($this, 'handle_delete_post_type'));
     }
 
     /**
@@ -89,115 +89,115 @@ class Manager {
 
         UI::page_open(array(
             'tool_id'     => 'cpt_manager',
-            'title'       => __('CPT Manager', 'toolwright'),
-            'description' => __('Create and manage custom post types for your WordPress site with ease.', 'toolwright'),
+            'title'       => __('CPT Manager', 'a-la-carte'),
+            'description' => __('Create and manage custom post types for your WordPress site with ease.', 'a-la-carte'),
         ));
 
         $this->render_message();
         ?>
-        <div class="ptools-split">
-            <form class="ptools-panel" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
-                <input type="hidden" name="action" value="<?php echo $editing ? 'toolwright_cptm_edit' : 'toolwright_cptm_add'; ?>" />
+        <div class="alacarte-split">
+            <form class="alacarte-panel" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+                <input type="hidden" name="action" value="<?php echo $editing ? 'alacarte_cptm_edit' : 'alacarte_cptm_add'; ?>" />
                 <?php
                 wp_nonce_field(
-                    $editing ? 'toolwright_cptm_edit_nonce_action' : 'toolwright_cptm_add_nonce_action',
-                    $editing ? 'toolwright_cptm_edit_nonce' : 'toolwright_cptm_add_nonce'
+                    $editing ? 'alacarte_cptm_edit_nonce_action' : 'alacarte_cptm_add_nonce_action',
+                    $editing ? 'alacarte_cptm_edit_nonce' : 'alacarte_cptm_add_nonce'
                 );
                 ?>
 
-                <div class="ptools-panel__header">
-                    <h2 class="ptools-h2">
-                        <?php echo $editing ? esc_html__('Edit Post Type', 'toolwright') : esc_html__('Add New Post Type', 'toolwright'); ?>
+                <div class="alacarte-panel__header">
+                    <h2 class="alacarte-h2">
+                        <?php echo $editing ? esc_html__('Edit Post Type', 'a-la-carte') : esc_html__('Add New Post Type', 'a-la-carte'); ?>
                     </h2>
                 </div>
 
-                <div class="ptools-panel__body">
-                    <div class="ptools-cols-2">
-                        <div class="ptools-field">
-                            <label class="ptools-label" for="ptools-cptools-slug">
-                                <?php esc_html_e('Post Type Slug', 'toolwright'); ?>
-                                <span class="ptools-required" aria-hidden="true">*</span>
+                <div class="alacarte-panel__body">
+                    <div class="alacarte-cols-2">
+                        <div class="alacarte-field">
+                            <label class="alacarte-label" for="alacarte-cpt-slug">
+                                <?php esc_html_e('Post Type Slug', 'a-la-carte'); ?>
+                                <span class="alacarte-required" aria-hidden="true">*</span>
                             </label>
-                            <input class="ptools-form-control ptools-form-control--mono" id="ptools-cptools-slug" type="text"
-                                   name="toolwright_cptm_post_type_name"
+                            <input class="alacarte-form-control alacarte-form-control--mono" id="alacarte-cpt-slug" type="text"
+                                   name="alacarte_cptm_post_type_name"
                                    value="<?php echo esc_attr($values['name']); ?>"
                                    placeholder="portfolio"
                                    maxlength="20"
                                    <?php echo $editing ? 'readonly' : 'required'; ?> />
-                            <p class="ptools-help"><?php esc_html_e('Lowercase and underscores only, 20 characters max.', 'toolwright'); ?></p>
+                            <p class="alacarte-help"><?php esc_html_e('Lowercase and underscores only, 20 characters max.', 'a-la-carte'); ?></p>
                         </div>
 
-                        <div class="ptools-field">
-                            <label class="ptools-label" for="ptools-cptools-icon"><?php esc_html_e('Menu Icon', 'toolwright'); ?></label>
-                            <input class="ptools-form-control ptools-form-control--mono" id="ptools-cptools-icon" type="text"
-                                   name="toolwright_cptm_menu_icon"
+                        <div class="alacarte-field">
+                            <label class="alacarte-label" for="alacarte-cpt-icon"><?php esc_html_e('Menu Icon', 'a-la-carte'); ?></label>
+                            <input class="alacarte-form-control alacarte-form-control--mono" id="alacarte-cpt-icon" type="text"
+                                   name="alacarte_cptm_menu_icon"
                                    value="<?php echo esc_attr($values['menu_icon']); ?>"
                                    placeholder="dashicons-admin-post" />
-                            <p class="ptools-help">
+                            <p class="alacarte-help">
                                 <a href="https://developer.wordpress.org/resource/dashicons/" target="_blank" rel="noopener">
-                                    <?php esc_html_e('Browse Dashicons', 'toolwright'); ?>
+                                    <?php esc_html_e('Browse Dashicons', 'a-la-carte'); ?>
                                 </a>
                             </p>
                         </div>
                     </div>
 
-                    <div class="ptools-cols-2">
-                        <div class="ptools-field">
-                            <label class="ptools-label" for="ptools-cptools-singular">
-                                <?php esc_html_e('Singular Label', 'toolwright'); ?>
-                                <span class="ptools-required" aria-hidden="true">*</span>
+                    <div class="alacarte-cols-2">
+                        <div class="alacarte-field">
+                            <label class="alacarte-label" for="alacarte-cpt-singular">
+                                <?php esc_html_e('Singular Label', 'a-la-carte'); ?>
+                                <span class="alacarte-required" aria-hidden="true">*</span>
                             </label>
-                            <input class="ptools-form-control" id="ptools-cptools-singular" type="text"
-                                   name="toolwright_cptm_singular_label"
+                            <input class="alacarte-form-control" id="alacarte-cpt-singular" type="text"
+                                   name="alacarte_cptm_singular_label"
                                    value="<?php echo esc_attr($values['singular_label']); ?>"
-                                   placeholder="<?php esc_attr_e('Project', 'toolwright'); ?>"
+                                   placeholder="<?php esc_attr_e('Project', 'a-la-carte'); ?>"
                                    required />
                         </div>
 
-                        <div class="ptools-field">
-                            <label class="ptools-label" for="ptools-cptools-plural">
-                                <?php esc_html_e('Plural Label', 'toolwright'); ?>
-                                <span class="ptools-required" aria-hidden="true">*</span>
+                        <div class="alacarte-field">
+                            <label class="alacarte-label" for="alacarte-cpt-plural">
+                                <?php esc_html_e('Plural Label', 'a-la-carte'); ?>
+                                <span class="alacarte-required" aria-hidden="true">*</span>
                             </label>
-                            <input class="ptools-form-control" id="ptools-cptools-plural" type="text"
-                                   name="toolwright_cptm_plural_label"
+                            <input class="alacarte-form-control" id="alacarte-cpt-plural" type="text"
+                                   name="alacarte_cptm_plural_label"
                                    value="<?php echo esc_attr($values['plural_label']); ?>"
-                                   placeholder="<?php esc_attr_e('Projects', 'toolwright'); ?>"
+                                   placeholder="<?php esc_attr_e('Projects', 'a-la-carte'); ?>"
                                    required />
                         </div>
                     </div>
 
-                    <div class="ptools-panel__section">
-                        <p class="ptools-eyebrow"><?php esc_html_e('Behaviour', 'toolwright'); ?></p>
-                        <div class="ptools-choice-grid">
+                    <div class="alacarte-panel__section">
+                        <p class="alacarte-eyebrow"><?php esc_html_e('Behaviour', 'a-la-carte'); ?></p>
+                        <div class="alacarte-choice-grid">
                             <?php
                             $flags = array(
-                                'toolwright_cptm_public'       => array(__('Public', 'toolwright'), $values['public']),
-                                'toolwright_cptm_has_archive'  => array(__('Has Archive', 'toolwright'), $values['has_archive']),
-                                'toolwright_cptm_hierarchical' => array(__('Hierarchical', 'toolwright'), $values['hierarchical']),
+                                'alacarte_cptm_public'       => array(__('Public', 'a-la-carte'), $values['public']),
+                                'alacarte_cptm_has_archive'  => array(__('Has Archive', 'a-la-carte'), $values['has_archive']),
+                                'alacarte_cptm_hierarchical' => array(__('Hierarchical', 'a-la-carte'), $values['hierarchical']),
                             );
                             foreach ($flags as $flag_name => $flag) :
                                 ?>
-                                <label class="ptools-choice ptools-choice--boxed">
+                                <label class="alacarte-choice alacarte-choice--boxed">
                                     <input type="checkbox" name="<?php echo esc_attr($flag_name); ?>" value="1" <?php checked($flag[1]); ?> />
-                                    <span class="ptools-choice__text">
-                                        <span class="ptools-choice__title"><?php echo esc_html($flag[0]); ?></span>
+                                    <span class="alacarte-choice__text">
+                                        <span class="alacarte-choice__title"><?php echo esc_html($flag[0]); ?></span>
                                     </span>
                                 </label>
                             <?php endforeach; ?>
                         </div>
                     </div>
 
-                    <div class="ptools-panel__section">
-                        <p class="ptools-eyebrow"><?php esc_html_e('Supports', 'toolwright'); ?></p>
-                        <div class="ptools-choice-grid">
+                    <div class="alacarte-panel__section">
+                        <p class="alacarte-eyebrow"><?php esc_html_e('Supports', 'a-la-carte'); ?></p>
+                        <div class="alacarte-choice-grid">
                             <?php foreach (self::SUPPORT_OPTIONS as $option) : ?>
-                                <label class="ptools-choice ptools-choice--boxed">
-                                    <input type="checkbox" name="toolwright_cptm_supports[]"
+                                <label class="alacarte-choice alacarte-choice--boxed">
+                                    <input type="checkbox" name="alacarte_cptm_supports[]"
                                            value="<?php echo esc_attr($option); ?>"
                                            <?php checked(in_array($option, (array) $values['supports'], true)); ?> />
-                                    <span class="ptools-choice__text">
-                                        <span class="ptools-choice__title"><?php echo esc_html(ucfirst(str_replace('-', ' ', $option))); ?></span>
+                                    <span class="alacarte-choice__text">
+                                        <span class="alacarte-choice__title"><?php echo esc_html(ucfirst(str_replace('-', ' ', $option))); ?></span>
                                     </span>
                                 </label>
                             <?php endforeach; ?>
@@ -205,73 +205,73 @@ class Manager {
                     </div>
                 </div>
 
-                <div class="ptools-panel__footer">
+                <div class="alacarte-panel__footer">
                     <?php if ($editing) : ?>
-                        <a href="<?php echo esc_url($page_url); ?>" class="ptools-btn ptools-btn--secondary">
-                            <?php esc_html_e('Cancel', 'toolwright'); ?>
+                        <a href="<?php echo esc_url($page_url); ?>" class="alacarte-btn alacarte-btn--secondary">
+                            <?php esc_html_e('Cancel', 'a-la-carte'); ?>
                         </a>
                     <?php endif; ?>
-                    <button type="submit" class="ptools-btn ptools-btn--primary">
-                        <?php echo $editing ? esc_html__('Update Post Type', 'toolwright') : esc_html__('Create Post Type', 'toolwright'); ?>
+                    <button type="submit" class="alacarte-btn alacarte-btn--primary">
+                        <?php echo $editing ? esc_html__('Update Post Type', 'a-la-carte') : esc_html__('Create Post Type', 'a-la-carte'); ?>
                     </button>
                 </div>
             </form>
 
-            <div class="ptools-panel">
-                <div class="ptools-panel__header">
-                    <h2 class="ptools-h2"><?php esc_html_e('Post Types', 'toolwright'); ?></h2>
-                    <span class="ptools-pill ptools-pill--brand"><?php echo esc_html(count($custom_post_types)); ?></span>
+            <div class="alacarte-panel">
+                <div class="alacarte-panel__header">
+                    <h2 class="alacarte-h2"><?php esc_html_e('Post Types', 'a-la-carte'); ?></h2>
+                    <span class="alacarte-pill alacarte-pill--brand"><?php echo esc_html(count($custom_post_types)); ?></span>
                 </div>
 
-                <div class="ptools-panel__body ptools-panel__body--flush">
+                <div class="alacarte-panel__body alacarte-panel__body--flush">
                     <?php if (empty($custom_post_types)) : ?>
-                        <div class="ptools-empty">
-                            <span class="ptools-empty__icon"><?php UI::dashicon('dashicons-category'); ?></span>
-                            <p class="ptools-empty__text"><?php esc_html_e('No custom post types yet. Create your first one with the form.', 'toolwright'); ?></p>
+                        <div class="alacarte-empty">
+                            <span class="alacarte-empty__icon"><?php UI::dashicon('dashicons-category'); ?></span>
+                            <p class="alacarte-empty__text"><?php esc_html_e('No custom post types yet. Create your first one with the form.', 'a-la-carte'); ?></p>
                         </div>
                     <?php else : ?>
-                        <table class="ptools-table">
+                        <table class="alacarte-table">
                             <thead>
                                 <tr>
-                                    <th scope="col"><?php esc_html_e('Label', 'toolwright'); ?></th>
-                                    <th scope="col" class="ptools-table__actions"><?php esc_html_e('Actions', 'toolwright'); ?></th>
+                                    <th scope="col"><?php esc_html_e('Label', 'a-la-carte'); ?></th>
+                                    <th scope="col" class="alacarte-table__actions"><?php esc_html_e('Actions', 'a-la-carte'); ?></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($custom_post_types as $post_type => $data) : ?>
                                     <tr class="<?php echo $edit_slug === $post_type ? 'is-current' : ''; ?>">
                                         <td>
-                                            <span class="ptools-table__name"><?php echo esc_html($data['plural_label']); ?></span>
-                                            <span class="ptools-table__meta"><?php echo esc_html($post_type); ?></span>
+                                            <span class="alacarte-table__name"><?php echo esc_html($data['plural_label']); ?></span>
+                                            <span class="alacarte-table__meta"><?php echo esc_html($post_type); ?></span>
                                         </td>
-                                        <td class="ptools-table__actions">
-                                            <div class="ptools-table__actions-inner">
-                                                <a class="ptools-icon-btn" href="<?php echo esc_url(add_query_arg('edit', $post_type, $page_url)); ?>">
+                                        <td class="alacarte-table__actions">
+                                            <div class="alacarte-table__actions-inner">
+                                                <a class="alacarte-icon-btn" href="<?php echo esc_url(add_query_arg('edit', $post_type, $page_url)); ?>">
                                                     <?php UI::dashicon('dashicons-edit'); ?>
-                                                    <span class="ptools-sr-only">
+                                                    <span class="alacarte-sr-only">
                                                         <?php
                                                         /* translators: %s: post type label */
-                                                        printf(esc_html__('Edit %s', 'toolwright'), esc_html($data['plural_label']));
+                                                        printf(esc_html__('Edit %s', 'a-la-carte'), esc_html($data['plural_label']));
                                                         ?>
                                                     </span>
                                                 </a>
 
-                                                <form class="ptools-inline-form" method="post"
+                                                <form class="alacarte-inline-form" method="post"
                                                       action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
-                                                      data-ptools-confirm="<?php echo esc_attr(sprintf(
+                                                      data-alacarte-confirm="<?php echo esc_attr(sprintf(
                                                           /* translators: %s: post type label */
-                                                          __('Delete the “%s” post type? Its content stays in the database but becomes inaccessible.', 'toolwright'),
+                                                          __('Delete the “%s” post type? Its content stays in the database but becomes inaccessible.', 'a-la-carte'),
                                                           $data['plural_label']
                                                       )); ?>">
-                                                    <input type="hidden" name="action" value="toolwright_cptm_delete" />
-                                                    <input type="hidden" name="toolwright_cptm_post_type" value="<?php echo esc_attr($post_type); ?>" />
-                                                    <?php wp_nonce_field('toolwright_cptm_delete_nonce_action', 'toolwright_cptm_delete_nonce'); ?>
-                                                    <button type="submit" class="ptools-icon-btn ptools-icon-btn--danger">
+                                                    <input type="hidden" name="action" value="alacarte_cptm_delete" />
+                                                    <input type="hidden" name="alacarte_cptm_post_type" value="<?php echo esc_attr($post_type); ?>" />
+                                                    <?php wp_nonce_field('alacarte_cptm_delete_nonce_action', 'alacarte_cptm_delete_nonce'); ?>
+                                                    <button type="submit" class="alacarte-icon-btn alacarte-icon-btn--danger">
                                                         <?php UI::dashicon('dashicons-trash'); ?>
-                                                        <span class="ptools-sr-only">
+                                                        <span class="alacarte-sr-only">
                                                             <?php
                                                             /* translators: %s: post type label */
-                                                            printf(esc_html__('Delete %s', 'toolwright'), esc_html($data['plural_label']));
+                                                            printf(esc_html__('Delete %s', 'a-la-carte'), esc_html($data['plural_label']));
                                                             ?>
                                                         </span>
                                                     </button>
@@ -305,21 +305,21 @@ class Manager {
      */
     private function render_message() {
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request state used for display only; no data is changed.
-        $code = isset($_GET['tw_message']) ? sanitize_key(wp_unslash($_GET['tw_message'])) : '';
+        $code = isset($_GET['alc_message']) ? sanitize_key(wp_unslash($_GET['alc_message'])) : '';
 
         if (!isset(self::MESSAGES[$code])) {
             return;
         }
 
         $messages = array(
-            'added'       => __('Custom post type created.', 'toolwright'),
-            'updated'     => __('Custom post type updated.', 'toolwright'),
-            'deleted'     => __('Custom post type deleted.', 'toolwright'),
-            'security'    => __('Security check failed. Please try again.', 'toolwright'),
-            'required'    => __('All required fields must be filled.', 'toolwright'),
-            'slug_length' => __('Post type slug must be 20 characters or fewer.', 'toolwright'),
-            'slug_taken'  => __('A post type with this slug already exists.', 'toolwright'),
-            'not_found'   => __('That post type could not be found.', 'toolwright'),
+            'added'       => __('Custom post type created.', 'a-la-carte'),
+            'updated'     => __('Custom post type updated.', 'a-la-carte'),
+            'deleted'     => __('Custom post type deleted.', 'a-la-carte'),
+            'security'    => __('Security check failed. Please try again.', 'a-la-carte'),
+            'required'    => __('All required fields must be filled.', 'a-la-carte'),
+            'slug_length' => __('Post type slug must be 20 characters or fewer.', 'a-la-carte'),
+            'slug_taken'  => __('A post type with this slug already exists.', 'a-la-carte'),
+            'not_found'   => __('That post type could not be found.', 'a-la-carte'),
         );
 
         UI::notice($messages[$code], self::MESSAGES[$code]);
@@ -350,16 +350,16 @@ class Manager {
     private function handle_save_post_type($is_edit) {
         Tool_Manager::require_capability();
 
-        $nonce_field  = $is_edit ? 'toolwright_cptm_edit_nonce' : 'toolwright_cptm_add_nonce';
-        $nonce_action = $is_edit ? 'toolwright_cptm_edit_nonce_action' : 'toolwright_cptm_add_nonce_action';
+        $nonce_field  = $is_edit ? 'alacarte_cptm_edit_nonce' : 'alacarte_cptm_add_nonce';
+        $nonce_action = $is_edit ? 'alacarte_cptm_edit_nonce_action' : 'alacarte_cptm_add_nonce_action';
 
         if (!isset($_POST[$nonce_field]) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST[$nonce_field])), $nonce_action)) {
             $this->redirect_with_message('security');
         }
 
-        $slug           = isset($_POST['toolwright_cptm_post_type_name']) ? sanitize_key(wp_unslash($_POST['toolwright_cptm_post_type_name'])) : '';
-        $singular_label = isset($_POST['toolwright_cptm_singular_label']) ? sanitize_text_field(wp_unslash($_POST['toolwright_cptm_singular_label'])) : '';
-        $plural_label   = isset($_POST['toolwright_cptm_plural_label']) ? sanitize_text_field(wp_unslash($_POST['toolwright_cptm_plural_label'])) : '';
+        $slug           = isset($_POST['alacarte_cptm_post_type_name']) ? sanitize_key(wp_unslash($_POST['alacarte_cptm_post_type_name'])) : '';
+        $singular_label = isset($_POST['alacarte_cptm_singular_label']) ? sanitize_text_field(wp_unslash($_POST['alacarte_cptm_singular_label'])) : '';
+        $plural_label   = isset($_POST['alacarte_cptm_plural_label']) ? sanitize_text_field(wp_unslash($_POST['alacarte_cptm_plural_label'])) : '';
 
         if (empty($slug) || empty($singular_label) || empty($plural_label)) {
             $this->redirect_with_message('required');
@@ -379,18 +379,18 @@ class Manager {
             $this->redirect_with_message('slug_taken');
         }
 
-        $supports = isset($_POST['toolwright_cptm_supports']) ? array_map('sanitize_key', (array) wp_unslash($_POST['toolwright_cptm_supports'])) : array();
+        $supports = isset($_POST['alacarte_cptm_supports']) ? array_map('sanitize_key', (array) wp_unslash($_POST['alacarte_cptm_supports'])) : array();
         $supports = array_values(array_intersect(self::SUPPORT_OPTIONS, $supports));
 
         $custom_post_types[$slug] = array(
             'name'           => $slug,
             'singular_label' => $singular_label,
             'plural_label'   => $plural_label,
-            'public'         => isset($_POST['toolwright_cptm_public']),
-            'has_archive'    => isset($_POST['toolwright_cptm_has_archive']),
-            'hierarchical'   => isset($_POST['toolwright_cptm_hierarchical']),
-            'menu_position'  => isset($_POST['toolwright_cptm_menu_position']) ? intval(wp_unslash($_POST['toolwright_cptm_menu_position'])) : null,
-            'menu_icon'      => isset($_POST['toolwright_cptm_menu_icon']) ? sanitize_text_field(wp_unslash($_POST['toolwright_cptm_menu_icon'])) : '',
+            'public'         => isset($_POST['alacarte_cptm_public']),
+            'has_archive'    => isset($_POST['alacarte_cptm_has_archive']),
+            'hierarchical'   => isset($_POST['alacarte_cptm_hierarchical']),
+            'menu_position'  => isset($_POST['alacarte_cptm_menu_position']) ? intval(wp_unslash($_POST['alacarte_cptm_menu_position'])) : null,
+            'menu_icon'      => isset($_POST['alacarte_cptm_menu_icon']) ? sanitize_text_field(wp_unslash($_POST['alacarte_cptm_menu_icon'])) : '',
             'supports'       => $supports ? $supports : array('title', 'editor'),
         );
 
@@ -409,11 +409,11 @@ class Manager {
     public function handle_delete_post_type() {
         Tool_Manager::require_capability();
 
-        if (!isset($_POST['toolwright_cptm_delete_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['toolwright_cptm_delete_nonce'])), 'toolwright_cptm_delete_nonce_action')) {
+        if (!isset($_POST['alacarte_cptm_delete_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['alacarte_cptm_delete_nonce'])), 'alacarte_cptm_delete_nonce_action')) {
             $this->redirect_with_message('security');
         }
 
-        $post_type = isset($_POST['toolwright_cptm_post_type']) ? sanitize_key(wp_unslash($_POST['toolwright_cptm_post_type'])) : '';
+        $post_type = isset($_POST['alacarte_cptm_post_type']) ? sanitize_key(wp_unslash($_POST['alacarte_cptm_post_type'])) : '';
         $custom_post_types = $this->get_post_types();
 
         if (!isset($custom_post_types[$post_type])) {
@@ -433,7 +433,7 @@ class Manager {
      * @param string $code One of the keys in self::MESSAGES.
      */
     private function redirect_with_message($code) {
-        wp_safe_redirect(add_query_arg('tw_message', $code, Tool_Manager::get_page_url('cpt_manager')));
+        wp_safe_redirect(add_query_arg('alc_message', $code, Tool_Manager::get_page_url('cpt_manager')));
         exit;
     }
 
@@ -460,21 +460,21 @@ class Manager {
                 'name'               => $data['plural_label'],
                 'singular_name'      => $data['singular_label'],
                 'menu_name'          => $data['plural_label'],
-                'add_new'            => __('Add New', 'toolwright'),
+                'add_new'            => __('Add New', 'a-la-carte'),
                 /* translators: %s: singular post type label */
-                'add_new_item'       => sprintf(__('Add New %s', 'toolwright'), $data['singular_label']),
+                'add_new_item'       => sprintf(__('Add New %s', 'a-la-carte'), $data['singular_label']),
                 /* translators: %s: singular post type label */
-                'edit_item'          => sprintf(__('Edit %s', 'toolwright'), $data['singular_label']),
+                'edit_item'          => sprintf(__('Edit %s', 'a-la-carte'), $data['singular_label']),
                 /* translators: %s: singular post type label */
-                'new_item'           => sprintf(__('New %s', 'toolwright'), $data['singular_label']),
+                'new_item'           => sprintf(__('New %s', 'a-la-carte'), $data['singular_label']),
                 /* translators: %s: singular post type label */
-                'view_item'          => sprintf(__('View %s', 'toolwright'), $data['singular_label']),
+                'view_item'          => sprintf(__('View %s', 'a-la-carte'), $data['singular_label']),
                 /* translators: %s: plural post type label */
-                'search_items'       => sprintf(__('Search %s', 'toolwright'), $data['plural_label']),
+                'search_items'       => sprintf(__('Search %s', 'a-la-carte'), $data['plural_label']),
                 /* translators: %s: plural post type label */
-                'not_found'          => sprintf(__('No %s found', 'toolwright'), $data['plural_label']),
+                'not_found'          => sprintf(__('No %s found', 'a-la-carte'), $data['plural_label']),
                 /* translators: %s: plural post type label */
-                'not_found_in_trash' => sprintf(__('No %s found in Trash', 'toolwright'), $data['plural_label']),
+                'not_found_in_trash' => sprintf(__('No %s found in Trash', 'a-la-carte'), $data['plural_label']),
             );
 
             $args = array(

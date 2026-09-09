@@ -1,12 +1,12 @@
 /**
- * Toolwright — shared admin behaviour
+ * A La Carte — shared admin behaviour
  *
  * Replaces the inline `onchange` / `onclick` attributes the tool pages used to
  * carry. Templates opt in through data attributes:
  *
- *   .ptools-js-autosubmit              submit the form when a control changes
- *   [data-ptools-reveal="<id>"]        show that element when this radio is checked
- *   [data-ptools-confirm="message"]    confirm before submitting a form
+ *   .alacarte-js-autosubmit              submit the form when a control changes
+ *   [data-alacarte-reveal="<id>"]        show that element when this radio is checked
+ *   [data-alacarte-confirm="message"]    confirm before submitting a form
  */
 (function () {
     'use strict';
@@ -16,7 +16,7 @@
      */
     function initAutoSubmit() {
         document.addEventListener('change', function (event) {
-            var form = event.target.closest('.ptools-js-autosubmit');
+            var form = event.target.closest('.alacarte-js-autosubmit');
 
             if (form) {
                 form.submit();
@@ -29,7 +29,7 @@
      * only appear for the option they belong to.
      */
     function initReveal() {
-        var triggers = document.querySelectorAll('[data-ptools-reveal]');
+        var triggers = document.querySelectorAll('[data-alacarte-reveal]');
 
         if (!triggers.length) {
             return;
@@ -37,7 +37,7 @@
 
         function syncAll() {
             triggers.forEach(function (trigger) {
-                var target = document.getElementById(trigger.getAttribute('data-ptools-reveal'));
+                var target = document.getElementById(trigger.getAttribute('data-alacarte-reveal'));
 
                 if (target) {
                     target.hidden = !trigger.checked;
@@ -54,7 +54,7 @@
      */
     function initConfirm() {
         document.addEventListener('submit', function (event) {
-            var message = event.target.getAttribute('data-ptools-confirm');
+            var message = event.target.getAttribute('data-alacarte-confirm');
 
             if (message && !window.confirm(message)) {
                 event.preventDefault();

@@ -2,12 +2,12 @@
 /**
  * Comments Disabler functionality
  *
- * @package Toolwright
+ * @package ALaCarte
  */
 
-namespace Toolwright\Comments;
+namespace ALaCarte\Comments;
 
-use Toolwright\Admin\Simple_Toggle_Tool;
+use ALaCarte\Admin\Simple_Toggle_Tool;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -23,7 +23,7 @@ class Comments_Disabler extends Simple_Toggle_Tool {
      *
      * @var string
      */
-    private const OPTION_NAME = 'toolwright_disable_comments';
+    private const OPTION_NAME = 'alacarte_disable_comments';
 
     /**
      * Initialize the class
@@ -41,15 +41,15 @@ class Comments_Disabler extends Simple_Toggle_Tool {
     }
 
     protected function get_nonce_action(): string {
-        return 'toolwright_comments_disabler';
+        return 'alacarte_comments_disabler';
     }
 
     protected function get_page_title(): string {
-        return __('Disable Comments', 'toolwright');
+        return __('Disable Comments', 'a-la-carte');
     }
 
     protected function get_page_description(): string {
-        return __('Completely disable the WordPress comments feature and clean up your admin.', 'toolwright');
+        return __('Completely disable the WordPress comments feature and clean up your admin.', 'a-la-carte');
     }
 
     protected function get_field_name(): string {
@@ -57,11 +57,11 @@ class Comments_Disabler extends Simple_Toggle_Tool {
     }
 
     protected function get_field_title(): string {
-        return __('Disable Comments Globally', 'toolwright');
+        return __('Disable Comments Globally', 'a-la-carte');
     }
 
     protected function get_field_description(): string {
-        return __('This will disable comments on all post types, remove comment links from the admin bar, and hide the comments menu.', 'toolwright');
+        return __('This will disable comments on all post types, remove comment links from the admin bar, and hide the comments menu.', 'a-la-carte');
     }
 
     /**

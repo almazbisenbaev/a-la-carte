@@ -2,13 +2,13 @@
 /**
  * Gutenberg Disabler functionality
  *
- * @package Toolwright
+ * @package ALaCarte
  */
 
-namespace Toolwright\Gutenberg;
+namespace ALaCarte\Gutenberg;
 
-use Toolwright\Admin\Tool_Manager;
-use Toolwright\Admin\UI;
+use ALaCarte\Admin\Tool_Manager;
+use ALaCarte\Admin\UI;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -24,37 +24,13 @@ class Gutenberg_Disabler {
      *
      * @var string
      */
-    private const OPTION_NAME = 'toolwright_gutenberg_settings';
-
-    /**
-     * Legacy option name
-     *
-     * @var string
-     */
-    private const LEGACY_OPTION_NAME = 'toolwright_disable_gutenberg';
+    private const OPTION_NAME = 'alacarte_gutenberg_settings';
 
     /**
      * Initialize the class
      */
     public function __construct() {
-        add_action('init', array($this, 'maybe_migrate_settings'));
         add_action('init', array($this, 'maybe_disable_gutenberg'));
-    }
-
-    /**
-     * Migrate settings from legacy option
-     */
-    public function maybe_migrate_settings() {
-        $legacy = get_option(self::LEGACY_OPTION_NAME);
-        if ($legacy !== false) {
-            $settings = array(
-                'enabled'    => ($legacy === '1' || $legacy === 1),
-                'mode'       => 'all',
-                'post_types' => array()
-            );
-            update_option(self::OPTION_NAME, $settings);
-            delete_option(self::LEGACY_OPTION_NAME);
-        }
     }
 
     /**
@@ -72,8 +48,8 @@ class Gutenberg_Disabler {
             $settings = array();
         }
 
-        // Merge rather than return the stored value directly: an option saved
-        // by an older version may be missing keys the render/filter code reads.
+        // Merge rather than return the stored value directly, so a partial or
+        // hand-edited option can never leave a key the render/filter code reads.
         $settings = array_merge($defaults, $settings);
         $settings['post_types'] = (array) $settings['post_types'];
 
@@ -87,7 +63,7 @@ class Gutenberg_Disabler {
         Tool_Manager::require_capability();
 
         // Handle form submission
-        if (isset($_POST['save']) && check_admin_referer('toolwright_gutenberg_disabler')) {
+        if (isset($_POST['save']) && check_admin_referer('alacarte_gutenberg_disabler')) {
             $this->save_settings();
         }
 
@@ -96,63 +72,63 @@ class Gutenberg_Disabler {
 
         $modes = array(
             'all' => array(
-                'title'       => __('Disable Globally', 'toolwright'),
-                'description' => __('Completely disable the block editor for all post types and widgets.', 'toolwright'),
+                'title'       => __('Disable Globally', 'a-la-carte'),
+                'description' => __('Completely disable the block editor for all post types and widgets.', 'a-la-carte'),
                 'checked'     => $settings['enabled'] && $settings['mode'] === 'all',
             ),
             'selective' => array(
-                'title'       => __('Disable Selectively', 'toolwright'),
-                'description' => __('Choose specific post types where you want to use the Classic Editor.', 'toolwright'),
+                'title'       => __('Disable Selectively', 'a-la-carte'),
+                'description' => __('Choose specific post types where you want to use the Classic Editor.', 'a-la-carte'),
                 'checked'     => $settings['enabled'] && $settings['mode'] === 'selective',
             ),
             'none' => array(
-                'title'       => __('Keep Gutenberg Enabled', 'toolwright'),
-                'description' => __('Do not disable the block editor.', 'toolwright'),
+                'title'       => __('Keep Gutenberg Enabled', 'a-la-carte'),
+                'description' => __('Do not disable the block editor.', 'a-la-carte'),
                 'checked'     => !$settings['enabled'],
             ),
         );
 
         UI::page_open(array(
             'tool_id'     => 'gutenberg_disabler',
-            'title'       => __('Gutenberg Disabler', 'toolwright'),
-            'description' => __('Switch back to the Classic Editor and disable Gutenberg block library assets.', 'toolwright'),
+            'title'       => __('Gutenberg Disabler', 'a-la-carte'),
+            'description' => __('Switch back to the Classic Editor and disable Gutenberg block library assets.', 'a-la-carte'),
         ));
         ?>
-        <form class="ptools-panel" method="post">
-            <?php wp_nonce_field('toolwright_gutenberg_disabler'); ?>
+        <form class="alacarte-panel" method="post">
+            <?php wp_nonce_field('alacarte_gutenberg_disabler'); ?>
 
-            <div class="ptools-panel__header">
-                <h2 class="ptools-h2"><?php esc_html_e('Settings', 'toolwright'); ?></h2>
+            <div class="alacarte-panel__header">
+                <h2 class="alacarte-h2"><?php esc_html_e('Settings', 'a-la-carte'); ?></h2>
             </div>
 
-            <div class="ptools-panel__body">
-                <div class="ptools-panel__section">
+            <div class="alacarte-panel__body">
+                <div class="alacarte-panel__section">
                     <?php foreach ($modes as $mode => $option) : ?>
-                        <label class="ptools-choice ptools-choice--card">
+                        <label class="alacarte-choice alacarte-choice--card">
                             <input type="radio"
                                    name="gutenberg_mode"
                                    value="<?php echo esc_attr($mode); ?>"
-                                   <?php echo 'selective' === $mode ? 'data-ptools-reveal="ptools-gutenberg-post-types"' : ''; ?>
+                                   <?php echo 'selective' === $mode ? 'data-alacarte-reveal="alacarte-gutenberg-post-types"' : ''; ?>
                                    <?php checked($option['checked']); ?> />
-                            <span class="ptools-choice__text">
-                                <span class="ptools-choice__title"><?php echo esc_html($option['title']); ?></span>
-                                <span class="ptools-choice__desc"><?php echo esc_html($option['description']); ?></span>
+                            <span class="alacarte-choice__text">
+                                <span class="alacarte-choice__title"><?php echo esc_html($option['title']); ?></span>
+                                <span class="alacarte-choice__desc"><?php echo esc_html($option['description']); ?></span>
                             </span>
                         </label>
                     <?php endforeach; ?>
                 </div>
 
-                <div class="ptools-panel__section" id="ptools-gutenberg-post-types" <?php echo $modes['selective']['checked'] ? '' : 'hidden'; ?>>
-                    <p class="ptools-eyebrow"><?php esc_html_e('Post types using the Classic Editor', 'toolwright'); ?></p>
-                    <div class="ptools-choice-grid">
+                <div class="alacarte-panel__section" id="alacarte-gutenberg-post-types" <?php echo $modes['selective']['checked'] ? '' : 'hidden'; ?>>
+                    <p class="alacarte-eyebrow"><?php esc_html_e('Post types using the Classic Editor', 'a-la-carte'); ?></p>
+                    <div class="alacarte-choice-grid">
                         <?php foreach ($post_types as $post_type) : ?>
-                            <label class="ptools-choice ptools-choice--boxed">
+                            <label class="alacarte-choice alacarte-choice--boxed">
                                 <input type="checkbox"
                                        name="post_types[]"
                                        value="<?php echo esc_attr($post_type->name); ?>"
                                        <?php checked(in_array($post_type->name, $settings['post_types'], true)); ?> />
-                                <span class="ptools-choice__text">
-                                    <span class="ptools-choice__title"><?php echo esc_html($post_type->label); ?></span>
+                                <span class="alacarte-choice__text">
+                                    <span class="alacarte-choice__title"><?php echo esc_html($post_type->label); ?></span>
                                 </span>
                             </label>
                         <?php endforeach; ?>
@@ -160,9 +136,9 @@ class Gutenberg_Disabler {
                 </div>
             </div>
 
-            <div class="ptools-panel__footer">
-                <button type="submit" name="save" value="1" class="ptools-btn ptools-btn--primary">
-                    <?php esc_html_e('Save Settings', 'toolwright'); ?>
+            <div class="alacarte-panel__footer">
+                <button type="submit" name="save" value="1" class="alacarte-btn alacarte-btn--primary">
+                    <?php esc_html_e('Save Settings', 'a-la-carte'); ?>
                 </button>
             </div>
         </form>
@@ -174,7 +150,7 @@ class Gutenberg_Disabler {
      * Save the Gutenberg disabler settings
      */
     private function save_settings() {
-        check_admin_referer('toolwright_gutenberg_disabler');
+        check_admin_referer('alacarte_gutenberg_disabler');
 
         $mode = isset($_POST['gutenberg_mode']) ? sanitize_key(wp_unslash($_POST['gutenberg_mode'])) : 'none';
         if (!in_array($mode, array('all', 'selective', 'none'), true)) {
@@ -191,9 +167,9 @@ class Gutenberg_Disabler {
         ));
 
         add_settings_error(
-            'toolwright_messages',
-            'toolwright_message',
-            __('Settings saved.', 'toolwright'),
+            'alacarte_messages',
+            'alacarte_message',
+            __('Settings saved.', 'a-la-carte'),
             'updated'
         );
     }

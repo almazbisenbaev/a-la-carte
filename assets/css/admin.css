@@ -1,11 +1,11 @@
 /**
- * Toolwright — Admin design system
+ * A La Carte — Admin design system
  *
- * Every Toolwright screen is built from the components in this file. Templates
+ * Every A La Carte screen is built from the components in this file. Templates
  * should never carry inline `style=""` attributes: if a page needs something
  * that isn't here, add a component or a modifier instead.
  *
- * Naming: `.ptools-block`, `.ptools-block__element`, `.ptools-block--modifier`, plus
+ * Naming: `.alacarte-block`, `.alacarte-block__element`, `.alacarte-block--modifier`, plus
  * `.is-*` for stateful classes toggled by PHP or JS.
  *
  * Layout rule of thumb: containers own the spacing between their children
@@ -37,114 +37,114 @@
 
 :root {
     /* Brand */
-    --ptools-brand: #6366f1;
-    --ptools-brand-strong: #4f46e5;
-    --ptools-brand-deep: #4338ca;
-    --ptools-brand-soft: #eef2ff;
-    --ptools-brand-border: #c7d2fe;
+    --alacarte-brand: #6366f1;
+    --alacarte-brand-strong: #4f46e5;
+    --alacarte-brand-deep: #4338ca;
+    --alacarte-brand-soft: #eef2ff;
+    --alacarte-brand-border: #c7d2fe;
 
     /* Status */
-    --ptools-success: #059669;
-    --ptools-success-soft: #ecfdf5;
-    --ptools-success-border: #a7f3d0;
-    --ptools-warning: #b45309;
-    --ptools-warning-soft: #fffbeb;
-    --ptools-warning-border: #fde68a;
-    --ptools-danger: #dc2626;
-    --ptools-danger-strong: #b91c1c;
-    --ptools-danger-soft: #fef2f2;
-    --ptools-danger-border: #fecaca;
+    --alacarte-success: #059669;
+    --alacarte-success-soft: #ecfdf5;
+    --alacarte-success-border: #a7f3d0;
+    --alacarte-warning: #b45309;
+    --alacarte-warning-soft: #fffbeb;
+    --alacarte-warning-border: #fde68a;
+    --alacarte-danger: #dc2626;
+    --alacarte-danger-strong: #b91c1c;
+    --alacarte-danger-soft: #fef2f2;
+    --alacarte-danger-border: #fecaca;
 
     /* Text */
-    --ptools-text: #111827;
-    --ptools-text-muted: #6b7280;
-    --ptools-text-subtle: #9ca3af;
+    --alacarte-text: #111827;
+    --alacarte-text-muted: #6b7280;
+    --alacarte-text-subtle: #9ca3af;
 
     /* Surfaces */
-    --ptools-page: #f3f4f7;
-    --ptools-surface: #ffffff;
-    --ptools-surface-sunken: #f7f8fa;
-    --ptools-surface-hover: #f3f4f7;
-    --ptools-border: #e2e5eb;
-    --ptools-border-strong: #cbd1db;
-    --ptools-border-soft: #edeff3;
+    --alacarte-page: #f3f4f7;
+    --alacarte-surface: #ffffff;
+    --alacarte-surface-sunken: #f7f8fa;
+    --alacarte-surface-hover: #f3f4f7;
+    --alacarte-border: #e2e5eb;
+    --alacarte-border-strong: #cbd1db;
+    --alacarte-border-soft: #edeff3;
 
     /* Radii */
-    --ptools-radius-sm: 8px;
-    --ptools-radius: 12px;
-    --ptools-radius-lg: 18px;
-    --ptools-radius-full: 999px;
+    --alacarte-radius-sm: 8px;
+    --alacarte-radius: 12px;
+    --alacarte-radius-lg: 18px;
+    --alacarte-radius-full: 999px;
 
     /* Spacing scale */
-    --ptools-space-1: 4px;
-    --ptools-space-2: 8px;
-    --ptools-space-3: 12px;
-    --ptools-space-4: 16px;
-    --ptools-space-5: 24px;
-    --ptools-space-6: 32px;
-    --ptools-space-7: 40px;
-    --ptools-space-8: 56px;
+    --alacarte-space-1: 4px;
+    --alacarte-space-2: 8px;
+    --alacarte-space-3: 12px;
+    --alacarte-space-4: 16px;
+    --alacarte-space-5: 24px;
+    --alacarte-space-6: 32px;
+    --alacarte-space-7: 40px;
+    --alacarte-space-8: 56px;
 
     /* Type */
-    --ptools-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    --ptools-font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    --alacarte-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    --alacarte-font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 
     /* Motion */
-    --ptools-transition: 160ms cubic-bezier(0.4, 0, 0.2, 1);
+    --alacarte-transition: 160ms cubic-bezier(0.4, 0, 0.2, 1);
 
     /* Elevation — surfaces are separated by light, not just by hairlines. */
-    --ptools-shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
-    --ptools-shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 2px 6px -2px rgba(16, 24, 40, 0.08);
-    --ptools-shadow-md: 0 4px 10px -2px rgba(16, 24, 40, 0.10), 0 10px 24px -8px rgba(16, 24, 40, 0.14);
-    --ptools-shadow-lg: 0 24px 48px -12px rgba(15, 23, 42, 0.30);
-    --ptools-shadow-brand: 0 1px 2px rgba(16, 24, 40, 0.10), 0 4px 12px -4px rgba(79, 70, 229, 0.55);
+    --alacarte-shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
+    --alacarte-shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 2px 6px -2px rgba(16, 24, 40, 0.08);
+    --alacarte-shadow-md: 0 4px 10px -2px rgba(16, 24, 40, 0.10), 0 10px 24px -8px rgba(16, 24, 40, 0.14);
+    --alacarte-shadow-lg: 0 24px 48px -12px rgba(15, 23, 42, 0.30);
+    --alacarte-shadow-brand: 0 1px 2px rgba(16, 24, 40, 0.10), 0 4px 12px -4px rgba(79, 70, 229, 0.55);
 
     /* Focus — a soft glow inside fields, a hard ring around controls. */
-    --ptools-focus-ring: 0 0 0 3px rgba(99, 102, 241, 0.35);
-    --ptools-focus-ring-strong: 0 0 0 2px var(--ptools-surface), 0 0 0 4px var(--ptools-brand);
+    --alacarte-focus-ring: 0 0 0 3px rgba(99, 102, 241, 0.35);
+    --alacarte-focus-ring-strong: 0 0 0 2px var(--alacarte-surface), 0 0 0 4px var(--alacarte-brand);
 }
 
 /* ══ 2. Screen shell ══════════════════════════════════════════════════════ */
 
-/* Matches `toplevel_page_toolwright` and every `toolwright_page_toolwright-*`
+/* Matches `toplevel_page_a-la-carte` and every `a-la-carte_page_a-la-carte-*`
    submenu screen. Matching the exact class list breaks on submenus, which is
    why this uses a substring match. */
-body[class*="page_toolwright"] #wpcontent {
-    background: var(--ptools-page);
+body[class*="page_a-la-carte"] #wpcontent {
+    background: var(--alacarte-page);
     padding: 0;
 }
 
 /* Core/other-plugin notices are printed outside our wrap; give them the same
    horizontal rhythm so they don't sit flush against the viewport edge. */
-body[class*="page_toolwright"] #wpbody-content>.notice,
-body[class*="page_toolwright"] #wpbody-content>.updated,
-body[class*="page_toolwright"] #wpbody-content>.error {
-    margin: var(--ptools-space-5) var(--ptools-space-7) 0;
+body[class*="page_a-la-carte"] #wpbody-content>.notice,
+body[class*="page_a-la-carte"] #wpbody-content>.updated,
+body[class*="page_a-la-carte"] #wpbody-content>.error {
+    margin: var(--alacarte-space-5) var(--alacarte-space-7) 0;
 }
 
-.ptools-wrap {
+.alacarte-wrap {
     max-width: 1280px;
     margin: 0 auto;
-    padding: var(--ptools-space-6) var(--ptools-space-7) var(--ptools-space-7);
-    font-family: var(--ptools-font);
+    padding: var(--alacarte-space-6) var(--alacarte-space-7) var(--alacarte-space-7);
+    font-family: var(--alacarte-font);
     font-size: 14px;
-    color: var(--ptools-text);
-    animation: ptools-fade-in 300ms ease;
+    color: var(--alacarte-text);
+    animation: alacarte-fade-in 300ms ease;
 }
 
-.ptools-wrap *,
-.ptools-wrap *::before,
-.ptools-wrap *::after {
+.alacarte-wrap *,
+.alacarte-wrap *::before,
+.alacarte-wrap *::after {
     box-sizing: border-box;
 }
 
 /* Sections toggled by JS use the `hidden` attribute; make sure it beats the
    `display` value any component class sets. */
-.ptools-wrap [hidden] {
+.alacarte-wrap [hidden] {
     display: none !important;
 }
 
-@keyframes ptools-fade-in {
+@keyframes alacarte-fade-in {
     from {
         opacity: 0;
         transform: translateY(8px);
@@ -152,7 +152,7 @@ body[class*="page_toolwright"] #wpbody-content>.error {
 }
 
 /* Screen-reader-only text (icon-only buttons, hidden inputs with a label). */
-.ptools-sr-only {
+.alacarte-sr-only {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -166,176 +166,176 @@ body[class*="page_toolwright"] #wpbody-content>.error {
 
 /* ══ 3. Typography ════════════════════════════════════════════════════════ */
 
-.ptools-h1 {
-    margin: 0 0 var(--ptools-space-2);
+.alacarte-h1 {
+    margin: 0 0 var(--alacarte-space-2);
     font-size: 28px;
     font-weight: 800;
     line-height: 1.15;
     letter-spacing: -0.025em;
-    color: var(--ptools-text);
+    color: var(--alacarte-text);
 }
 
-.ptools-h2 {
+.alacarte-h2 {
     margin: 0;
     font-size: 16px;
     font-weight: 700;
     line-height: 1.3;
     letter-spacing: -0.01em;
-    color: var(--ptools-text);
+    color: var(--alacarte-text);
 }
 
-.ptools-h3 {
-    margin: 0 0 var(--ptools-space-2);
+.alacarte-h3 {
+    margin: 0 0 var(--alacarte-space-2);
     font-size: 15px;
     font-weight: 700;
     line-height: 1.3;
     letter-spacing: -0.01em;
-    color: var(--ptools-text);
+    color: var(--alacarte-text);
 }
 
-.ptools-lead {
+.alacarte-lead {
     margin: 0;
     font-size: 15px;
     line-height: 1.6;
-    color: var(--ptools-text-muted);
+    color: var(--alacarte-text-muted);
 }
 
-.ptools-text-muted {
-    color: var(--ptools-text-muted);
+.alacarte-text-muted {
+    color: var(--alacarte-text-muted);
 }
 
-.ptools-help {
-    margin: var(--ptools-space-2) 0 0;
+.alacarte-help {
+    margin: var(--alacarte-space-2) 0 0;
     font-size: 12px;
     line-height: 1.5;
-    color: var(--ptools-text-muted);
+    color: var(--alacarte-text-muted);
 }
 
-.ptools-help a {
-    color: var(--ptools-brand-strong);
+.alacarte-help a {
+    color: var(--alacarte-brand-strong);
     font-weight: 600;
     text-decoration: none;
 }
 
-.ptools-help a:hover {
+.alacarte-help a:hover {
     text-decoration: underline;
 }
 
-.ptools-mono {
-    font-family: var(--ptools-font-mono);
+.alacarte-mono {
+    font-family: var(--alacarte-font-mono);
 }
 
-.ptools-required {
-    color: var(--ptools-danger);
+.alacarte-required {
+    color: var(--alacarte-danger);
 }
 
 /* Small capitalised label that opens a group of settings. */
-.ptools-eyebrow {
-    margin: 0 0 var(--ptools-space-4);
+.alacarte-eyebrow {
+    margin: 0 0 var(--alacarte-space-4);
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--ptools-text);
+    color: var(--alacarte-text);
 }
 
 /* Icons are decorative by default and should carry aria-hidden in markup. */
-.ptools-wrap .dashicons {
+.alacarte-wrap .dashicons {
     line-height: 1;
     vertical-align: middle;
 }
 
 /* ══ 4. Page header ═══════════════════════════════════════════════════════ */
 
-.ptools-page-header {
+.alacarte-page-header {
     display: flex;
     align-items: center;
-    gap: var(--ptools-space-5);
-    margin-bottom: var(--ptools-space-6);
-    padding: var(--ptools-space-6);
-    background: var(--ptools-surface);
-    border: 1px solid var(--ptools-border);
-    border-radius: var(--ptools-radius-lg);
+    gap: var(--alacarte-space-5);
+    margin-bottom: var(--alacarte-space-6);
+    padding: var(--alacarte-space-6);
+    background: var(--alacarte-surface);
+    border: 1px solid var(--alacarte-border);
+    border-radius: var(--alacarte-radius-lg);
 }
 
 /* Solid brand tile — the single loudest element on any screen. */
-.ptools-page-header__icon {
+.alacarte-page-header__icon {
     display: flex;
     flex: 0 0 auto;
     align-items: center;
     justify-content: center;
     width: 68px;
     height: 68px;
-    /* background: linear-gradient(140deg, var(--ptools-brand), var(--ptools-brand-deep)); */
-    /* border-radius: var(--ptools-radius); */
+    /* background: linear-gradient(140deg, var(--alacarte-brand), var(--alacarte-brand-deep)); */
+    /* border-radius: var(--alacarte-radius); */
     /* color: #fff; */
-    /* box-shadow: var(--ptools-shadow-brand); */
+    /* box-shadow: var(--alacarte-shadow-brand); */
 }
 
-.ptools-page-header__icon .dashicons {
+.alacarte-page-header__icon .dashicons {
     width: 34px;
     height: 34px;
     font-size: 34px;
 }
 
-.ptools-page-header__icon img {
+.alacarte-page-header__icon img {
     width: 38px;
     height: auto;
 }
 
-.ptools-page-header__content {
+.alacarte-page-header__content {
     flex: 1 1 auto;
     min-width: 0;
 }
 
-.ptools-page-header__actions {
+.alacarte-page-header__actions {
     display: flex;
     flex: 0 0 auto;
-    gap: var(--ptools-space-3);
+    gap: var(--alacarte-space-3);
 }
 
 /* ══ 5. Panels ════════════════════════════════════════════════════════════ */
 
-.ptools-panel {
-    background: var(--ptools-surface);
-    border: 1px solid var(--ptools-border);
-    border-radius: var(--ptools-radius);
-    box-shadow: var(--ptools-shadow);
+.alacarte-panel {
+    background: var(--alacarte-surface);
+    border: 1px solid var(--alacarte-border);
+    border-radius: var(--alacarte-radius);
+    box-shadow: var(--alacarte-shadow);
     overflow: hidden;
 }
 
-.ptools-panel+.ptools-panel {
-    margin-top: var(--ptools-space-5);
+.alacarte-panel+.alacarte-panel {
+    margin-top: var(--alacarte-space-5);
 }
 
-.ptools-panel__header {
+.alacarte-panel__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--ptools-space-4);
+    gap: var(--alacarte-space-4);
     min-height: 58px;
-    padding: var(--ptools-space-3) var(--ptools-space-5);
-    background: var(--ptools-surface-sunken);
-    border-bottom: 1px solid var(--ptools-border);
+    padding: var(--alacarte-space-3) var(--alacarte-space-5);
+    background: var(--alacarte-surface-sunken);
+    border-bottom: 1px solid var(--alacarte-border);
 }
 
-.ptools-panel__body {
-    padding: var(--ptools-space-5);
+.alacarte-panel__body {
+    padding: var(--alacarte-space-5);
 }
 
 /* Tables and lists sit flush against the panel edges. */
-.ptools-panel__body--flush {
+.alacarte-panel__body--flush {
     padding: 0;
 }
 
-.ptools-panel__footer {
+.alacarte-panel__footer {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: var(--ptools-space-3);
-    padding: var(--ptools-space-4) var(--ptools-space-5);
-    background: var(--ptools-surface-sunken);
-    border-top: 1px solid var(--ptools-border);
+    gap: var(--alacarte-space-3);
+    padding: var(--alacarte-space-4) var(--alacarte-space-5);
+    background: var(--alacarte-surface-sunken);
+    border-top: 1px solid var(--alacarte-border);
 }
 
 /**
@@ -343,13 +343,13 @@ body[class*="page_toolwright"] #wpbody-content>.error {
  * by a rule, including the first one after a row of fields — using an adjacent
  * sibling selector instead would leave that first divider missing.
  */
-.ptools-panel__body>.ptools-panel__section {
-    margin-top: var(--ptools-space-5);
-    padding-top: var(--ptools-space-5);
-    border-top: 1px solid var(--ptools-border-soft);
+.alacarte-panel__body>.alacarte-panel__section {
+    margin-top: var(--alacarte-space-5);
+    padding-top: var(--alacarte-space-5);
+    border-top: 1px solid var(--alacarte-border-soft);
 }
 
-.ptools-panel__body>.ptools-panel__section:first-child {
+.alacarte-panel__body>.alacarte-panel__section:first-child {
     margin-top: 0;
     padding-top: 0;
     border-top: none;
@@ -357,57 +357,57 @@ body[class*="page_toolwright"] #wpbody-content>.error {
 
 /* ══ 6. Tool grid ═════════════════════════════════════════════════════════ */
 
-.ptools-tools {
+.alacarte-tools {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: var(--ptools-space-5);
+    gap: var(--alacarte-space-5);
 }
 
 /* The card is a plain container — the title link, the switch and the Configure
    button are the things you click, so only those react to the pointer. */
-.ptools-tool-card {
+.alacarte-tool-card {
     display: flex;
     flex-direction: column;
-    padding: var(--ptools-space-5);
-    background: var(--ptools-surface);
-    border: 1px solid var(--ptools-border);
-    border-radius: var(--ptools-radius);
-    box-shadow: var(--ptools-shadow);
+    padding: var(--alacarte-space-5);
+    background: var(--alacarte-surface);
+    border: 1px solid var(--alacarte-border);
+    border-radius: var(--alacarte-radius);
+    box-shadow: var(--alacarte-shadow);
 }
 
 /* An active tool is read at a glance from the icon, not just from the pill. */
-.ptools-tool-card:has(.ptools-switch input:checked) {
-    border-color: var(--ptools-brand-border);
+.alacarte-tool-card:has(.alacarte-switch input:checked) {
+    border-color: var(--alacarte-brand-border);
 }
 
-.ptools-tool-card__header {
+.alacarte-tool-card__header {
     display: flex;
     align-items: center;
-    gap: var(--ptools-space-3);
-    margin-bottom: var(--ptools-space-4);
+    gap: var(--alacarte-space-3);
+    margin-bottom: var(--alacarte-space-4);
 }
 
-.ptools-tool-card__icon {
+.alacarte-tool-card__icon {
     display: flex;
     flex: 0 0 auto;
     align-items: center;
     justify-content: center;
     width: 44px;
     height: 44px;
-    background: var(--ptools-surface-sunken);
-    border: 1px solid var(--ptools-border);
-    border-radius: var(--ptools-radius-sm);
-    color: var(--ptools-text-subtle);
+    background: var(--alacarte-surface-sunken);
+    border: 1px solid var(--alacarte-border);
+    border-radius: var(--alacarte-radius-sm);
+    color: var(--alacarte-text-subtle);
 }
 
-.ptools-tool-card:has(.ptools-switch input:checked) .ptools-tool-card__icon {
-    background: linear-gradient(140deg, var(--ptools-brand), var(--ptools-brand-deep));
+.alacarte-tool-card:has(.alacarte-switch input:checked) .alacarte-tool-card__icon {
+    background: linear-gradient(140deg, var(--alacarte-brand), var(--alacarte-brand-deep));
     border-color: transparent;
     color: #fff;
-    box-shadow: var(--ptools-shadow-brand);
+    box-shadow: var(--alacarte-shadow-brand);
 }
 
-.ptools-tool-card__icon .dashicons {
+.alacarte-tool-card__icon .dashicons {
     width: 22px;
     height: 22px;
     font-size: 22px;
@@ -415,7 +415,7 @@ body[class*="page_toolwright"] #wpbody-content>.error {
 
 /* Centred against the icon — no padding nudge, so a title that wraps to two
    lines stays aligned with both the icon and the switch. */
-.ptools-tool-card__title {
+.alacarte-tool-card__title {
     flex: 1 1 auto;
     min-width: 0;
     margin: 0;
@@ -423,36 +423,36 @@ body[class*="page_toolwright"] #wpbody-content>.error {
     font-weight: 700;
     line-height: 1.3;
     letter-spacing: -0.01em;
-    color: var(--ptools-text);
+    color: var(--alacarte-text);
     text-decoration: none;
 }
 
-a.ptools-tool-card__title:hover {
-    color: var(--ptools-brand-strong);
+a.alacarte-tool-card__title:hover {
+    color: var(--alacarte-brand-strong);
 }
 
-.ptools-tool-card__desc {
+.alacarte-tool-card__desc {
     flex: 1 1 auto;
-    margin: 0 0 var(--ptools-space-5);
+    margin: 0 0 var(--alacarte-space-5);
     font-size: 13px;
     line-height: 1.6;
-    color: var(--ptools-text-muted);
+    color: var(--alacarte-text-muted);
 }
 
-.ptools-tool-card__footer {
+.alacarte-tool-card__footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--ptools-space-3);
+    gap: var(--alacarte-space-3);
 }
 
 /* ══ 7. Buttons ═══════════════════════════════════════════════════════════ */
 
-.ptools-btn {
+.alacarte-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: var(--ptools-space-2);
+    gap: var(--alacarte-space-2);
     min-height: 38px;
     padding: 0 18px;
     font-family: inherit;
@@ -463,79 +463,79 @@ a.ptools-tool-card__title:hover {
     text-decoration: none;
     white-space: nowrap;
     border: 1px solid transparent;
-    border-radius: var(--ptools-radius-sm);
+    border-radius: var(--alacarte-radius-sm);
     cursor: pointer;
-    transition: background-color var(--ptools-transition), border-color var(--ptools-transition), color var(--ptools-transition), box-shadow var(--ptools-transition), transform var(--ptools-transition);
+    transition: background-color var(--alacarte-transition), border-color var(--alacarte-transition), color var(--alacarte-transition), box-shadow var(--alacarte-transition), transform var(--alacarte-transition);
 }
 
-.ptools-btn:focus {
+.alacarte-btn:focus {
     outline: none;
 }
 
-.ptools-btn:focus-visible {
-    box-shadow: var(--ptools-focus-ring-strong);
+.alacarte-btn:focus-visible {
+    box-shadow: var(--alacarte-focus-ring-strong);
 }
 
-.ptools-btn:active {
+.alacarte-btn:active {
     transform: translateY(1px);
 }
 
-.ptools-btn .dashicons {
+.alacarte-btn .dashicons {
     width: 17px;
     height: 17px;
     font-size: 17px;
 }
 
-.ptools-btn--primary,
-.ptools-btn--primary:hover,
-.ptools-btn--primary:focus {
+.alacarte-btn--primary,
+.alacarte-btn--primary:hover,
+.alacarte-btn--primary:focus {
     color: #fff;
 }
 
-.ptools-btn--primary {
-    background: var(--ptools-brand);
-    box-shadow: var(--ptools-shadow-brand);
+.alacarte-btn--primary {
+    background: var(--alacarte-brand);
+    box-shadow: var(--alacarte-shadow-brand);
 }
 
-.ptools-btn--primary:hover {
-    background: var(--ptools-brand-strong);
+.alacarte-btn--primary:hover {
+    background: var(--alacarte-brand-strong);
 }
 
-.ptools-btn--primary:active {
-    background: var(--ptools-brand-deep);
+.alacarte-btn--primary:active {
+    background: var(--alacarte-brand-deep);
 }
 
-.ptools-btn--secondary {
-    background: var(--ptools-surface);
-    border-color: var(--ptools-border-strong);
-    color: var(--ptools-text);
-    box-shadow: var(--ptools-shadow-sm);
+.alacarte-btn--secondary {
+    background: var(--alacarte-surface);
+    border-color: var(--alacarte-border-strong);
+    color: var(--alacarte-text);
+    box-shadow: var(--alacarte-shadow-sm);
 }
 
-.ptools-btn--secondary:hover,
-.ptools-btn--secondary:focus {
-    background: var(--ptools-surface-sunken);
-    border-color: var(--ptools-text-subtle);
-    color: var(--ptools-text);
+.alacarte-btn--secondary:hover,
+.alacarte-btn--secondary:focus {
+    background: var(--alacarte-surface-sunken);
+    border-color: var(--alacarte-text-subtle);
+    color: var(--alacarte-text);
 }
 
-.ptools-btn--danger {
-    background: var(--ptools-danger);
+.alacarte-btn--danger {
+    background: var(--alacarte-danger);
     color: #fff;
-    box-shadow: var(--ptools-shadow-sm);
+    box-shadow: var(--alacarte-shadow-sm);
 }
 
-.ptools-btn--danger:hover,
-.ptools-btn--danger:focus {
-    background: var(--ptools-danger-strong);
+.alacarte-btn--danger:hover,
+.alacarte-btn--danger:focus {
+    background: var(--alacarte-danger-strong);
     color: #fff;
 }
 
-.ptools-btn[disabled],
-.ptools-btn.is-disabled {
-    background: var(--ptools-surface-sunken);
-    border-color: var(--ptools-border);
-    color: var(--ptools-text-subtle);
+.alacarte-btn[disabled],
+.alacarte-btn.is-disabled {
+    background: var(--alacarte-surface-sunken);
+    border-color: var(--alacarte-border);
+    color: var(--alacarte-text-subtle);
     box-shadow: none;
     cursor: default;
     pointer-events: none;
@@ -543,7 +543,7 @@ a.ptools-tool-card__title:hover {
 }
 
 /* Icon-only actions in table rows. */
-.ptools-icon-btn {
+.alacarte-icon-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -552,33 +552,33 @@ a.ptools-tool-card__title:hover {
     padding: 0;
     background: none;
     border: 1px solid transparent;
-    border-radius: var(--ptools-radius-sm);
-    color: var(--ptools-text-muted);
+    border-radius: var(--alacarte-radius-sm);
+    color: var(--alacarte-text-muted);
     text-decoration: none;
     cursor: pointer;
-    transition: background-color var(--ptools-transition), border-color var(--ptools-transition), color var(--ptools-transition);
+    transition: background-color var(--alacarte-transition), border-color var(--alacarte-transition), color var(--alacarte-transition);
 }
 
-.ptools-icon-btn:hover,
-.ptools-icon-btn:focus {
-    background: var(--ptools-surface-hover);
-    border-color: var(--ptools-border);
-    color: var(--ptools-text);
+.alacarte-icon-btn:hover,
+.alacarte-icon-btn:focus {
+    background: var(--alacarte-surface-hover);
+    border-color: var(--alacarte-border);
+    color: var(--alacarte-text);
 }
 
-.ptools-icon-btn:focus-visible {
+.alacarte-icon-btn:focus-visible {
     outline: none;
-    box-shadow: var(--ptools-focus-ring-strong);
+    box-shadow: var(--alacarte-focus-ring-strong);
 }
 
-.ptools-icon-btn--danger:hover,
-.ptools-icon-btn--danger:focus {
-    background: var(--ptools-danger-soft);
-    border-color: var(--ptools-danger-border);
-    color: var(--ptools-danger);
+.alacarte-icon-btn--danger:hover,
+.alacarte-icon-btn--danger:focus {
+    background: var(--alacarte-danger-soft);
+    border-color: var(--alacarte-danger-border);
+    color: var(--alacarte-danger);
 }
 
-.ptools-icon-btn .dashicons {
+.alacarte-icon-btn .dashicons {
     width: 18px;
     height: 18px;
     font-size: 18px;
@@ -586,31 +586,31 @@ a.ptools-tool-card__title:hover {
 
 /* ══ 8. Forms ═════════════════════════════════════════════════════════════ */
 
-.ptools-field {
-    margin: 0 0 var(--ptools-space-5);
+.alacarte-field {
+    margin: 0 0 var(--alacarte-space-5);
 }
 
-.ptools-field:last-child {
+.alacarte-field:last-child {
     margin-bottom: 0;
 }
 
 /* A button that belongs to the field above it (e.g. "Add Rule"). */
-.ptools-field__action {
-    margin-top: var(--ptools-space-3);
+.alacarte-field__action {
+    margin-top: var(--alacarte-space-3);
 }
 
-.ptools-label {
+.alacarte-label {
     display: block;
-    margin-bottom: var(--ptools-space-2);
+    margin-bottom: var(--alacarte-space-2);
     font-size: 13px;
     font-weight: 700;
-    color: var(--ptools-text);
+    color: var(--alacarte-text);
 }
 
 /* Element-qualified so these win over wp-admin's `input`/`select` rules. */
-input.ptools-form-control,
-select.ptools-form-control,
-textarea.ptools-form-control {
+input.alacarte-form-control,
+select.alacarte-form-control,
+textarea.alacarte-form-control {
     display: block;
     width: 100%;
     max-width: 100%;
@@ -620,41 +620,41 @@ textarea.ptools-form-control {
     font-family: inherit;
     font-size: 13px;
     line-height: 1.5;
-    color: var(--ptools-text);
-    background-color: var(--ptools-surface);
-    border: 1px solid var(--ptools-border-strong);
-    border-radius: var(--ptools-radius-sm);
-    box-shadow: var(--ptools-shadow-sm);
-    transition: border-color var(--ptools-transition), box-shadow var(--ptools-transition);
+    color: var(--alacarte-text);
+    background-color: var(--alacarte-surface);
+    border: 1px solid var(--alacarte-border-strong);
+    border-radius: var(--alacarte-radius-sm);
+    box-shadow: var(--alacarte-shadow-sm);
+    transition: border-color var(--alacarte-transition), box-shadow var(--alacarte-transition);
 }
 
-input.ptools-form-control:hover,
-select.ptools-form-control:hover,
-textarea.ptools-form-control:hover {
-    border-color: var(--ptools-text-subtle);
+input.alacarte-form-control:hover,
+select.alacarte-form-control:hover,
+textarea.alacarte-form-control:hover {
+    border-color: var(--alacarte-text-subtle);
 }
 
-input.ptools-form-control:focus,
-select.ptools-form-control:focus,
-textarea.ptools-form-control:focus {
-    border-color: var(--ptools-brand);
-    box-shadow: var(--ptools-focus-ring);
+input.alacarte-form-control:focus,
+select.alacarte-form-control:focus,
+textarea.alacarte-form-control:focus {
+    border-color: var(--alacarte-brand);
+    box-shadow: var(--alacarte-focus-ring);
     outline: none;
 }
 
-input.ptools-form-control[readonly] {
-    background-color: var(--ptools-surface-sunken);
-    color: var(--ptools-text-muted);
+input.alacarte-form-control[readonly] {
+    background-color: var(--alacarte-surface-sunken);
+    color: var(--alacarte-text-muted);
 }
 
-input.ptools-form-control::placeholder,
-textarea.ptools-form-control::placeholder {
-    color: var(--ptools-text-subtle);
+input.alacarte-form-control::placeholder,
+textarea.alacarte-form-control::placeholder {
+    color: var(--alacarte-text-subtle);
 }
 
 /* wp-admin paints its own arrow on `select`; replace it so it lines up with
    our padding instead of colliding with the text. */
-select.ptools-form-control {
+select.alacarte-form-control {
     padding-right: 34px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%236b7280' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 7.5 10 12.5 15 7.5'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
@@ -664,14 +664,14 @@ select.ptools-form-control {
     appearance: none;
 }
 
-textarea.ptools-form-control {
+textarea.alacarte-form-control {
     min-height: 120px;
-    font-family: var(--ptools-font-mono);
+    font-family: var(--alacarte-font-mono);
     resize: vertical;
 }
 
-.ptools-form-control--mono {
-    font-family: var(--ptools-font-mono);
+.alacarte-form-control--mono {
+    font-family: var(--alacarte-font-mono);
 }
 
 /* ══ 9. Choice controls ═══════════════════════════════════════════════════ */
@@ -679,11 +679,11 @@ textarea.ptools-form-control {
 /**
  * One pattern for every checkbox and radio in the plugin.
  *
- *   <label class="ptools-choice">
+ *   <label class="alacarte-choice">
  *     <input type="checkbox">
- *     <span class="ptools-choice__text">
- *       <span class="ptools-choice__title">…</span>
- *       <span class="ptools-choice__desc">…</span>
+ *     <span class="alacarte-choice__text">
+ *       <span class="alacarte-choice__title">…</span>
+ *       <span class="alacarte-choice__desc">…</span>
  *     </span>
  *   </label>
  *
@@ -691,63 +691,63 @@ textarea.ptools-form-control {
  * checkmark and a negative top margin — so every property it sets has to be
  * reset here, or the native mark renders on top of ours.
  */
-.ptools-choice {
+.alacarte-choice {
     display: flex;
     align-items: flex-start;
-    gap: var(--ptools-space-3);
+    gap: var(--alacarte-space-3);
     cursor: pointer;
 }
 
-.ptools-choice+.ptools-choice {
-    margin-top: var(--ptools-space-3);
+.alacarte-choice+.alacarte-choice {
+    margin-top: var(--alacarte-space-3);
 }
 
-.ptools-choice input[type="checkbox"],
-.ptools-choice input[type="radio"] {
+.alacarte-choice input[type="checkbox"],
+.alacarte-choice input[type="radio"] {
     flex: 0 0 auto;
     width: 20px;
     min-width: 20px;
     height: 20px;
     margin: 0;
     padding: 0;
-    background: var(--ptools-surface);
-    border: 1px solid var(--ptools-border-strong);
-    box-shadow: var(--ptools-shadow-sm);
+    background: var(--alacarte-surface);
+    border: 1px solid var(--alacarte-border-strong);
+    box-shadow: var(--alacarte-shadow-sm);
     cursor: pointer;
-    transition: background-color var(--ptools-transition), border-color var(--ptools-transition), box-shadow var(--ptools-transition);
+    transition: background-color var(--alacarte-transition), border-color var(--alacarte-transition), box-shadow var(--alacarte-transition);
     -webkit-appearance: none;
     appearance: none;
 }
 
-.ptools-choice input[type="checkbox"] {
+.alacarte-choice input[type="checkbox"] {
     border-radius: 6px;
 }
 
-.ptools-choice input[type="radio"] {
+.alacarte-choice input[type="radio"] {
     border-radius: 50%;
 }
 
-.ptools-choice input[type="checkbox"]:hover,
-.ptools-choice input[type="radio"]:hover {
-    border-color: var(--ptools-brand);
+.alacarte-choice input[type="checkbox"]:hover,
+.alacarte-choice input[type="radio"]:hover {
+    border-color: var(--alacarte-brand);
 }
 
-.ptools-choice input[type="checkbox"]:focus-visible,
-.ptools-choice input[type="radio"]:focus-visible {
+.alacarte-choice input[type="checkbox"]:focus-visible,
+.alacarte-choice input[type="radio"]:focus-visible {
     outline: none;
-    border-color: var(--ptools-brand);
-    box-shadow: var(--ptools-focus-ring);
+    border-color: var(--alacarte-brand);
+    box-shadow: var(--alacarte-focus-ring);
 }
 
-.ptools-choice input[type="checkbox"]:checked,
-.ptools-choice input[type="radio"]:checked {
-    background: var(--ptools-brand);
-    border-color: var(--ptools-brand);
-    box-shadow: var(--ptools-shadow-brand);
+.alacarte-choice input[type="checkbox"]:checked,
+.alacarte-choice input[type="radio"]:checked {
+    background: var(--alacarte-brand);
+    border-color: var(--alacarte-brand);
+    box-shadow: var(--alacarte-shadow-brand);
 }
 
-.ptools-choice input[type="checkbox"]:disabled,
-.ptools-choice input[type="radio"]:disabled {
+.alacarte-choice input[type="checkbox"]:disabled,
+.alacarte-choice input[type="radio"]:disabled {
     opacity: 0.5;
     box-shadow: none;
     cursor: default;
@@ -755,10 +755,10 @@ textarea.ptools-form-control {
 
 /* Draw the mark on ::before — the same pseudo-element wp-admin uses — so its
    own SVG checkmark can never render alongside ours. */
-.ptools-choice input[type="checkbox"]::before,
-.ptools-choice input[type="checkbox"]:checked::before,
-.ptools-choice input[type="radio"]::before,
-.ptools-choice input[type="radio"]:checked::before {
+.alacarte-choice input[type="checkbox"]::before,
+.alacarte-choice input[type="checkbox"]:checked::before,
+.alacarte-choice input[type="radio"]::before,
+.alacarte-choice input[type="radio"]:checked::before {
     content: "";
     display: block;
     width: auto;
@@ -770,7 +770,7 @@ textarea.ptools-form-control {
     background: none;
 }
 
-.ptools-choice input[type="checkbox"]:checked::before {
+.alacarte-choice input[type="checkbox"]:checked::before {
     width: 100%;
     height: 100%;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23ffffff' stroke-width='2.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m3.5 8.5 3 3 6-6.5'/%3E%3C/svg%3E");
@@ -779,7 +779,7 @@ textarea.ptools-form-control {
     background-size: 15px 15px;
 }
 
-.ptools-choice input[type="radio"]:checked::before {
+.alacarte-choice input[type="radio"]:checked::before {
     width: 7px;
     height: 7px;
     margin: 5.5px auto;
@@ -787,83 +787,83 @@ textarea.ptools-form-control {
     border-radius: 50%;
 }
 
-.ptools-choice__text {
+.alacarte-choice__text {
     display: block;
     min-width: 0;
 }
 
-.ptools-choice__title {
+.alacarte-choice__title {
     display: block;
     font-size: 13px;
     font-weight: 700;
     line-height: 1.5;
-    color: var(--ptools-text);
+    color: var(--alacarte-text);
 }
 
-.ptools-choice__desc {
+.alacarte-choice__desc {
     display: block;
     margin-top: 2px;
     font-size: 12px;
     line-height: 1.5;
-    color: var(--ptools-text-muted);
+    color: var(--alacarte-text-muted);
 }
 
 /* Boxed variant — used for grids of short options. */
-.ptools-choice--boxed {
+.alacarte-choice--boxed {
     align-items: center;
     padding: 11px 14px;
-    background: var(--ptools-surface);
-    border: 1px solid var(--ptools-border);
-    border-radius: var(--ptools-radius-sm);
-    transition: border-color var(--ptools-transition), background-color var(--ptools-transition), box-shadow var(--ptools-transition);
+    background: var(--alacarte-surface);
+    border: 1px solid var(--alacarte-border);
+    border-radius: var(--alacarte-radius-sm);
+    transition: border-color var(--alacarte-transition), background-color var(--alacarte-transition), box-shadow var(--alacarte-transition);
 }
 
-.ptools-choice--boxed:hover {
-    border-color: var(--ptools-brand-border);
-    background: var(--ptools-surface-sunken);
+.alacarte-choice--boxed:hover {
+    border-color: var(--alacarte-brand-border);
+    background: var(--alacarte-surface-sunken);
 }
 
 /* Doubling the border with an inset ring reads as a 2px outline without
    shifting the box by a pixel when it becomes selected. */
-.ptools-choice--boxed:has(input:checked) {
-    background: var(--ptools-brand-soft);
-    border-color: var(--ptools-brand);
-    box-shadow: inset 0 0 0 1px var(--ptools-brand);
+.alacarte-choice--boxed:has(input:checked) {
+    background: var(--alacarte-brand-soft);
+    border-color: var(--alacarte-brand);
+    box-shadow: inset 0 0 0 1px var(--alacarte-brand);
 }
 
 /* Card variant — used when each option carries a description. */
-.ptools-choice--card {
-    padding: var(--ptools-space-4);
-    background: var(--ptools-surface);
-    border: 1px solid var(--ptools-border);
-    border-radius: var(--ptools-radius-sm);
-    transition: border-color var(--ptools-transition), background-color var(--ptools-transition), box-shadow var(--ptools-transition);
+.alacarte-choice--card {
+    padding: var(--alacarte-space-4);
+    background: var(--alacarte-surface);
+    border: 1px solid var(--alacarte-border);
+    border-radius: var(--alacarte-radius-sm);
+    transition: border-color var(--alacarte-transition), background-color var(--alacarte-transition), box-shadow var(--alacarte-transition);
 }
 
-.ptools-choice--card+.ptools-choice--card {
-    margin-top: var(--ptools-space-3);
+.alacarte-choice--card+.alacarte-choice--card {
+    margin-top: var(--alacarte-space-3);
 }
 
-.ptools-choice--card:hover {
-    border-color: var(--ptools-brand-border);
-    background: var(--ptools-surface-sunken);
+.alacarte-choice--card:hover {
+    border-color: var(--alacarte-brand-border);
+    background: var(--alacarte-surface-sunken);
 }
 
-.ptools-choice--card:has(input:checked) {
-    background: var(--ptools-brand-soft);
-    border-color: var(--ptools-brand);
-    box-shadow: inset 0 0 0 1px var(--ptools-brand);
+.alacarte-choice--card:has(input:checked) {
+    background: var(--alacarte-brand-soft);
+    border-color: var(--alacarte-brand);
+    box-shadow: inset 0 0 0 1px var(--alacarte-brand);
 }
 
-.ptools-choice-grid {
+.alacarte-choice-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-    gap: var(--ptools-space-3);
+    gap: var(--alacarte-space-3);
 }
 
 /* ══ 10. Switch ═══════════════════════════════════════════════════════════ */
 
-.ptools-switch {
+.alacarte-switch {
     position: relative;
     display: inline-flex;
     flex: 0 0 auto;
@@ -871,7 +871,7 @@ textarea.ptools-form-control {
     height: 26px;
 }
 
-.ptools-switch input {
+.alacarte-switch input {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -885,20 +885,20 @@ textarea.ptools-form-control {
     appearance: none;
 }
 
-.ptools-switch input::before {
+.alacarte-switch input::before {
     content: none;
 }
 
-.ptools-switch__track {
+.alacarte-switch__track {
     position: absolute;
     inset: 0;
-    background: var(--ptools-border-strong);
-    border-radius: var(--ptools-radius-full);
+    background: var(--alacarte-border-strong);
+    border-radius: var(--alacarte-radius-full);
     pointer-events: none;
-    transition: background-color var(--ptools-transition), box-shadow var(--ptools-transition);
+    transition: background-color var(--alacarte-transition), box-shadow var(--alacarte-transition);
 }
 
-.ptools-switch__track::before {
+.alacarte-switch__track::before {
     content: "";
     position: absolute;
     top: 3px;
@@ -908,246 +908,246 @@ textarea.ptools-form-control {
     background: #fff;
     border-radius: 50%;
     box-shadow: 0 1px 3px rgba(16, 24, 40, 0.35);
-    transition: transform var(--ptools-transition);
+    transition: transform var(--alacarte-transition);
 }
 
-.ptools-switch input:hover~.ptools-switch__track {
-    background: var(--ptools-text-subtle);
+.alacarte-switch input:hover~.alacarte-switch__track {
+    background: var(--alacarte-text-subtle);
 }
 
-.ptools-switch input:checked~.ptools-switch__track {
-    background: var(--ptools-brand);
-    box-shadow: var(--ptools-shadow-brand);
+.alacarte-switch input:checked~.alacarte-switch__track {
+    background: var(--alacarte-brand);
+    box-shadow: var(--alacarte-shadow-brand);
 }
 
-.ptools-switch input:checked:hover~.ptools-switch__track {
-    background: var(--ptools-brand-strong);
+.alacarte-switch input:checked:hover~.alacarte-switch__track {
+    background: var(--alacarte-brand-strong);
 }
 
-.ptools-switch input:checked~.ptools-switch__track::before {
+.alacarte-switch input:checked~.alacarte-switch__track::before {
     transform: translateX(20px);
 }
 
-.ptools-switch input:focus-visible~.ptools-switch__track {
-    box-shadow: var(--ptools-focus-ring-strong);
+.alacarte-switch input:focus-visible~.alacarte-switch__track {
+    box-shadow: var(--alacarte-focus-ring-strong);
 }
 
-.ptools-switch input:disabled {
+.alacarte-switch input:disabled {
     cursor: default;
 }
 
-.ptools-switch input:disabled~.ptools-switch__track {
+.alacarte-switch input:disabled~.alacarte-switch__track {
     opacity: 0.5;
     box-shadow: none;
 }
 
 /* ══ 11. Tables ═══════════════════════════════════════════════════════════ */
 
-.ptools-table {
+.alacarte-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 13px;
 }
 
-.ptools-table th,
-.ptools-table td {
-    padding: var(--ptools-space-3) var(--ptools-space-5);
+.alacarte-table th,
+.alacarte-table td {
+    padding: var(--alacarte-space-3) var(--alacarte-space-5);
     text-align: left;
     vertical-align: middle;
-    border-bottom: 1px solid var(--ptools-border-soft);
+    border-bottom: 1px solid var(--alacarte-border-soft);
 }
 
-.ptools-table th {
+.alacarte-table th {
     padding-top: 11px;
     padding-bottom: 11px;
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.07em;
-    color: var(--ptools-text-muted);
-    background: var(--ptools-surface-sunken);
-    border-bottom: 1px solid var(--ptools-border);
+    color: var(--alacarte-text-muted);
+    background: var(--alacarte-surface-sunken);
+    border-bottom: 1px solid var(--alacarte-border);
 }
 
-.ptools-table td {
-    padding-top: var(--ptools-space-4);
-    padding-bottom: var(--ptools-space-4);
+.alacarte-table td {
+    padding-top: var(--alacarte-space-4);
+    padding-bottom: var(--alacarte-space-4);
 }
 
 /* Row-level rules cover `th` as well as `td`: in a definition table the row
    label is a `th`, so a `td`-only selector highlights half the row and leaves
    a stray rule under the last one. */
-.ptools-table tbody tr:last-child td,
-.ptools-table tbody tr:last-child th {
+.alacarte-table tbody tr:last-child td,
+.alacarte-table tbody tr:last-child th {
     border-bottom: none;
 }
 
 /* No row hover: a `tr` is not a target here. The row's actions are icon
    buttons, and they light up on their own. */
-.ptools-table tr.is-current td,
-.ptools-table tr.is-current th {
-    background: var(--ptools-brand-soft);
+.alacarte-table tr.is-current td,
+.alacarte-table tr.is-current th {
+    background: var(--alacarte-brand-soft);
 }
 
-.ptools-table__name {
+.alacarte-table__name {
     font-weight: 700;
-    color: var(--ptools-text);
+    color: var(--alacarte-text);
     text-decoration: none;
 }
 
-a.ptools-table__name:hover {
-    color: var(--ptools-brand-strong);
+a.alacarte-table__name:hover {
+    color: var(--alacarte-brand-strong);
 }
 
-.ptools-table__meta {
+.alacarte-table__meta {
     display: block;
     margin-top: 3px;
-    font-family: var(--ptools-font-mono);
+    font-family: var(--alacarte-font-mono);
     font-size: 11px;
-    color: var(--ptools-text-muted);
+    color: var(--alacarte-text-muted);
 }
 
-/* Element-qualified: `.ptools-table th` is more specific than a bare class, so an
+/* Element-qualified: `.alacarte-table th` is more specific than a bare class, so an
    unqualified `text-align` here would lose to it and leave the header label
    left-aligned above right-aligned buttons. */
-.ptools-table th.ptools-table__actions,
-.ptools-table td.ptools-table__actions {
+.alacarte-table th.alacarte-table__actions,
+.alacarte-table td.alacarte-table__actions {
     width: 1%;
     white-space: nowrap;
     text-align: right;
 }
 
-.ptools-table__actions-inner {
+.alacarte-table__actions-inner {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: var(--ptools-space-1);
+    gap: var(--alacarte-space-1);
 }
 
 /* Two-column key/value table (System Info). The `th` is a row label here, not
    a column heading, so the uppercase column treatment is reset. */
-.ptools-table--definition th,
-.ptools-table--definition td {
+.alacarte-table--definition th,
+.alacarte-table--definition td {
     width: 50%;
 }
 
-.ptools-table--definition th {
-    padding-top: var(--ptools-space-4);
-    padding-bottom: var(--ptools-space-4);
+.alacarte-table--definition th {
+    padding-top: var(--alacarte-space-4);
+    padding-bottom: var(--alacarte-space-4);
     font-size: 13px;
     font-weight: 700;
     text-transform: none;
     letter-spacing: normal;
-    color: var(--ptools-text);
+    color: var(--alacarte-text);
     background: none;
-    border-bottom: 1px solid var(--ptools-border-soft);
+    border-bottom: 1px solid var(--alacarte-border-soft);
 }
 
-.ptools-table--definition td {
-    color: var(--ptools-text-muted);
+.alacarte-table--definition td {
+    color: var(--alacarte-text-muted);
 }
 
-.ptools-table-scroll {
+.alacarte-table-scroll {
     overflow-x: auto;
 }
 
 /* ══ 12. Pills & notices ══════════════════════════════════════════════════ */
 
-.ptools-pill {
+.alacarte-pill {
     display: inline-flex;
     align-items: center;
-    gap: var(--ptools-space-1);
+    gap: var(--alacarte-space-1);
     padding: 4px 11px;
     font-size: 11px;
     font-weight: 700;
     line-height: 1.5;
     letter-spacing: 0.02em;
     border: 1px solid transparent;
-    border-radius: var(--ptools-radius-full);
+    border-radius: var(--alacarte-radius-full);
     white-space: nowrap;
 }
 
-.ptools-pill--brand {
-    background: var(--ptools-brand-soft);
-    border-color: var(--ptools-brand-border);
-    color: var(--ptools-brand-deep);
+.alacarte-pill--brand {
+    background: var(--alacarte-brand-soft);
+    border-color: var(--alacarte-brand-border);
+    color: var(--alacarte-brand-deep);
 }
 
-.ptools-pill--success {
-    background: var(--ptools-success-soft);
-    border-color: var(--ptools-success-border);
-    color: var(--ptools-success);
+.alacarte-pill--success {
+    background: var(--alacarte-success-soft);
+    border-color: var(--alacarte-success-border);
+    color: var(--alacarte-success);
 }
 
-.ptools-pill--neutral {
-    background: var(--ptools-surface-sunken);
-    border-color: var(--ptools-border-strong);
-    color: var(--ptools-text-muted);
+.alacarte-pill--neutral {
+    background: var(--alacarte-surface-sunken);
+    border-color: var(--alacarte-border-strong);
+    color: var(--alacarte-text-muted);
 }
 
-.ptools-pill--upper {
+.alacarte-pill--upper {
     text-transform: uppercase;
     letter-spacing: 0.07em;
 }
 
-.ptools-notice {
+.alacarte-notice {
     display: flex;
     align-items: flex-start;
-    gap: var(--ptools-space-3);
-    margin: 0 0 var(--ptools-space-5);
-    padding: var(--ptools-space-4);
+    gap: var(--alacarte-space-3);
+    margin: 0 0 var(--alacarte-space-5);
+    padding: var(--alacarte-space-4);
     font-size: 13px;
     font-weight: 500;
     line-height: 1.5;
-    background: var(--ptools-surface);
-    border: 1px solid var(--ptools-border);
-    border-left: 4px solid var(--ptools-text-subtle);
-    border-radius: var(--ptools-radius-sm);
-    box-shadow: var(--ptools-shadow-sm);
+    background: var(--alacarte-surface);
+    border: 1px solid var(--alacarte-border);
+    border-left: 4px solid var(--alacarte-text-subtle);
+    border-radius: var(--alacarte-radius-sm);
+    box-shadow: var(--alacarte-shadow-sm);
 }
 
-.ptools-notice .dashicons {
+.alacarte-notice .dashicons {
     flex: 0 0 auto;
     width: 19px;
     height: 19px;
     font-size: 19px;
 }
 
-.ptools-notice--success {
-    background: var(--ptools-success-soft);
-    border-color: var(--ptools-success-border);
-    border-left-color: var(--ptools-success);
-    color: var(--ptools-success);
+.alacarte-notice--success {
+    background: var(--alacarte-success-soft);
+    border-color: var(--alacarte-success-border);
+    border-left-color: var(--alacarte-success);
+    color: var(--alacarte-success);
 }
 
-.ptools-notice--warning {
-    background: var(--ptools-warning-soft);
-    border-color: var(--ptools-warning-border);
-    border-left-color: var(--ptools-warning);
-    color: var(--ptools-warning);
+.alacarte-notice--warning {
+    background: var(--alacarte-warning-soft);
+    border-color: var(--alacarte-warning-border);
+    border-left-color: var(--alacarte-warning);
+    color: var(--alacarte-warning);
 }
 
-.ptools-notice--error {
-    background: var(--ptools-danger-soft);
-    border-color: var(--ptools-danger-border);
-    border-left-color: var(--ptools-danger);
-    color: var(--ptools-danger);
+.alacarte-notice--error {
+    background: var(--alacarte-danger-soft);
+    border-color: var(--alacarte-danger-border);
+    border-left-color: var(--alacarte-danger);
+    color: var(--alacarte-danger);
 }
 
 /* Core notices rendered inside our shell (settings_errors(), etc.). */
-.ptools-wrap .notice,
-.ptools-wrap .updated,
-.ptools-wrap .error {
-    margin: 0 0 var(--ptools-space-5);
-    padding: var(--ptools-space-3) var(--ptools-space-4);
-    background: var(--ptools-surface);
-    border: 1px solid var(--ptools-border);
+.alacarte-wrap .notice,
+.alacarte-wrap .updated,
+.alacarte-wrap .error {
+    margin: 0 0 var(--alacarte-space-5);
+    padding: var(--alacarte-space-3) var(--alacarte-space-4);
+    background: var(--alacarte-surface);
+    border: 1px solid var(--alacarte-border);
     border-left-width: 4px;
-    border-radius: var(--ptools-radius-sm);
-    box-shadow: var(--ptools-shadow-sm);
+    border-radius: var(--alacarte-radius-sm);
+    box-shadow: var(--alacarte-shadow-sm);
 }
 
-.ptools-wrap .notice p {
+.alacarte-wrap .notice p {
     margin: 0;
     font-size: 13px;
     font-weight: 500;
@@ -1155,122 +1155,122 @@ a.ptools-table__name:hover {
 
 /* ══ 13. Stats ════════════════════════════════════════════════════════════ */
 
-.ptools-stats {
+.alacarte-stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--ptools-space-4);
-    margin-bottom: var(--ptools-space-5);
+    gap: var(--alacarte-space-4);
+    margin-bottom: var(--alacarte-space-5);
 }
 
-.ptools-stat {
-    padding: var(--ptools-space-5) var(--ptools-space-4);
+.alacarte-stat {
+    padding: var(--alacarte-space-5) var(--alacarte-space-4);
     text-align: center;
-    background: var(--ptools-brand-soft);
-    border: 1px solid var(--ptools-brand-border);
-    border-radius: var(--ptools-radius);
+    background: var(--alacarte-brand-soft);
+    border: 1px solid var(--alacarte-brand-border);
+    border-radius: var(--alacarte-radius);
 }
 
-.ptools-stat__value {
+.alacarte-stat__value {
     font-size: 36px;
     font-weight: 800;
     line-height: 1.05;
     letter-spacing: -0.03em;
-    color: var(--ptools-brand-deep);
+    color: var(--alacarte-brand-deep);
 }
 
-.ptools-stat__label {
-    margin-top: var(--ptools-space-2);
+.alacarte-stat__label {
+    margin-top: var(--alacarte-space-2);
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--ptools-brand-strong);
+    color: var(--alacarte-brand-strong);
 }
 
 /* ══ 14. Empty state ══════════════════════════════════════════════════════ */
 
-.ptools-empty {
-    padding: var(--ptools-space-8) var(--ptools-space-5);
+.alacarte-empty {
+    padding: var(--alacarte-space-8) var(--alacarte-space-5);
     text-align: center;
 }
 
-.ptools-empty__icon {
+.alacarte-empty__icon {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 64px;
     height: 64px;
-    margin: 0 auto var(--ptools-space-4);
-    background: var(--ptools-surface-sunken);
-    border: 1px solid var(--ptools-border);
+    margin: 0 auto var(--alacarte-space-4);
+    background: var(--alacarte-surface-sunken);
+    border: 1px solid var(--alacarte-border);
     border-radius: 50%;
-    color: var(--ptools-text-subtle);
+    color: var(--alacarte-text-subtle);
 }
 
-.ptools-empty__icon .dashicons {
+.alacarte-empty__icon .dashicons {
     width: 30px;
     height: 30px;
     font-size: 30px;
 }
 
-.ptools-empty__text {
+.alacarte-empty__text {
     max-width: 420px;
-    margin: 0 auto var(--ptools-space-5);
+    margin: 0 auto var(--alacarte-space-5);
     font-size: 13px;
     line-height: 1.6;
-    color: var(--ptools-text-muted);
+    color: var(--alacarte-text-muted);
 }
 
-.ptools-empty__text:last-child {
+.alacarte-empty__text:last-child {
     margin-bottom: 0;
 }
 
 /* ══ 15. Page footer ══════════════════════════════════════════════════════ */
 
-.ptools-footer {
-    margin-top: var(--ptools-space-7);
-    padding-top: var(--ptools-space-5);
+.alacarte-footer {
+    margin-top: var(--alacarte-space-7);
+    padding-top: var(--alacarte-space-5);
     font-size: 13px;
     text-align: center;
-    color: var(--ptools-text-muted);
-    border-top: 1px solid var(--ptools-border);
+    color: var(--alacarte-text-muted);
+    border-top: 1px solid var(--alacarte-border);
 }
 
-.ptools-footer p {
+.alacarte-footer p {
     margin: 0;
 }
 
-.ptools-footer a {
-    color: var(--ptools-brand-strong);
+.alacarte-footer a {
+    color: var(--alacarte-brand-strong);
     font-weight: 700;
     text-decoration: none;
 }
 
-.ptools-footer a:hover {
+.alacarte-footer a:hover {
     text-decoration: underline;
 }
 
 /* ══ 16. Layout utilities & vertical rhythm ═══════════════════════════════ */
 
-.ptools-cols-2 {
+.alacarte-cols-2 {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--ptools-space-5);
+    gap: var(--alacarte-space-5);
 }
 
 /* Wide main column + narrower companion column. */
-.ptools-split {
+.alacarte-split {
     display: grid;
     grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-    gap: var(--ptools-space-5);
+    gap: var(--alacarte-space-5);
     align-items: start;
 }
 
-.ptools-stack>*+* {
-    margin-top: var(--ptools-space-5);
+.alacarte-stack>*+* {
+    margin-top: var(--alacarte-space-5);
 }
 
-.ptools-inline-form {
+.alacarte-inline-form {
     display: inline-flex;
 }
 
@@ -1278,35 +1278,35 @@ a.ptools-table__name:hover {
  * Vertical rhythm.
  *
  * A panel body owns the spacing between its own children, and grid
- * cells are spaced by `gap` alone. Without this, a `.ptools-field` in the left
- * column of a `.ptools-cols-2` row keeps its bottom margin while the one on the
+ * cells are spaced by `gap` alone. Without this, a `.alacarte-field` in the left
+ * column of a `.alacarte-cols-2` row keeps its bottom margin while the one on the
  * right (a `:last-child`) drops it — the two rows end up unevenly spaced — and
  * the final block in a body leaves a gap above the panel footer.
  *
  * Declared last so it wins over the component margins above at equal
  * specificity.
  */
-.ptools-panel__body>*,
-.ptools-cols-2>*,
-.ptools-split>*,
-.ptools-stack>* {
+.alacarte-panel__body>*,
+.alacarte-cols-2>*,
+.alacarte-split>*,
+.alacarte-stack>* {
     margin-bottom: 0;
 }
 
-.ptools-panel__body>*+* {
-    margin-top: var(--ptools-space-5);
+.alacarte-panel__body>*+* {
+    margin-top: var(--alacarte-space-5);
 }
 
 /**
  * A grid cell is positioned by `gap` alone. Components that stack themselves
  * in normal flow carry an adjacent-sibling margin, and inside a grid that
  * margin drops the second cell below the first — two panels side by side in a
- * `.ptools-split` end up 24px out of line. These selectors have to name both
+ * `.alacarte-split` end up 24px out of line. These selectors have to name both
  * classes to outweigh the component rule they undo.
  */
-.ptools-cols-2>.ptools-panel+.ptools-panel,
-.ptools-split>.ptools-panel+.ptools-panel,
-.ptools-choice-grid>.ptools-choice+.ptools-choice {
+.alacarte-cols-2>.alacarte-panel+.alacarte-panel,
+.alacarte-split>.alacarte-panel+.alacarte-panel,
+.alacarte-choice-grid>.alacarte-choice+.alacarte-choice {
     margin-top: 0;
 }
 
@@ -1315,130 +1315,130 @@ a.ptools-table__name:hover {
 /* wp-admin keeps its 160px menu open down to 960px, so the usable width runs
    out well before the viewport does — collapse paired columns early. */
 @media (max-width: 1180px) {
-    .ptools-split {
+    .alacarte-split {
         grid-template-columns: minmax(0, 1fr);
     }
 }
 
 @media (max-width: 960px) {
-    .ptools-wrap {
-        padding: var(--ptools-space-5);
+    .alacarte-wrap {
+        padding: var(--alacarte-space-5);
     }
 
-    body[class*="page_toolwright"] #wpbody-content>.notice,
-    body[class*="page_toolwright"] #wpbody-content>.updated,
-    body[class*="page_toolwright"] #wpbody-content>.error {
-        margin: var(--ptools-space-5) var(--ptools-space-5) 0;
+    body[class*="page_a-la-carte"] #wpbody-content>.notice,
+    body[class*="page_a-la-carte"] #wpbody-content>.updated,
+    body[class*="page_a-la-carte"] #wpbody-content>.error {
+        margin: var(--alacarte-space-5) var(--alacarte-space-5) 0;
     }
 
-    .ptools-cols-2 {
+    .alacarte-cols-2 {
         grid-template-columns: minmax(0, 1fr);
     }
 }
 
 @media (max-width: 782px) {
-    .ptools-wrap {
-        padding: var(--ptools-space-4);
+    .alacarte-wrap {
+        padding: var(--alacarte-space-4);
     }
 
-    body[class*="page_toolwright"] #wpbody-content>.notice,
-    body[class*="page_toolwright"] #wpbody-content>.updated,
-    body[class*="page_toolwright"] #wpbody-content>.error {
-        margin: var(--ptools-space-4) var(--ptools-space-4) 0;
+    body[class*="page_a-la-carte"] #wpbody-content>.notice,
+    body[class*="page_a-la-carte"] #wpbody-content>.updated,
+    body[class*="page_a-la-carte"] #wpbody-content>.error {
+        margin: var(--alacarte-space-4) var(--alacarte-space-4) 0;
     }
 
     /* Icon and title stay on one line; the actions take a full-width row of
        their own underneath rather than sitting beside the icon. */
-    .ptools-page-header {
+    .alacarte-page-header {
         flex-wrap: wrap;
-        gap: var(--ptools-space-4);
-        padding: var(--ptools-space-5);
+        gap: var(--alacarte-space-4);
+        padding: var(--alacarte-space-5);
     }
 
-    .ptools-page-header__icon {
+    .alacarte-page-header__icon {
         width: 52px;
         height: 52px;
     }
 
-    .ptools-page-header__icon .dashicons {
+    .alacarte-page-header__icon .dashicons {
         width: 26px;
         height: 26px;
         font-size: 26px;
     }
 
-    .ptools-page-header__icon img {
+    .alacarte-page-header__icon img {
         width: 30px;
     }
 
-    .ptools-page-header__content {
+    .alacarte-page-header__content {
         flex: 1 1 0;
     }
 
-    .ptools-page-header__actions {
+    .alacarte-page-header__actions {
         flex: 1 0 100%;
     }
 
-    .ptools-page-header__actions .ptools-btn {
+    .alacarte-page-header__actions .alacarte-btn {
         flex: 1 1 auto;
     }
 
-    .ptools-h1 {
+    .alacarte-h1 {
         font-size: 24px;
     }
 
-    .ptools-tools {
+    .alacarte-tools {
         grid-template-columns: minmax(0, 1fr);
     }
 
-    .ptools-panel__header,
-    .ptools-panel__body,
-    .ptools-panel__footer {
-        padding-left: var(--ptools-space-4);
-        padding-right: var(--ptools-space-4);
+    .alacarte-panel__header,
+    .alacarte-panel__body,
+    .alacarte-panel__footer {
+        padding-left: var(--alacarte-space-4);
+        padding-right: var(--alacarte-space-4);
     }
 
-    .ptools-table th,
-    .ptools-table td {
-        padding-left: var(--ptools-space-4);
-        padding-right: var(--ptools-space-4);
+    .alacarte-table th,
+    .alacarte-table td {
+        padding-left: var(--alacarte-space-4);
+        padding-right: var(--alacarte-space-4);
     }
 }
 
 /* Stacked, full-width actions once buttons stop fitting side by side. */
 @media (max-width: 480px) {
 
-    .ptools-panel__footer {
+    .alacarte-panel__footer {
         flex-direction: column-reverse;
         align-items: stretch;
     }
 
-    .ptools-panel__footer>*,
-    .ptools-panel__footer .ptools-btn {
+    .alacarte-panel__footer>*,
+    .alacarte-panel__footer .alacarte-btn {
         width: 100%;
     }
 
-    .ptools-tool-card__footer {
+    .alacarte-tool-card__footer {
         flex-direction: column;
         align-items: stretch;
-        gap: var(--ptools-space-3);
+        gap: var(--alacarte-space-3);
     }
 
-    .ptools-tool-card__footer .ptools-pill {
+    .alacarte-tool-card__footer .alacarte-pill {
         align-self: flex-start;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
 
-    .ptools-wrap {
+    .alacarte-wrap {
         animation: none;
     }
 
-    .ptools-wrap * {
+    .alacarte-wrap * {
         transition-duration: 1ms !important;
     }
 
-    .ptools-btn:active {
+    .alacarte-btn:active {
         transform: none;
     }
 }

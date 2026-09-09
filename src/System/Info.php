@@ -2,13 +2,13 @@
 /**
  * System Info functionality
  *
- * @package Toolwright
+ * @package ALaCarte
  */
 
-namespace Toolwright\System;
+namespace ALaCarte\System;
 
-use Toolwright\Admin\Tool_Manager;
-use Toolwright\Admin\UI;
+use ALaCarte\Admin\Tool_Manager;
+use ALaCarte\Admin\UI;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -28,45 +28,45 @@ class Info {
 
         UI::page_open(array(
             'tool_id'     => 'system_info',
-            'title'       => __('System Information', 'toolwright'),
-            'description' => __('Detailed overview of your WordPress environment, server configuration, and active plugins.', 'toolwright'),
+            'title'       => __('System Information', 'a-la-carte'),
+            'description' => __('Detailed overview of your WordPress environment, server configuration, and active plugins.', 'a-la-carte'),
         ));
         ?>
-        <div class="ptools-stack">
-            <div class="ptools-panel">
-                <div class="ptools-panel__header">
-                    <h2 class="ptools-h2"><?php esc_html_e('Environment Overview', 'toolwright'); ?></h2>
+        <div class="alacarte-stack">
+            <div class="alacarte-panel">
+                <div class="alacarte-panel__header">
+                    <h2 class="alacarte-h2"><?php esc_html_e('Environment Overview', 'a-la-carte'); ?></h2>
                 </div>
-                <div class="ptools-panel__body ptools-panel__body--flush">
+                <div class="alacarte-panel__body alacarte-panel__body--flush">
                     <?php $this->render_definition_table($this->get_environment_rows()); ?>
                 </div>
             </div>
 
-            <div class="ptools-cols-2">
-                <div class="ptools-panel">
-                    <div class="ptools-panel__header">
-                        <h2 class="ptools-h2"><?php esc_html_e('PHP Configuration', 'toolwright'); ?></h2>
+            <div class="alacarte-cols-2">
+                <div class="alacarte-panel">
+                    <div class="alacarte-panel__header">
+                        <h2 class="alacarte-h2"><?php esc_html_e('PHP Configuration', 'a-la-carte'); ?></h2>
                     </div>
-                    <div class="ptools-panel__body ptools-panel__body--flush">
+                    <div class="alacarte-panel__body alacarte-panel__body--flush">
                         <?php $this->render_definition_table($this->get_php_rows()); ?>
                     </div>
                 </div>
 
-                <div class="ptools-panel">
-                    <div class="ptools-panel__header">
-                        <h2 class="ptools-h2"><?php esc_html_e('Server Resources', 'toolwright'); ?></h2>
+                <div class="alacarte-panel">
+                    <div class="alacarte-panel__header">
+                        <h2 class="alacarte-h2"><?php esc_html_e('Server Resources', 'a-la-carte'); ?></h2>
                     </div>
-                    <div class="ptools-panel__body ptools-panel__body--flush">
+                    <div class="alacarte-panel__body alacarte-panel__body--flush">
                         <?php $this->render_definition_table($this->get_disk_rows()); ?>
                     </div>
                 </div>
             </div>
 
-            <div class="ptools-panel">
-                <div class="ptools-panel__header">
-                    <h2 class="ptools-h2"><?php esc_html_e('Installed Plugins', 'toolwright'); ?></h2>
+            <div class="alacarte-panel">
+                <div class="alacarte-panel__header">
+                    <h2 class="alacarte-h2"><?php esc_html_e('Installed Plugins', 'a-la-carte'); ?></h2>
                 </div>
-                <div class="ptools-panel__body ptools-panel__body--flush">
+                <div class="alacarte-panel__body alacarte-panel__body--flush">
                     <?php $this->render_plugins_table(); ?>
                 </div>
             </div>
@@ -84,11 +84,11 @@ class Info {
         global $wpdb;
 
         return array(
-            __('Site URL', 'toolwright')           => get_bloginfo('url'),
-            __('WordPress Version', 'toolwright')  => get_bloginfo('version'),
-            __('PHP Version', 'toolwright')        => phpversion(),
-            __('MySQL Version', 'toolwright')      => $wpdb->db_version(),
-            __('Server Software', 'toolwright')    => isset($_SERVER['SERVER_SOFTWARE']) ? sanitize_text_field(wp_unslash($_SERVER['SERVER_SOFTWARE'])) : __('Unknown', 'toolwright'),
+            __('Site URL', 'a-la-carte')           => get_bloginfo('url'),
+            __('WordPress Version', 'a-la-carte')  => get_bloginfo('version'),
+            __('PHP Version', 'a-la-carte')        => phpversion(),
+            __('MySQL Version', 'a-la-carte')      => $wpdb->db_version(),
+            __('Server Software', 'a-la-carte')    => isset($_SERVER['SERVER_SOFTWARE']) ? sanitize_text_field(wp_unslash($_SERVER['SERVER_SOFTWARE'])) : __('Unknown', 'a-la-carte'),
         );
     }
 
@@ -99,9 +99,9 @@ class Info {
      */
     private function get_php_rows() {
         return array(
-            __('Max Execution Time', 'toolwright')  => ini_get('max_execution_time') . 's',
-            __('Memory Limit', 'toolwright')        => ini_get('memory_limit'),
-            __('Upload Max Filesize', 'toolwright') => ini_get('upload_max_filesize'),
+            __('Max Execution Time', 'a-la-carte')  => ini_get('max_execution_time') . 's',
+            __('Memory Limit', 'a-la-carte')        => ini_get('memory_limit'),
+            __('Upload Max Filesize', 'a-la-carte') => ini_get('upload_max_filesize'),
         );
     }
 
@@ -112,8 +112,8 @@ class Info {
      */
     private function get_disk_rows() {
         return array(
-            __('Available Disk Space', 'toolwright') => $this->format_bytes($this->disk_space('disk_free_space')),
-            __('Total Disk Space', 'toolwright')     => $this->format_bytes($this->disk_space('disk_total_space')),
+            __('Available Disk Space', 'a-la-carte') => $this->format_bytes($this->disk_space('disk_free_space')),
+            __('Total Disk Space', 'a-la-carte')     => $this->format_bytes($this->disk_space('disk_total_space')),
         );
     }
 
@@ -142,7 +142,7 @@ class Info {
      */
     private function render_definition_table(array $rows) {
         ?>
-        <table class="ptools-table ptools-table--definition">
+        <table class="alacarte-table alacarte-table--definition">
             <tbody>
                 <?php foreach ($rows as $label => $value) : ?>
                     <tr>
@@ -165,26 +165,26 @@ class Info {
 
         $all_plugins = get_plugins();
         ?>
-        <div class="ptools-table-scroll">
-            <table class="ptools-table">
+        <div class="alacarte-table-scroll">
+            <table class="alacarte-table">
                 <thead>
                     <tr>
-                        <th scope="col"><?php esc_html_e('Plugin Name', 'toolwright'); ?></th>
-                        <th scope="col"><?php esc_html_e('Status', 'toolwright'); ?></th>
-                        <th scope="col"><?php esc_html_e('Version', 'toolwright'); ?></th>
+                        <th scope="col"><?php esc_html_e('Plugin Name', 'a-la-carte'); ?></th>
+                        <th scope="col"><?php esc_html_e('Status', 'a-la-carte'); ?></th>
+                        <th scope="col"><?php esc_html_e('Version', 'a-la-carte'); ?></th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($all_plugins as $path => $plugin) : ?>
                         <?php $is_active = is_plugin_active($path); ?>
                         <tr>
-                            <td><span class="ptools-table__name"><?php echo esc_html($plugin['Name']); ?></span></td>
+                            <td><span class="alacarte-table__name"><?php echo esc_html($plugin['Name']); ?></span></td>
                             <td>
-                                <span class="ptools-pill ptools-pill--upper <?php echo $is_active ? 'ptools-pill--success' : 'ptools-pill--neutral'; ?>">
-                                    <?php echo $is_active ? esc_html__('Active', 'toolwright') : esc_html__('Inactive', 'toolwright'); ?>
+                                <span class="alacarte-pill alacarte-pill--upper <?php echo $is_active ? 'alacarte-pill--success' : 'alacarte-pill--neutral'; ?>">
+                                    <?php echo $is_active ? esc_html__('Active', 'a-la-carte') : esc_html__('Inactive', 'a-la-carte'); ?>
                                 </span>
                             </td>
-                            <td><span class="ptools-mono ptools-text-muted"><?php echo esc_html($plugin['Version']); ?></span></td>
+                            <td><span class="alacarte-mono alacarte-text-muted"><?php echo esc_html($plugin['Version']); ?></span></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -201,7 +201,7 @@ class Info {
      */
     private function format_bytes($bytes) {
         if (!$bytes) {
-            return __('Unknown', 'toolwright');
+            return __('Unknown', 'a-la-carte');
         }
 
         return size_format($bytes, 2);

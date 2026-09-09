@@ -2,14 +2,14 @@
 /**
  * Admin asset loading
  *
- * The shared admin stylesheet and script are only ever loaded on Toolwright
+ * The shared admin stylesheet and script are only ever loaded on A La Carte
  * screens: they carry wp-admin overrides that would otherwise leak into other
  * plugins' pages. Tool specific assets are enqueued by the tool itself.
  *
- * @package Toolwright
+ * @package ALaCarte
  */
 
-namespace Toolwright\Admin;
+namespace ALaCarte\Admin;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -34,35 +34,35 @@ class Assets {
      * @param string $hook Current admin page hook suffix.
      */
     public function enqueue($hook) {
-        if (!self::is_toolwright_screen($hook)) {
+        if (!self::is_alacarte_screen($hook)) {
             return;
         }
 
         wp_enqueue_style(
-            'toolwright-admin',
-            TOOLWRIGHT_PLUGIN_URL . 'assets/css/admin.css',
+            'a-la-carte-admin',
+            ALACARTE_PLUGIN_URL . 'assets/css/admin.css',
             array('dashicons'),
-            TOOLWRIGHT_VERSION
+            ALACARTE_VERSION
         );
 
         wp_enqueue_script(
-            'toolwright-admin',
-            TOOLWRIGHT_PLUGIN_URL . 'assets/js/admin.js',
+            'a-la-carte-admin',
+            ALACARTE_PLUGIN_URL . 'assets/js/admin.js',
             array(),
-            TOOLWRIGHT_VERSION,
+            ALACARTE_VERSION,
             true
         );
     }
 
     /**
-     * Whether the given admin hook belongs to a Toolwright screen
+     * Whether the given admin hook belongs to an A La Carte screen
      *
      * @param string $hook Current admin page hook suffix.
      * @return bool
      */
-    public static function is_toolwright_screen($hook) {
-        return $hook === 'toplevel_page_toolwright'
-            || strpos($hook, 'toolwright_page_toolwright-') === 0;
+    public static function is_alacarte_screen($hook) {
+        return $hook === 'toplevel_page_a-la-carte'
+            || strpos($hook, 'a-la-carte_page_a-la-carte-') === 0;
     }
 
     /**
@@ -73,6 +73,6 @@ class Assets {
      * @return bool
      */
     public static function is_tool_screen($hook, $tool_id) {
-        return $hook === 'toolwright_page_' . Tool_Manager::get_page_slug($tool_id);
+        return $hook === 'a-la-carte_page_' . Tool_Manager::get_page_slug($tool_id);
     }
 }

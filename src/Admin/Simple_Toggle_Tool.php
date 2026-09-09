@@ -6,10 +6,10 @@
  * Subclasses describe themselves; the settings screen is rendered here so
  * every one of them looks and behaves the same.
  *
- * @package Toolwright
+ * @package ALaCarte
  */
 
-namespace Toolwright\Admin;
+namespace ALaCarte\Admin;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -84,29 +84,29 @@ abstract class Simple_Toggle_Tool {
             'description' => $this->get_page_description(),
         ));
         ?>
-        <form class="ptools-panel" method="post">
+        <form class="alacarte-panel" method="post">
             <?php wp_nonce_field($this->get_nonce_action()); ?>
 
-            <div class="ptools-panel__header">
-                <h2 class="ptools-h2"><?php esc_html_e('Settings', 'toolwright'); ?></h2>
+            <div class="alacarte-panel__header">
+                <h2 class="alacarte-h2"><?php esc_html_e('Settings', 'a-la-carte'); ?></h2>
             </div>
 
-            <div class="ptools-panel__body">
-                <label class="ptools-choice ptools-choice--card">
+            <div class="alacarte-panel__body">
+                <label class="alacarte-choice alacarte-choice--card">
                     <input type="checkbox"
                            name="<?php echo esc_attr($this->get_field_name()); ?>"
                            value="1"
                            <?php checked($this->is_enabled()); ?> />
-                    <span class="ptools-choice__text">
-                        <span class="ptools-choice__title"><?php echo esc_html($this->get_field_title()); ?></span>
-                        <span class="ptools-choice__desc"><?php echo esc_html($this->get_field_description()); ?></span>
+                    <span class="alacarte-choice__text">
+                        <span class="alacarte-choice__title"><?php echo esc_html($this->get_field_title()); ?></span>
+                        <span class="alacarte-choice__desc"><?php echo esc_html($this->get_field_description()); ?></span>
                     </span>
                 </label>
             </div>
 
-            <div class="ptools-panel__footer">
-                <button type="submit" name="save" value="1" class="ptools-btn ptools-btn--primary">
-                    <?php esc_html_e('Save Settings', 'toolwright'); ?>
+            <div class="alacarte-panel__footer">
+                <button type="submit" name="save" value="1" class="alacarte-btn alacarte-btn--primary">
+                    <?php esc_html_e('Save Settings', 'a-la-carte'); ?>
                 </button>
             </div>
         </form>
@@ -123,9 +123,9 @@ abstract class Simple_Toggle_Tool {
         update_option($this->get_option_name(), isset($_POST[$this->get_field_name()]) ? '1' : '0');
 
         add_settings_error(
-            'toolwright_messages',
-            'toolwright_message',
-            __('Settings saved.', 'toolwright'),
+            'alacarte_messages',
+            'alacarte_message',
+            __('Settings saved.', 'a-la-carte'),
             'updated'
         );
     }

@@ -2,12 +2,12 @@
 /**
  * Toolbar Toggler functionality
  *
- * @package Toolwright
+ * @package ALaCarte
  */
 
-namespace Toolwright\Toolbar;
+namespace ALaCarte\Toolbar;
 
-use Toolwright\Admin\Simple_Toggle_Tool;
+use ALaCarte\Admin\Simple_Toggle_Tool;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -23,7 +23,7 @@ class Toolbar_Toggler extends Simple_Toggle_Tool {
      *
      * @var string
      */
-    private const OPTION_NAME = 'toolwright_toolbar_toggler_enabled';
+    private const OPTION_NAME = 'alacarte_toolbar_toggler_enabled';
 
     /**
      * Initialize the class
@@ -42,15 +42,15 @@ class Toolbar_Toggler extends Simple_Toggle_Tool {
     }
 
     protected function get_nonce_action(): string {
-        return 'toolwright_toolbar_toggler';
+        return 'alacarte_toolbar_toggler';
     }
 
     protected function get_page_title(): string {
-        return __('Toolbar Toggler', 'toolwright');
+        return __('Toolbar Toggler', 'a-la-carte');
     }
 
     protected function get_page_description(): string {
-        return __('Minimize distractions by hiding the admin toolbar behind a sleek toggle button.', 'toolwright');
+        return __('Minimize distractions by hiding the admin toolbar behind a sleek toggle button.', 'a-la-carte');
     }
 
     protected function get_field_name(): string {
@@ -58,11 +58,11 @@ class Toolbar_Toggler extends Simple_Toggle_Tool {
     }
 
     protected function get_field_title(): string {
-        return __('Enable Toolbar Toggler', 'toolwright');
+        return __('Enable Toolbar Toggler', 'a-la-carte');
     }
 
     protected function get_field_description(): string {
-        return __('This will hide the default WordPress toolbar and show a small toggle button in the top-left corner instead.', 'toolwright');
+        return __('This will hide the default WordPress toolbar and show a small toggle button in the top-left corner instead.', 'a-la-carte');
     }
 
     /**
@@ -81,17 +81,17 @@ class Toolbar_Toggler extends Simple_Toggle_Tool {
         }
 
         wp_enqueue_style(
-            'toolwright-toolbar-toggler',
-            TOOLWRIGHT_PLUGIN_URL . 'assets/css/toolbar-toggler.css',
+            'a-la-carte-toolbar-toggler',
+            ALACARTE_PLUGIN_URL . 'assets/css/toolbar-toggler.css',
             array('dashicons'),
-            TOOLWRIGHT_VERSION
+            ALACARTE_VERSION
         );
 
         wp_enqueue_script(
-            'toolwright-toolbar-toggler',
-            TOOLWRIGHT_PLUGIN_URL . 'assets/js/toolbar-toggler.js',
+            'a-la-carte-toolbar-toggler',
+            ALACARTE_PLUGIN_URL . 'assets/js/toolbar-toggler.js',
             array(),
-            TOOLWRIGHT_VERSION,
+            ALACARTE_VERSION,
             true
         );
     }

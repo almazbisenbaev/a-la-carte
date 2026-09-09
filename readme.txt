@@ -1,4 +1,4 @@
-=== Toolwright – Site Admin Utilities ===
+=== A La Carte – Developer Utilities ===
 Contributors: almazbisenbaev
 Tags: disable comments, disable gutenberg, custom post types, admin bar, cleanup
 Requires at least: 6.0
@@ -14,7 +14,7 @@ Seven small tools in one plugin: disable comments or Gutenberg, add post types, 
 
 Every WordPress site needs the same handful of fixes. You disable comments. You strip the junk WordPress prints into your `<head>`. You add a custom post type. You clear out thousands of stale revisions.
 
-The usual answer is seven separate single-purpose plugins, each with its own settings page, its own update cycle, and its own overhead. Toolwright puts those seven jobs in one place.
+The usual answer is seven separate single-purpose plugins, each with its own settings page, its own update cycle, and its own overhead. A La Carte puts those seven jobs in one place.
 
 Every tool is **off until you switch it on**. An inactive tool registers no hooks and loads no code, so the plugin costs you nothing on the front end until you actually use it.
 
@@ -36,22 +36,22 @@ Every tool is **off until you switch it on**. An inactive tool registers no hook
 
 = Privacy =
 
-Toolwright sends nothing anywhere. There is no telemetry, no analytics, no external API calls, and no third-party services. All data stays in your own database.
+A La Carte sends nothing anywhere. There is no telemetry, no analytics, no external API calls, and no third-party services. All data stays in your own database.
 
 == Installation ==
 
 From your WordPress dashboard:
 
 1. Go to **Plugins → Add New**.
-2. Search for **Toolwright**.
+2. Search for **A La Carte**.
 3. Click **Install Now**, then **Activate**.
-4. Open **Toolwright** in the admin menu and switch on the tools you want.
+4. Open **A La Carte** in the admin menu and switch on the tools you want.
 
 Manual installation:
 
 1. Download the ZIP and upload it under **Plugins → Add New → Upload Plugin**, or extract it into `/wp-content/plugins/`.
 2. Activate the plugin through the **Plugins** menu.
-3. Open **Toolwright** in the admin menu and switch on the tools you want.
+3. Open **A La Carte** in the admin menu and switch on the tools you want.
 
 Every tool starts switched off. Nothing changes on your site until you enable something.
 
@@ -75,14 +75,14 @@ No. It removes the compatibility script WordPress loads to render emoji as image
 Yes. Every tool is configured per site, and its settings apply to that site only.
 
 = What happens to my settings if I uninstall the plugin? =
-Deleting Toolwright removes all of its settings. Content you created through the Custom Post Types Manager is deliberately left alone — those are your own posts, and only the post type registration goes away.
+Deleting A La Carte removes all of its settings. Content you created through the Custom Post Types Manager is deliberately left alone — those are your own posts, and only the post type registration goes away.
 
 = Is it translation-ready? =
 Yes. All strings are translatable and contributions are welcome through translate.wordpress.org.
 
 == Screenshots ==
 
-1. The Toolwright dashboard, where each tool is switched on or off.
+1. The A La Carte dashboard, where each tool is switched on or off.
 2. Junk Cleaner showing the drafts and revisions found.
 3. The Gutenberg Disabler, set to disable the block editor for selected post types.
 4. The Custom Post Types Manager.

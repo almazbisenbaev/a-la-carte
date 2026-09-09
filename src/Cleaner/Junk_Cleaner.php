@@ -2,13 +2,13 @@
 /**
  * Junk Cleaner functionality
  *
- * @package Toolwright
+ * @package ALaCarte
  */
 
-namespace Toolwright\Cleaner;
+namespace ALaCarte\Cleaner;
 
-use Toolwright\Admin\Tool_Manager;
-use Toolwright\Admin\UI;
+use ALaCarte\Admin\Tool_Manager;
+use ALaCarte\Admin\UI;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -27,7 +27,7 @@ class Junk_Cleaner {
         Tool_Manager::require_capability();
 
         // Handle deletion
-        if (isset($_POST['delete_revisions_drafts']) && check_admin_referer('toolwright_junk_cleaner')) {
+        if (isset($_POST['delete_revisions_drafts']) && check_admin_referer('alacarte_junk_cleaner')) {
             $this->delete_junk();
         }
 
@@ -38,42 +38,42 @@ class Junk_Cleaner {
 
         $confirm_message = sprintf(
             /* translators: 1: number of drafts, 2: number of revisions */
-            __('This will permanently delete %1$d draft(s) and %2$d revision(s). This cannot be undone.', 'toolwright'),
+            __('This will permanently delete %1$d draft(s) and %2$d revision(s). This cannot be undone.', 'a-la-carte'),
             $drafts_count,
             $revisions_count
         );
 
         UI::page_open(array(
             'tool_id'     => 'junk_cleaner',
-            'title'       => __('Junk Cleaner', 'toolwright'),
-            'description' => __('Free up database space by removing unnecessary drafts and post revisions.', 'toolwright'),
+            'title'       => __('Junk Cleaner', 'a-la-carte'),
+            'description' => __('Free up database space by removing unnecessary drafts and post revisions.', 'a-la-carte'),
         ));
         ?>
-        <div class="ptools-panel">
-            <div class="ptools-panel__header">
-                <h2 class="ptools-h2"><?php esc_html_e('Database Overview', 'toolwright'); ?></h2>
+        <div class="alacarte-panel">
+            <div class="alacarte-panel__header">
+                <h2 class="alacarte-h2"><?php esc_html_e('Database Overview', 'a-la-carte'); ?></h2>
             </div>
 
-            <div class="ptools-panel__body">
-                <div class="ptools-stats">
-                    <div class="ptools-stat">
-                        <div class="ptools-stat__value"><?php echo esc_html($drafts_count); ?></div>
-                        <div class="ptools-stat__label"><?php esc_html_e('Draft Posts', 'toolwright'); ?></div>
+            <div class="alacarte-panel__body">
+                <div class="alacarte-stats">
+                    <div class="alacarte-stat">
+                        <div class="alacarte-stat__value"><?php echo esc_html($drafts_count); ?></div>
+                        <div class="alacarte-stat__label"><?php esc_html_e('Draft Posts', 'a-la-carte'); ?></div>
                     </div>
-                    <div class="ptools-stat">
-                        <div class="ptools-stat__value"><?php echo esc_html($revisions_count); ?></div>
-                        <div class="ptools-stat__label"><?php esc_html_e('Post Revisions', 'toolwright'); ?></div>
+                    <div class="alacarte-stat">
+                        <div class="alacarte-stat__value"><?php echo esc_html($revisions_count); ?></div>
+                        <div class="alacarte-stat__label"><?php esc_html_e('Post Revisions', 'a-la-carte'); ?></div>
                     </div>
                 </div>
 
                 <?php if ($is_clean) : ?>
-                    <?php UI::notice(__('Your database is clean. No drafts or revisions found.', 'toolwright'), 'success'); ?>
+                    <?php UI::notice(__('Your database is clean. No drafts or revisions found.', 'a-la-carte'), 'success'); ?>
                 <?php else : ?>
                     <?php
                     UI::notice(
                         sprintf(
                             /* translators: 1: number of drafts, 2: number of revisions */
-                            __('You have %1$d draft(s) and %2$d revision(s) that can be removed to free up database space.', 'toolwright'),
+                            __('You have %1$d draft(s) and %2$d revision(s) that can be removed to free up database space.', 'a-la-carte'),
                             $drafts_count,
                             $revisions_count
                         ),
@@ -83,13 +83,13 @@ class Junk_Cleaner {
                 <?php endif; ?>
             </div>
 
-            <div class="ptools-panel__footer">
-                <form method="post" data-ptools-confirm="<?php echo esc_attr($confirm_message); ?>">
-                    <?php wp_nonce_field('toolwright_junk_cleaner'); ?>
+            <div class="alacarte-panel__footer">
+                <form method="post" data-alacarte-confirm="<?php echo esc_attr($confirm_message); ?>">
+                    <?php wp_nonce_field('alacarte_junk_cleaner'); ?>
                     <input type="hidden" name="delete_revisions_drafts" value="1" />
-                    <button type="submit" class="ptools-btn ptools-btn--danger" <?php disabled($is_clean); ?>>
+                    <button type="submit" class="alacarte-btn alacarte-btn--danger" <?php disabled($is_clean); ?>>
                         <?php UI::dashicon('dashicons-trash'); ?>
-                        <?php esc_html_e('Clean Database Now', 'toolwright'); ?>
+                        <?php esc_html_e('Clean Database Now', 'a-la-carte'); ?>
                     </button>
                 </form>
             </div>
@@ -145,11 +145,11 @@ class Junk_Cleaner {
 
         // Show success message
         add_settings_error(
-            'toolwright_messages',
-            'toolwright_message',
+            'alacarte_messages',
+            'alacarte_message',
             sprintf(
                 /* translators: %d: number of items permanently deleted */
-                __('%d draft(s) and revision(s) have been permanently deleted.', 'toolwright'),
+                __('%d draft(s) and revision(s) have been permanently deleted.', 'a-la-carte'),
                 $deleted_count
             ),
             'updated'
