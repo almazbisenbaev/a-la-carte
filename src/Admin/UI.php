@@ -2,15 +2,15 @@
 /**
  * Shared admin markup helpers
  *
- * Every A La Carte screen renders its shell through this class so the page
+ * Every Seitenmeister screen renders its shell through this class so the page
  * header, notices and toggle switches stay identical across tools. Anything
  * visual belongs in assets/css/admin.css — templates should not
  * carry inline style attributes.
  *
- * @package ALaCarte
+ * @package AlmazBroSiteUtilities
  */
 
-namespace ALaCarte\Admin;
+namespace AlmazBroSiteUtilities\Admin;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -34,7 +34,7 @@ final class UI {
     );
 
     /**
-     * Open an A La Carte screen: wrapper, page header and queued notices.
+     * Open a plugin screen: wrapper, page header and queued notices.
      *
      * @param array $args {
      *     @type string   $title       Page title.
@@ -60,9 +60,9 @@ final class UI {
             $icon = Tool_Manager::get_icon($args['tool_id']);
         }
         ?>
-        <div class="alacarte-wrap">
-            <header class="alacarte-page-header">
-                <div class="alacarte-page-header__icon">
+        <div class="almazbro-site-utilities-wrap">
+            <header class="almazbro-site-utilities-page-header">
+                <div class="almazbro-site-utilities-page-header__icon">
                     <?php if ($args['logo']) : ?>
                         <img src="<?php echo esc_url($args['logo']); ?>" alt="" />
                     <?php else : ?>
@@ -70,26 +70,26 @@ final class UI {
                     <?php endif; ?>
                 </div>
 
-                <div class="alacarte-page-header__content">
-                    <h1 class="alacarte-h1"><?php echo esc_html($args['title']); ?></h1>
+                <div class="almazbro-site-utilities-page-header__content">
+                    <h1 class="almazbro-site-utilities-h1"><?php echo esc_html($args['title']); ?></h1>
                     <?php if ($args['description']) : ?>
-                        <p class="alacarte-lead"><?php echo esc_html($args['description']); ?></p>
+                        <p class="almazbro-site-utilities-lead"><?php echo esc_html($args['description']); ?></p>
                     <?php endif; ?>
                 </div>
 
                 <?php if (is_callable($args['actions'])) : ?>
-                    <div class="alacarte-page-header__actions">
+                    <div class="almazbro-site-utilities-page-header__actions">
                         <?php call_user_func($args['actions']); ?>
                     </div>
                 <?php endif; ?>
             </header>
 
-            <?php settings_errors('alacarte_messages'); ?>
+            <?php settings_errors('almazbro_site_utilities_messages'); ?>
         <?php
     }
 
     /**
-     * Close an A La Carte screen.
+     * Close a plugin screen.
      */
     public static function page_close() {
         echo '</div>';
@@ -104,7 +104,7 @@ final class UI {
     public static function notice($message, $type = 'success') {
         $type = isset(self::NOTICE_ICONS[$type]) ? $type : 'success';
         ?>
-        <div class="alacarte-notice alacarte-notice--<?php echo esc_attr($type); ?>">
+        <div class="almazbro-site-utilities-notice almazbro-site-utilities-notice--<?php echo esc_attr($type); ?>">
             <?php self::dashicon(self::NOTICE_ICONS[$type]); ?>
             <span><?php echo esc_html($message); ?></span>
         </div>
@@ -156,23 +156,23 @@ final class UI {
             'label'        => '',
         ), $args);
         ?>
-        <form class="alacarte-inline-form alacarte-js-autosubmit" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+        <form class="almazbro-site-utilities-inline-form almazbro-site-utilities-js-autosubmit" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
             <input type="hidden" name="action" value="<?php echo esc_attr($args['action']); ?>" />
             <?php wp_nonce_field($args['nonce_action'], $args['nonce_name']); ?>
             <?php foreach ($args['fields'] as $name => $value) : ?>
                 <input type="hidden" name="<?php echo esc_attr($name); ?>" value="<?php echo esc_attr($value); ?>" />
             <?php endforeach; ?>
 
-            <label class="alacarte-switch">
+            <label class="almazbro-site-utilities-switch">
                 <input type="checkbox"
                        aria-label="<?php echo esc_attr($args['label']); ?>"
                        <?php checked($args['checked']); ?>
                        <?php disabled($args['disabled']); ?> />
-                <span class="alacarte-switch__track"></span>
+                <span class="almazbro-site-utilities-switch__track"></span>
             </label>
 
             <noscript>
-                <button type="submit" class="alacarte-btn alacarte-btn--secondary"><?php esc_html_e('Apply', 'a-la-carte'); ?></button>
+                <button type="submit" class="almazbro-site-utilities-btn almazbro-site-utilities-btn--secondary"><?php esc_html_e('Apply', 'almazbro-site-utilities'); ?></button>
             </noscript>
         </form>
         <?php

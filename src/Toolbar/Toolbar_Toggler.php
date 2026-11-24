@@ -2,12 +2,12 @@
 /**
  * Toolbar Toggler functionality
  *
- * @package ALaCarte
+ * @package AlmazBroSiteUtilities
  */
 
-namespace ALaCarte\Toolbar;
+namespace AlmazBroSiteUtilities\Toolbar;
 
-use ALaCarte\Admin\Simple_Toggle_Tool;
+use AlmazBroSiteUtilities\Admin\Simple_Toggle_Tool;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -23,7 +23,7 @@ class Toolbar_Toggler extends Simple_Toggle_Tool {
      *
      * @var string
      */
-    private const OPTION_NAME = 'alacarte_toolbar_toggler_enabled';
+    private const OPTION_NAME = 'almazbro_site_utilities_toolbar_toggler_enabled';
 
     /**
      * Initialize the class
@@ -42,15 +42,15 @@ class Toolbar_Toggler extends Simple_Toggle_Tool {
     }
 
     protected function get_nonce_action(): string {
-        return 'alacarte_toolbar_toggler';
+        return 'almazbro_site_utilities_toolbar_toggler';
     }
 
     protected function get_page_title(): string {
-        return __('Toolbar Toggler', 'a-la-carte');
+        return __('Toolbar Toggler', 'almazbro-site-utilities');
     }
 
     protected function get_page_description(): string {
-        return __('Minimize distractions by hiding the admin toolbar behind a sleek toggle button.', 'a-la-carte');
+        return __('Minimize distractions by hiding the admin toolbar behind a sleek toggle button.', 'almazbro-site-utilities');
     }
 
     protected function get_field_name(): string {
@@ -58,11 +58,11 @@ class Toolbar_Toggler extends Simple_Toggle_Tool {
     }
 
     protected function get_field_title(): string {
-        return __('Enable Toolbar Toggler', 'a-la-carte');
+        return __('Enable Toolbar Toggler', 'almazbro-site-utilities');
     }
 
     protected function get_field_description(): string {
-        return __('This will hide the default WordPress toolbar and show a small toggle button in the top-left corner instead.', 'a-la-carte');
+        return __('This will hide the default WordPress toolbar and show a small toggle button in the top-left corner instead.', 'almazbro-site-utilities');
     }
 
     /**
@@ -81,17 +81,17 @@ class Toolbar_Toggler extends Simple_Toggle_Tool {
         }
 
         wp_enqueue_style(
-            'a-la-carte-toolbar-toggler',
-            ALACARTE_PLUGIN_URL . 'assets/css/toolbar-toggler.css',
+            'almazbro-site-utilities-toolbar-toggler',
+            ALMAZBRO_SITE_UTILITIES_PLUGIN_URL . 'assets/css/toolbar-toggler.css',
             array('dashicons'),
-            ALACARTE_VERSION
+            ALMAZBRO_SITE_UTILITIES_VERSION
         );
 
         wp_enqueue_script(
-            'a-la-carte-toolbar-toggler',
-            ALACARTE_PLUGIN_URL . 'assets/js/toolbar-toggler.js',
+            'almazbro-site-utilities-toolbar-toggler',
+            ALMAZBRO_SITE_UTILITIES_PLUGIN_URL . 'assets/js/toolbar-toggler.js',
             array(),
-            ALACARTE_VERSION,
+            ALMAZBRO_SITE_UTILITIES_VERSION,
             true
         );
     }

@@ -2,14 +2,15 @@
 /**
  * Main Plugin Class
  *
- * @package ALaCarte
+ * @package AlmazBroSiteUtilities
  */
 
-namespace ALaCarte;
+namespace AlmazBroSiteUtilities;
 
-use ALaCarte\Admin\Admin_Menu;
-use ALaCarte\Admin\Assets;
-use ALaCarte\Admin\Tool_Manager;
+use AlmazBroSiteUtilities\Admin\Admin_Menu;
+use AlmazBroSiteUtilities\Admin\Assets;
+use AlmazBroSiteUtilities\Admin\Tool_Manager;
+use AlmazBroSiteUtilities\CPT\Manager;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -22,11 +23,11 @@ if (!defined('WPINC')) {
 final class Plugin {
 
     /**
-     * Option flagging that rewrite rules must be regenerated on the next request.
+     * Last applied CPT route signature, or 'yes' to force a refresh after activation.
      *
      * @var string
      */
-    private const FLUSH_OPTION = 'alacarte_flush_rewrite_rules';
+    private const FLUSH_OPTION = 'almazbro_site_utilities_flush_rewrite_rules';
 
     /**
      * Single plugin instance
@@ -65,7 +66,7 @@ final class Plugin {
         // same instances instead of creating throwaway objects per request.
         $this->tools->boot();
 
-        add_action('init', array($this, 'maybe_flush_rewrite_rules'), 100);
+        add_action('wp_loaded', array($this, 'maybe_flush_rewrite_rules'), 100);
 
         if (is_admin()) {
             new Admin_Menu($this->tools);
@@ -88,12 +89,14 @@ final class Plugin {
      * `init` has already run by the time the activation hook fires.
      */
     public function maybe_flush_rewrite_rules() {
-        if (get_option(self::FLUSH_OPTION) !== 'yes') {
+        $manager = $this->tools->get_tool_instance('cpt_manager');
+        $signature = $manager instanceof Manager ? $manager->get_rewrite_signature() : '';
+        if (get_option(self::FLUSH_OPTION, '') === $signature) {
             return;
         }
 
-        delete_option(self::FLUSH_OPTION);
-        flush_rewrite_rules();
+        flush_rewrite_rules(false);
+        update_option(self::FLUSH_OPTION, $signature);
     }
 
     /**
@@ -109,8 +112,8 @@ final class Plugin {
     public static function deactivate() {
         delete_option(self::FLUSH_OPTION);
 
-        // Post types registered by A La Carte are gone from here on, so drop
-        // the rules that pointed at them.
-        flush_rewrite_rules();
+        // This request still has the old registrations. Let core rebuild on
+        // the next request, when the plugin has actually been unloaded.
+        delete_option('rewrite_rules');
     }
 }

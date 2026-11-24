@@ -2,13 +2,13 @@
 /**
  * System Info functionality
  *
- * @package ALaCarte
+ * @package AlmazBroSiteUtilities
  */
 
-namespace ALaCarte\System;
+namespace AlmazBroSiteUtilities\System;
 
-use ALaCarte\Admin\Tool_Manager;
-use ALaCarte\Admin\UI;
+use AlmazBroSiteUtilities\Admin\Tool_Manager;
+use AlmazBroSiteUtilities\Admin\UI;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -28,45 +28,45 @@ class Info {
 
         UI::page_open(array(
             'tool_id'     => 'system_info',
-            'title'       => __('System Information', 'a-la-carte'),
-            'description' => __('Detailed overview of your WordPress environment, server configuration, and active plugins.', 'a-la-carte'),
+            'title'       => __('System Information', 'almazbro-site-utilities'),
+            'description' => __('Detailed overview of your WordPress environment, server configuration, and active plugins.', 'almazbro-site-utilities'),
         ));
         ?>
-        <div class="alacarte-stack">
-            <div class="alacarte-panel">
-                <div class="alacarte-panel__header">
-                    <h2 class="alacarte-h2"><?php esc_html_e('Environment Overview', 'a-la-carte'); ?></h2>
+        <div class="almazbro-site-utilities-stack">
+            <div class="almazbro-site-utilities-panel">
+                <div class="almazbro-site-utilities-panel__header">
+                    <h2 class="almazbro-site-utilities-h2"><?php esc_html_e('Environment Overview', 'almazbro-site-utilities'); ?></h2>
                 </div>
-                <div class="alacarte-panel__body alacarte-panel__body--flush">
+                <div class="almazbro-site-utilities-panel__body almazbro-site-utilities-panel__body--flush">
                     <?php $this->render_definition_table($this->get_environment_rows()); ?>
                 </div>
             </div>
 
-            <div class="alacarte-cols-2">
-                <div class="alacarte-panel">
-                    <div class="alacarte-panel__header">
-                        <h2 class="alacarte-h2"><?php esc_html_e('PHP Configuration', 'a-la-carte'); ?></h2>
+            <div class="almazbro-site-utilities-cols-2">
+                <div class="almazbro-site-utilities-panel">
+                    <div class="almazbro-site-utilities-panel__header">
+                        <h2 class="almazbro-site-utilities-h2"><?php esc_html_e('PHP Configuration', 'almazbro-site-utilities'); ?></h2>
                     </div>
-                    <div class="alacarte-panel__body alacarte-panel__body--flush">
+                    <div class="almazbro-site-utilities-panel__body almazbro-site-utilities-panel__body--flush">
                         <?php $this->render_definition_table($this->get_php_rows()); ?>
                     </div>
                 </div>
 
-                <div class="alacarte-panel">
-                    <div class="alacarte-panel__header">
-                        <h2 class="alacarte-h2"><?php esc_html_e('Server Resources', 'a-la-carte'); ?></h2>
+                <div class="almazbro-site-utilities-panel">
+                    <div class="almazbro-site-utilities-panel__header">
+                        <h2 class="almazbro-site-utilities-h2"><?php esc_html_e('Server Resources', 'almazbro-site-utilities'); ?></h2>
                     </div>
-                    <div class="alacarte-panel__body alacarte-panel__body--flush">
+                    <div class="almazbro-site-utilities-panel__body almazbro-site-utilities-panel__body--flush">
                         <?php $this->render_definition_table($this->get_disk_rows()); ?>
                     </div>
                 </div>
             </div>
 
-            <div class="alacarte-panel">
-                <div class="alacarte-panel__header">
-                    <h2 class="alacarte-h2"><?php esc_html_e('Installed Plugins', 'a-la-carte'); ?></h2>
+            <div class="almazbro-site-utilities-panel">
+                <div class="almazbro-site-utilities-panel__header">
+                    <h2 class="almazbro-site-utilities-h2"><?php esc_html_e('Installed Plugins', 'almazbro-site-utilities'); ?></h2>
                 </div>
-                <div class="alacarte-panel__body alacarte-panel__body--flush">
+                <div class="almazbro-site-utilities-panel__body almazbro-site-utilities-panel__body--flush">
                     <?php $this->render_plugins_table(); ?>
                 </div>
             </div>
@@ -84,11 +84,11 @@ class Info {
         global $wpdb;
 
         return array(
-            __('Site URL', 'a-la-carte')           => get_bloginfo('url'),
-            __('WordPress Version', 'a-la-carte')  => get_bloginfo('version'),
-            __('PHP Version', 'a-la-carte')        => phpversion(),
-            __('MySQL Version', 'a-la-carte')      => $wpdb->db_version(),
-            __('Server Software', 'a-la-carte')    => isset($_SERVER['SERVER_SOFTWARE']) ? sanitize_text_field(wp_unslash($_SERVER['SERVER_SOFTWARE'])) : __('Unknown', 'a-la-carte'),
+            __('Site URL', 'almazbro-site-utilities')           => get_bloginfo('url'),
+            __('WordPress Version', 'almazbro-site-utilities')  => get_bloginfo('version'),
+            __('PHP Version', 'almazbro-site-utilities')        => phpversion(),
+            __('MySQL Version', 'almazbro-site-utilities')      => $wpdb->db_version(),
+            __('Server Software', 'almazbro-site-utilities')    => isset($_SERVER['SERVER_SOFTWARE']) ? sanitize_text_field(wp_unslash($_SERVER['SERVER_SOFTWARE'])) : __('Unknown', 'almazbro-site-utilities'),
         );
     }
 
@@ -99,9 +99,9 @@ class Info {
      */
     private function get_php_rows() {
         return array(
-            __('Max Execution Time', 'a-la-carte')  => ini_get('max_execution_time') . 's',
-            __('Memory Limit', 'a-la-carte')        => ini_get('memory_limit'),
-            __('Upload Max Filesize', 'a-la-carte') => ini_get('upload_max_filesize'),
+            __('Max Execution Time', 'almazbro-site-utilities')  => ini_get('max_execution_time') . 's',
+            __('Memory Limit', 'almazbro-site-utilities')        => ini_get('memory_limit'),
+            __('Upload Max Filesize', 'almazbro-site-utilities') => ini_get('upload_max_filesize'),
         );
     }
 
@@ -112,8 +112,8 @@ class Info {
      */
     private function get_disk_rows() {
         return array(
-            __('Available Disk Space', 'a-la-carte') => $this->format_bytes($this->disk_space('disk_free_space')),
-            __('Total Disk Space', 'a-la-carte')     => $this->format_bytes($this->disk_space('disk_total_space')),
+            __('Available Disk Space', 'almazbro-site-utilities') => $this->format_bytes($this->disk_space('disk_free_space')),
+            __('Total Disk Space', 'almazbro-site-utilities')     => $this->format_bytes($this->disk_space('disk_total_space')),
         );
     }
 
@@ -142,7 +142,7 @@ class Info {
      */
     private function render_definition_table(array $rows) {
         ?>
-        <table class="alacarte-table alacarte-table--definition">
+        <table class="almazbro-site-utilities-table almazbro-site-utilities-table--definition">
             <tbody>
                 <?php foreach ($rows as $label => $value) : ?>
                     <tr>
@@ -165,26 +165,26 @@ class Info {
 
         $all_plugins = get_plugins();
         ?>
-        <div class="alacarte-table-scroll">
-            <table class="alacarte-table">
+        <div class="almazbro-site-utilities-table-scroll">
+            <table class="almazbro-site-utilities-table">
                 <thead>
                     <tr>
-                        <th scope="col"><?php esc_html_e('Plugin Name', 'a-la-carte'); ?></th>
-                        <th scope="col"><?php esc_html_e('Status', 'a-la-carte'); ?></th>
-                        <th scope="col"><?php esc_html_e('Version', 'a-la-carte'); ?></th>
+                        <th scope="col"><?php esc_html_e('Plugin Name', 'almazbro-site-utilities'); ?></th>
+                        <th scope="col"><?php esc_html_e('Status', 'almazbro-site-utilities'); ?></th>
+                        <th scope="col"><?php esc_html_e('Version', 'almazbro-site-utilities'); ?></th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($all_plugins as $path => $plugin) : ?>
                         <?php $is_active = is_plugin_active($path); ?>
                         <tr>
-                            <td><span class="alacarte-table__name"><?php echo esc_html($plugin['Name']); ?></span></td>
+                            <td><span class="almazbro-site-utilities-table__name"><?php echo esc_html($plugin['Name']); ?></span></td>
                             <td>
-                                <span class="alacarte-pill alacarte-pill--upper <?php echo $is_active ? 'alacarte-pill--success' : 'alacarte-pill--neutral'; ?>">
-                                    <?php echo $is_active ? esc_html__('Active', 'a-la-carte') : esc_html__('Inactive', 'a-la-carte'); ?>
+                                <span class="almazbro-site-utilities-pill almazbro-site-utilities-pill--upper <?php echo $is_active ? 'almazbro-site-utilities-pill--success' : 'almazbro-site-utilities-pill--neutral'; ?>">
+                                    <?php echo $is_active ? esc_html__('Active', 'almazbro-site-utilities') : esc_html__('Inactive', 'almazbro-site-utilities'); ?>
                                 </span>
                             </td>
-                            <td><span class="alacarte-mono alacarte-text-muted"><?php echo esc_html($plugin['Version']); ?></span></td>
+                            <td><span class="almazbro-site-utilities-mono almazbro-site-utilities-text-muted"><?php echo esc_html($plugin['Version']); ?></span></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -201,7 +201,7 @@ class Info {
      */
     private function format_bytes($bytes) {
         if (!$bytes) {
-            return __('Unknown', 'a-la-carte');
+            return __('Unknown', 'almazbro-site-utilities');
         }
 
         return size_format($bytes, 2);

@@ -1,158 +1,169 @@
 <?php
 /**
- * Junk Cleaner functionality
+ * Draft and revision cleanup.
  *
- * @package ALaCarte
+ * @package AlmazBroSiteUtilities
  */
 
-namespace ALaCarte\Cleaner;
+namespace AlmazBroSiteUtilities\Cleaner;
 
-use ALaCarte\Admin\Tool_Manager;
-use ALaCarte\Admin\UI;
+use AlmazBroSiteUtilities\Admin\Tool_Manager;
+use AlmazBroSiteUtilities\Admin\UI;
 
-// If this file is called directly, abort.
 if (!defined('WPINC')) {
     die;
 }
 
-/**
- * Class Junk_Cleaner
- */
 class Junk_Cleaner {
+    private const DRAFTS_PER_PAGE = 20;
+    private const REVISION_BATCH = 50;
 
-    /**
-     * Render the junk cleaner settings page
-     */
+    public function __construct() {
+        add_action('admin_post_almazbro_site_utilities_trash_drafts', array($this, 'trash_drafts'));
+        add_action('admin_post_almazbro_site_utilities_delete_revisions', array($this, 'delete_revisions'));
+    }
+
+    private function draft_types() {
+        // Only list types with an editing screen where the draft can be restored.
+        return array_values(array_diff(get_post_types(array('show_ui' => true)), array('attachment')));
+    }
+
     public function render_settings_page() {
+        global $wpdb;
         Tool_Manager::require_capability();
-
-        // Handle deletion
-        if (isset($_POST['delete_revisions_drafts']) && check_admin_referer('alacarte_junk_cleaner')) {
-            $this->delete_junk();
-        }
-
-        // Get the number of drafts and revisions
-        $drafts_count    = count($this->get_draft_ids());
-        $revisions_count = count($this->get_revision_ids());
-        $is_clean        = ($drafts_count === 0 && $revisions_count === 0);
-
-        $confirm_message = sprintf(
-            /* translators: 1: number of drafts, 2: number of revisions */
-            __('This will permanently delete %1$d draft(s) and %2$d revision(s). This cannot be undone.', 'a-la-carte'),
-            $drafts_count,
-            $revisions_count
-        );
-
-        UI::page_open(array(
-            'tool_id'     => 'junk_cleaner',
-            'title'       => __('Junk Cleaner', 'a-la-carte'),
-            'description' => __('Free up database space by removing unnecessary drafts and post revisions.', 'a-la-carte'),
-        ));
-        ?>
-        <div class="alacarte-panel">
-            <div class="alacarte-panel__header">
-                <h2 class="alacarte-h2"><?php esc_html_e('Database Overview', 'a-la-carte'); ?></h2>
-            </div>
-
-            <div class="alacarte-panel__body">
-                <div class="alacarte-stats">
-                    <div class="alacarte-stat">
-                        <div class="alacarte-stat__value"><?php echo esc_html($drafts_count); ?></div>
-                        <div class="alacarte-stat__label"><?php esc_html_e('Draft Posts', 'a-la-carte'); ?></div>
-                    </div>
-                    <div class="alacarte-stat">
-                        <div class="alacarte-stat__value"><?php echo esc_html($revisions_count); ?></div>
-                        <div class="alacarte-stat__label"><?php esc_html_e('Post Revisions', 'a-la-carte'); ?></div>
-                    </div>
-                </div>
-
-                <?php if ($is_clean) : ?>
-                    <?php UI::notice(__('Your database is clean. No drafts or revisions found.', 'a-la-carte'), 'success'); ?>
-                <?php else : ?>
-                    <?php
-                    UI::notice(
-                        sprintf(
-                            /* translators: 1: number of drafts, 2: number of revisions */
-                            __('You have %1$d draft(s) and %2$d revision(s) that can be removed to free up database space.', 'a-la-carte'),
-                            $drafts_count,
-                            $revisions_count
-                        ),
-                        'warning'
-                    );
-                    ?>
-                <?php endif; ?>
-            </div>
-
-            <div class="alacarte-panel__footer">
-                <form method="post" data-alacarte-confirm="<?php echo esc_attr($confirm_message); ?>">
-                    <?php wp_nonce_field('alacarte_junk_cleaner'); ?>
-                    <input type="hidden" name="delete_revisions_drafts" value="1" />
-                    <button type="submit" class="alacarte-btn alacarte-btn--danger" <?php disabled($is_clean); ?>>
-                        <?php UI::dashicon('dashicons-trash'); ?>
-                        <?php esc_html_e('Clean Database Now', 'a-la-carte'); ?>
-                    </button>
-                </form>
-            </div>
-        </div>
-        <?php
-        UI::page_close();
-    }
-
-    /**
-     * Get the IDs of all draft posts (any post type)
-     *
-     * @return int[]
-     */
-    private function get_draft_ids() {
-        return get_posts(array(
-            'post_type'      => 'any',
-            'post_status'    => 'draft',
-            'posts_per_page' => -1,
-            'fields'         => 'ids',
-        ));
-    }
-
-    /**
-     * Get the IDs of all post revisions
-     *
-     * @return int[]
-     */
-    private function get_revision_ids() {
-        return get_posts(array(
-            'post_type'      => 'revision',
-            'post_status'    => 'any',
-            'posts_per_page' => -1,
-            'fields'         => 'ids',
-        ));
-    }
-
-    /**
-     * Delete all drafts and revisions
-     *
-     * Uses wp_delete_post() rather than a raw DELETE query so related
-     * postmeta/term relationships are cleaned up and other plugins hooked
-     * into post deletion (backups, search indexes, etc.) are notified.
-     */
-    private function delete_junk() {
-        $ids = array_merge($this->get_draft_ids(), $this->get_revision_ids());
-
-        $deleted_count = 0;
-        foreach ($ids as $id) {
-            if (wp_delete_post($id, true)) {
-                $deleted_count++;
+        $page_url = Tool_Manager::get_page_url('junk_cleaner');
+        $draft_page = max(1, absint($_GET['draft_page'] ?? 1));
+        $draft_types = $this->draft_types();
+        $drafts = new \WP_Query();
+        $visible_drafts = array();
+        if ($draft_types) {
+            $posts = $drafts->query(array(
+                'post_type'      => $draft_types,
+                'post_status'    => 'draft',
+                'posts_per_page' => self::DRAFTS_PER_PAGE,
+                'paged'          => $draft_page,
+                'orderby'        => array('modified' => 'ASC', 'ID' => 'ASC'),
+            ));
+            foreach ($posts as $draft) {
+                if (current_user_can('read_post', $draft->ID)) {
+                    $visible_drafts[] = $draft;
+                }
             }
         }
 
-        // Show success message
-        add_settings_error(
-            'alacarte_messages',
-            'alacarte_message',
-            sprintf(
-                /* translators: %d: number of items permanently deleted */
-                __('%d draft(s) and revision(s) have been permanently deleted.', 'a-la-carte'),
-                $deleted_count
-            ),
-            'updated'
-        );
+        // A high-water mark keeps revisions created during a run out of that run.
+        $revisions = $wpdb->get_row("SELECT COUNT(*) AS total, MAX(ID) AS newest FROM $wpdb->posts WHERE post_type = 'revision'");
+        $cursor = absint($_GET['revision_after'] ?? 0);
+        $through = absint($_GET['revision_through'] ?? 0);
+        $continuing = $cursor && $through > $cursor;
+        if (!$continuing) {
+            $through = (int) ($revisions->newest ?? 0);
+        }
+
+        UI::page_open(array(
+            'tool_id'     => 'junk_cleaner',
+            'title'       => __('Junk Cleaner', 'almazbro-site-utilities'),
+            'description' => __('Clean up revision history and review drafts for the Trash.', 'almazbro-site-utilities'),
+        ));
+
+        $done = absint($_GET['cleaned'] ?? 0);
+        $skipped = absint($_GET['skipped'] ?? 0);
+        $result = sanitize_key(wp_unslash($_GET['cleanup_result'] ?? ''));
+        if ($result === 'empty_selection') {
+            UI::notice(__('Select at least one draft to move to Trash.', 'almazbro-site-utilities'), 'warning');
+        } elseif ($result === 'drafts') {
+            /* translators: 1: drafts moved to Trash, 2: drafts skipped. */
+            UI::notice(sprintf(__('Drafts moved to Trash: %1$d. Skipped: %2$d.', 'almazbro-site-utilities'), $done, $skipped), $done ? 'success' : 'warning');
+        } elseif ($result === 'revisions') {
+            UI::notice($this->revision_summary($done, $skipped), $skipped ? 'warning' : 'success');
+        }
+
+        require ALMAZBRO_SITE_UTILITIES_PLUGIN_DIR . 'views/junk-cleaner.php';
+        UI::page_close();
+    }
+
+    public function trash_drafts() {
+        Tool_Manager::require_capability();
+        check_admin_referer('almazbro_site_utilities_trash_drafts');
+        $ids = array_filter((array) ($_POST['draft_ids'] ?? array()), 'is_scalar');
+        $selection = array_unique(array_filter(array_map('absint', $ids)));
+        if (!$selection) {
+            wp_safe_redirect(add_query_arg('cleanup_result', 'empty_selection', Tool_Manager::get_page_url('junk_cleaner')), 303);
+            exit;
+        }
+        if (!EMPTY_TRASH_DAYS || count($selection) > self::DRAFTS_PER_PAGE) {
+            wp_die(esc_html__('Select drafts from one page and make sure WordPress Trash is enabled.', 'almazbro-site-utilities'));
+        }
+
+        $types = $this->draft_types();
+        $trashed = 0;
+        foreach ($selection as $id) {
+            $post = $id ? get_post($id) : null;
+            if ($post && $post->post_status === 'draft' && in_array($post->post_type, $types, true)
+                && current_user_can('delete_post', $id) && wp_trash_post($id)) {
+                ++$trashed;
+            }
+        }
+        wp_safe_redirect(add_query_arg(array(
+            'cleanup_result' => 'drafts',
+            'cleaned'        => $trashed,
+            'skipped'        => count($selection) - $trashed,
+        ), Tool_Manager::get_page_url('junk_cleaner')), 303);
+        exit;
+    }
+
+    private function revision_summary($deleted, $skipped) {
+        /* translators: 1: revisions permanently deleted, 2: revisions skipped. */
+        return sprintf(__('Revisions permanently deleted: %1$d. Skipped: %2$d.', 'almazbro-site-utilities'), $deleted, $skipped);
+    }
+
+    public function delete_revisions() {
+        global $wpdb;
+        Tool_Manager::require_capability();
+        $through = absint($_POST['through'] ?? 0);
+        check_admin_referer('almazbro_site_utilities_delete_revisions_' . $through);
+        $cursor = absint($_POST['after'] ?? 0);
+        $ids = $wpdb->get_col($wpdb->prepare(
+            "SELECT ID FROM $wpdb->posts WHERE post_type = 'revision' AND ID > %d AND ID <= %d ORDER BY ID LIMIT %d",
+            $cursor, $through, self::REVISION_BATCH + 1
+        ));
+        if ($wpdb->last_error) {
+            wp_die(esc_html__('Could not load the revision batch. Reload Junk Cleaner to retry.', 'almazbro-site-utilities'));
+        }
+
+        $more = count($ids) > self::REVISION_BATCH;
+        if ($more) {
+            array_pop($ids);
+        }
+        $deleted = absint($_POST['cleaned'] ?? 0);
+        $skipped = absint($_POST['skipped'] ?? 0);
+        foreach ($ids as $id) {
+            $cursor = (int) $id;
+            $parent = wp_is_post_revision($id);
+            if ($parent && current_user_can('delete_post', $parent) && wp_delete_post_revision($id)) {
+                ++$deleted;
+            } else {
+                ++$skipped;
+            }
+        }
+
+        $args = array('cleanup_result' => 'revisions', 'cleaned' => $deleted, 'skipped' => $skipped);
+        if ($more) {
+            $args['revision_after'] = $cursor;
+            $args['revision_through'] = $through;
+        }
+        $url = add_query_arg($args, Tool_Manager::get_page_url('junk_cleaner'));
+        if (isset($_POST['batch_json'])) {
+            wp_send_json_success(array(
+                'more'    => $more,
+                'after'   => $cursor,
+                'cleaned' => $deleted,
+                'skipped' => $skipped,
+                'message' => $this->revision_summary($deleted, $skipped),
+                'url'     => $url,
+            ));
+        }
+        wp_safe_redirect($url, 303);
+        exit;
     }
 }

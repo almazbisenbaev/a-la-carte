@@ -2,13 +2,13 @@
 /**
  * Gutenberg Disabler functionality
  *
- * @package ALaCarte
+ * @package AlmazBroSiteUtilities
  */
 
-namespace ALaCarte\Gutenberg;
+namespace AlmazBroSiteUtilities\Gutenberg;
 
-use ALaCarte\Admin\Tool_Manager;
-use ALaCarte\Admin\UI;
+use AlmazBroSiteUtilities\Admin\Tool_Manager;
+use AlmazBroSiteUtilities\Admin\UI;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -24,7 +24,7 @@ class Gutenberg_Disabler {
      *
      * @var string
      */
-    private const OPTION_NAME = 'alacarte_gutenberg_settings';
+    private const OPTION_NAME = 'almazbro_site_utilities_gutenberg_settings';
 
     /**
      * Initialize the class
@@ -63,7 +63,7 @@ class Gutenberg_Disabler {
         Tool_Manager::require_capability();
 
         // Handle form submission
-        if (isset($_POST['save']) && check_admin_referer('alacarte_gutenberg_disabler')) {
+        if (isset($_POST['save']) && check_admin_referer('almazbro_site_utilities_gutenberg_disabler')) {
             $this->save_settings();
         }
 
@@ -72,63 +72,63 @@ class Gutenberg_Disabler {
 
         $modes = array(
             'all' => array(
-                'title'       => __('Disable Globally', 'a-la-carte'),
-                'description' => __('Completely disable the block editor for all post types and widgets.', 'a-la-carte'),
+                'title'       => __('Disable Globally', 'almazbro-site-utilities'),
+                'description' => __('Completely disable the block editor for all post types and widgets.', 'almazbro-site-utilities'),
                 'checked'     => $settings['enabled'] && $settings['mode'] === 'all',
             ),
             'selective' => array(
-                'title'       => __('Disable Selectively', 'a-la-carte'),
-                'description' => __('Choose specific post types where you want to use the Classic Editor.', 'a-la-carte'),
+                'title'       => __('Disable Selectively', 'almazbro-site-utilities'),
+                'description' => __('Choose specific post types where you want to use the Classic Editor.', 'almazbro-site-utilities'),
                 'checked'     => $settings['enabled'] && $settings['mode'] === 'selective',
             ),
             'none' => array(
-                'title'       => __('Keep Gutenberg Enabled', 'a-la-carte'),
-                'description' => __('Do not disable the block editor.', 'a-la-carte'),
+                'title'       => __('Keep Gutenberg Enabled', 'almazbro-site-utilities'),
+                'description' => __('Do not disable the block editor.', 'almazbro-site-utilities'),
                 'checked'     => !$settings['enabled'],
             ),
         );
 
         UI::page_open(array(
             'tool_id'     => 'gutenberg_disabler',
-            'title'       => __('Gutenberg Disabler', 'a-la-carte'),
-            'description' => __('Switch back to the Classic Editor and disable Gutenberg block library assets.', 'a-la-carte'),
+            'title'       => __('Gutenberg Disabler', 'almazbro-site-utilities'),
+            'description' => __('Switch back to the Classic Editor and disable Gutenberg block library assets.', 'almazbro-site-utilities'),
         ));
         ?>
-        <form class="alacarte-panel" method="post">
-            <?php wp_nonce_field('alacarte_gutenberg_disabler'); ?>
+        <form class="almazbro-site-utilities-panel" method="post">
+            <?php wp_nonce_field('almazbro_site_utilities_gutenberg_disabler'); ?>
 
-            <div class="alacarte-panel__header">
-                <h2 class="alacarte-h2"><?php esc_html_e('Settings', 'a-la-carte'); ?></h2>
+            <div class="almazbro-site-utilities-panel__header">
+                <h2 class="almazbro-site-utilities-h2"><?php esc_html_e('Settings', 'almazbro-site-utilities'); ?></h2>
             </div>
 
-            <div class="alacarte-panel__body">
-                <div class="alacarte-panel__section">
+            <div class="almazbro-site-utilities-panel__body">
+                <div class="almazbro-site-utilities-panel__section">
                     <?php foreach ($modes as $mode => $option) : ?>
-                        <label class="alacarte-choice alacarte-choice--card">
+                        <label class="almazbro-site-utilities-choice almazbro-site-utilities-choice--card">
                             <input type="radio"
                                    name="gutenberg_mode"
                                    value="<?php echo esc_attr($mode); ?>"
-                                   <?php echo 'selective' === $mode ? 'data-alacarte-reveal="alacarte-gutenberg-post-types"' : ''; ?>
+                                   <?php echo 'selective' === $mode ? 'data-almazbro-site-utilities-reveal="almazbro-site-utilities-gutenberg-post-types"' : ''; ?>
                                    <?php checked($option['checked']); ?> />
-                            <span class="alacarte-choice__text">
-                                <span class="alacarte-choice__title"><?php echo esc_html($option['title']); ?></span>
-                                <span class="alacarte-choice__desc"><?php echo esc_html($option['description']); ?></span>
+                            <span class="almazbro-site-utilities-choice__text">
+                                <span class="almazbro-site-utilities-choice__title"><?php echo esc_html($option['title']); ?></span>
+                                <span class="almazbro-site-utilities-choice__desc"><?php echo esc_html($option['description']); ?></span>
                             </span>
                         </label>
                     <?php endforeach; ?>
                 </div>
 
-                <div class="alacarte-panel__section" id="alacarte-gutenberg-post-types" <?php echo $modes['selective']['checked'] ? '' : 'hidden'; ?>>
-                    <p class="alacarte-eyebrow"><?php esc_html_e('Post types using the Classic Editor', 'a-la-carte'); ?></p>
-                    <div class="alacarte-choice-grid">
+                <div class="almazbro-site-utilities-panel__section" id="almazbro-site-utilities-gutenberg-post-types" <?php echo $modes['selective']['checked'] ? '' : 'hidden'; ?>>
+                    <p class="almazbro-site-utilities-eyebrow"><?php esc_html_e('Post types using the Classic Editor', 'almazbro-site-utilities'); ?></p>
+                    <div class="almazbro-site-utilities-choice-grid">
                         <?php foreach ($post_types as $post_type) : ?>
-                            <label class="alacarte-choice alacarte-choice--boxed">
+                            <label class="almazbro-site-utilities-choice almazbro-site-utilities-choice--boxed">
                                 <input type="checkbox"
                                        name="post_types[]"
                                        value="<?php echo esc_attr($post_type->name); ?>"
                                        <?php checked(in_array($post_type->name, $settings['post_types'], true)); ?> />
-                                <span class="alacarte-choice__text">
-                                    <span class="alacarte-choice__title"><?php echo esc_html($post_type->label); ?></span>
+                                <span class="almazbro-site-utilities-choice__text">
+                                    <span class="almazbro-site-utilities-choice__title"><?php echo esc_html($post_type->label); ?></span>
                                 </span>
                             </label>
                         <?php endforeach; ?>
@@ -136,9 +136,9 @@ class Gutenberg_Disabler {
                 </div>
             </div>
 
-            <div class="alacarte-panel__footer">
-                <button type="submit" name="save" value="1" class="alacarte-btn alacarte-btn--primary">
-                    <?php esc_html_e('Save Settings', 'a-la-carte'); ?>
+            <div class="almazbro-site-utilities-panel__footer">
+                <button type="submit" name="save" value="1" class="almazbro-site-utilities-btn almazbro-site-utilities-btn--primary">
+                    <?php esc_html_e('Save Settings', 'almazbro-site-utilities'); ?>
                 </button>
             </div>
         </form>
@@ -150,7 +150,7 @@ class Gutenberg_Disabler {
      * Save the Gutenberg disabler settings
      */
     private function save_settings() {
-        check_admin_referer('alacarte_gutenberg_disabler');
+        check_admin_referer('almazbro_site_utilities_gutenberg_disabler');
 
         $mode = isset($_POST['gutenberg_mode']) ? sanitize_key(wp_unslash($_POST['gutenberg_mode'])) : 'none';
         if (!in_array($mode, array('all', 'selective', 'none'), true)) {
@@ -167,9 +167,9 @@ class Gutenberg_Disabler {
         ));
 
         add_settings_error(
-            'alacarte_messages',
-            'alacarte_message',
-            __('Settings saved.', 'a-la-carte'),
+            'almazbro_site_utilities_messages',
+            'almazbro_site_utilities_message',
+            __('Settings saved.', 'almazbro-site-utilities'),
             'updated'
         );
     }

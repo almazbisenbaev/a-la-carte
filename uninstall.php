@@ -2,11 +2,11 @@
 /**
  * Fired when the plugin is uninstalled.
  *
- * Removes every option A La Carte creates. Content created through the CPT
+ * Removes every option Seitenmeister creates. Content created through the CPT
  * Manager is deliberately left alone: those are the user's own posts, only the
  * post type registration goes away.
  *
- * @package ALaCarte
+ * @package AlmazBroSiteUtilities
  */
 
 // If uninstall not called from WordPress, die.
@@ -15,40 +15,40 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
 }
 
 /**
- * Options used by A La Carte.
+ * Options used by Seitenmeister.
  */
-const ALACARTE_UNINSTALL_OPTIONS = [
-    'alacarte_active_tools',
-    'alacarte_cptm_custom_post_types',
-    'alacarte_disable_comments',
-    'alacarte_flush_rewrite_rules',
-    'alacarte_gutenberg_settings',
-    'alacarte_remove_html_junk',
-    'alacarte_toolbar_toggler_enabled',
+const ALMAZBRO_SITE_UTILITIES_UNINSTALL_OPTIONS = [
+    'almazbro_site_utilities_active_tools',
+    'almazbro_site_utilities_cptm_custom_post_types',
+    'almazbro_site_utilities_disable_comments',
+    'almazbro_site_utilities_flush_rewrite_rules',
+    'almazbro_site_utilities_gutenberg_settings',
+    'almazbro_site_utilities_remove_html_junk',
+    'almazbro_site_utilities_toolbar_toggler_enabled',
 ];
 
 /**
- * Delete A La Carte data for the current site.
+ * Delete Seitenmeister data for the current site.
  */
-function alacarte_uninstall_site() {
-    foreach (ALACARTE_UNINSTALL_OPTIONS as $option) {
+function almazbro_site_utilities_uninstall_site() {
+    foreach (ALMAZBRO_SITE_UTILITIES_UNINSTALL_OPTIONS as $option) {
         delete_option($option);
     }
 }
 
 if (is_multisite()) {
-    $alacarte_site_ids = get_sites(
+    $almazbro_site_utilities_site_ids = get_sites(
         array(
             'fields' => 'ids',
             'number' => 0,
         )
     );
 
-    foreach ($alacarte_site_ids as $alacarte_site_id) {
-        switch_to_blog((int) $alacarte_site_id);
-        alacarte_uninstall_site();
+    foreach ($almazbro_site_utilities_site_ids as $almazbro_site_utilities_site_id) {
+        switch_to_blog((int) $almazbro_site_utilities_site_id);
+        almazbro_site_utilities_uninstall_site();
         restore_current_blog();
     }
 } else {
-    alacarte_uninstall_site();
+    almazbro_site_utilities_uninstall_site();
 }

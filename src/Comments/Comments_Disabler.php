@@ -2,12 +2,12 @@
 /**
  * Comments Disabler functionality
  *
- * @package ALaCarte
+ * @package AlmazBroSiteUtilities
  */
 
-namespace ALaCarte\Comments;
+namespace AlmazBroSiteUtilities\Comments;
 
-use ALaCarte\Admin\Simple_Toggle_Tool;
+use AlmazBroSiteUtilities\Admin\Simple_Toggle_Tool;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -23,7 +23,7 @@ class Comments_Disabler extends Simple_Toggle_Tool {
      *
      * @var string
      */
-    private const OPTION_NAME = 'alacarte_disable_comments';
+    private const OPTION_NAME = 'almazbro_site_utilities_disable_comments';
 
     /**
      * Initialize the class
@@ -41,15 +41,15 @@ class Comments_Disabler extends Simple_Toggle_Tool {
     }
 
     protected function get_nonce_action(): string {
-        return 'alacarte_comments_disabler';
+        return 'almazbro_site_utilities_comments_disabler';
     }
 
     protected function get_page_title(): string {
-        return __('Disable Comments', 'a-la-carte');
+        return __('Disable Comments', 'almazbro-site-utilities');
     }
 
     protected function get_page_description(): string {
-        return __('Completely disable the WordPress comments feature and clean up your admin.', 'a-la-carte');
+        return __('Completely disable the WordPress comments feature and clean up your admin.', 'almazbro-site-utilities');
     }
 
     protected function get_field_name(): string {
@@ -57,11 +57,11 @@ class Comments_Disabler extends Simple_Toggle_Tool {
     }
 
     protected function get_field_title(): string {
-        return __('Disable Comments Globally', 'a-la-carte');
+        return __('Disable Comments Globally', 'almazbro-site-utilities');
     }
 
     protected function get_field_description(): string {
-        return __('This will disable comments on all post types, remove comment links from the admin bar, and hide the comments menu.', 'a-la-carte');
+        return __('This will disable comments on all post types, remove comment links from the admin bar, and hide the comments menu.', 'almazbro-site-utilities');
     }
 
     /**

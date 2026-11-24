@@ -2,12 +2,12 @@
 /**
  * HTML Junk Remover functionality
  *
- * @package ALaCarte
+ * @package AlmazBroSiteUtilities
  */
 
-namespace ALaCarte\HTML;
+namespace AlmazBroSiteUtilities\HTML;
 
-use ALaCarte\Admin\Simple_Toggle_Tool;
+use AlmazBroSiteUtilities\Admin\Simple_Toggle_Tool;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -23,7 +23,7 @@ class Junk_Remover extends Simple_Toggle_Tool {
      *
      * @var string
      */
-    private const OPTION_NAME = 'alacarte_remove_html_junk';
+    private const OPTION_NAME = 'almazbro_site_utilities_remove_html_junk';
 
     /**
      * Initialize the class
@@ -41,15 +41,15 @@ class Junk_Remover extends Simple_Toggle_Tool {
     }
 
     protected function get_nonce_action(): string {
-        return 'alacarte_html_junk_remover';
+        return 'almazbro_site_utilities_html_junk_remover';
     }
 
     protected function get_page_title(): string {
-        return __('HTML Junk Remover', 'a-la-carte');
+        return __('HTML Junk Remover', 'almazbro-site-utilities');
     }
 
     protected function get_page_description(): string {
-        return __('Clean up your website source code by removing unnecessary tags, scripts, and links from the HEAD section.', 'a-la-carte');
+        return __('Clean up your website source code by removing unnecessary tags, scripts, and links from the HEAD section.', 'almazbro-site-utilities');
     }
 
     protected function get_field_name(): string {
@@ -57,11 +57,11 @@ class Junk_Remover extends Simple_Toggle_Tool {
     }
 
     protected function get_field_title(): string {
-        return __('Remove HTML Junk', 'a-la-carte');
+        return __('Remove HTML Junk', 'almazbro-site-utilities');
     }
 
     protected function get_field_description(): string {
-        return __('This will remove WordPress version tags, emojis, REST API links, and other discovery links from your site\'s head.', 'a-la-carte');
+        return __('This will remove WordPress version tags, emojis, REST API links, and other discovery links from your site\'s head.', 'almazbro-site-utilities');
     }
 
     /**

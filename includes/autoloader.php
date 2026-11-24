@@ -1,11 +1,11 @@
 <?php
 /**
- * PSR-4 style autoloader for A La Carte classes
+ * PSR-4 style autoloader for Seitenmeister classes
  *
- * Maps the `ALaCarte\` namespace onto the `src/` directory, e.g.
- * `ALaCarte\Admin\Tool_Manager` => `src/Admin/Tool_Manager.php`.
+ * Maps the `AlmazBroSiteUtilities\` namespace onto the `src/` directory, e.g.
+ * `AlmazBroSiteUtilities\Admin\Tool_Manager` => `src/Admin/Tool_Manager.php`.
  *
- * @package ALaCarte
+ * @package AlmazBroSiteUtilities
  */
 
 // If this file is called directly, abort.
@@ -14,8 +14,8 @@ if (!defined('WPINC')) {
 }
 
 spl_autoload_register(function ($class) {
-    $prefix   = 'ALaCarte\\';
-    $base_dir = ALACARTE_PLUGIN_DIR . 'src/';
+    $prefix   = 'AlmazBroSiteUtilities\\';
+    $base_dir = ALMAZBRO_SITE_UTILITIES_PLUGIN_DIR . 'src/';
 
     if (strncmp($prefix, $class, strlen($prefix)) !== 0) {
         return;

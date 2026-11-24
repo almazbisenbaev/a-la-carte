@@ -6,10 +6,10 @@
  * Subclasses describe themselves; the settings screen is rendered here so
  * every one of them looks and behaves the same.
  *
- * @package ALaCarte
+ * @package AlmazBroSiteUtilities
  */
 
-namespace ALaCarte\Admin;
+namespace AlmazBroSiteUtilities\Admin;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -84,29 +84,29 @@ abstract class Simple_Toggle_Tool {
             'description' => $this->get_page_description(),
         ));
         ?>
-        <form class="alacarte-panel" method="post">
+        <form class="almazbro-site-utilities-panel" method="post">
             <?php wp_nonce_field($this->get_nonce_action()); ?>
 
-            <div class="alacarte-panel__header">
-                <h2 class="alacarte-h2"><?php esc_html_e('Settings', 'a-la-carte'); ?></h2>
+            <div class="almazbro-site-utilities-panel__header">
+                <h2 class="almazbro-site-utilities-h2"><?php esc_html_e('Settings', 'almazbro-site-utilities'); ?></h2>
             </div>
 
-            <div class="alacarte-panel__body">
-                <label class="alacarte-choice alacarte-choice--card">
+            <div class="almazbro-site-utilities-panel__body">
+                <label class="almazbro-site-utilities-choice almazbro-site-utilities-choice--card">
                     <input type="checkbox"
                            name="<?php echo esc_attr($this->get_field_name()); ?>"
                            value="1"
                            <?php checked($this->is_enabled()); ?> />
-                    <span class="alacarte-choice__text">
-                        <span class="alacarte-choice__title"><?php echo esc_html($this->get_field_title()); ?></span>
-                        <span class="alacarte-choice__desc"><?php echo esc_html($this->get_field_description()); ?></span>
+                    <span class="almazbro-site-utilities-choice__text">
+                        <span class="almazbro-site-utilities-choice__title"><?php echo esc_html($this->get_field_title()); ?></span>
+                        <span class="almazbro-site-utilities-choice__desc"><?php echo esc_html($this->get_field_description()); ?></span>
                     </span>
                 </label>
             </div>
 
-            <div class="alacarte-panel__footer">
-                <button type="submit" name="save" value="1" class="alacarte-btn alacarte-btn--primary">
-                    <?php esc_html_e('Save Settings', 'a-la-carte'); ?>
+            <div class="almazbro-site-utilities-panel__footer">
+                <button type="submit" name="save" value="1" class="almazbro-site-utilities-btn almazbro-site-utilities-btn--primary">
+                    <?php esc_html_e('Save Settings', 'almazbro-site-utilities'); ?>
                 </button>
             </div>
         </form>
@@ -123,9 +123,9 @@ abstract class Simple_Toggle_Tool {
         update_option($this->get_option_name(), isset($_POST[$this->get_field_name()]) ? '1' : '0');
 
         add_settings_error(
-            'alacarte_messages',
-            'alacarte_message',
-            __('Settings saved.', 'a-la-carte'),
+            'almazbro_site_utilities_messages',
+            'almazbro_site_utilities_message',
+            __('Settings saved.', 'almazbro-site-utilities'),
             'updated'
         );
     }

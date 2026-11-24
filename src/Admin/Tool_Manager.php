@@ -6,10 +6,10 @@
  * icon represents them and where their settings page lives. Anything that
  * needs to describe a tool should read it from here rather than repeating it.
  *
- * @package ALaCarte
+ * @package AlmazBroSiteUtilities
  */
 
-namespace ALaCarte\Admin;
+namespace AlmazBroSiteUtilities\Admin;
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -21,7 +21,7 @@ if (!defined('WPINC')) {
  */
 class Tool_Manager {
     /**
-     * Capability required to use any A La Carte screen
+     * Capability required to use any Seitenmeister screen
      *
      * @var string
      */
@@ -32,7 +32,7 @@ class Tool_Manager {
      *
      * @var string
      */
-    private const OPTION_NAME = 'alacarte_active_tools';
+    private const OPTION_NAME = 'almazbro_site_utilities_active_tools';
 
     /**
      * List of available tools
@@ -44,43 +44,43 @@ class Tool_Manager {
             'name' => 'CPT Manager',
             'description' => 'Easily create and manage custom post types',
             'icon' => 'dashicons-category',
-            'class' => 'ALaCarte\\CPT\\Manager'
+            'class' => 'AlmazBroSiteUtilities\\CPT\\Manager'
         ],
         'toolbar_toggler' => [
             'name' => 'Admin Toolbar Toggler',
             'description' => 'Replaces the admin toolbar with a nice toggler button',
             'icon' => 'dashicons-admin-generic',
-            'class' => 'ALaCarte\\Toolbar\\Toolbar_Toggler'
+            'class' => 'AlmazBroSiteUtilities\\Toolbar\\Toolbar_Toggler'
         ],
         'gutenberg_disabler' => [
             'name' => 'Gutenberg Disabler',
             'description' => 'Return the legacy editor for specific post types',
             'icon' => 'dashicons-edit',
-            'class' => 'ALaCarte\\Gutenberg\\Gutenberg_Disabler'
+            'class' => 'AlmazBroSiteUtilities\\Gutenberg\\Gutenberg_Disabler'
         ],
         'comments_disabler' => [
             'name' => 'Comments Disabler',
             'description' => 'This tool allows you to disable comments globally across your site',
             'icon' => 'dashicons-admin-comments',
-            'class' => 'ALaCarte\\Comments\\Comments_Disabler'
+            'class' => 'AlmazBroSiteUtilities\\Comments\\Comments_Disabler'
         ],
         'html_junk_remover' => [
             'name' => 'HTML Junk Remover',
             'description' => 'This tool removes the useless lines of code from HTML (such as WordPress version, emojis, etc.)',
             'icon' => 'dashicons-html',
-            'class' => 'ALaCarte\\HTML\\Junk_Remover'
+            'class' => 'AlmazBroSiteUtilities\\HTML\\Junk_Remover'
         ],
         'junk_cleaner' => [
             'name' => 'Junk Cleaner',
-            'description' => 'This tool lets you delete the drafts and revisions that are taking up your disc space',
+            'description' => 'Clean up revision history and move selected drafts to Trash',
             'icon' => 'dashicons-trash',
-            'class' => 'ALaCarte\\Cleaner\\Junk_Cleaner'
+            'class' => 'AlmazBroSiteUtilities\\Cleaner\\Junk_Cleaner'
         ],
         'system_info' => [
             'name' => 'System Info',
             'description' => 'View and export system info that can be useful for your IT guy or a tech support agent',
             'icon' => 'dashicons-info',
-            'class' => 'ALaCarte\\System\\Info'
+            'class' => 'AlmazBroSiteUtilities\\System\\Info'
         ]
     ];
 
@@ -108,7 +108,7 @@ class Tool_Manager {
      * Initialize the class
      */
     public function __construct() {
-        add_action('admin_post_alacarte_toggle_tool', array($this, 'handle_tool_toggle'));
+        add_action('admin_post_almazbro_site_utilities_toggle_tool', array($this, 'handle_tool_toggle'));
     }
 
     /**
@@ -142,12 +142,12 @@ class Tool_Manager {
      */
     public static function get_available_tools() {
         /**
-         * Filter the tools A La Carte makes available.
+         * Filter the tools Seitenmeister makes available.
          *
          * @param array $tools Tool definitions keyed by tool id. Each one needs
          *                     a name, description, icon and class.
          */
-        $tools = apply_filters('alacarte_tools', self::AVAILABLE_TOOLS);
+        $tools = apply_filters('almazbro_site_utilities_tools', self::AVAILABLE_TOOLS);
 
         return is_array($tools) ? $tools : self::AVAILABLE_TOOLS;
     }
@@ -182,7 +182,7 @@ class Tool_Manager {
      * @return string
      */
     public static function get_page_slug($tool_id) {
-        return 'a-la-carte-' . str_replace('_', '-', $tool_id);
+        return 'almazbro-site-utilities-' . str_replace('_', '-', $tool_id);
     }
 
     /**
@@ -220,11 +220,11 @@ class Tool_Manager {
     }
 
     /**
-     * Stop the current request unless the user may manage A La Carte
+     * Stop the current request unless the user may manage Seitenmeister
      */
     public static function require_capability() {
         if (!current_user_can(self::CAPABILITY)) {
-            wp_die(esc_html__('You do not have sufficient permissions to access this page.', 'a-la-carte'));
+            wp_die(esc_html__('You do not have sufficient permissions to access this page.', 'almazbro-site-utilities'));
         }
     }
 
@@ -234,13 +234,13 @@ class Tool_Manager {
     public function handle_tool_toggle() {
         self::require_capability();
 
-        if (!isset($_POST['alacarte_toggle_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['alacarte_toggle_nonce'])), 'alacarte_toggle_tool')) {
-            wp_die(esc_html__('Security check failed.', 'a-la-carte'));
+        if (!isset($_POST['almazbro_site_utilities_toggle_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['almazbro_site_utilities_toggle_nonce'])), 'almazbro_site_utilities_toggle_tool')) {
+            wp_die(esc_html__('Security check failed.', 'almazbro-site-utilities'));
         }
 
         $tool_id = isset($_POST['tool_id']) ? sanitize_key(wp_unslash($_POST['tool_id'])) : '';
         if (!self::get_tool($tool_id)) {
-            wp_die(esc_html__('Invalid tool.', 'a-la-carte'));
+            wp_die(esc_html__('Invalid tool.', 'almazbro-site-utilities'));
         }
 
         $is_active = !empty($_POST['is_active']);
@@ -251,10 +251,10 @@ class Tool_Manager {
 
         wp_safe_redirect(add_query_arg(
             array(
-                'alc_message' => $is_active ? 'activated' : 'deactivated',
-                'alc_tool'    => $tool_id,
+                'almazbro_site_utilities_message' => $is_active ? 'activated' : 'deactivated',
+                'almazbro_site_utilities_tool'    => $tool_id,
             ),
-            admin_url('admin.php?page=a-la-carte')
+            admin_url('admin.php?page=almazbro-site-utilities')
         ));
         exit;
     }
@@ -264,14 +264,14 @@ class Tool_Manager {
      */
     public static function render_toggle_notice() {
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request state used for display only; no data is changed.
-        $code = isset($_GET['alc_message']) ? sanitize_key(wp_unslash($_GET['alc_message'])) : '';
+        $code = isset($_GET['almazbro_site_utilities_message']) ? sanitize_key(wp_unslash($_GET['almazbro_site_utilities_message'])) : '';
 
         if (!isset(self::MESSAGES[$code])) {
             return;
         }
 
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request state used for display only; no data is changed.
-        $tool = self::get_tool(isset($_GET['alc_tool']) ? sanitize_key(wp_unslash($_GET['alc_tool'])) : '');
+        $tool = self::get_tool(isset($_GET['almazbro_site_utilities_tool']) ? sanitize_key(wp_unslash($_GET['almazbro_site_utilities_tool'])) : '');
 
         if (!$tool) {
             return;
@@ -279,9 +279,9 @@ class Tool_Manager {
 
         $message = 'activated' === $code
             /* translators: %s: tool name */
-            ? sprintf(__('%s has been activated and now has its own settings page.', 'a-la-carte'), $tool['name'])
+            ? sprintf(__('%s has been activated and now has its own settings page.', 'almazbro-site-utilities'), $tool['name'])
             /* translators: %s: tool name */
-            : sprintf(__('%s has been deactivated.', 'a-la-carte'), $tool['name']);
+            : sprintf(__('%s has been deactivated.', 'almazbro-site-utilities'), $tool['name']);
 
         UI::notice($message, self::MESSAGES[$code]);
     }

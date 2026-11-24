@@ -1,11 +1,11 @@
 /**
- * A La Carte — Admin design system
+ * Seitenmeister — Admin design system
  *
- * Every A La Carte screen is built from the components in this file. Templates
+ * Every Seitenmeister screen is built from the components in this file. Templates
  * should never carry inline `style=""` attributes: if a page needs something
  * that isn't here, add a component or a modifier instead.
  *
- * Naming: `.alacarte-block`, `.alacarte-block__element`, `.alacarte-block--modifier`, plus
+ * Naming: `.almazbro-site-utilities-block`, `.almazbro-site-utilities-block__element`, `.almazbro-site-utilities-block--modifier`, plus
  * `.is-*` for stateful classes toggled by PHP or JS.
  *
  * Layout rule of thumb: containers own the spacing between their children
@@ -37,114 +37,114 @@
 
 :root {
     /* Brand */
-    --alacarte-brand: #6366f1;
-    --alacarte-brand-strong: #4f46e5;
-    --alacarte-brand-deep: #4338ca;
-    --alacarte-brand-soft: #eef2ff;
-    --alacarte-brand-border: #c7d2fe;
+    --almazbro-site-utilities-brand: #6366f1;
+    --almazbro-site-utilities-brand-strong: #4f46e5;
+    --almazbro-site-utilities-brand-deep: #4338ca;
+    --almazbro-site-utilities-brand-soft: #eef2ff;
+    --almazbro-site-utilities-brand-border: #c7d2fe;
 
     /* Status */
-    --alacarte-success: #059669;
-    --alacarte-success-soft: #ecfdf5;
-    --alacarte-success-border: #a7f3d0;
-    --alacarte-warning: #b45309;
-    --alacarte-warning-soft: #fffbeb;
-    --alacarte-warning-border: #fde68a;
-    --alacarte-danger: #dc2626;
-    --alacarte-danger-strong: #b91c1c;
-    --alacarte-danger-soft: #fef2f2;
-    --alacarte-danger-border: #fecaca;
+    --almazbro-site-utilities-success: #059669;
+    --almazbro-site-utilities-success-soft: #ecfdf5;
+    --almazbro-site-utilities-success-border: #a7f3d0;
+    --almazbro-site-utilities-warning: #b45309;
+    --almazbro-site-utilities-warning-soft: #fffbeb;
+    --almazbro-site-utilities-warning-border: #fde68a;
+    --almazbro-site-utilities-danger: #dc2626;
+    --almazbro-site-utilities-danger-strong: #b91c1c;
+    --almazbro-site-utilities-danger-soft: #fef2f2;
+    --almazbro-site-utilities-danger-border: #fecaca;
 
     /* Text */
-    --alacarte-text: #111827;
-    --alacarte-text-muted: #6b7280;
-    --alacarte-text-subtle: #9ca3af;
+    --almazbro-site-utilities-text: #111827;
+    --almazbro-site-utilities-text-muted: #6b7280;
+    --almazbro-site-utilities-text-subtle: #9ca3af;
 
     /* Surfaces */
-    --alacarte-page: #f3f4f7;
-    --alacarte-surface: #ffffff;
-    --alacarte-surface-sunken: #f7f8fa;
-    --alacarte-surface-hover: #f3f4f7;
-    --alacarte-border: #e2e5eb;
-    --alacarte-border-strong: #cbd1db;
-    --alacarte-border-soft: #edeff3;
+    --almazbro-site-utilities-page: #f3f4f7;
+    --almazbro-site-utilities-surface: #ffffff;
+    --almazbro-site-utilities-surface-sunken: #f7f8fa;
+    --almazbro-site-utilities-surface-hover: #f3f4f7;
+    --almazbro-site-utilities-border: #e2e5eb;
+    --almazbro-site-utilities-border-strong: #cbd1db;
+    --almazbro-site-utilities-border-soft: #edeff3;
 
     /* Radii */
-    --alacarte-radius-sm: 8px;
-    --alacarte-radius: 12px;
-    --alacarte-radius-lg: 18px;
-    --alacarte-radius-full: 999px;
+    --almazbro-site-utilities-radius-sm: 8px;
+    --almazbro-site-utilities-radius: 12px;
+    --almazbro-site-utilities-radius-lg: 18px;
+    --almazbro-site-utilities-radius-full: 999px;
 
     /* Spacing scale */
-    --alacarte-space-1: 4px;
-    --alacarte-space-2: 8px;
-    --alacarte-space-3: 12px;
-    --alacarte-space-4: 16px;
-    --alacarte-space-5: 24px;
-    --alacarte-space-6: 32px;
-    --alacarte-space-7: 40px;
-    --alacarte-space-8: 56px;
+    --almazbro-site-utilities-space-1: 4px;
+    --almazbro-site-utilities-space-2: 8px;
+    --almazbro-site-utilities-space-3: 12px;
+    --almazbro-site-utilities-space-4: 16px;
+    --almazbro-site-utilities-space-5: 24px;
+    --almazbro-site-utilities-space-6: 32px;
+    --almazbro-site-utilities-space-7: 40px;
+    --almazbro-site-utilities-space-8: 56px;
 
     /* Type */
-    --alacarte-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    --alacarte-font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    --almazbro-site-utilities-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    --almazbro-site-utilities-font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 
     /* Motion */
-    --alacarte-transition: 160ms cubic-bezier(0.4, 0, 0.2, 1);
+    --almazbro-site-utilities-transition: 160ms cubic-bezier(0.4, 0, 0.2, 1);
 
     /* Elevation — surfaces are separated by light, not just by hairlines. */
-    --alacarte-shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
-    --alacarte-shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 2px 6px -2px rgba(16, 24, 40, 0.08);
-    --alacarte-shadow-md: 0 4px 10px -2px rgba(16, 24, 40, 0.10), 0 10px 24px -8px rgba(16, 24, 40, 0.14);
-    --alacarte-shadow-lg: 0 24px 48px -12px rgba(15, 23, 42, 0.30);
-    --alacarte-shadow-brand: 0 1px 2px rgba(16, 24, 40, 0.10), 0 4px 12px -4px rgba(79, 70, 229, 0.55);
+    --almazbro-site-utilities-shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
+    --almazbro-site-utilities-shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 2px 6px -2px rgba(16, 24, 40, 0.08);
+    --almazbro-site-utilities-shadow-md: 0 4px 10px -2px rgba(16, 24, 40, 0.10), 0 10px 24px -8px rgba(16, 24, 40, 0.14);
+    --almazbro-site-utilities-shadow-lg: 0 24px 48px -12px rgba(15, 23, 42, 0.30);
+    --almazbro-site-utilities-shadow-brand: 0 1px 2px rgba(16, 24, 40, 0.10), 0 4px 12px -4px rgba(79, 70, 229, 0.55);
 
     /* Focus — a soft glow inside fields, a hard ring around controls. */
-    --alacarte-focus-ring: 0 0 0 3px rgba(99, 102, 241, 0.35);
-    --alacarte-focus-ring-strong: 0 0 0 2px var(--alacarte-surface), 0 0 0 4px var(--alacarte-brand);
+    --almazbro-site-utilities-focus-ring: 0 0 0 3px rgba(99, 102, 241, 0.35);
+    --almazbro-site-utilities-focus-ring-strong: 0 0 0 2px var(--almazbro-site-utilities-surface), 0 0 0 4px var(--almazbro-site-utilities-brand);
 }
 
 /* ══ 2. Screen shell ══════════════════════════════════════════════════════ */
 
-/* Matches `toplevel_page_a-la-carte` and every `a-la-carte_page_a-la-carte-*`
+/* Matches `toplevel_page_almazbro-site-utilities` and every `seitenmeister_page_almazbro-site-utilities-*`
    submenu screen. Matching the exact class list breaks on submenus, which is
    why this uses a substring match. */
-body[class*="page_a-la-carte"] #wpcontent {
-    background: var(--alacarte-page);
+body[class*="page_almazbro-site-utilities"] #wpcontent {
+    background: var(--almazbro-site-utilities-page);
     padding: 0;
 }
 
 /* Core/other-plugin notices are printed outside our wrap; give them the same
    horizontal rhythm so they don't sit flush against the viewport edge. */
-body[class*="page_a-la-carte"] #wpbody-content>.notice,
-body[class*="page_a-la-carte"] #wpbody-content>.updated,
-body[class*="page_a-la-carte"] #wpbody-content>.error {
-    margin: var(--alacarte-space-5) var(--alacarte-space-7) 0;
+body[class*="page_almazbro-site-utilities"] #wpbody-content>.notice,
+body[class*="page_almazbro-site-utilities"] #wpbody-content>.updated,
+body[class*="page_almazbro-site-utilities"] #wpbody-content>.error {
+    margin: var(--almazbro-site-utilities-space-5) var(--almazbro-site-utilities-space-7) 0;
 }
 
-.alacarte-wrap {
+.almazbro-site-utilities-wrap {
     max-width: 1280px;
     margin: 0 auto;
-    padding: var(--alacarte-space-6) var(--alacarte-space-7) var(--alacarte-space-7);
-    font-family: var(--alacarte-font);
+    padding: var(--almazbro-site-utilities-space-6) var(--almazbro-site-utilities-space-7) var(--almazbro-site-utilities-space-7);
+    font-family: var(--almazbro-site-utilities-font);
     font-size: 14px;
-    color: var(--alacarte-text);
-    animation: alacarte-fade-in 300ms ease;
+    color: var(--almazbro-site-utilities-text);
+    animation: almazbro-site-utilities-fade-in 300ms ease;
 }
 
-.alacarte-wrap *,
-.alacarte-wrap *::before,
-.alacarte-wrap *::after {
+.almazbro-site-utilities-wrap *,
+.almazbro-site-utilities-wrap *::before,
+.almazbro-site-utilities-wrap *::after {
     box-sizing: border-box;
 }
 
 /* Sections toggled by JS use the `hidden` attribute; make sure it beats the
    `display` value any component class sets. */
-.alacarte-wrap [hidden] {
+.almazbro-site-utilities-wrap [hidden] {
     display: none !important;
 }
 
-@keyframes alacarte-fade-in {
+@keyframes almazbro-site-utilities-fade-in {
     from {
         opacity: 0;
         transform: translateY(8px);
@@ -152,7 +152,7 @@ body[class*="page_a-la-carte"] #wpbody-content>.error {
 }
 
 /* Screen-reader-only text (icon-only buttons, hidden inputs with a label). */
-.alacarte-sr-only {
+.almazbro-site-utilities-sr-only {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -166,176 +166,176 @@ body[class*="page_a-la-carte"] #wpbody-content>.error {
 
 /* ══ 3. Typography ════════════════════════════════════════════════════════ */
 
-.alacarte-h1 {
-    margin: 0 0 var(--alacarte-space-2);
+.almazbro-site-utilities-h1 {
+    margin: 0 0 var(--almazbro-site-utilities-space-2);
     font-size: 28px;
     font-weight: 800;
     line-height: 1.15;
     letter-spacing: -0.025em;
-    color: var(--alacarte-text);
+    color: var(--almazbro-site-utilities-text);
 }
 
-.alacarte-h2 {
+.almazbro-site-utilities-h2 {
     margin: 0;
     font-size: 16px;
     font-weight: 700;
     line-height: 1.3;
     letter-spacing: -0.01em;
-    color: var(--alacarte-text);
+    color: var(--almazbro-site-utilities-text);
 }
 
-.alacarte-h3 {
-    margin: 0 0 var(--alacarte-space-2);
+.almazbro-site-utilities-h3 {
+    margin: 0 0 var(--almazbro-site-utilities-space-2);
     font-size: 15px;
     font-weight: 700;
     line-height: 1.3;
     letter-spacing: -0.01em;
-    color: var(--alacarte-text);
+    color: var(--almazbro-site-utilities-text);
 }
 
-.alacarte-lead {
+.almazbro-site-utilities-lead {
     margin: 0;
     font-size: 15px;
     line-height: 1.6;
-    color: var(--alacarte-text-muted);
+    color: var(--almazbro-site-utilities-text-muted);
 }
 
-.alacarte-text-muted {
-    color: var(--alacarte-text-muted);
+.almazbro-site-utilities-text-muted {
+    color: var(--almazbro-site-utilities-text-muted);
 }
 
-.alacarte-help {
-    margin: var(--alacarte-space-2) 0 0;
+.almazbro-site-utilities-help {
+    margin: var(--almazbro-site-utilities-space-2) 0 0;
     font-size: 12px;
     line-height: 1.5;
-    color: var(--alacarte-text-muted);
+    color: var(--almazbro-site-utilities-text-muted);
 }
 
-.alacarte-help a {
-    color: var(--alacarte-brand-strong);
+.almazbro-site-utilities-help a {
+    color: var(--almazbro-site-utilities-brand-strong);
     font-weight: 600;
     text-decoration: none;
 }
 
-.alacarte-help a:hover {
+.almazbro-site-utilities-help a:hover {
     text-decoration: underline;
 }
 
-.alacarte-mono {
-    font-family: var(--alacarte-font-mono);
+.almazbro-site-utilities-mono {
+    font-family: var(--almazbro-site-utilities-font-mono);
 }
 
-.alacarte-required {
-    color: var(--alacarte-danger);
+.almazbro-site-utilities-required {
+    color: var(--almazbro-site-utilities-danger);
 }
 
 /* Small capitalised label that opens a group of settings. */
-.alacarte-eyebrow {
-    margin: 0 0 var(--alacarte-space-4);
+.almazbro-site-utilities-eyebrow {
+    margin: 0 0 var(--almazbro-site-utilities-space-4);
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--alacarte-text);
+    color: var(--almazbro-site-utilities-text);
 }
 
 /* Icons are decorative by default and should carry aria-hidden in markup. */
-.alacarte-wrap .dashicons {
+.almazbro-site-utilities-wrap .dashicons {
     line-height: 1;
     vertical-align: middle;
 }
 
 /* ══ 4. Page header ═══════════════════════════════════════════════════════ */
 
-.alacarte-page-header {
+.almazbro-site-utilities-page-header {
     display: flex;
     align-items: center;
-    gap: var(--alacarte-space-5);
-    margin-bottom: var(--alacarte-space-6);
-    padding: var(--alacarte-space-6);
-    background: var(--alacarte-surface);
-    border: 1px solid var(--alacarte-border);
-    border-radius: var(--alacarte-radius-lg);
+    gap: var(--almazbro-site-utilities-space-5);
+    margin-bottom: var(--almazbro-site-utilities-space-6);
+    padding: var(--almazbro-site-utilities-space-6);
+    background: var(--almazbro-site-utilities-surface);
+    border: 1px solid var(--almazbro-site-utilities-border);
+    border-radius: var(--almazbro-site-utilities-radius-lg);
 }
 
 /* Solid brand tile — the single loudest element on any screen. */
-.alacarte-page-header__icon {
+.almazbro-site-utilities-page-header__icon {
     display: flex;
     flex: 0 0 auto;
     align-items: center;
     justify-content: center;
     width: 68px;
     height: 68px;
-    /* background: linear-gradient(140deg, var(--alacarte-brand), var(--alacarte-brand-deep)); */
-    /* border-radius: var(--alacarte-radius); */
+    /* background: linear-gradient(140deg, var(--almazbro-site-utilities-brand), var(--almazbro-site-utilities-brand-deep)); */
+    /* border-radius: var(--almazbro-site-utilities-radius); */
     /* color: #fff; */
-    /* box-shadow: var(--alacarte-shadow-brand); */
+    /* box-shadow: var(--almazbro-site-utilities-shadow-brand); */
 }
 
-.alacarte-page-header__icon .dashicons {
+.almazbro-site-utilities-page-header__icon .dashicons {
     width: 34px;
     height: 34px;
     font-size: 34px;
 }
 
-.alacarte-page-header__icon img {
+.almazbro-site-utilities-page-header__icon img {
     width: 38px;
     height: auto;
 }
 
-.alacarte-page-header__content {
+.almazbro-site-utilities-page-header__content {
     flex: 1 1 auto;
     min-width: 0;
 }
 
-.alacarte-page-header__actions {
+.almazbro-site-utilities-page-header__actions {
     display: flex;
     flex: 0 0 auto;
-    gap: var(--alacarte-space-3);
+    gap: var(--almazbro-site-utilities-space-3);
 }
 
 /* ══ 5. Panels ════════════════════════════════════════════════════════════ */
 
-.alacarte-panel {
-    background: var(--alacarte-surface);
-    border: 1px solid var(--alacarte-border);
-    border-radius: var(--alacarte-radius);
-    box-shadow: var(--alacarte-shadow);
+.almazbro-site-utilities-panel {
+    background: var(--almazbro-site-utilities-surface);
+    border: 1px solid var(--almazbro-site-utilities-border);
+    border-radius: var(--almazbro-site-utilities-radius);
+    box-shadow: var(--almazbro-site-utilities-shadow);
     overflow: hidden;
 }
 
-.alacarte-panel+.alacarte-panel {
-    margin-top: var(--alacarte-space-5);
+.almazbro-site-utilities-panel+.almazbro-site-utilities-panel {
+    margin-top: var(--almazbro-site-utilities-space-5);
 }
 
-.alacarte-panel__header {
+.almazbro-site-utilities-panel__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--alacarte-space-4);
+    gap: var(--almazbro-site-utilities-space-4);
     min-height: 58px;
-    padding: var(--alacarte-space-3) var(--alacarte-space-5);
-    background: var(--alacarte-surface-sunken);
-    border-bottom: 1px solid var(--alacarte-border);
+    padding: var(--almazbro-site-utilities-space-3) var(--almazbro-site-utilities-space-5);
+    background: var(--almazbro-site-utilities-surface-sunken);
+    border-bottom: 1px solid var(--almazbro-site-utilities-border);
 }
 
-.alacarte-panel__body {
-    padding: var(--alacarte-space-5);
+.almazbro-site-utilities-panel__body {
+    padding: var(--almazbro-site-utilities-space-5);
 }
 
 /* Tables and lists sit flush against the panel edges. */
-.alacarte-panel__body--flush {
+.almazbro-site-utilities-panel__body--flush {
     padding: 0;
 }
 
-.alacarte-panel__footer {
+.almazbro-site-utilities-panel__footer {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: var(--alacarte-space-3);
-    padding: var(--alacarte-space-4) var(--alacarte-space-5);
-    background: var(--alacarte-surface-sunken);
-    border-top: 1px solid var(--alacarte-border);
+    gap: var(--almazbro-site-utilities-space-3);
+    padding: var(--almazbro-site-utilities-space-4) var(--almazbro-site-utilities-space-5);
+    background: var(--almazbro-site-utilities-surface-sunken);
+    border-top: 1px solid var(--almazbro-site-utilities-border);
 }
 
 /**
@@ -343,13 +343,13 @@ body[class*="page_a-la-carte"] #wpbody-content>.error {
  * by a rule, including the first one after a row of fields — using an adjacent
  * sibling selector instead would leave that first divider missing.
  */
-.alacarte-panel__body>.alacarte-panel__section {
-    margin-top: var(--alacarte-space-5);
-    padding-top: var(--alacarte-space-5);
-    border-top: 1px solid var(--alacarte-border-soft);
+.almazbro-site-utilities-panel__body>.almazbro-site-utilities-panel__section {
+    margin-top: var(--almazbro-site-utilities-space-5);
+    padding-top: var(--almazbro-site-utilities-space-5);
+    border-top: 1px solid var(--almazbro-site-utilities-border-soft);
 }
 
-.alacarte-panel__body>.alacarte-panel__section:first-child {
+.almazbro-site-utilities-panel__body>.almazbro-site-utilities-panel__section:first-child {
     margin-top: 0;
     padding-top: 0;
     border-top: none;
@@ -357,57 +357,57 @@ body[class*="page_a-la-carte"] #wpbody-content>.error {
 
 /* ══ 6. Tool grid ═════════════════════════════════════════════════════════ */
 
-.alacarte-tools {
+.almazbro-site-utilities-tools {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: var(--alacarte-space-5);
+    gap: var(--almazbro-site-utilities-space-5);
 }
 
 /* The card is a plain container — the title link, the switch and the Configure
    button are the things you click, so only those react to the pointer. */
-.alacarte-tool-card {
+.almazbro-site-utilities-tool-card {
     display: flex;
     flex-direction: column;
-    padding: var(--alacarte-space-5);
-    background: var(--alacarte-surface);
-    border: 1px solid var(--alacarte-border);
-    border-radius: var(--alacarte-radius);
-    box-shadow: var(--alacarte-shadow);
+    padding: var(--almazbro-site-utilities-space-5);
+    background: var(--almazbro-site-utilities-surface);
+    border: 1px solid var(--almazbro-site-utilities-border);
+    border-radius: var(--almazbro-site-utilities-radius);
+    box-shadow: var(--almazbro-site-utilities-shadow);
 }
 
 /* An active tool is read at a glance from the icon, not just from the pill. */
-.alacarte-tool-card:has(.alacarte-switch input:checked) {
-    border-color: var(--alacarte-brand-border);
+.almazbro-site-utilities-tool-card:has(.almazbro-site-utilities-switch input:checked) {
+    border-color: var(--almazbro-site-utilities-brand-border);
 }
 
-.alacarte-tool-card__header {
+.almazbro-site-utilities-tool-card__header {
     display: flex;
     align-items: center;
-    gap: var(--alacarte-space-3);
-    margin-bottom: var(--alacarte-space-4);
+    gap: var(--almazbro-site-utilities-space-3);
+    margin-bottom: var(--almazbro-site-utilities-space-4);
 }
 
-.alacarte-tool-card__icon {
+.almazbro-site-utilities-tool-card__icon {
     display: flex;
     flex: 0 0 auto;
     align-items: center;
     justify-content: center;
     width: 44px;
     height: 44px;
-    background: var(--alacarte-surface-sunken);
-    border: 1px solid var(--alacarte-border);
-    border-radius: var(--alacarte-radius-sm);
-    color: var(--alacarte-text-subtle);
+    background: var(--almazbro-site-utilities-surface-sunken);
+    border: 1px solid var(--almazbro-site-utilities-border);
+    border-radius: var(--almazbro-site-utilities-radius-sm);
+    color: var(--almazbro-site-utilities-text-subtle);
 }
 
-.alacarte-tool-card:has(.alacarte-switch input:checked) .alacarte-tool-card__icon {
-    background: linear-gradient(140deg, var(--alacarte-brand), var(--alacarte-brand-deep));
+.almazbro-site-utilities-tool-card:has(.almazbro-site-utilities-switch input:checked) .almazbro-site-utilities-tool-card__icon {
+    background: linear-gradient(140deg, var(--almazbro-site-utilities-brand), var(--almazbro-site-utilities-brand-deep));
     border-color: transparent;
     color: #fff;
-    box-shadow: var(--alacarte-shadow-brand);
+    box-shadow: var(--almazbro-site-utilities-shadow-brand);
 }
 
-.alacarte-tool-card__icon .dashicons {
+.almazbro-site-utilities-tool-card__icon .dashicons {
     width: 22px;
     height: 22px;
     font-size: 22px;
@@ -415,7 +415,7 @@ body[class*="page_a-la-carte"] #wpbody-content>.error {
 
 /* Centred against the icon — no padding nudge, so a title that wraps to two
    lines stays aligned with both the icon and the switch. */
-.alacarte-tool-card__title {
+.almazbro-site-utilities-tool-card__title {
     flex: 1 1 auto;
     min-width: 0;
     margin: 0;
@@ -423,36 +423,36 @@ body[class*="page_a-la-carte"] #wpbody-content>.error {
     font-weight: 700;
     line-height: 1.3;
     letter-spacing: -0.01em;
-    color: var(--alacarte-text);
+    color: var(--almazbro-site-utilities-text);
     text-decoration: none;
 }
 
-a.alacarte-tool-card__title:hover {
-    color: var(--alacarte-brand-strong);
+a.almazbro-site-utilities-tool-card__title:hover {
+    color: var(--almazbro-site-utilities-brand-strong);
 }
 
-.alacarte-tool-card__desc {
+.almazbro-site-utilities-tool-card__desc {
     flex: 1 1 auto;
-    margin: 0 0 var(--alacarte-space-5);
+    margin: 0 0 var(--almazbro-site-utilities-space-5);
     font-size: 13px;
     line-height: 1.6;
-    color: var(--alacarte-text-muted);
+    color: var(--almazbro-site-utilities-text-muted);
 }
 
-.alacarte-tool-card__footer {
+.almazbro-site-utilities-tool-card__footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--alacarte-space-3);
+    gap: var(--almazbro-site-utilities-space-3);
 }
 
 /* ══ 7. Buttons ═══════════════════════════════════════════════════════════ */
 
-.alacarte-btn {
+.almazbro-site-utilities-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: var(--alacarte-space-2);
+    gap: var(--almazbro-site-utilities-space-2);
     min-height: 38px;
     padding: 0 18px;
     font-family: inherit;
@@ -463,79 +463,79 @@ a.alacarte-tool-card__title:hover {
     text-decoration: none;
     white-space: nowrap;
     border: 1px solid transparent;
-    border-radius: var(--alacarte-radius-sm);
+    border-radius: var(--almazbro-site-utilities-radius-sm);
     cursor: pointer;
-    transition: background-color var(--alacarte-transition), border-color var(--alacarte-transition), color var(--alacarte-transition), box-shadow var(--alacarte-transition), transform var(--alacarte-transition);
+    transition: background-color var(--almazbro-site-utilities-transition), border-color var(--almazbro-site-utilities-transition), color var(--almazbro-site-utilities-transition), box-shadow var(--almazbro-site-utilities-transition), transform var(--almazbro-site-utilities-transition);
 }
 
-.alacarte-btn:focus {
+.almazbro-site-utilities-btn:focus {
     outline: none;
 }
 
-.alacarte-btn:focus-visible {
-    box-shadow: var(--alacarte-focus-ring-strong);
+.almazbro-site-utilities-btn:focus-visible {
+    box-shadow: var(--almazbro-site-utilities-focus-ring-strong);
 }
 
-.alacarte-btn:active {
+.almazbro-site-utilities-btn:active {
     transform: translateY(1px);
 }
 
-.alacarte-btn .dashicons {
+.almazbro-site-utilities-btn .dashicons {
     width: 17px;
     height: 17px;
     font-size: 17px;
 }
 
-.alacarte-btn--primary,
-.alacarte-btn--primary:hover,
-.alacarte-btn--primary:focus {
+.almazbro-site-utilities-btn--primary,
+.almazbro-site-utilities-btn--primary:hover,
+.almazbro-site-utilities-btn--primary:focus {
     color: #fff;
 }
 
-.alacarte-btn--primary {
-    background: var(--alacarte-brand);
-    box-shadow: var(--alacarte-shadow-brand);
+.almazbro-site-utilities-btn--primary {
+    background: var(--almazbro-site-utilities-brand);
+    box-shadow: var(--almazbro-site-utilities-shadow-brand);
 }
 
-.alacarte-btn--primary:hover {
-    background: var(--alacarte-brand-strong);
+.almazbro-site-utilities-btn--primary:hover {
+    background: var(--almazbro-site-utilities-brand-strong);
 }
 
-.alacarte-btn--primary:active {
-    background: var(--alacarte-brand-deep);
+.almazbro-site-utilities-btn--primary:active {
+    background: var(--almazbro-site-utilities-brand-deep);
 }
 
-.alacarte-btn--secondary {
-    background: var(--alacarte-surface);
-    border-color: var(--alacarte-border-strong);
-    color: var(--alacarte-text);
-    box-shadow: var(--alacarte-shadow-sm);
+.almazbro-site-utilities-btn--secondary {
+    background: var(--almazbro-site-utilities-surface);
+    border-color: var(--almazbro-site-utilities-border-strong);
+    color: var(--almazbro-site-utilities-text);
+    box-shadow: var(--almazbro-site-utilities-shadow-sm);
 }
 
-.alacarte-btn--secondary:hover,
-.alacarte-btn--secondary:focus {
-    background: var(--alacarte-surface-sunken);
-    border-color: var(--alacarte-text-subtle);
-    color: var(--alacarte-text);
+.almazbro-site-utilities-btn--secondary:hover,
+.almazbro-site-utilities-btn--secondary:focus {
+    background: var(--almazbro-site-utilities-surface-sunken);
+    border-color: var(--almazbro-site-utilities-text-subtle);
+    color: var(--almazbro-site-utilities-text);
 }
 
-.alacarte-btn--danger {
-    background: var(--alacarte-danger);
+.almazbro-site-utilities-btn--danger {
+    background: var(--almazbro-site-utilities-danger);
     color: #fff;
-    box-shadow: var(--alacarte-shadow-sm);
+    box-shadow: var(--almazbro-site-utilities-shadow-sm);
 }
 
-.alacarte-btn--danger:hover,
-.alacarte-btn--danger:focus {
-    background: var(--alacarte-danger-strong);
+.almazbro-site-utilities-btn--danger:hover,
+.almazbro-site-utilities-btn--danger:focus {
+    background: var(--almazbro-site-utilities-danger-strong);
     color: #fff;
 }
 
-.alacarte-btn[disabled],
-.alacarte-btn.is-disabled {
-    background: var(--alacarte-surface-sunken);
-    border-color: var(--alacarte-border);
-    color: var(--alacarte-text-subtle);
+.almazbro-site-utilities-btn[disabled],
+.almazbro-site-utilities-btn.is-disabled {
+    background: var(--almazbro-site-utilities-surface-sunken);
+    border-color: var(--almazbro-site-utilities-border);
+    color: var(--almazbro-site-utilities-text-subtle);
     box-shadow: none;
     cursor: default;
     pointer-events: none;
@@ -543,7 +543,7 @@ a.alacarte-tool-card__title:hover {
 }
 
 /* Icon-only actions in table rows. */
-.alacarte-icon-btn {
+.almazbro-site-utilities-icon-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -552,33 +552,33 @@ a.alacarte-tool-card__title:hover {
     padding: 0;
     background: none;
     border: 1px solid transparent;
-    border-radius: var(--alacarte-radius-sm);
-    color: var(--alacarte-text-muted);
+    border-radius: var(--almazbro-site-utilities-radius-sm);
+    color: var(--almazbro-site-utilities-text-muted);
     text-decoration: none;
     cursor: pointer;
-    transition: background-color var(--alacarte-transition), border-color var(--alacarte-transition), color var(--alacarte-transition);
+    transition: background-color var(--almazbro-site-utilities-transition), border-color var(--almazbro-site-utilities-transition), color var(--almazbro-site-utilities-transition);
 }
 
-.alacarte-icon-btn:hover,
-.alacarte-icon-btn:focus {
-    background: var(--alacarte-surface-hover);
-    border-color: var(--alacarte-border);
-    color: var(--alacarte-text);
+.almazbro-site-utilities-icon-btn:hover,
+.almazbro-site-utilities-icon-btn:focus {
+    background: var(--almazbro-site-utilities-surface-hover);
+    border-color: var(--almazbro-site-utilities-border);
+    color: var(--almazbro-site-utilities-text);
 }
 
-.alacarte-icon-btn:focus-visible {
+.almazbro-site-utilities-icon-btn:focus-visible {
     outline: none;
-    box-shadow: var(--alacarte-focus-ring-strong);
+    box-shadow: var(--almazbro-site-utilities-focus-ring-strong);
 }
 
-.alacarte-icon-btn--danger:hover,
-.alacarte-icon-btn--danger:focus {
-    background: var(--alacarte-danger-soft);
-    border-color: var(--alacarte-danger-border);
-    color: var(--alacarte-danger);
+.almazbro-site-utilities-icon-btn--danger:hover,
+.almazbro-site-utilities-icon-btn--danger:focus {
+    background: var(--almazbro-site-utilities-danger-soft);
+    border-color: var(--almazbro-site-utilities-danger-border);
+    color: var(--almazbro-site-utilities-danger);
 }
 
-.alacarte-icon-btn .dashicons {
+.almazbro-site-utilities-icon-btn .dashicons {
     width: 18px;
     height: 18px;
     font-size: 18px;
@@ -586,31 +586,31 @@ a.alacarte-tool-card__title:hover {
 
 /* ══ 8. Forms ═════════════════════════════════════════════════════════════ */
 
-.alacarte-field {
-    margin: 0 0 var(--alacarte-space-5);
+.almazbro-site-utilities-field {
+    margin: 0 0 var(--almazbro-site-utilities-space-5);
 }
 
-.alacarte-field:last-child {
+.almazbro-site-utilities-field:last-child {
     margin-bottom: 0;
 }
 
 /* A button that belongs to the field above it (e.g. "Add Rule"). */
-.alacarte-field__action {
-    margin-top: var(--alacarte-space-3);
+.almazbro-site-utilities-field__action {
+    margin-top: var(--almazbro-site-utilities-space-3);
 }
 
-.alacarte-label {
+.almazbro-site-utilities-label {
     display: block;
-    margin-bottom: var(--alacarte-space-2);
+    margin-bottom: var(--almazbro-site-utilities-space-2);
     font-size: 13px;
     font-weight: 700;
-    color: var(--alacarte-text);
+    color: var(--almazbro-site-utilities-text);
 }
 
 /* Element-qualified so these win over wp-admin's `input`/`select` rules. */
-input.alacarte-form-control,
-select.alacarte-form-control,
-textarea.alacarte-form-control {
+input.almazbro-site-utilities-form-control,
+select.almazbro-site-utilities-form-control,
+textarea.almazbro-site-utilities-form-control {
     display: block;
     width: 100%;
     max-width: 100%;
@@ -620,41 +620,41 @@ textarea.alacarte-form-control {
     font-family: inherit;
     font-size: 13px;
     line-height: 1.5;
-    color: var(--alacarte-text);
-    background-color: var(--alacarte-surface);
-    border: 1px solid var(--alacarte-border-strong);
-    border-radius: var(--alacarte-radius-sm);
-    box-shadow: var(--alacarte-shadow-sm);
-    transition: border-color var(--alacarte-transition), box-shadow var(--alacarte-transition);
+    color: var(--almazbro-site-utilities-text);
+    background-color: var(--almazbro-site-utilities-surface);
+    border: 1px solid var(--almazbro-site-utilities-border-strong);
+    border-radius: var(--almazbro-site-utilities-radius-sm);
+    box-shadow: var(--almazbro-site-utilities-shadow-sm);
+    transition: border-color var(--almazbro-site-utilities-transition), box-shadow var(--almazbro-site-utilities-transition);
 }
 
-input.alacarte-form-control:hover,
-select.alacarte-form-control:hover,
-textarea.alacarte-form-control:hover {
-    border-color: var(--alacarte-text-subtle);
+input.almazbro-site-utilities-form-control:hover,
+select.almazbro-site-utilities-form-control:hover,
+textarea.almazbro-site-utilities-form-control:hover {
+    border-color: var(--almazbro-site-utilities-text-subtle);
 }
 
-input.alacarte-form-control:focus,
-select.alacarte-form-control:focus,
-textarea.alacarte-form-control:focus {
-    border-color: var(--alacarte-brand);
-    box-shadow: var(--alacarte-focus-ring);
+input.almazbro-site-utilities-form-control:focus,
+select.almazbro-site-utilities-form-control:focus,
+textarea.almazbro-site-utilities-form-control:focus {
+    border-color: var(--almazbro-site-utilities-brand);
+    box-shadow: var(--almazbro-site-utilities-focus-ring);
     outline: none;
 }
 
-input.alacarte-form-control[readonly] {
-    background-color: var(--alacarte-surface-sunken);
-    color: var(--alacarte-text-muted);
+input.almazbro-site-utilities-form-control[readonly] {
+    background-color: var(--almazbro-site-utilities-surface-sunken);
+    color: var(--almazbro-site-utilities-text-muted);
 }
 
-input.alacarte-form-control::placeholder,
-textarea.alacarte-form-control::placeholder {
-    color: var(--alacarte-text-subtle);
+input.almazbro-site-utilities-form-control::placeholder,
+textarea.almazbro-site-utilities-form-control::placeholder {
+    color: var(--almazbro-site-utilities-text-subtle);
 }
 
 /* wp-admin paints its own arrow on `select`; replace it so it lines up with
    our padding instead of colliding with the text. */
-select.alacarte-form-control {
+select.almazbro-site-utilities-form-control {
     padding-right: 34px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%236b7280' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 7.5 10 12.5 15 7.5'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
@@ -664,14 +664,14 @@ select.alacarte-form-control {
     appearance: none;
 }
 
-textarea.alacarte-form-control {
+textarea.almazbro-site-utilities-form-control {
     min-height: 120px;
-    font-family: var(--alacarte-font-mono);
+    font-family: var(--almazbro-site-utilities-font-mono);
     resize: vertical;
 }
 
-.alacarte-form-control--mono {
-    font-family: var(--alacarte-font-mono);
+.almazbro-site-utilities-form-control--mono {
+    font-family: var(--almazbro-site-utilities-font-mono);
 }
 
 /* ══ 9. Choice controls ═══════════════════════════════════════════════════ */
@@ -679,11 +679,11 @@ textarea.alacarte-form-control {
 /**
  * One pattern for every checkbox and radio in the plugin.
  *
- *   <label class="alacarte-choice">
+ *   <label class="almazbro-site-utilities-choice">
  *     <input type="checkbox">
- *     <span class="alacarte-choice__text">
- *       <span class="alacarte-choice__title">…</span>
- *       <span class="alacarte-choice__desc">…</span>
+ *     <span class="almazbro-site-utilities-choice__text">
+ *       <span class="almazbro-site-utilities-choice__title">…</span>
+ *       <span class="almazbro-site-utilities-choice__desc">…</span>
  *     </span>
  *   </label>
  *
@@ -691,63 +691,63 @@ textarea.alacarte-form-control {
  * checkmark and a negative top margin — so every property it sets has to be
  * reset here, or the native mark renders on top of ours.
  */
-.alacarte-choice {
+.almazbro-site-utilities-choice {
     display: flex;
     align-items: flex-start;
-    gap: var(--alacarte-space-3);
+    gap: var(--almazbro-site-utilities-space-3);
     cursor: pointer;
 }
 
-.alacarte-choice+.alacarte-choice {
-    margin-top: var(--alacarte-space-3);
+.almazbro-site-utilities-choice+.almazbro-site-utilities-choice {
+    margin-top: var(--almazbro-site-utilities-space-3);
 }
 
-.alacarte-choice input[type="checkbox"],
-.alacarte-choice input[type="radio"] {
+.almazbro-site-utilities-choice input[type="checkbox"],
+.almazbro-site-utilities-choice input[type="radio"] {
     flex: 0 0 auto;
     width: 20px;
     min-width: 20px;
     height: 20px;
     margin: 0;
     padding: 0;
-    background: var(--alacarte-surface);
-    border: 1px solid var(--alacarte-border-strong);
-    box-shadow: var(--alacarte-shadow-sm);
+    background: var(--almazbro-site-utilities-surface);
+    border: 1px solid var(--almazbro-site-utilities-border-strong);
+    box-shadow: var(--almazbro-site-utilities-shadow-sm);
     cursor: pointer;
-    transition: background-color var(--alacarte-transition), border-color var(--alacarte-transition), box-shadow var(--alacarte-transition);
+    transition: background-color var(--almazbro-site-utilities-transition), border-color var(--almazbro-site-utilities-transition), box-shadow var(--almazbro-site-utilities-transition);
     -webkit-appearance: none;
     appearance: none;
 }
 
-.alacarte-choice input[type="checkbox"] {
+.almazbro-site-utilities-choice input[type="checkbox"] {
     border-radius: 6px;
 }
 
-.alacarte-choice input[type="radio"] {
+.almazbro-site-utilities-choice input[type="radio"] {
     border-radius: 50%;
 }
 
-.alacarte-choice input[type="checkbox"]:hover,
-.alacarte-choice input[type="radio"]:hover {
-    border-color: var(--alacarte-brand);
+.almazbro-site-utilities-choice input[type="checkbox"]:hover,
+.almazbro-site-utilities-choice input[type="radio"]:hover {
+    border-color: var(--almazbro-site-utilities-brand);
 }
 
-.alacarte-choice input[type="checkbox"]:focus-visible,
-.alacarte-choice input[type="radio"]:focus-visible {
+.almazbro-site-utilities-choice input[type="checkbox"]:focus-visible,
+.almazbro-site-utilities-choice input[type="radio"]:focus-visible {
     outline: none;
-    border-color: var(--alacarte-brand);
-    box-shadow: var(--alacarte-focus-ring);
+    border-color: var(--almazbro-site-utilities-brand);
+    box-shadow: var(--almazbro-site-utilities-focus-ring);
 }
 
-.alacarte-choice input[type="checkbox"]:checked,
-.alacarte-choice input[type="radio"]:checked {
-    background: var(--alacarte-brand);
-    border-color: var(--alacarte-brand);
-    box-shadow: var(--alacarte-shadow-brand);
+.almazbro-site-utilities-choice input[type="checkbox"]:checked,
+.almazbro-site-utilities-choice input[type="radio"]:checked {
+    background: var(--almazbro-site-utilities-brand);
+    border-color: var(--almazbro-site-utilities-brand);
+    box-shadow: var(--almazbro-site-utilities-shadow-brand);
 }
 
-.alacarte-choice input[type="checkbox"]:disabled,
-.alacarte-choice input[type="radio"]:disabled {
+.almazbro-site-utilities-choice input[type="checkbox"]:disabled,
+.almazbro-site-utilities-choice input[type="radio"]:disabled {
     opacity: 0.5;
     box-shadow: none;
     cursor: default;
@@ -755,10 +755,10 @@ textarea.alacarte-form-control {
 
 /* Draw the mark on ::before — the same pseudo-element wp-admin uses — so its
    own SVG checkmark can never render alongside ours. */
-.alacarte-choice input[type="checkbox"]::before,
-.alacarte-choice input[type="checkbox"]:checked::before,
-.alacarte-choice input[type="radio"]::before,
-.alacarte-choice input[type="radio"]:checked::before {
+.almazbro-site-utilities-choice input[type="checkbox"]::before,
+.almazbro-site-utilities-choice input[type="checkbox"]:checked::before,
+.almazbro-site-utilities-choice input[type="radio"]::before,
+.almazbro-site-utilities-choice input[type="radio"]:checked::before {
     content: "";
     display: block;
     width: auto;
@@ -770,7 +770,7 @@ textarea.alacarte-form-control {
     background: none;
 }
 
-.alacarte-choice input[type="checkbox"]:checked::before {
+.almazbro-site-utilities-choice input[type="checkbox"]:checked::before {
     width: 100%;
     height: 100%;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23ffffff' stroke-width='2.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m3.5 8.5 3 3 6-6.5'/%3E%3C/svg%3E");
@@ -779,7 +779,7 @@ textarea.alacarte-form-control {
     background-size: 15px 15px;
 }
 
-.alacarte-choice input[type="radio"]:checked::before {
+.almazbro-site-utilities-choice input[type="radio"]:checked::before {
     width: 7px;
     height: 7px;
     margin: 5.5px auto;
@@ -787,83 +787,83 @@ textarea.alacarte-form-control {
     border-radius: 50%;
 }
 
-.alacarte-choice__text {
+.almazbro-site-utilities-choice__text {
     display: block;
     min-width: 0;
 }
 
-.alacarte-choice__title {
+.almazbro-site-utilities-choice__title {
     display: block;
     font-size: 13px;
     font-weight: 700;
     line-height: 1.5;
-    color: var(--alacarte-text);
+    color: var(--almazbro-site-utilities-text);
 }
 
-.alacarte-choice__desc {
+.almazbro-site-utilities-choice__desc {
     display: block;
     margin-top: 2px;
     font-size: 12px;
     line-height: 1.5;
-    color: var(--alacarte-text-muted);
+    color: var(--almazbro-site-utilities-text-muted);
 }
 
 /* Boxed variant — used for grids of short options. */
-.alacarte-choice--boxed {
+.almazbro-site-utilities-choice--boxed {
     align-items: center;
     padding: 11px 14px;
-    background: var(--alacarte-surface);
-    border: 1px solid var(--alacarte-border);
-    border-radius: var(--alacarte-radius-sm);
-    transition: border-color var(--alacarte-transition), background-color var(--alacarte-transition), box-shadow var(--alacarte-transition);
+    background: var(--almazbro-site-utilities-surface);
+    border: 1px solid var(--almazbro-site-utilities-border);
+    border-radius: var(--almazbro-site-utilities-radius-sm);
+    transition: border-color var(--almazbro-site-utilities-transition), background-color var(--almazbro-site-utilities-transition), box-shadow var(--almazbro-site-utilities-transition);
 }
 
-.alacarte-choice--boxed:hover {
-    border-color: var(--alacarte-brand-border);
-    background: var(--alacarte-surface-sunken);
+.almazbro-site-utilities-choice--boxed:hover {
+    border-color: var(--almazbro-site-utilities-brand-border);
+    background: var(--almazbro-site-utilities-surface-sunken);
 }
 
 /* Doubling the border with an inset ring reads as a 2px outline without
    shifting the box by a pixel when it becomes selected. */
-.alacarte-choice--boxed:has(input:checked) {
-    background: var(--alacarte-brand-soft);
-    border-color: var(--alacarte-brand);
-    box-shadow: inset 0 0 0 1px var(--alacarte-brand);
+.almazbro-site-utilities-choice--boxed:has(input:checked) {
+    background: var(--almazbro-site-utilities-brand-soft);
+    border-color: var(--almazbro-site-utilities-brand);
+    box-shadow: inset 0 0 0 1px var(--almazbro-site-utilities-brand);
 }
 
 /* Card variant — used when each option carries a description. */
-.alacarte-choice--card {
-    padding: var(--alacarte-space-4);
-    background: var(--alacarte-surface);
-    border: 1px solid var(--alacarte-border);
-    border-radius: var(--alacarte-radius-sm);
-    transition: border-color var(--alacarte-transition), background-color var(--alacarte-transition), box-shadow var(--alacarte-transition);
+.almazbro-site-utilities-choice--card {
+    padding: var(--almazbro-site-utilities-space-4);
+    background: var(--almazbro-site-utilities-surface);
+    border: 1px solid var(--almazbro-site-utilities-border);
+    border-radius: var(--almazbro-site-utilities-radius-sm);
+    transition: border-color var(--almazbro-site-utilities-transition), background-color var(--almazbro-site-utilities-transition), box-shadow var(--almazbro-site-utilities-transition);
 }
 
-.alacarte-choice--card+.alacarte-choice--card {
-    margin-top: var(--alacarte-space-3);
+.almazbro-site-utilities-choice--card+.almazbro-site-utilities-choice--card {
+    margin-top: var(--almazbro-site-utilities-space-3);
 }
 
-.alacarte-choice--card:hover {
-    border-color: var(--alacarte-brand-border);
-    background: var(--alacarte-surface-sunken);
+.almazbro-site-utilities-choice--card:hover {
+    border-color: var(--almazbro-site-utilities-brand-border);
+    background: var(--almazbro-site-utilities-surface-sunken);
 }
 
-.alacarte-choice--card:has(input:checked) {
-    background: var(--alacarte-brand-soft);
-    border-color: var(--alacarte-brand);
-    box-shadow: inset 0 0 0 1px var(--alacarte-brand);
+.almazbro-site-utilities-choice--card:has(input:checked) {
+    background: var(--almazbro-site-utilities-brand-soft);
+    border-color: var(--almazbro-site-utilities-brand);
+    box-shadow: inset 0 0 0 1px var(--almazbro-site-utilities-brand);
 }
 
-.alacarte-choice-grid {
+.almazbro-site-utilities-choice-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-    gap: var(--alacarte-space-3);
+    gap: var(--almazbro-site-utilities-space-3);
 }
 
 /* ══ 10. Switch ═══════════════════════════════════════════════════════════ */
 
-.alacarte-switch {
+.almazbro-site-utilities-switch {
     position: relative;
     display: inline-flex;
     flex: 0 0 auto;
@@ -871,7 +871,7 @@ textarea.alacarte-form-control {
     height: 26px;
 }
 
-.alacarte-switch input {
+.almazbro-site-utilities-switch input {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -885,20 +885,20 @@ textarea.alacarte-form-control {
     appearance: none;
 }
 
-.alacarte-switch input::before {
+.almazbro-site-utilities-switch input::before {
     content: none;
 }
 
-.alacarte-switch__track {
+.almazbro-site-utilities-switch__track {
     position: absolute;
     inset: 0;
-    background: var(--alacarte-border-strong);
-    border-radius: var(--alacarte-radius-full);
+    background: var(--almazbro-site-utilities-border-strong);
+    border-radius: var(--almazbro-site-utilities-radius-full);
     pointer-events: none;
-    transition: background-color var(--alacarte-transition), box-shadow var(--alacarte-transition);
+    transition: background-color var(--almazbro-site-utilities-transition), box-shadow var(--almazbro-site-utilities-transition);
 }
 
-.alacarte-switch__track::before {
+.almazbro-site-utilities-switch__track::before {
     content: "";
     position: absolute;
     top: 3px;
@@ -908,246 +908,246 @@ textarea.alacarte-form-control {
     background: #fff;
     border-radius: 50%;
     box-shadow: 0 1px 3px rgba(16, 24, 40, 0.35);
-    transition: transform var(--alacarte-transition);
+    transition: transform var(--almazbro-site-utilities-transition);
 }
 
-.alacarte-switch input:hover~.alacarte-switch__track {
-    background: var(--alacarte-text-subtle);
+.almazbro-site-utilities-switch input:hover~.almazbro-site-utilities-switch__track {
+    background: var(--almazbro-site-utilities-text-subtle);
 }
 
-.alacarte-switch input:checked~.alacarte-switch__track {
-    background: var(--alacarte-brand);
-    box-shadow: var(--alacarte-shadow-brand);
+.almazbro-site-utilities-switch input:checked~.almazbro-site-utilities-switch__track {
+    background: var(--almazbro-site-utilities-brand);
+    box-shadow: var(--almazbro-site-utilities-shadow-brand);
 }
 
-.alacarte-switch input:checked:hover~.alacarte-switch__track {
-    background: var(--alacarte-brand-strong);
+.almazbro-site-utilities-switch input:checked:hover~.almazbro-site-utilities-switch__track {
+    background: var(--almazbro-site-utilities-brand-strong);
 }
 
-.alacarte-switch input:checked~.alacarte-switch__track::before {
+.almazbro-site-utilities-switch input:checked~.almazbro-site-utilities-switch__track::before {
     transform: translateX(20px);
 }
 
-.alacarte-switch input:focus-visible~.alacarte-switch__track {
-    box-shadow: var(--alacarte-focus-ring-strong);
+.almazbro-site-utilities-switch input:focus-visible~.almazbro-site-utilities-switch__track {
+    box-shadow: var(--almazbro-site-utilities-focus-ring-strong);
 }
 
-.alacarte-switch input:disabled {
+.almazbro-site-utilities-switch input:disabled {
     cursor: default;
 }
 
-.alacarte-switch input:disabled~.alacarte-switch__track {
+.almazbro-site-utilities-switch input:disabled~.almazbro-site-utilities-switch__track {
     opacity: 0.5;
     box-shadow: none;
 }
 
 /* ══ 11. Tables ═══════════════════════════════════════════════════════════ */
 
-.alacarte-table {
+.almazbro-site-utilities-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 13px;
 }
 
-.alacarte-table th,
-.alacarte-table td {
-    padding: var(--alacarte-space-3) var(--alacarte-space-5);
+.almazbro-site-utilities-table th,
+.almazbro-site-utilities-table td {
+    padding: var(--almazbro-site-utilities-space-3) var(--almazbro-site-utilities-space-5);
     text-align: left;
     vertical-align: middle;
-    border-bottom: 1px solid var(--alacarte-border-soft);
+    border-bottom: 1px solid var(--almazbro-site-utilities-border-soft);
 }
 
-.alacarte-table th {
+.almazbro-site-utilities-table th {
     padding-top: 11px;
     padding-bottom: 11px;
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.07em;
-    color: var(--alacarte-text-muted);
-    background: var(--alacarte-surface-sunken);
-    border-bottom: 1px solid var(--alacarte-border);
+    color: var(--almazbro-site-utilities-text-muted);
+    background: var(--almazbro-site-utilities-surface-sunken);
+    border-bottom: 1px solid var(--almazbro-site-utilities-border);
 }
 
-.alacarte-table td {
-    padding-top: var(--alacarte-space-4);
-    padding-bottom: var(--alacarte-space-4);
+.almazbro-site-utilities-table td {
+    padding-top: var(--almazbro-site-utilities-space-4);
+    padding-bottom: var(--almazbro-site-utilities-space-4);
 }
 
 /* Row-level rules cover `th` as well as `td`: in a definition table the row
    label is a `th`, so a `td`-only selector highlights half the row and leaves
    a stray rule under the last one. */
-.alacarte-table tbody tr:last-child td,
-.alacarte-table tbody tr:last-child th {
+.almazbro-site-utilities-table tbody tr:last-child td,
+.almazbro-site-utilities-table tbody tr:last-child th {
     border-bottom: none;
 }
 
 /* No row hover: a `tr` is not a target here. The row's actions are icon
    buttons, and they light up on their own. */
-.alacarte-table tr.is-current td,
-.alacarte-table tr.is-current th {
-    background: var(--alacarte-brand-soft);
+.almazbro-site-utilities-table tr.is-current td,
+.almazbro-site-utilities-table tr.is-current th {
+    background: var(--almazbro-site-utilities-brand-soft);
 }
 
-.alacarte-table__name {
+.almazbro-site-utilities-table__name {
     font-weight: 700;
-    color: var(--alacarte-text);
+    color: var(--almazbro-site-utilities-text);
     text-decoration: none;
 }
 
-a.alacarte-table__name:hover {
-    color: var(--alacarte-brand-strong);
+a.almazbro-site-utilities-table__name:hover {
+    color: var(--almazbro-site-utilities-brand-strong);
 }
 
-.alacarte-table__meta {
+.almazbro-site-utilities-table__meta {
     display: block;
     margin-top: 3px;
-    font-family: var(--alacarte-font-mono);
+    font-family: var(--almazbro-site-utilities-font-mono);
     font-size: 11px;
-    color: var(--alacarte-text-muted);
+    color: var(--almazbro-site-utilities-text-muted);
 }
 
-/* Element-qualified: `.alacarte-table th` is more specific than a bare class, so an
+/* Element-qualified: `.almazbro-site-utilities-table th` is more specific than a bare class, so an
    unqualified `text-align` here would lose to it and leave the header label
    left-aligned above right-aligned buttons. */
-.alacarte-table th.alacarte-table__actions,
-.alacarte-table td.alacarte-table__actions {
+.almazbro-site-utilities-table th.almazbro-site-utilities-table__actions,
+.almazbro-site-utilities-table td.almazbro-site-utilities-table__actions {
     width: 1%;
     white-space: nowrap;
     text-align: right;
 }
 
-.alacarte-table__actions-inner {
+.almazbro-site-utilities-table__actions-inner {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: var(--alacarte-space-1);
+    gap: var(--almazbro-site-utilities-space-1);
 }
 
 /* Two-column key/value table (System Info). The `th` is a row label here, not
    a column heading, so the uppercase column treatment is reset. */
-.alacarte-table--definition th,
-.alacarte-table--definition td {
+.almazbro-site-utilities-table--definition th,
+.almazbro-site-utilities-table--definition td {
     width: 50%;
 }
 
-.alacarte-table--definition th {
-    padding-top: var(--alacarte-space-4);
-    padding-bottom: var(--alacarte-space-4);
+.almazbro-site-utilities-table--definition th {
+    padding-top: var(--almazbro-site-utilities-space-4);
+    padding-bottom: var(--almazbro-site-utilities-space-4);
     font-size: 13px;
     font-weight: 700;
     text-transform: none;
     letter-spacing: normal;
-    color: var(--alacarte-text);
+    color: var(--almazbro-site-utilities-text);
     background: none;
-    border-bottom: 1px solid var(--alacarte-border-soft);
+    border-bottom: 1px solid var(--almazbro-site-utilities-border-soft);
 }
 
-.alacarte-table--definition td {
-    color: var(--alacarte-text-muted);
+.almazbro-site-utilities-table--definition td {
+    color: var(--almazbro-site-utilities-text-muted);
 }
 
-.alacarte-table-scroll {
+.almazbro-site-utilities-table-scroll {
     overflow-x: auto;
 }
 
 /* ══ 12. Pills & notices ══════════════════════════════════════════════════ */
 
-.alacarte-pill {
+.almazbro-site-utilities-pill {
     display: inline-flex;
     align-items: center;
-    gap: var(--alacarte-space-1);
+    gap: var(--almazbro-site-utilities-space-1);
     padding: 4px 11px;
     font-size: 11px;
     font-weight: 700;
     line-height: 1.5;
     letter-spacing: 0.02em;
     border: 1px solid transparent;
-    border-radius: var(--alacarte-radius-full);
+    border-radius: var(--almazbro-site-utilities-radius-full);
     white-space: nowrap;
 }
 
-.alacarte-pill--brand {
-    background: var(--alacarte-brand-soft);
-    border-color: var(--alacarte-brand-border);
-    color: var(--alacarte-brand-deep);
+.almazbro-site-utilities-pill--brand {
+    background: var(--almazbro-site-utilities-brand-soft);
+    border-color: var(--almazbro-site-utilities-brand-border);
+    color: var(--almazbro-site-utilities-brand-deep);
 }
 
-.alacarte-pill--success {
-    background: var(--alacarte-success-soft);
-    border-color: var(--alacarte-success-border);
-    color: var(--alacarte-success);
+.almazbro-site-utilities-pill--success {
+    background: var(--almazbro-site-utilities-success-soft);
+    border-color: var(--almazbro-site-utilities-success-border);
+    color: var(--almazbro-site-utilities-success);
 }
 
-.alacarte-pill--neutral {
-    background: var(--alacarte-surface-sunken);
-    border-color: var(--alacarte-border-strong);
-    color: var(--alacarte-text-muted);
+.almazbro-site-utilities-pill--neutral {
+    background: var(--almazbro-site-utilities-surface-sunken);
+    border-color: var(--almazbro-site-utilities-border-strong);
+    color: var(--almazbro-site-utilities-text-muted);
 }
 
-.alacarte-pill--upper {
+.almazbro-site-utilities-pill--upper {
     text-transform: uppercase;
     letter-spacing: 0.07em;
 }
 
-.alacarte-notice {
+.almazbro-site-utilities-notice {
     display: flex;
     align-items: flex-start;
-    gap: var(--alacarte-space-3);
-    margin: 0 0 var(--alacarte-space-5);
-    padding: var(--alacarte-space-4);
+    gap: var(--almazbro-site-utilities-space-3);
+    margin: 0 0 var(--almazbro-site-utilities-space-5);
+    padding: var(--almazbro-site-utilities-space-4);
     font-size: 13px;
     font-weight: 500;
     line-height: 1.5;
-    background: var(--alacarte-surface);
-    border: 1px solid var(--alacarte-border);
-    border-left: 4px solid var(--alacarte-text-subtle);
-    border-radius: var(--alacarte-radius-sm);
-    box-shadow: var(--alacarte-shadow-sm);
+    background: var(--almazbro-site-utilities-surface);
+    border: 1px solid var(--almazbro-site-utilities-border);
+    border-left: 4px solid var(--almazbro-site-utilities-text-subtle);
+    border-radius: var(--almazbro-site-utilities-radius-sm);
+    box-shadow: var(--almazbro-site-utilities-shadow-sm);
 }
 
-.alacarte-notice .dashicons {
+.almazbro-site-utilities-notice .dashicons {
     flex: 0 0 auto;
     width: 19px;
     height: 19px;
     font-size: 19px;
 }
 
-.alacarte-notice--success {
-    background: var(--alacarte-success-soft);
-    border-color: var(--alacarte-success-border);
-    border-left-color: var(--alacarte-success);
-    color: var(--alacarte-success);
+.almazbro-site-utilities-notice--success {
+    background: var(--almazbro-site-utilities-success-soft);
+    border-color: var(--almazbro-site-utilities-success-border);
+    border-left-color: var(--almazbro-site-utilities-success);
+    color: var(--almazbro-site-utilities-success);
 }
 
-.alacarte-notice--warning {
-    background: var(--alacarte-warning-soft);
-    border-color: var(--alacarte-warning-border);
-    border-left-color: var(--alacarte-warning);
-    color: var(--alacarte-warning);
+.almazbro-site-utilities-notice--warning {
+    background: var(--almazbro-site-utilities-warning-soft);
+    border-color: var(--almazbro-site-utilities-warning-border);
+    border-left-color: var(--almazbro-site-utilities-warning);
+    color: var(--almazbro-site-utilities-warning);
 }
 
-.alacarte-notice--error {
-    background: var(--alacarte-danger-soft);
-    border-color: var(--alacarte-danger-border);
-    border-left-color: var(--alacarte-danger);
-    color: var(--alacarte-danger);
+.almazbro-site-utilities-notice--error {
+    background: var(--almazbro-site-utilities-danger-soft);
+    border-color: var(--almazbro-site-utilities-danger-border);
+    border-left-color: var(--almazbro-site-utilities-danger);
+    color: var(--almazbro-site-utilities-danger);
 }
 
 /* Core notices rendered inside our shell (settings_errors(), etc.). */
-.alacarte-wrap .notice,
-.alacarte-wrap .updated,
-.alacarte-wrap .error {
-    margin: 0 0 var(--alacarte-space-5);
-    padding: var(--alacarte-space-3) var(--alacarte-space-4);
-    background: var(--alacarte-surface);
-    border: 1px solid var(--alacarte-border);
+.almazbro-site-utilities-wrap .notice,
+.almazbro-site-utilities-wrap .updated,
+.almazbro-site-utilities-wrap .error {
+    margin: 0 0 var(--almazbro-site-utilities-space-5);
+    padding: var(--almazbro-site-utilities-space-3) var(--almazbro-site-utilities-space-4);
+    background: var(--almazbro-site-utilities-surface);
+    border: 1px solid var(--almazbro-site-utilities-border);
     border-left-width: 4px;
-    border-radius: var(--alacarte-radius-sm);
-    box-shadow: var(--alacarte-shadow-sm);
+    border-radius: var(--almazbro-site-utilities-radius-sm);
+    box-shadow: var(--almazbro-site-utilities-shadow-sm);
 }
 
-.alacarte-wrap .notice p {
+.almazbro-site-utilities-wrap .notice p {
     margin: 0;
     font-size: 13px;
     font-weight: 500;
@@ -1155,122 +1155,122 @@ a.alacarte-table__name:hover {
 
 /* ══ 13. Stats ════════════════════════════════════════════════════════════ */
 
-.alacarte-stats {
+.almazbro-site-utilities-stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--alacarte-space-4);
-    margin-bottom: var(--alacarte-space-5);
+    gap: var(--almazbro-site-utilities-space-4);
+    margin-bottom: var(--almazbro-site-utilities-space-5);
 }
 
-.alacarte-stat {
-    padding: var(--alacarte-space-5) var(--alacarte-space-4);
+.almazbro-site-utilities-stat {
+    padding: var(--almazbro-site-utilities-space-5) var(--almazbro-site-utilities-space-4);
     text-align: center;
-    background: var(--alacarte-brand-soft);
-    border: 1px solid var(--alacarte-brand-border);
-    border-radius: var(--alacarte-radius);
+    background: var(--almazbro-site-utilities-brand-soft);
+    border: 1px solid var(--almazbro-site-utilities-brand-border);
+    border-radius: var(--almazbro-site-utilities-radius);
 }
 
-.alacarte-stat__value {
+.almazbro-site-utilities-stat__value {
     font-size: 36px;
     font-weight: 800;
     line-height: 1.05;
     letter-spacing: -0.03em;
-    color: var(--alacarte-brand-deep);
+    color: var(--almazbro-site-utilities-brand-deep);
 }
 
-.alacarte-stat__label {
-    margin-top: var(--alacarte-space-2);
+.almazbro-site-utilities-stat__label {
+    margin-top: var(--almazbro-site-utilities-space-2);
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--alacarte-brand-strong);
+    color: var(--almazbro-site-utilities-brand-strong);
 }
 
 /* ══ 14. Empty state ══════════════════════════════════════════════════════ */
 
-.alacarte-empty {
-    padding: var(--alacarte-space-8) var(--alacarte-space-5);
+.almazbro-site-utilities-empty {
+    padding: var(--almazbro-site-utilities-space-8) var(--almazbro-site-utilities-space-5);
     text-align: center;
 }
 
-.alacarte-empty__icon {
+.almazbro-site-utilities-empty__icon {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 64px;
     height: 64px;
-    margin: 0 auto var(--alacarte-space-4);
-    background: var(--alacarte-surface-sunken);
-    border: 1px solid var(--alacarte-border);
+    margin: 0 auto var(--almazbro-site-utilities-space-4);
+    background: var(--almazbro-site-utilities-surface-sunken);
+    border: 1px solid var(--almazbro-site-utilities-border);
     border-radius: 50%;
-    color: var(--alacarte-text-subtle);
+    color: var(--almazbro-site-utilities-text-subtle);
 }
 
-.alacarte-empty__icon .dashicons {
+.almazbro-site-utilities-empty__icon .dashicons {
     width: 30px;
     height: 30px;
     font-size: 30px;
 }
 
-.alacarte-empty__text {
+.almazbro-site-utilities-empty__text {
     max-width: 420px;
-    margin: 0 auto var(--alacarte-space-5);
+    margin: 0 auto var(--almazbro-site-utilities-space-5);
     font-size: 13px;
     line-height: 1.6;
-    color: var(--alacarte-text-muted);
+    color: var(--almazbro-site-utilities-text-muted);
 }
 
-.alacarte-empty__text:last-child {
+.almazbro-site-utilities-empty__text:last-child {
     margin-bottom: 0;
 }
 
 /* ══ 15. Page footer ══════════════════════════════════════════════════════ */
 
-.alacarte-footer {
-    margin-top: var(--alacarte-space-7);
-    padding-top: var(--alacarte-space-5);
+.almazbro-site-utilities-footer {
+    margin-top: var(--almazbro-site-utilities-space-7);
+    padding-top: var(--almazbro-site-utilities-space-5);
     font-size: 13px;
     text-align: center;
-    color: var(--alacarte-text-muted);
-    border-top: 1px solid var(--alacarte-border);
+    color: var(--almazbro-site-utilities-text-muted);
+    border-top: 1px solid var(--almazbro-site-utilities-border);
 }
 
-.alacarte-footer p {
+.almazbro-site-utilities-footer p {
     margin: 0;
 }
 
-.alacarte-footer a {
-    color: var(--alacarte-brand-strong);
+.almazbro-site-utilities-footer a {
+    color: var(--almazbro-site-utilities-brand-strong);
     font-weight: 700;
     text-decoration: none;
 }
 
-.alacarte-footer a:hover {
+.almazbro-site-utilities-footer a:hover {
     text-decoration: underline;
 }
 
 /* ══ 16. Layout utilities & vertical rhythm ═══════════════════════════════ */
 
-.alacarte-cols-2 {
+.almazbro-site-utilities-cols-2 {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--alacarte-space-5);
+    gap: var(--almazbro-site-utilities-space-5);
 }
 
 /* Wide main column + narrower companion column. */
-.alacarte-split {
+.almazbro-site-utilities-split {
     display: grid;
     grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-    gap: var(--alacarte-space-5);
+    gap: var(--almazbro-site-utilities-space-5);
     align-items: start;
 }
 
-.alacarte-stack>*+* {
-    margin-top: var(--alacarte-space-5);
+.almazbro-site-utilities-stack>*+* {
+    margin-top: var(--almazbro-site-utilities-space-5);
 }
 
-.alacarte-inline-form {
+.almazbro-site-utilities-inline-form {
     display: inline-flex;
 }
 
@@ -1278,35 +1278,35 @@ a.alacarte-table__name:hover {
  * Vertical rhythm.
  *
  * A panel body owns the spacing between its own children, and grid
- * cells are spaced by `gap` alone. Without this, a `.alacarte-field` in the left
- * column of a `.alacarte-cols-2` row keeps its bottom margin while the one on the
+ * cells are spaced by `gap` alone. Without this, a `.almazbro-site-utilities-field` in the left
+ * column of a `.almazbro-site-utilities-cols-2` row keeps its bottom margin while the one on the
  * right (a `:last-child`) drops it — the two rows end up unevenly spaced — and
  * the final block in a body leaves a gap above the panel footer.
  *
  * Declared last so it wins over the component margins above at equal
  * specificity.
  */
-.alacarte-panel__body>*,
-.alacarte-cols-2>*,
-.alacarte-split>*,
-.alacarte-stack>* {
+.almazbro-site-utilities-panel__body>*,
+.almazbro-site-utilities-cols-2>*,
+.almazbro-site-utilities-split>*,
+.almazbro-site-utilities-stack>* {
     margin-bottom: 0;
 }
 
-.alacarte-panel__body>*+* {
-    margin-top: var(--alacarte-space-5);
+.almazbro-site-utilities-panel__body>*+* {
+    margin-top: var(--almazbro-site-utilities-space-5);
 }
 
 /**
  * A grid cell is positioned by `gap` alone. Components that stack themselves
  * in normal flow carry an adjacent-sibling margin, and inside a grid that
  * margin drops the second cell below the first — two panels side by side in a
- * `.alacarte-split` end up 24px out of line. These selectors have to name both
+ * `.almazbro-site-utilities-split` end up 24px out of line. These selectors have to name both
  * classes to outweigh the component rule they undo.
  */
-.alacarte-cols-2>.alacarte-panel+.alacarte-panel,
-.alacarte-split>.alacarte-panel+.alacarte-panel,
-.alacarte-choice-grid>.alacarte-choice+.alacarte-choice {
+.almazbro-site-utilities-cols-2>.almazbro-site-utilities-panel+.almazbro-site-utilities-panel,
+.almazbro-site-utilities-split>.almazbro-site-utilities-panel+.almazbro-site-utilities-panel,
+.almazbro-site-utilities-choice-grid>.almazbro-site-utilities-choice+.almazbro-site-utilities-choice {
     margin-top: 0;
 }
 
@@ -1315,130 +1315,130 @@ a.alacarte-table__name:hover {
 /* wp-admin keeps its 160px menu open down to 960px, so the usable width runs
    out well before the viewport does — collapse paired columns early. */
 @media (max-width: 1180px) {
-    .alacarte-split {
+    .almazbro-site-utilities-split {
         grid-template-columns: minmax(0, 1fr);
     }
 }
 
 @media (max-width: 960px) {
-    .alacarte-wrap {
-        padding: var(--alacarte-space-5);
+    .almazbro-site-utilities-wrap {
+        padding: var(--almazbro-site-utilities-space-5);
     }
 
-    body[class*="page_a-la-carte"] #wpbody-content>.notice,
-    body[class*="page_a-la-carte"] #wpbody-content>.updated,
-    body[class*="page_a-la-carte"] #wpbody-content>.error {
-        margin: var(--alacarte-space-5) var(--alacarte-space-5) 0;
+    body[class*="page_almazbro-site-utilities"] #wpbody-content>.notice,
+    body[class*="page_almazbro-site-utilities"] #wpbody-content>.updated,
+    body[class*="page_almazbro-site-utilities"] #wpbody-content>.error {
+        margin: var(--almazbro-site-utilities-space-5) var(--almazbro-site-utilities-space-5) 0;
     }
 
-    .alacarte-cols-2 {
+    .almazbro-site-utilities-cols-2 {
         grid-template-columns: minmax(0, 1fr);
     }
 }
 
 @media (max-width: 782px) {
-    .alacarte-wrap {
-        padding: var(--alacarte-space-4);
+    .almazbro-site-utilities-wrap {
+        padding: var(--almazbro-site-utilities-space-4);
     }
 
-    body[class*="page_a-la-carte"] #wpbody-content>.notice,
-    body[class*="page_a-la-carte"] #wpbody-content>.updated,
-    body[class*="page_a-la-carte"] #wpbody-content>.error {
-        margin: var(--alacarte-space-4) var(--alacarte-space-4) 0;
+    body[class*="page_almazbro-site-utilities"] #wpbody-content>.notice,
+    body[class*="page_almazbro-site-utilities"] #wpbody-content>.updated,
+    body[class*="page_almazbro-site-utilities"] #wpbody-content>.error {
+        margin: var(--almazbro-site-utilities-space-4) var(--almazbro-site-utilities-space-4) 0;
     }
 
     /* Icon and title stay on one line; the actions take a full-width row of
        their own underneath rather than sitting beside the icon. */
-    .alacarte-page-header {
+    .almazbro-site-utilities-page-header {
         flex-wrap: wrap;
-        gap: var(--alacarte-space-4);
-        padding: var(--alacarte-space-5);
+        gap: var(--almazbro-site-utilities-space-4);
+        padding: var(--almazbro-site-utilities-space-5);
     }
 
-    .alacarte-page-header__icon {
+    .almazbro-site-utilities-page-header__icon {
         width: 52px;
         height: 52px;
     }
 
-    .alacarte-page-header__icon .dashicons {
+    .almazbro-site-utilities-page-header__icon .dashicons {
         width: 26px;
         height: 26px;
         font-size: 26px;
     }
 
-    .alacarte-page-header__icon img {
+    .almazbro-site-utilities-page-header__icon img {
         width: 30px;
     }
 
-    .alacarte-page-header__content {
+    .almazbro-site-utilities-page-header__content {
         flex: 1 1 0;
     }
 
-    .alacarte-page-header__actions {
+    .almazbro-site-utilities-page-header__actions {
         flex: 1 0 100%;
     }
 
-    .alacarte-page-header__actions .alacarte-btn {
+    .almazbro-site-utilities-page-header__actions .almazbro-site-utilities-btn {
         flex: 1 1 auto;
     }
 
-    .alacarte-h1 {
+    .almazbro-site-utilities-h1 {
         font-size: 24px;
     }
 
-    .alacarte-tools {
+    .almazbro-site-utilities-tools {
         grid-template-columns: minmax(0, 1fr);
     }
 
-    .alacarte-panel__header,
-    .alacarte-panel__body,
-    .alacarte-panel__footer {
-        padding-left: var(--alacarte-space-4);
-        padding-right: var(--alacarte-space-4);
+    .almazbro-site-utilities-panel__header,
+    .almazbro-site-utilities-panel__body,
+    .almazbro-site-utilities-panel__footer {
+        padding-left: var(--almazbro-site-utilities-space-4);
+        padding-right: var(--almazbro-site-utilities-space-4);
     }
 
-    .alacarte-table th,
-    .alacarte-table td {
-        padding-left: var(--alacarte-space-4);
-        padding-right: var(--alacarte-space-4);
+    .almazbro-site-utilities-table th,
+    .almazbro-site-utilities-table td {
+        padding-left: var(--almazbro-site-utilities-space-4);
+        padding-right: var(--almazbro-site-utilities-space-4);
     }
 }
 
 /* Stacked, full-width actions once buttons stop fitting side by side. */
 @media (max-width: 480px) {
 
-    .alacarte-panel__footer {
+    .almazbro-site-utilities-panel__footer {
         flex-direction: column-reverse;
         align-items: stretch;
     }
 
-    .alacarte-panel__footer>*,
-    .alacarte-panel__footer .alacarte-btn {
+    .almazbro-site-utilities-panel__footer>*,
+    .almazbro-site-utilities-panel__footer .almazbro-site-utilities-btn {
         width: 100%;
     }
 
-    .alacarte-tool-card__footer {
+    .almazbro-site-utilities-tool-card__footer {
         flex-direction: column;
         align-items: stretch;
-        gap: var(--alacarte-space-3);
+        gap: var(--almazbro-site-utilities-space-3);
     }
 
-    .alacarte-tool-card__footer .alacarte-pill {
+    .almazbro-site-utilities-tool-card__footer .almazbro-site-utilities-pill {
         align-self: flex-start;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
 
-    .alacarte-wrap {
+    .almazbro-site-utilities-wrap {
         animation: none;
     }
 
-    .alacarte-wrap * {
+    .almazbro-site-utilities-wrap * {
         transition-duration: 1ms !important;
     }
 
-    .alacarte-btn:active {
+    .almazbro-site-utilities-btn:active {
         transform: none;
     }
 }
